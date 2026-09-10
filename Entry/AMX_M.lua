@@ -1,13 +1,13 @@
 local AMX               = 'AMX'
 AMXFM = {
-	Name                                     = AMX,
-	DisplayName                              = _('AMX A-1A'),
+	Name                                     = "AMX_M",
+	DisplayName                              = _('AMX A-1AM'),
 	Picture                                  = "AMX.png",
 	Rate                                     = 50,
 	Shape                                    = "AMX",
 	WorldID                                  = WSTYPE_PLACEHOLDER,
 
-	livery_entry                             = AMX,
+	livery_entry                             = "AMX_M",
 
 	LandRWCategories                         =
 	{

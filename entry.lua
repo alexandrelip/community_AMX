@@ -75,13 +75,29 @@ mount_vfs_texture_path(current_mod_path .. "/Textures/Cockpit")
 dofile(current_mod_path .. "/Entry/Views.lua")
 dofile(current_mod_path .. '/Entry/loadout.lua')
 dofile(current_mod_path .. '/Entry/weapons.lua')
+
+dofile(current_mod_path .. '/Entry/Data/amx_engines_fm.lua')
+dofile(current_mod_path .. '/Entry/Data/amx_gun_mount_fm.lua')
+dofile(current_mod_path .. '/Entry/Data/amx_lights_data_fm.lua')
+dofile(current_mod_path .. '/Entry/Data/amx_pilones_fm.lua')
+dofile(current_mod_path .. '/Entry/Data/AMX_SFM.lua')
+
 dofile(current_mod_path .. '/Entry/AMX.lua')
 dofile(current_mod_path .. '/Entry/AMXT.lua')
+dofile(current_mod_path .. '/Entry/AMX_M.lua')
+dofile(current_mod_path .. '/Entry/AMXT_M.lua')
 
 make_view_settings('AMX', ViewSettings, SnapViews)
 make_flyable('AMX', current_mod_path .. '/Cockpit/Scripts/', nil, current_mod_path .. '/Entry/comm.lua')
 
 make_view_settings('AMXT', ViewSettings, SnapViews)
 make_flyable('AMXT', current_mod_path .. '/Cockpit/Scripts/', nil, current_mod_path .. '/Entry/comm.lua')
+
+make_view_settings('AMX_M', ViewSettings, SnapViews)
+make_flyable('AMX_M', current_mod_path .. '/Cockpit/Scripts/', nil, current_mod_path .. '/Entry/comm.lua')
+
+make_view_settings('AMXT_M', ViewSettings, SnapViews)
+make_flyable('AMXT_M', current_mod_path .. '/Cockpit/Scripts/', nil, current_mod_path .. '/Entry/comm.lua')
+
 
 plugin_done()

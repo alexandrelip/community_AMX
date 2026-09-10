@@ -1,13 +1,16 @@
 local AMX               = 'AMX'
+
+dofile(current_mod_path .. "/Entry/weapons.lua")
+
 AMXFM = {
-	Name                                     = AMX,
-	DisplayName                              = _('AMX A-1A'),
+	Name                                     = 'AMXT_M',
+	DisplayName                              = _('AMX A-1BM'),
 	Picture                                  = "AMX.png",
 	Rate                                     = 50,
 	Shape                                    = "AMX",
 	WorldID                                  = WSTYPE_PLACEHOLDER,
 
-	livery_entry                             = AMX,
+	livery_entry                             = 'AMXT_M',
 
 	LandRWCategories                         =
 	{
@@ -93,25 +96,25 @@ AMXFM = {
 	attribute                                = { wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER, "Fighters", "Bombers", "Refuelable", "Datalink", "Link16" },
 	Categories                               = { "{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor", },
 
-	M_empty                                  = 6730,                 -- kg (Peso vazio aproximado do AMX A-1A)
-	M_nominal                                = 9520,                 -- kg (Vazio + Combustível Interno Máximo: 6730 + 2790)
-	M_max                                    = 13000,                -- kg (MTOW - Peso Máximo de Decolagem)
-	M_fuel_max                               = 2790,                 -- kg (Capacidade máxima de combustível interno)
-	H_max                                    = 13000,                -- m (Teto de serviço operacional, aprox. 42.650 ft)
-	average_fuel_consumption                 = 0.021,                -- Motor turbofan sem pós-combustão (mantido padrão SFM)
-	CAS_min                                  = 55,                   -- Minimum CAS speed em m/s (Velocidade de estol próxima a ~105 kts)
-	V_opt                                    = 220,                  -- Cruise speed em m/s (Velocidade de cruzeiro, Mach ~0.7)
-	V_take_off                               = 65,                   -- Take off speed em m/s (Aprox. 125 kts)
-	V_land                                   = 70,                   -- Land speed em m/s (Aprox. 135 kts)
-	has_afteburner                           = false,                -- AMX NÃO possui pós-combustor
-	has_speedbrake                           = true,                 -- AMX possui freios aerodinâmicos
-	radar_can_see_ground                     = true,                 -- Radar de telemetria/ataque (ex: SCP-01 Scipio)
+	M_empty                                  = 7200,              -- kg (Peso vazio aproximado do AMX A-1A)
+	M_nominal                                = 9750,              -- kg (Vazio + Combustível Interno Máximo: 6730 + 2790)
+	M_max                                    = 13000,             -- kg (MTOW - Peso Máximo de Decolagem)
+	M_fuel_max                               = 2550,              -- kg (Capacidade máxima de combustível interno)
+	H_max                                    = 13000,             -- m (Teto de serviço operacional, aprox. 42.650 ft)
+	average_fuel_consumption                 = 0.021,             -- Motor turbofan sem pós-combustão (mantido padrão SFM)
+	CAS_min                                  = 55,                -- Minimum CAS speed em m/s (Velocidade de estol próxima a ~105 kts)
+	V_opt                                    = 220,               -- Cruise speed em m/s (Velocidade de cruzeiro, Mach ~0.7)
+	V_take_off                               = 65,                -- Take off speed em m/s (Aprox. 125 kts)
+	V_land                                   = 70,                -- Land speed em m/s (Aprox. 135 kts)
+	has_afteburner                           = false,             -- AMX NÃO possui pós-combustor
+	has_speedbrake                           = true,              -- AMX possui freios aerodinâmicos
+	radar_can_see_ground                     = true,              -- Radar de telemetria/ataque (ex: SCP-01 Scipio)
 
 	nose_gear_pos                            = { 3.800, -2.000, 0 }, -- Ajustado para o comprimento menor do AMX
 	nose_gear_amortizer_direct_stroke        = 0.05,
 	nose_gear_amortizer_reversal_stroke      = -0.4,
 	nose_gear_amortizer_normal_weight_stroke = -0.27,
-	nose_gear_wheel_diameter                 = 0.8,                     -- Roda ligeiramente menor que a do caça
+	nose_gear_wheel_diameter                 = 0.8,                  -- Roda ligeiramente menor que a do caça
 
 	main_gear_pos                            = { -0.500, -1.96, 1.35 }, -- Ajustado para a bitola do AMX
 	main_gear_amortizer_direct_stroke        = 0,
@@ -119,33 +122,33 @@ AMXFM = {
 	main_gear_amortizer_normal_weight_stroke = -0.114,
 	main_gear_wheel_diameter                 = 0.9,
 
-	AOA_take_off                             = 0.16,                      -- AoA in take off
-	stores_number                            = 7,                         -- O AMX tem 5 pilones na fuselagem/asas + 2 trilhos nas pontas
+	AOA_take_off                             = 0.16,                   -- AoA in take off
+	stores_number                            = 7,                      -- O AMX tem 5 pilones na fuselagem/asas + 2 trilhos nas pontas
 	bank_angle_max                           = 60,
-	Ny_min                                   = -3.0,                      -- Carga G negativa limite
-	Ny_max                                   = 7.33,                      -- Carga G positiva operacional limite do AMX
-	V_max_sea_level                          = 292,                       -- Velocidade máx. no nível do mar em m/s (Aprox. 1050 km/h)
-	V_max_h                                  = 290,                       -- Velocidade máx. em altitude em m/s (Aeronave subsônica)
-	wing_area                                = 21.0,                      -- Área da asa em m2 (226 sq ft)
-	thrust_sum_max                           = 5000,                      -- Empuxo em kgf (Aprox. 49.1 kN do RR Spey 807)
-	thrust_sum_ab                            = 5000,                      -- Sem pós-combustor, igual ao empuxo máximo (seco)
-	Vy_max                                   = 52,                        -- Razão máx. de subida em m/s (Aprox. 10.200 ft/min)
+	Ny_min                                   = -3.0,                   -- Carga G negativa limite
+	Ny_max                                   = 7.33,                   -- Carga G positiva operacional limite do AMX
+	V_max_sea_level                          = 292,                    -- Velocidade máx. no nível do mar em m/s (Aprox. 1050 km/h)
+	V_max_h                                  = 290,                    -- Velocidade máx. em altitude em m/s (Aeronave subsônica)
+	wing_area                                = 21.0,                   -- Área da asa em m2 (226 sq ft)
+	thrust_sum_max                           = 5000,                   -- Empuxo em kgf (Aprox. 49.1 kN do RR Spey 807)
+	thrust_sum_ab                            = 5000,                   -- Sem pós-combustor, igual ao empuxo máximo (seco)
+	Vy_max                                   = 52,                     -- Razão máx. de subida em m/s (Aprox. 10.200 ft/min)
 	flaps_maneuver                           = 1.0,
-	Mach_max                                 = 0.95,                      -- Limite subsônico de VNE (Velocity Never Exceed)
-	range                                    = 3330,                      -- Alcance máximo de traslado (Ferry range) em km
-	RCS                                      = 2.5,                       -- Radar Cross Section (Jato pequeno de ataque, mas sem stealth)
+	Mach_max                                 = 0.95,                   -- Limite subsônico de VNE (Velocity Never Exceed)
+	range                                    = 3330,                   -- Alcance máximo de traslado (Ferry range) em km
+	RCS                                      = 2.5,                    -- Radar Cross Section (Jato pequeno de ataque, mas sem stealth)
 	Ny_max_e                                 = 7.33,
-	detection_range_max                      = 40,                        -- Raio de detecção do radar reduzido (Radar focado em A/G)
-	IR_emission_coeff                        = 0.4,                       -- Assinatura térmica reduzida (Turbofan sem AB)
-	IR_emission_coeff_ab                     = 0.0,                       -- Zero emissão de AB
+	detection_range_max                      = 40,                     -- Raio de detecção do radar reduzido (Radar focado em A/G)
+	IR_emission_coeff                        = 0.4,                    -- Assinatura térmica reduzida (Turbofan sem AB)
+	IR_emission_coeff_ab                     = 0.0,                    -- Zero emissão de AB
 	tand_gear_max                            = 0.84,
-	tanker_type                              = 2,                         -- Sistema Probe and Drogue (padrão 2 no SFM)
-	wing_span                                = 8.87,                      -- Envergadura em metros
-	wing_type                                = 0,                         -- Asa fixa (FIXED_WING)
-	length                                   = 13.57,                     -- Comprimento em metros
-	height                                   = 4.57,                      -- Altura em metros
-	crew_size                                = 1,                         -- AMX A-1A (Monoplace)
-	engines_count                            = 1,                         -- Monomotor
+	tanker_type                              = 2,                      -- Sistema Probe and Drogue (padrão 2 no SFM)
+	wing_span                                = 8.87,                   -- Envergadura em metros
+	wing_type                                = 0,                      -- Asa fixa (FIXED_WING)
+	length                                   = 13.57,                  -- Comprimento em metros
+	height                                   = 4.57,                   -- Altura em metros
+	crew_size                                = 2,                      -- AMX A-1A (Monoplace)
+	engines_count                            = 1,                      -- Monomotor
 	wing_tip_pos                             = { -2.000, -0.100, 4.435 }, -- Posição Z reflete metade da envergadura (8.87 / 2)
 
 	EPLRS                                    = true,
@@ -163,7 +166,7 @@ AMXFM = {
 		},
 	},
 
-	engines_nozzles                          = amx_engines_fm,                                         -- end of engines_nozzles
+	engines_nozzles                          = amx_engines_fm,                         -- end of engines_nozzles
 
 	crew_members                             =
 	{
@@ -186,7 +189,27 @@ AMXFM = {
 			role_display_name       = _("Pilot"),
 			g_suit                  = 1,
 			bailout_arg             = -1,
-		}
+		}, -- end of [1]
+		[2] =
+		{
+			ejection_through_canopy = true,
+			ejection_seat_name      = "pilot_f15_00_seat",
+			pilot_name              = "pilot_f15_00",
+			drop_canopy_name        = 0,
+			drop_parachute_name     = "pilot_f15_parachute",
+			pos                     = { -0.8, 0.3, 0.1 },
+			canopy_pos              = { 2, 0.5, 0 },
+			ejection_added_speed    = { -4, 14.5, -0.4 },
+			ejection_play_arg       = 472,
+			can_be_playable         = false,
+			canopy_args             = { 38, 0.8 },
+			pilot_body_arg          = 472,
+			ejection_order          = 2,
+			role                    = "instructor",
+			role_display_name       = _("Instructor pilot"),
+			g_suit                  = 1,
+			bailout_arg             = -1,
+		}, -- end of [2]
 	}, -- end of crew_members
 
 	Pylons                                   = amx_pilones_fm,
@@ -278,7 +301,7 @@ AMXFM = {
 	},
 	DefaultTask               = aircraft_task(CAS),
 
-	SFM_Data                  = AMX_SFM,
+	SFM_Data                  =  AMX_T_SFM,
 
 	--damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
 	Damage                    = {

@@ -6,7 +6,7 @@ AMXFM = {
 	Name                                     = 'AMXT',
 	DisplayName                              = _('AMX A-1B'),
 	Picture                                  = "AMX.png",
-	Rate                                     = "50",
+	Rate                                     = 50,
 	Shape                                    = "AMX",
 	WorldID                                  = WSTYPE_PLACEHOLDER,
 
@@ -58,39 +58,7 @@ AMXFM = {
 		},
 	},
 
-	Guns = {
-		gun_mount("M_39",
-		{
-			count = 280
-		},
-		{
-			muzzle_pos				= {.155,  -0.635, -0.242},
-			muzzle_pos_connector	= "gunPoint2",
-			supply_position			= {4.8753, 0, -0.2},	-- approx
-			drop_cartridge			= 204,		-- cartridge_50cal
-			--ejector_pos_connector	= "ejector_1",
-			ejector_dir 			= {-2,0,0},
-			effects = {
-				{name = "SmokeEffect",gas_deflector_arg = 327  , add_speed = {0, -3, 3}},
-			},
-		}),			-- LEFT
-		gun_mount("M_39",
-		{
-			count = 280
-		},
-		{
-			muzzle_pos				= {6.155,  -0.635, 0.242},
-			muzzle_pos_connector	= "gunPoint1",
-			supply_position			= {4.8753, 0,  0.2},	-- approx
-			drop_cartridge 			= 204,		-- cartridge_50cal
-			--ejector_pos_connector	= "ejector_2",
-			ejector_dir 			= {-2,0,0},
-			effects = {
-				{name = "SmokeEffect",gas_deflector_arg = 328, add_speed = {0,  3, 3}},
-			},
-		})			-- RIGHT
-	},
-
+	Guns = amx_gun_mount_fm,
 
 	net_animation                            = {
 		0, -- front gear
@@ -102,7 +70,6 @@ AMXFM = {
 		134, -- nose wheel damage
 		135, -- main wheel damage
 		136, -- main wheel damage	
-		182, -- left and right air brake
 		182, -- left and right air brake
 		190, -- left front red navigation light
 		191, -- right front green navigation light
@@ -129,10 +96,10 @@ AMXFM = {
 	attribute                                = { wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER, "Fighters", "Bombers", "Refuelable", "Datalink", "Link16" },
 	Categories                               = { "{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor", },
 
-	M_empty                                  = 6730,              -- kg (Peso vazio aproximado do AMX A-1A)
-	M_nominal                                = 9520,              -- kg (Vazio + Combustível Interno Máximo: 6730 + 2790)
+	M_empty                                  = 7200,              -- kg (Peso vazio aproximado do AMX A-1A)
+	M_nominal                                = 9750,              -- kg (Vazio + Combustível Interno Máximo: 6730 + 2790)
 	M_max                                    = 13000,             -- kg (MTOW - Peso Máximo de Decolagem)
-	M_fuel_max                               = 2790,              -- kg (Capacidade máxima de combustível interno)
+	M_fuel_max                               = 2550,              -- kg (Capacidade máxima de combustível interno)
 	H_max                                    = 13000,             -- m (Teto de serviço operacional, aprox. 42.650 ft)
 	average_fuel_consumption                 = 0.021,             -- Motor turbofan sem pós-combustão (mantido padrão SFM)
 	CAS_min                                  = 55,                -- Minimum CAS speed em m/s (Velocidade de estol próxima a ~105 kts)
@@ -180,7 +147,7 @@ AMXFM = {
 	wing_type                                = 0,                      -- Asa fixa (FIXED_WING)
 	length                                   = 13.57,                  -- Comprimento em metros
 	height                                   = 4.57,                   -- Altura em metros
-	crew_size                                = 1,                      -- AMX A-1A (Monoplace)
+	crew_size                                = 2,                      -- AMX A-1A (Monoplace)
 	engines_count                            = 1,                      -- Monomotor
 	wing_tip_pos                             = { -2.000, -0.100, 4.435 }, -- Posição Z reflete metade da envergadura (8.87 / 2)
 
@@ -199,19 +166,7 @@ AMXFM = {
 		},
 	},
 
-	engines_nozzles                          =
-	{
-		[1] =
-		{
-			pos                 = { -5.500, 0.100, 0 }, -- Recuado para o comprimento mais curto do AMX em relação ao CG
-			elevation           = 0,           -- Ângulo do bico de exaustão
-			diameter            = 0.75,        -- Diâmetro do bico do motor Spey 807 (menor que o do caça original)
-			exhaust_length_ab   = 0,
-			exhaust_length_ab_K = 0,
-			-- O motor Spey é um projeto mais antigo e gera fumaça visível, especialmente em RPM máximo
-			smokiness_level     = 0.25, -- Aumentado de 0.01 (limpo) para 0.25 (fumaça moderada/alta)
-		},                     -- end of [1]
-	},                         -- end of engines_nozzles
+	engines_nozzles                          = amx_engines_fm,                         -- end of engines_nozzles
 
 	crew_members                             =
 	{
@@ -257,83 +212,7 @@ AMXFM = {
 		}, -- end of [2]
 	}, -- end of crew_members
 
-	-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	Pylons                                   =
-	{
-		pylon(1, 0, 0, 0, 0,
-			{
-				--arg = 308,
-				--arg_value = 0.2,
-				DisplayName = "1",
-				use_full_connector_position = true,
-				connector = "Pylon1",
-			},
-			montarRackList(AIM9_RACK_AMX)
-		),
-		pylon(2, 0, 0, 0, 0,
-			{
-				arg = 309,
-				arg_value = 0.2,
-				DisplayName = "2",
-				use_full_connector_position = true,
-				connector = "Pylon2",
-			},
-			montarRackList(ROCKET_LEVES_AMX, BOMBAS_LEVES_AMX)
-		),
-		pylon(3, 0, 0, 0, 0,
-			{
-				arg = 310,
-				arg_value = 0.2,
-				DisplayName = "3",
-				use_full_connector_position = true,
-				connector = "Pylon3",
-			},
-			montarRackList(ROCKET_LEVES_AMX, BOMBAS_LEVES_AMX)
-		),
-		pylon(4, 0, 0, 0, 0,
-			{
-				arg = 311,
-				arg_value = 0.2,
-				DisplayName = "4",
-				use_full_connector_position = true,
-				connector = "Pylon4",
-			},
-			montarRackList(BOMBAS_LEVES_AMX)
-		),
-		pylon(5, 0, 0, 0, 0,
-			{
-				arg = 312,
-				arg_value = 0.2,
-				DisplayName = "5",
-				use_full_connector_position = true,
-				connector = "Pylon5",
-			},
-			montarRackList(ROCKET_LEVES_AMX, BOMBAS_LEVES_AMX)
-		),
-		pylon(6, 0, 0, 0, 0,
-			{
-				arg = 313,
-				arg_value = 0.2,
-				DisplayName = "6",
-				use_full_connector_position = true,
-				connector = "Pylon6",
-			},
-			montarRackList(ROCKET_LEVES_AMX, BOMBAS_LEVES_AMX)
-		),
-		pylon(7, 0, 0, 0, 0,
-			{
-				--arg = 312,
-				--arg_value = 0.2,
-				DisplayName = "7",
-				use_full_connector_position = true,
-				connector = "Pylon8",
-			},
-			montarRackList(AIM9_RACK_AMX)
-		),
-
-	},
-	-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+	Pylons                                   = amx_pilones_fm,
 
 	brakeshute_name           = 0,
 	is_tanker                 = false,
@@ -393,8 +272,7 @@ AMXFM = {
 		{ id = 'asc',       label = _('ASC'),       enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
 		{ id = 'autopilot', label = _('AUTOPILOT'), enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
 		{ id = 'hydro',     label = _('HYDRO'),     enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
-		{ id = 'l_engine',  label = _('L-ENGINE'),  enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
-		{ id = 'r_engine',  label = _('R-ENGINE'),  enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+		{ id = 'engine',    label = _('ENGINE'),    enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
 		{ id = 'radar',     label = _('RADAR'),     enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
 		--{ id = 'eos',  		label = _('EOS'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
 		--{ id = 'helmet',  	label = _('HELMET'), 	enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
@@ -423,104 +301,7 @@ AMXFM = {
 	},
 	DefaultTask               = aircraft_task(CAS),
 
-	SFM_Data                  = {
-		aerodynamics = { -- Cx = Cx_0 + Cy^2*B2 +Cy^4*B4
-			Cy0        = 0.0, -- Zero AoA lift coefficient
-			Mzalfa     = 4.8, -- Pitch agility (Ajustado para aeronave de ataque mais pesada)
-			Mzalfadt   = 0.7, -- Pitch agility damping
-			kjx        = 3.80, -- Roll inertia (Menor que o caça, envergadura curta, mas carrega peso nas pontas)
-			kjz        = 0.00115, -- Pitch inertia
-			Czbe       = -0.014, -- Coefficient, along Z axis (yaw orientation)
-			cx_gear    = 0.085, -- Drag do trem de pouso
-			cx_flap    = 0.065, -- Drag com flaps full (AMX tem flaps duplos grandes, gera bastante arrasto)
-			cy_flap    = 0.85, -- Lift com flaps full (Aumentado bastante, o AMX tem excelente sustentação STOL)
-			cx_brk     = 0.10, -- Drag dos speedbrakes (Freios aerodinâmicos na lateral da fuselagem)
-
-			table_data = {
-				--      Mach    Cx0      Cya     B       B4      Omxmax  Aldop   Cymax
-				-- Voo Subsônico (Baixo arrasto, excelente manobrabilidade)
-				{ 0.000, 0.0250, 0.075, 0.0450, 0.15, 3.50, 24.000, 1.300 },
-				{ 0.200, 0.0250, 0.075, 0.0450, 0.15, 3.50, 24.000, 1.300 },
-				{ 0.400, 0.0260, 0.078, 0.0480, 0.16, 3.50, 23.000, 1.350 },
-				{ 0.600, 0.0280, 0.082, 0.0520, 0.18, 3.50, 22.000, 1.400 },
-				{ 0.750, 0.0310, 0.090, 0.0550, 0.19, 3.20, 20.000, 1.380 },
-
-				-- Divergência de Arrasto (Aproximação de Mach crítico)
-				{ 0.800, 0.0350, 0.095, 0.0600, 0.20, 3.00, 18.000, 1.350 },
-				{ 0.850, 0.0500, 0.100, 0.0700, 0.25, 2.80, 16.000, 1.300 },
-				{ 0.900, 0.0850, 0.090, 0.1000, 0.35, 2.50, 14.000, 1.200 },
-				{ 0.950, 0.1500, 0.080, 0.1500, 0.40, 2.00, 12.000, 1.100 }, -- VNE estrutural do AMX
-
-				-- Barreira do Som (A "Parede Aerodinâmica")
-				-- Cx0 (arrasto de forma) e B (arrasto induzido) sobem violentamente para impedir voo supersônico irreal.
-				{ 1.000, 0.2800, 0.065, 0.2000, 0.50, 1.50, 10.000, 1.000 },
-				{ 1.050, 0.3500, 0.055, 0.2500, 0.60, 1.00, 10.000, 0.900 },
-				{ 1.100, 0.4500, 0.050, 0.3000, 0.70, 0.80, 9.000,  0.850 },
-				{ 1.200, 0.6000, 0.045, 0.4000, 0.80, 0.50, 8.000,  0.800 },
-
-				-- Limite Máximo Teórico (Apenas em caso de mergulho extremo para a engine não bugar)
-				{ 1.500, 0.9000, 0.040, 0.8000, 1.50, 0.10, 5.000,  0.500 },
-			}, -- end of table
-
-			-- M        - Mach number
-			-- Cx0      - Coefficient, drag, profile (Aumentado drasticamente no transônico para criar a "parede" Mach 1)
-			-- Cya      - Normal force coefficient of the wing/body.
-			-- B        - Polar quad coeff (Arrasto induzido)
-			-- B4       - Polar 4th power coeff
-			-- Omxmax   - Roll rate (Rad/s). Ajustado para máx de ~200 graus/s (3.5 rad/s)
-			-- Aldop    - Alfadop Max AOA at current M (Limitado realisticamente a 24 graus)
-			-- Cymax    - Coefficient, lift, maximum possible.
-		},         -- end of aerodynamics
-
-		engine = { --Rolls-Royce Spey Mk 807
-			Nmg     = 60.0, -- RPM at idle (Mantido padrão ~60%)
-			MinRUD  = 0, -- Min state of the throttle
-			MaxRUD  = 1, -- Max state of the throttle (Sem AB, o max é 1.0)
-			MaksRUD = 1.0, -- Military power state of the throttle (Igual ao MaxRUD, sem detentor de AB)
-			ForsRUD = 1.0, -- Afterburner state of the throttle (Não existe, setado para 1.0)
-			typeng  = 4,
-			--[[
-                    E_TURBOJET = 0
-                    E_TURBOJET_AB = 1
-                    E_PISTON = 2
-                    E_TURBOPROP = 3
-                    E_TURBOFAN    = 4  <-- O Rolls-Royce Spey 807 é um Turbofan
-                    E_TURBOSHAFT = 5
-                --]]
-			hMaxEng    = 13.0, -- Max altitude for safe engine operation em km (Teto operacional real do AMX é ~13km / 42.650 ft)
-			dcx_eng    = 0.0124, -- Engine drag coefficient
-			cemax      = 0.65, -- Specific fuel consumption for MIL (Spey é bem eficiente, ajustado para ~0.65)
-			cefor      = 0.65, -- Specific fuel consumption for AB (Igual ao MIL, pois não há AB)
-			dpdh_m     = 1800, -- Altitude coefficient for max thrust (Perde empuxo mais rápido que caças de alta altitude)
-			dpdh_f     = 1800, -- Altitude coefficient for AB thrust (Igual ao MIL)
-			table_data = {
-				--        M     Pmax (Newtons)  Pfor (Newtons)
-				-- O motor Spey 807 gera 49.1 kN (49100 N) estático ao nível do mar.
-				-- Como não há pós-combustor, Pmax e Pfor recebem os mesmos valores.
-				-- O empuxo cai rapidamente com o aumento do Mach devido à arquitetura do turbofan subsônico.
-				[1]  = { 0.00, 49100, 49100 },
-				[2]  = { 0.20, 47500, 47500 },
-				[3]  = { 0.30, 46000, 46000 },
-				[4]  = { 0.40, 44500, 44500 },
-				[5]  = { 0.50, 42000, 42000 },
-				[6]  = { 0.60, 39500, 39500 },
-				[7]  = { 0.70, 37000, 37000 },
-				[8]  = { 0.80, 35000, 35000 },
-				[9]  = { 0.90, 32000, 32000 },
-
-				-- Acima de Mach 0.95 (VNE do AMX), o arrasto das pás do fan derruba a eficiência.
-				-- Valores mantidos apenas para a engine física não quebrar caso a aeronave entre em mergulho.
-				[10] = { 1.00, 25000, 25000 },
-				[11] = { 1.10, 15000, 15000 },
-				[12] = { 1.20, 10000, 10000 },
-				[13] = { 1.50, 5000, 5000 },
-				[14] = { 3.90, 1000, 1000 },
-			}, -- end of table_data
-			-- M    - Mach number
-			-- Pmax    - Engine thrust at military power (Newtons)
-			-- Pfor    - Engine thrust at AFB (Newtons - Igual ao Pmax no AMX)
-		}, -- end of engine
-	},
+	SFM_Data                  =  AMX_T_SFM,
 
 	--damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
 	Damage                    = {
@@ -568,50 +349,6 @@ AMXFM = {
 		[82] = { critical_damage = 2, args = { 152 } },                            --FUSELAGE_BOTTOM
 	},
 
-	lights_data               = {
-		typename = "collection",
-		lights = {
-			-- STROBES
-			[WOLALIGHT_STROBES] = {
-				typename = "collection",
-				lights = {
-					{ typename = "natostrobelight", argument = 193, period = 1.2, phase_shift = 0, color = { 0.9, 1.0, 0.7, 0.4 }, connector = "BANO_0_BACK" },
-					--{typename = "argnatostrobelight", argument = 193, period = 1.2, phase_shift = 0, color = {0.9, 1.0, 0.7, 0.4}, connector = "BANO_0_BACK"},
-				}
-			},
-
-			[WOLALIGHT_LANDING_LIGHTS] = {
-				typename = "collection",
-				lights = {
-					{ typename = "argumentlight", argument = 209, },
-				},
-			},
-			[WOLALIGHT_TAXI_LIGHTS] = {
-				typename = "collection",
-				lights = {
-					{ typename = "argumentlight", argument = 208, },
-				},
-			},
-			-- NAVLIGHTS
-			[WOLALIGHT_NAVLIGHTS] = {
-				typename = "collection",             -- nav_lights_default
-				lights = {
-					{ typename = "argumentlight", argument = 190 }, -- Left Position(red)
-					{ typename = "argumentlight", argument = 191 }, -- Right Position(green)
-					{ typename = "argumentlight", argument = 192 }, -- Tail Position white)
-				},
-			},
-			-- FORMATION
-			[WOLALIGHT_FORMATION_LIGHTS] = {
-				typename = "collection",
-				lights = {
-					{ typename = "argumentlight", argument = 200, }, --formation_lights_tail_1 = 200;
-				},
-			},
-			[WOLALIGHT_REFUEL_LIGHTS] = {}, -- REFUEL
-			[WOLALIGHT_BEACONS] = {}, -- STROBE / ANTI-COLLISION
-			[WOLALIGHT_CABIN_NIGHT] = {}, --
-		}
-	},
+	lights_data               = amx_lights_data_fm,
 }
 add_aircraft(AMXFM)
