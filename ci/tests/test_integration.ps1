@@ -118,6 +118,31 @@ try {
     $guardCall=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.CommandAst] -and $node.GetCommandName() -eq 'AssertNativeStartup'},$true)
     $readyReturn=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.IfStatementAst] -and $node.Extent.Text.StartsWith('if($observed)')},$true)
     Check ($null -ne $guardCall -and $null -ne $readyReturn -and $guardCall.Extent.StartOffset -lt $readyReturn.Extent.StartOffset) 'READY can bypass native startup failures.'
+    $inputAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Invoke-Input.ps1'),[ref]$tokens,[ref]$parseErrors)
+    Check ($parseErrors.Count -eq 0) 'Native keyboard helper syntax is invalid.'
+    $effect=$inputAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Test-InputEffect'},$true)
+    Check ($null -ne $effect) 'Keyboard effect predicate is missing.'
+    . ([scriptblock]::Create($effect.Extent.Text))
+    $before=[pscustomobject]@{model_time=1;sequence=0;parameters=[pscustomobject]@{CMFD1On=0;CMFD2On=1}}
+    $after=[pscustomobject]@{model_time=2;sequence=0;parameters=[pscustomobject]@{CMFD1On=1;CMFD2On=1}}
+    Check (Test-InputEffect $before $after @{CMFD1On=1;CMFD2On=1}) 'Producer transition was rejected.'
+    Check (-not (Test-InputEffect $after $after @{CMFD1On=1})) 'Stale sample approved an effect.'
+    Check (-not (Test-InputEffect $before $after @{CMFD1On=0})) 'Wrong producer state approved an effect.'
+    Check (-not (Test-InputEffect $before $after @{CMFD2On=1})) 'Already-set value approved a transition.'
+    Check (-not (Test-InputEffect $before $after @{MissingParameter=1})) 'Missing producer was treated as valid.'
+    $after.sequence=1
+    Check (-not (Test-InputEffect $before $after @{CMFD1On=1})) 'Diagnostic command interference approved keyboard effect.'
+    $after.sequence=0
+    $after.parameters.CMFD1On=[double]::NaN
+    Check (-not (Test-InputEffect $before $after @{CMFD1On=1})) 'Nonfinite producer value approved an effect.'
+    Rejected {Test-InputEffect $before $after @{AMXDENIS_CONTROL_IcpCOM1=1}} 'Router feedback was used as function proof.'
+    Rejected {Test-InputEffect $before $after @{CMFD1On=[double]::PositiveInfinity}} 'Nonfinite expected state was accepted.'
+    $cases=@(& (Join-Path $repo 'Tools/Native/Test-KeyboardCore.ps1') -Describe)
+    Check ($cases.Count -eq 31 -and @($cases.Control | Sort-Object -Unique).Count -eq 13) 'Keyboard subset coverage changed without review.'
+    foreach($case in $cases){
+        Check ($case.Expected.Count -gt 0 -and -not @($case.Expected.Keys | Where-Object {$_ -match '^AMXDENIS_(INPUT_|CONTROL_)'}).Count) 'Suite uses router feedback instead of producer state.'
+        Check ($case.Control -notin @('Gear','Flaps','Canopy','Starter')) 'Core indication suite silently included physical actuation.'
+    }
     Write-Output "AMXDENIS INTEGRATION GUARDS: $checks/$checks checks passed"
 } finally {
     if (Test-Path -LiteralPath (Join-Path $fixture 'Target\linked')) { Remove-Item -LiteralPath (Join-Path $fixture 'Target\linked') }

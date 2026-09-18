@@ -1,0 +1,2595 @@
+{
+  "Schema": "AMXDENIS_KEYBOARD_CORE_EVIDENCE_1",
+  "RecordedUtc": "2026-09-18T19:51:04.1057669Z",
+  "WorkItem": "R03 core producer-effect checks",
+  "BuildId": "5A236FF163314E4951959DB9BB1841866CF497A732312CE3AE00C80B515C398B",
+  "KeyboardCatalogTotal": 105,
+  "UniqueControls": 13,
+  "ConfirmedTransitions": 93,
+  "Sessions": 2,
+  "Cycles": 3,
+  "SubsetPassed": true,
+  "FullKeyboardApproval": false,
+  "OverallNativeAcceptanceGranted": false,
+  "PhysicalHotasApproval": false,
+  "Scope": "Windows SendInput effects on selected producer parameters; not rendered-pixel, mechanism or full keyboard approval",
+  "Runs": [
+    {
+      "Run": "Native-REV07-BN-KeyEffects",
+      "BuildId": "5A236FF163314E4951959DB9BB1841866CF497A732312CE3AE00C80B515C398B",
+      "SuiteSHA256": "BFB230B175F61E28488058487FCB0D03E4CE97D73668D5DFC8FEFD730DBFC443",
+      "Cycles": 1,
+      "Passed": true,
+      "Steps": [
+        {
+          "Cycle": 1,
+          "Step": 1,
+          "Control": "Battery",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-001-Battery.json",
+          "SHA256": "23120AA9C96134E1C80F0382080794A8C2D95E21350636D6FBF53B961A467F3D",
+          "Expected": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "Before": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "After": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "BeforeTime": 5.615,
+          "AfterTime": 8.929,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 2,
+          "Control": "Master",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-002-Master.json",
+          "SHA256": "4CDA55C77DA1BDDA14FDE706A3304BAAEE6597B7B049779BF8FFA953DD87D6FA",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "BeforeTime": 9.144,
+          "AfterTime": 12.515,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 3,
+          "Control": "Mfd1Power",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-003-Mfd1Power.json",
+          "SHA256": "85FCD856D02D1412103991AB26382AA142F1EF656A7D50C2D5256262E7F9B74B",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "BeforeTime": 12.515,
+          "AfterTime": 16.044,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 4,
+          "Control": "Mfd1Power",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-004-Mfd1Power.json",
+          "SHA256": "99A491E39252DFF7CA92BE5130BD4FE854C91044DF85430F70B2C6C4FF95DC51",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 16.258,
+          "AfterTime": 19.644,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 5,
+          "Control": "Mfd2Power",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-005-Mfd2Power.json",
+          "SHA256": "B2437EE6869B8AFE77390219C59F344FCBEC33302A37BA4149A8F73AF1E5F579",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 19.844,
+          "AfterTime": 23.216,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 6,
+          "Control": "Mfd2Power",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-006-Mfd2Power.json",
+          "SHA256": "7C6C56F9BE74F44BCD9A5C1BD9D41FCADEB051AE42302AEB714CAE7FE68C1E0F",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 23.216,
+          "AfterTime": 26.786,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 7,
+          "Control": "Mfd1Brightness",
+          "Value": -1,
+          "SourceFile": "keyboard-core-01-007-Mfd1Brightness.json",
+          "SHA256": "7246AE1041D5B4389E84AC60FF8929D4D6C4EC24FC1B92C4B7B9690A822A79C0",
+          "Expected": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 26.786,
+          "AfterTime": 31.416,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 8,
+          "Control": "Mfd1Brightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-008-Mfd1Brightness.json",
+          "SHA256": "E5B4CEF0FC63A423BB5289F022A49A2DE86ED7CAB182E254CA87C8ED21620B56",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 31.416,
+          "AfterTime": 35.987,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 9,
+          "Control": "Mfd2Brightness",
+          "Value": -1,
+          "SourceFile": "keyboard-core-01-009-Mfd2Brightness.json",
+          "SHA256": "9F1F65BC30A57EC62094886B7A201B4C0052026E5E796B5A8453931ABAD28A22",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "BeforeTime": 35.987,
+          "AfterTime": 40.573,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 10,
+          "Control": "Mfd2Brightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-010-Mfd2Brightness.json",
+          "SHA256": "81D2A8CEA2ACFCE3563BB625D2AD7522EED8F9AC539FD8F70420315CBAC34520",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 40.773,
+          "AfterTime": 44.116,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 11,
+          "Control": "HudBrightness",
+          "Value": 0.25,
+          "SourceFile": "keyboard-core-01-011-HudBrightness.json",
+          "SHA256": "83F8DE209B91D13C2FD438C2B9CE2205FC251B9B32749DA46A3416CCF2C131A6",
+          "Expected": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "BeforeTime": 44.316,
+          "AfterTime": 47.658,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0.25,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 12,
+          "Control": "HudBrightness",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-012-HudBrightness.json",
+          "SHA256": "5DAB6ECBB4FBD3A0BBC30FD23B87964859B97903ED9FCC9C5CEC600F58AA4A09",
+          "Expected": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "BeforeTime": 47.859,
+          "AfterTime": 51.201,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 13,
+          "Control": "HudBrightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-013-HudBrightness.json",
+          "SHA256": "4560BA90DDA555D8B3108CE099B2A2C5705214DEFEEE171AD49BC8192BE38BD1",
+          "Expected": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "BeforeTime": 51.402,
+          "AfterTime": 54.716,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 14,
+          "Control": "IcpBrightness",
+          "Value": 0.5,
+          "SourceFile": "keyboard-core-01-014-IcpBrightness.json",
+          "SHA256": "6083F9DB1F50FAD54BBEF00B435118675DF8B40B96B44742A250FEED7B827A70",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "BeforeTime": 54.93,
+          "AfterTime": 58.259,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0.5,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 15,
+          "Control": "IcpBrightness",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-015-IcpBrightness.json",
+          "SHA256": "40EE669E0BBD0276CEDC5B3387151DC99CACA815D9B76BCB7A171641622095B0",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "BeforeTime": 58.459,
+          "AfterTime": 61.802,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 16,
+          "Control": "IcpBrightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-016-IcpBrightness.json",
+          "SHA256": "BD2091B5F0FA20C42D1A9F415116F59E1F21C1B807D643B90D4C439744B100B5",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "BeforeTime": 62.002,
+          "AfterTime": 65.316,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 17,
+          "Control": "IcpDayNight",
+          "Value": -1,
+          "SourceFile": "keyboard-core-01-017-IcpDayNight.json",
+          "SHA256": "29BC4380C2D662A62DA268B38BF9925DB3C2A327EE8C237E44F7A19F775CF3EA",
+          "Expected": {
+            "AMX_HUD_MODE": -1
+          },
+          "Before": {
+            "AMX_HUD_MODE": 0
+          },
+          "After": {
+            "AMX_HUD_MODE": -1
+          },
+          "BeforeTime": 65.516,
+          "AfterTime": 68.816,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": -1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 18,
+          "Control": "IcpDayNight",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-018-IcpDayNight.json",
+          "SHA256": "6DD522E0E34EE5F1DE5A8C6B16178925247965A0E5F7DE1605C7CB5E1285E118",
+          "Expected": {
+            "AMX_HUD_MODE": 1
+          },
+          "Before": {
+            "AMX_HUD_MODE": -1
+          },
+          "After": {
+            "AMX_HUD_MODE": 1
+          },
+          "BeforeTime": 69.016,
+          "AfterTime": 72.316,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 19,
+          "Control": "IcpDayNight",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-019-IcpDayNight.json",
+          "SHA256": "3AF016E0620983D030A06BD24C65AAAB5FDBCE4A19B912A7BE7B8D6C89A0E857",
+          "Expected": {
+            "AMX_HUD_MODE": 0
+          },
+          "Before": {
+            "AMX_HUD_MODE": 1
+          },
+          "After": {
+            "AMX_HUD_MODE": 0
+          },
+          "BeforeTime": 72.516,
+          "AfterTime": 76.23,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 20,
+          "Control": "IcpRadarAltimeter",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-020-IcpRadarAltimeter.json",
+          "SHA256": "9B273E7ABC48039F2CEDDC8448F28632A8EA8A05C7C2116FFB01D103A4B3D8A6",
+          "Expected": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "Before": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "After": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "BeforeTime": 76.23,
+          "AfterTime": 79.773,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 21,
+          "Control": "IcpRadarAltimeter",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-021-IcpRadarAltimeter.json",
+          "SHA256": "411DB4B3395621D5884F114D463C52C86DB8D53302E1429737F9B7857802205C",
+          "Expected": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "Before": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "After": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "BeforeTime": 79.773,
+          "AfterTime": 83.288,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 22,
+          "Control": "IcpCOM1",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-022-IcpCOM1.json",
+          "SHA256": "26F016E6CC4096A0257AFFB2B9C0BD04E89990877A7D2800AA7EB3CA39CCF0A1",
+          "Expected": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "BeforeTime": 83.288,
+          "AfterTime": 87.802,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 23,
+          "Control": "IcpCOM1",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-023-IcpCOM1.json",
+          "SHA256": "5618150C3098C3EED6DAADFB6669CDADA7BF971FDE0609F5C3E65737B3D1280A",
+          "Expected": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "BeforeTime": 88.003,
+          "AfterTime": 91.302,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 24,
+          "Control": "IcpCOM2",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-024-IcpCOM2.json",
+          "SHA256": "9A1BDAE750E8937574265AB1E8419E493C3BF6B5E5374365605A372CD9EC9A40",
+          "Expected": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "BeforeTime": 91.517,
+          "AfterTime": 94.802,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 25,
+          "Control": "IcpCOM2",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-025-IcpCOM2.json",
+          "SHA256": "3460F31A14A4E5E466CCC123233B036254B0D76C648E0C7C87894758BFB10DDA",
+          "Expected": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "BeforeTime": 95.017,
+          "AfterTime": 99.345,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 26,
+          "Control": "SmsPower",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-026-SmsPower.json",
+          "SHA256": "0229076C1B7E52C9E88FAB65AD8EE59D40EE8075D2BD2FE6E9D2C1F762CD2B19",
+          "Expected": {
+            "AMX_SMS_MASTER": 1
+          },
+          "Before": {
+            "AMX_SMS_MASTER": 0
+          },
+          "After": {
+            "AMX_SMS_MASTER": 1
+          },
+          "BeforeTime": 99.545,
+          "AfterTime": 103.031,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 27,
+          "Control": "SmsPower",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-027-SmsPower.json",
+          "SHA256": "2EA6A4A1A3C00690B51389AFF49844ABD778CB28508BFC765159D6CE1D7B4142",
+          "Expected": {
+            "AMX_SMS_MASTER": 0
+          },
+          "Before": {
+            "AMX_SMS_MASTER": 1
+          },
+          "After": {
+            "AMX_SMS_MASTER": 0
+          },
+          "BeforeTime": 103.031,
+          "AfterTime": 106.745,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 28,
+          "Control": "Master",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-028-Master.json",
+          "SHA256": "211B2EF4A45A63BCC5E0368FF66786C604A1AF5D0EE3337C90E655BFC546D000",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "BeforeTime": 106.745,
+          "AfterTime": 110.245,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 29,
+          "Control": "Master",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-029-Master.json",
+          "SHA256": "2E15047792EB541D8D373E202DEB94BEC64FD1DEEA8AB75491BBE6258031B2E5",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "BeforeTime": 110.446,
+          "AfterTime": 113.745,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 30,
+          "Control": "Master",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-030-Master.json",
+          "SHA256": "86ED181D01242721529DC3FB5C5428433717A18F687842710EB84030D199D7D0",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "BeforeTime": 113.96,
+          "AfterTime": 117.459,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 31,
+          "Control": "Battery",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-031-Battery.json",
+          "SHA256": "BE7CB65D9DB23A2954D12486933F1BBC9FDA6160C280C32E11238684B02CE87D",
+          "Expected": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "Before": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "After": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "BeforeTime": 117.459,
+          "AfterTime": 120.959,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        }
+      ],
+      "Finalization": "finalization-20260918T194258919Z",
+      "IntegrityPassed": true,
+      "NativeAcceptanceGranted": false,
+      "DcsErrorLines": 159,
+      "ObserverErrors": 0,
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "00177A2FF43605F7436D6D973EFC114095CA21292AD75258EE50CBEFACA678E5"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "8690E5580ACC1461937F9594D2F2849ECBF05022FA78B236FF9532118A2C7BCF"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "82B2AB965DCB8EE185236D770F5A6EA33566880E2957AF68DDF9F8E57F71040D"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "E7BBEB59B1FB88E85ADA05D9985FE3BB3039E63F29C35B0A99ED57B731DD304F"
+        }
+      ]
+    },
+    {
+      "Run": "Native-REV07-BO-KeyEffectsRepeat",
+      "BuildId": "5A236FF163314E4951959DB9BB1841866CF497A732312CE3AE00C80B515C398B",
+      "SuiteSHA256": "0674A0E7B08CE27641D655E9C078EF439D2CC57D914742DACF50A6D95DD49365",
+      "Cycles": 2,
+      "Passed": true,
+      "Steps": [
+        {
+          "Cycle": 1,
+          "Step": 1,
+          "Control": "Battery",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-001-Battery.json",
+          "SHA256": "EC354EEBD0F9286132944C7DF5970367D8A377EF1DB480FB925368BC528DC833",
+          "Expected": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "Before": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "After": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "BeforeTime": 9.587,
+          "AfterTime": 12.929,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 2,
+          "Control": "Master",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-002-Master.json",
+          "SHA256": "38AEAA01619944F44C4E780FF2BF535AEB733E133D2C42DAA5D4EE1B666D9B76",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "BeforeTime": 13.144,
+          "AfterTime": 16.472,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 3,
+          "Control": "Mfd1Power",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-003-Mfd1Power.json",
+          "SHA256": "68406378FB3198F5B06EEE41D4141EAA00396DD20B21EC072B1AEFF638970042",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "BeforeTime": 16.673,
+          "AfterTime": 20.03,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 4,
+          "Control": "Mfd1Power",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-004-Mfd1Power.json",
+          "SHA256": "30000F28FE5AA1A97C71E3CE1AAE35A8388D26CD50DC7D53A507725197740603",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 20.244,
+          "AfterTime": 23.615,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 5,
+          "Control": "Mfd2Power",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-005-Mfd2Power.json",
+          "SHA256": "B25B51FC86692DE200B8C7223F818E18B1395110668745BC1078829C7D90CA3E",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 23.815,
+          "AfterTime": 27.187,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 6,
+          "Control": "Mfd2Power",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-006-Mfd2Power.json",
+          "SHA256": "E03B05F58A41F885F078F0F8665167B0D7E12F57EB8BDF78BCCCE1F01F9D35A0",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 27.187,
+          "AfterTime": 30.772,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 7,
+          "Control": "Mfd1Brightness",
+          "Value": -1,
+          "SourceFile": "keyboard-core-01-007-Mfd1Brightness.json",
+          "SHA256": "3BC3EABFB36BE728E5D2D0073BC755EC6250A4D260A8CED8B8C42D25F2346B52",
+          "Expected": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 30.772,
+          "AfterTime": 35.344,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 8,
+          "Control": "Mfd1Brightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-008-Mfd1Brightness.json",
+          "SHA256": "91F216C8C8AFA8266D37BA6E77161A9A692B2513995FB5C978C1DC4F986A761B",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 35.344,
+          "AfterTime": 39.944,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 9,
+          "Control": "Mfd2Brightness",
+          "Value": -1,
+          "SourceFile": "keyboard-core-01-009-Mfd2Brightness.json",
+          "SHA256": "407C6E9EC1A7D4396968D394FBB39B0C4BCFD16235426C32506270AD14D3FAEF",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "BeforeTime": 39.944,
+          "AfterTime": 44.53,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 10,
+          "Control": "Mfd2Brightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-010-Mfd2Brightness.json",
+          "SHA256": "8F6221CA62239B1F62851A682A04FF206071DAA4CB4438E33A528BC2B0943867",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 44.53,
+          "AfterTime": 49.116,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 11,
+          "Control": "HudBrightness",
+          "Value": 0.25,
+          "SourceFile": "keyboard-core-01-011-HudBrightness.json",
+          "SHA256": "2FB2C5C6D455D3C1701D4BA2E14FBD4EE55784B774FFE484D89B283074B96C53",
+          "Expected": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "BeforeTime": 49.116,
+          "AfterTime": 52.658,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0.25,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 12,
+          "Control": "HudBrightness",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-012-HudBrightness.json",
+          "SHA256": "32F000492156467FB0543F357C27C45D2BC6C2B98E31050DFF59585E3040FFE2",
+          "Expected": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "BeforeTime": 52.658,
+          "AfterTime": 55.988,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 13,
+          "Control": "HudBrightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-013-HudBrightness.json",
+          "SHA256": "51C216800D41712C1B19D60B3DBEB0826C42DBE5AEDEB7C4AA3867ED388EA082",
+          "Expected": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "BeforeTime": 56.188,
+          "AfterTime": 59.53,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 14,
+          "Control": "IcpBrightness",
+          "Value": 0.5,
+          "SourceFile": "keyboard-core-01-014-IcpBrightness.json",
+          "SHA256": "28D800796C728A0A201FC65EA913FC3ED513629FD95800A4800C839720C1197B",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "BeforeTime": 59.745,
+          "AfterTime": 63.073,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0.5,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 15,
+          "Control": "IcpBrightness",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-015-IcpBrightness.json",
+          "SHA256": "BDE5237E4D4D3470FA5A55DD74B67010D2EFB0809AE8803EA93B5F86D8937FD8",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "BeforeTime": 63.273,
+          "AfterTime": 66.587,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 16,
+          "Control": "IcpBrightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-016-IcpBrightness.json",
+          "SHA256": "424237E94C9B726330E6976BEFFE2B9D8F93390727AF37E1FF174C8839EDE9E4",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "BeforeTime": 66.787,
+          "AfterTime": 70.259,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 17,
+          "Control": "IcpDayNight",
+          "Value": -1,
+          "SourceFile": "keyboard-core-01-017-IcpDayNight.json",
+          "SHA256": "CF93825CD9364E7260C0B631C993DC9876EB45F292CCFF88038F76F327AF0A09",
+          "Expected": {
+            "AMX_HUD_MODE": -1
+          },
+          "Before": {
+            "AMX_HUD_MODE": 0
+          },
+          "After": {
+            "AMX_HUD_MODE": -1
+          },
+          "BeforeTime": 70.259,
+          "AfterTime": 73.745,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": -1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 18,
+          "Control": "IcpDayNight",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-018-IcpDayNight.json",
+          "SHA256": "AA7B4D2A321254DDC199E2A978845B00BB45BDD06AC9F1609806DAEB96E98665",
+          "Expected": {
+            "AMX_HUD_MODE": 1
+          },
+          "Before": {
+            "AMX_HUD_MODE": -1
+          },
+          "After": {
+            "AMX_HUD_MODE": 1
+          },
+          "BeforeTime": 73.745,
+          "AfterTime": 77.058,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 19,
+          "Control": "IcpDayNight",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-019-IcpDayNight.json",
+          "SHA256": "0A6023E85008F09E6B58D6F279EC2D7F1597AB3A1F91398D3BEBB096404111CE",
+          "Expected": {
+            "AMX_HUD_MODE": 0
+          },
+          "Before": {
+            "AMX_HUD_MODE": 1
+          },
+          "After": {
+            "AMX_HUD_MODE": 0
+          },
+          "BeforeTime": 77.273,
+          "AfterTime": 80.773,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 20,
+          "Control": "IcpRadarAltimeter",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-020-IcpRadarAltimeter.json",
+          "SHA256": "5F7431D6E82E1809E860D35E074E9C3A71596364146763F310A459C940EE09EC",
+          "Expected": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "Before": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "After": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "BeforeTime": 80.773,
+          "AfterTime": 84.259,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 21,
+          "Control": "IcpRadarAltimeter",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-021-IcpRadarAltimeter.json",
+          "SHA256": "7A0B3DF793B2EED8665445C737BFA17AE3DAC08B9AD37CA65C9451ECED0A690C",
+          "Expected": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "Before": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "After": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "BeforeTime": 84.259,
+          "AfterTime": 87.759,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 22,
+          "Control": "IcpCOM1",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-022-IcpCOM1.json",
+          "SHA256": "19437BA03F9CAAFB23D3680793074E7338405AF535D4A87ED0D74BB9CBC6B9A2",
+          "Expected": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "BeforeTime": 87.759,
+          "AfterTime": 92.288,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 23,
+          "Control": "IcpCOM1",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-023-IcpCOM1.json",
+          "SHA256": "178B8CFB08E3F01159199F8DB5EF9E862420635632844296CCB29840FDB44338",
+          "Expected": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "BeforeTime": 92.288,
+          "AfterTime": 96.845,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 24,
+          "Control": "IcpCOM2",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-024-IcpCOM2.json",
+          "SHA256": "5D1149825253696B7F4FA7819656346A4C58C5B5A80D5D9EA6D4EF25632399D0",
+          "Expected": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "BeforeTime": 97.045,
+          "AfterTime": 101.587,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 25,
+          "Control": "IcpCOM2",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-025-IcpCOM2.json",
+          "SHA256": "6BE2D1F2DE4034F0C00534D5643A1A02566693FF6DFF420CF462D78A09D18C10",
+          "Expected": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "BeforeTime": 101.587,
+          "AfterTime": 106.103,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 26,
+          "Control": "SmsPower",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-026-SmsPower.json",
+          "SHA256": "4D1478662FCC60F66BB9FC8FB94A1F654EE88A14CF6B9C0398A25BEDFD31EDAC",
+          "Expected": {
+            "AMX_SMS_MASTER": 1
+          },
+          "Before": {
+            "AMX_SMS_MASTER": 0
+          },
+          "After": {
+            "AMX_SMS_MASTER": 1
+          },
+          "BeforeTime": 106.103,
+          "AfterTime": 109.602,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 27,
+          "Control": "SmsPower",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-027-SmsPower.json",
+          "SHA256": "834FDFFFE7200C44044FCD7828D7898AAC545394A74384F9B0B3B40948615D3A",
+          "Expected": {
+            "AMX_SMS_MASTER": 0
+          },
+          "Before": {
+            "AMX_SMS_MASTER": 1
+          },
+          "After": {
+            "AMX_SMS_MASTER": 0
+          },
+          "BeforeTime": 109.802,
+          "AfterTime": 113.102,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 28,
+          "Control": "Master",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-028-Master.json",
+          "SHA256": "BD8A33C43A6353A8C5978496CE3E2711A6678C2482ED3CC2ADE95B296E40979F",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "BeforeTime": 113.302,
+          "AfterTime": 116.602,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 29,
+          "Control": "Master",
+          "Value": 1,
+          "SourceFile": "keyboard-core-01-029-Master.json",
+          "SHA256": "01E52A18B3FD0201CD667EF8AFB51267826168233D69B6EE251C9C910E3607FA",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "BeforeTime": 116.802,
+          "AfterTime": 120.302,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 30,
+          "Control": "Master",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-030-Master.json",
+          "SHA256": "31E7759A6311EA56DC50E68D23E5EA3DF9B087C2BA6821D73900F995C074FA3E",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "BeforeTime": 120.302,
+          "AfterTime": 123.802,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 1,
+          "Step": 31,
+          "Control": "Battery",
+          "Value": 0,
+          "SourceFile": "keyboard-core-01-031-Battery.json",
+          "SHA256": "34D67651824DF078998D11095D61E724D1A99DBBA4F06B0EBE2B8BD40D19A437",
+          "Expected": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "Before": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "After": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "BeforeTime": 123.802,
+          "AfterTime": 127.302,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 1,
+          "Control": "Battery",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-001-Battery.json",
+          "SHA256": "2E83F39A91205BD4CB2217FDC608C44ACF903DEF7C5D88B64DBB697E5EA63A02",
+          "Expected": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "Before": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "After": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "BeforeTime": 127.302,
+          "AfterTime": 130.673,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 2,
+          "Control": "Master",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-002-Master.json",
+          "SHA256": "791E696F7D9EF7A176F3407EF8876ADB7C53C8880CC8C17C94405F5835FB5A64",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "BeforeTime": 130.874,
+          "AfterTime": 134.245,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 3,
+          "Control": "Mfd1Power",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-003-Mfd1Power.json",
+          "SHA256": "50BA633D0975FB2F6AED2E0D985970162FAEACA38367CC8E1F2C3E5723F2D1A5",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "BeforeTime": 134.46,
+          "AfterTime": 137.859,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 4,
+          "Control": "Mfd1Power",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-004-Mfd1Power.json",
+          "SHA256": "7E8695C6782AFF06F790D7F9BCD9D179337182701AB206C563B59A206F75DFB5",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 137.859,
+          "AfterTime": 141.245,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 5,
+          "Control": "Mfd2Power",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-005-Mfd2Power.json",
+          "SHA256": "D0DD534031C15EE533260D801E8269621AC2D4DC2CBB80C392F579ED4899EAF3",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 141.46,
+          "AfterTime": 144.845,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 6,
+          "Control": "Mfd2Power",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-006-Mfd2Power.json",
+          "SHA256": "6126935D50563558B59CA18AC6CB47BAFBAD7C5B5B1ED1AF3D3262CC792F1A6F",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 1
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 144.845,
+          "AfterTime": 148.417,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 7,
+          "Control": "Mfd1Brightness",
+          "Value": -1,
+          "SourceFile": "keyboard-core-02-007-Mfd1Brightness.json",
+          "SHA256": "BF45C32BEF63D9062404BC62681DBBF4A7F397B6128ADDF526B046CB054C96E2",
+          "Expected": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 148.417,
+          "AfterTime": 152.859,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 8,
+          "Control": "Mfd1Brightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-008-Mfd1Brightness.json",
+          "SHA256": "14CCB873D5EF0B69074226EDC03E88789D30134167DC9EF4BCD7F5D05BC9AD2A",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 0.5,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 153.06,
+          "AfterTime": 157.502,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 9,
+          "Control": "Mfd2Brightness",
+          "Value": -1,
+          "SourceFile": "keyboard-core-02-009-Mfd2Brightness.json",
+          "SHA256": "DF2FE279D4B67406A1354801189149AA4878D060F9455E97E5F0B3E748B8B9D9",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "BeforeTime": 157.703,
+          "AfterTime": 162.146,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 10,
+          "Control": "Mfd2Brightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-010-Mfd2Brightness.json",
+          "SHA256": "2938905C336C31F1CDD53571BC10F033EB4679D7FA72BBBEA97530A6B10A5E61",
+          "Expected": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "Before": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 0.5
+          },
+          "After": {
+            "CMFD1_BRIGHT": 1,
+            "CMFD2_BRIGHT": 1
+          },
+          "BeforeTime": 162.146,
+          "AfterTime": 166.717,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 11,
+          "Control": "HudBrightness",
+          "Value": 0.25,
+          "SourceFile": "keyboard-core-02-011-HudBrightness.json",
+          "SHA256": "347DB03934B009291A4133B1F2990D3A0BFAA49B763694F92E987729FDA30CEC",
+          "Expected": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "BeforeTime": 166.717,
+          "AfterTime": 170.317,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0.25,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 12,
+          "Control": "HudBrightness",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-012-HudBrightness.json",
+          "SHA256": "6CFBAA55CB7F112A862B876C318E3D7707AF4CA6E0757734E1CEE7B791594F71",
+          "Expected": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 0.25
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "BeforeTime": 170.317,
+          "AfterTime": 173.702,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 13,
+          "Control": "HudBrightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-013-HudBrightness.json",
+          "SHA256": "DC836E229E9CFCD8606E6CB9CEFC07B75A8B877E1B0C4B1E21F9156F6FEC7A74",
+          "Expected": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "Before": {
+            "AMX_HUD_DIMMER": 0
+          },
+          "After": {
+            "AMX_HUD_DIMMER": 1
+          },
+          "BeforeTime": 173.903,
+          "AfterTime": 177.274,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 14,
+          "Control": "IcpBrightness",
+          "Value": 0.5,
+          "SourceFile": "keyboard-core-02-014-IcpBrightness.json",
+          "SHA256": "8481BC6AB6F6D8FAB8AF695EAF5A9AA388ABF350DCDD8D91D2802D71C343C8E1",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "BeforeTime": 177.274,
+          "AfterTime": 180.845,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0.5,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 15,
+          "Control": "IcpBrightness",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-015-IcpBrightness.json",
+          "SHA256": "DFE240005E5125E6DDBD74A75EAA2C1F6000F92D7655C17BDF197D79B0D8871A",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 0.5
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "BeforeTime": 180.845,
+          "AfterTime": 184.202,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 16,
+          "Control": "IcpBrightness",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-016-IcpBrightness.json",
+          "SHA256": "A8A5E5D21A80125B25022E7F8AA0E4AF81626C2763A90AA25C1E235426EF6560",
+          "Expected": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "Before": {
+            "AMX_UFCP_BRIGHT": 0
+          },
+          "After": {
+            "AMX_UFCP_BRIGHT": 1
+          },
+          "BeforeTime": 184.403,
+          "AfterTime": 187.817,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 17,
+          "Control": "IcpDayNight",
+          "Value": -1,
+          "SourceFile": "keyboard-core-02-017-IcpDayNight.json",
+          "SHA256": "2A3283EEE41C72520A0D2E589F9819186B91344DAB906D652C782A54507B4154",
+          "Expected": {
+            "AMX_HUD_MODE": -1
+          },
+          "Before": {
+            "AMX_HUD_MODE": 0
+          },
+          "After": {
+            "AMX_HUD_MODE": -1
+          },
+          "BeforeTime": 188.032,
+          "AfterTime": 191.46,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": -1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 18,
+          "Control": "IcpDayNight",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-018-IcpDayNight.json",
+          "SHA256": "464F2C54E52C4C04221CF0ACF35C68BB4DDCE229B8E76B1A3A1507D8C8019D91",
+          "Expected": {
+            "AMX_HUD_MODE": 1
+          },
+          "Before": {
+            "AMX_HUD_MODE": -1
+          },
+          "After": {
+            "AMX_HUD_MODE": 1
+          },
+          "BeforeTime": 191.46,
+          "AfterTime": 194.847,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 19,
+          "Control": "IcpDayNight",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-019-IcpDayNight.json",
+          "SHA256": "8620923277D75DA967E854C7182923DE2789406B861FC08DA7C88FF477AFC042",
+          "Expected": {
+            "AMX_HUD_MODE": 0
+          },
+          "Before": {
+            "AMX_HUD_MODE": 1
+          },
+          "After": {
+            "AMX_HUD_MODE": 0
+          },
+          "BeforeTime": 195.06,
+          "AfterTime": 198.403,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 20,
+          "Control": "IcpRadarAltimeter",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-020-IcpRadarAltimeter.json",
+          "SHA256": "798FC3958052212ED8EC174566D656C9617A6A1BBBC74285FC6D875BEF165A13",
+          "Expected": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "Before": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "After": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "BeforeTime": 198.603,
+          "AfterTime": 201.975,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 21,
+          "Control": "IcpRadarAltimeter",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-021-IcpRadarAltimeter.json",
+          "SHA256": "B0FB2AB55553A5A85A674DDFDA44169E7C0BD3115FAAB251AE2187892489DFD7",
+          "Expected": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "Before": {
+            "UFCP_RALT_SWITCH_STATE": 1
+          },
+          "After": {
+            "UFCP_RALT_SWITCH_STATE": 0
+          },
+          "BeforeTime": 202.175,
+          "AfterTime": 205.589,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 22,
+          "Control": "IcpCOM1",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-022-IcpCOM1.json",
+          "SHA256": "F73918B8BB4B2D003C486ADC3EB3A8269F02B0672AABE6CCDF10E16B4B6C3C13",
+          "Expected": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "BeforeTime": 205.589,
+          "AfterTime": 210.217,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 23,
+          "Control": "IcpCOM1",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-023-IcpCOM1.json",
+          "SHA256": "029CC6B1B08FCC6325A131A984F3E256D1F462809B102F3C83A314F13AC949A4",
+          "Expected": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 1
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "BeforeTime": 210.217,
+          "AfterTime": 214.846,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 24,
+          "Control": "IcpCOM2",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-024-IcpCOM2.json",
+          "SHA256": "6A322571D8206EA0DE6D8A8E30059931FD0A8A3A7FE4DAA97A717DD38EA15FC6",
+          "Expected": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "BeforeTime": 214.846,
+          "AfterTime": 219.531,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 25,
+          "Control": "IcpCOM2",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-025-IcpCOM2.json",
+          "SHA256": "086E6848909AB07491B0A8B083D18925C2FA2F6B571600972C1E023D4318F665",
+          "Expected": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 2
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "BeforeTime": 219.531,
+          "AfterTime": 224.203,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 26,
+          "Control": "SmsPower",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-026-SmsPower.json",
+          "SHA256": "40E88CBDCB3B22AC79F26601AF3A8E35CCBDBE6BAB042BDF028CB999A987376B",
+          "Expected": {
+            "AMX_SMS_MASTER": 1
+          },
+          "Before": {
+            "AMX_SMS_MASTER": 0
+          },
+          "After": {
+            "AMX_SMS_MASTER": 1
+          },
+          "BeforeTime": 224.203,
+          "AfterTime": 227.775,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 27,
+          "Control": "SmsPower",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-027-SmsPower.json",
+          "SHA256": "ECA051A24FAC961A454E7C91FD8FAE8EE6401FB265459E6CCA32903A13CAC8CA",
+          "Expected": {
+            "AMX_SMS_MASTER": 0
+          },
+          "Before": {
+            "AMX_SMS_MASTER": 1
+          },
+          "After": {
+            "AMX_SMS_MASTER": 0
+          },
+          "BeforeTime": 227.775,
+          "AfterTime": 231.175,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 28,
+          "Control": "Master",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-028-Master.json",
+          "SHA256": "8D04C2D81D856D31C86F62345601057E5BBBFA66B132CDC5F97C6297DC5FF7BC",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "BeforeTime": 231.389,
+          "AfterTime": 234.804,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 29,
+          "Control": "Master",
+          "Value": 1,
+          "SourceFile": "keyboard-core-02-029-Master.json",
+          "SHA256": "2A0456DEC126E661D7A64E5DA8962AB78355B053769C18D3B92FC75F1175CE40",
+          "Expected": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "BeforeTime": 234.804,
+          "AfterTime": 238.204,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 30,
+          "Control": "Master",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-030-Master.json",
+          "SHA256": "E2B400EFA5BBCD964D3E96B6CAF017C238F13F3BEC81B1D91ED40E0F1D827043",
+          "Expected": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "Before": {
+            "CMFD2On": 1,
+            "CMFD1On": 1,
+            "AMX_AVIONICS_MASTER": 1
+          },
+          "After": {
+            "CMFD2On": 0,
+            "CMFD1On": 0,
+            "AMX_AVIONICS_MASTER": 0
+          },
+          "BeforeTime": 238.418,
+          "AfterTime": 241.846,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        },
+        {
+          "Cycle": 2,
+          "Step": 31,
+          "Control": "Battery",
+          "Value": 0,
+          "SourceFile": "keyboard-core-02-031-Battery.json",
+          "SHA256": "2B0F71B71B2CE69D01C648C250006FB18C1A7CC04305059D19140306C7CC59FD",
+          "Expected": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "Before": {
+            "T_BATT": 1,
+            "ELEC_P1": 1
+          },
+          "After": {
+            "T_BATT": 0,
+            "ELEC_P1": 0
+          },
+          "BeforeTime": 241.846,
+          "AfterTime": 245.417,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "DiagnosticSequence": 0,
+          "Passed": true
+        }
+      ],
+      "Finalization": "finalization-20260918T194936223Z",
+      "IntegrityPassed": true,
+      "NativeAcceptanceGranted": false,
+      "DcsErrorLines": 159,
+      "ObserverErrors": 0,
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "E9E801BC5AB58DE5524B8A3D7E965E096D163177B1BA25B897F0DBF23C4F5048"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "9239F23E6889E28CD138061D926D3F2BCCB2B4AAB1A7D3DB50B959B48ECA68E4"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "849B728A905D6501029149BF5CC6B17A64986E833846F89A1C89E6A9EB7205F6"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "9B7223F766D5BDB2E0149BEB6B3C2B09E53FEC84AEDD5D6AD306327923747582"
+        }
+      ]
+    }
+  ],
+  "UnpoweredNegative": {
+    "Run": "Native-REV07-BO-KeyEffectsRepeat",
+    "File": "unpowered-COM1-negative.json",
+    "SHA256": "00CB0D1F53086BFED37296F1B0643F3AE650F404D8D0D2EDFB7D2079C50C6C2E",
+    "ObservedReceipt": true,
+    "FunctionalEffectVerified": false,
+    "FormatBefore": 0,
+    "FormatAfter": 0,
+    "AcceptedRouteSequenceUnchanged": true
+  },
+  "HelperHashes": [
+    {
+      "Path": "Tools/Native/Invoke-Input.ps1",
+      "SHA256": "8322CB8F1AD158D8400AABE2571D7A1C6C7AEA1BD73AD4AD840E63F744B0E33E"
+    },
+    {
+      "Path": "Tools/Native/Test-KeyboardCore.ps1",
+      "SHA256": "1D9D2AF05435C5EA5757FC759BA8798CBB2EB35ED07FC5A79AAE7C6CE4CF6912"
+    }
+  ],
+  "Limitations": [
+    "Catalog-wide 7/10 criterion remains unmet",
+    "No new mechanism or full-flight acceptance",
+    "No joystick, mouse or physical X56 exercise claimed",
+    "Native logs retain inherited errors"
+  ]
+}
