@@ -1,6 +1,25 @@
 # AMXDENIS M1 — integração interna REV07
 
-## Checkpoint atual — encaixe em missão aceito pelo usuário
+## Checkpoint atual — leitura e inspeção dos visores em 2D
+
+O [relatório dos cinco indicadores](DISPLAY_ALIGNMENT.md) registra a correção
+da proporção e do espaçamento da fonte do ICP, sem trocar a textura, e a inspeção
+dos MFDs, AUX/EFI e HUD em vistas centrais, próximas, elevadas e laterais.
+O encaixe do cockpit anteriormente aceito permanece inalterado.
+
+O ciclo de energia **ligado -> desligado -> restaurado** foi observado em
+telemetria e nos interiores dos cinco visores. As imagens e a medição por visor
+estão arquivadas; não foi usada diferença da imagem inteira como aprovação.
+O HUD apresenta recorte lateral nas posições deslocadas: o eyebox completo,
+a calibração óptica e VR continuam sem certificação.
+
+CI final: 219 scripts Lua, 527 verificações de registro, 1.599 de runtime,
+22.016 dos indicadores e 20 do observador, mais as guardas existentes.
+Os perfis normais, exterior, descritores e SFM foram preservados. Esta etapa
+não aprova teclado/mouse/HOTAS, rádio nativo, sensores ou disparo, não instala
+no perfil normal e não realiza commit/push automaticamente.
+
+## Histórico — encaixe em missão aceito pelo usuário
 
 O cockpit dianteiro REV07 foi aberto em missão isolada e reposicionado para
 `{2.9698572158813477, 1.3359999656677246, 0}`, usando o ponto medido do exterior

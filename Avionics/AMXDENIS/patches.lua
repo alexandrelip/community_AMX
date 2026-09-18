@@ -101,6 +101,13 @@ get_wpn_sj_ready = function() return false end
             'error("Runtime file export is outside the AMXDENIS M1 scope")',2,path)
     elseif path == "Indicator/Indicator_defs.lua" then
         text = replace(text,'txt.value = value','txt.value = formats and "" or value',2,path)
+    elseif path == "UFCP/host_icp_page.lua" then
+        text = replace(text,'text.stringdefs = {(2 * half_height - 0.002) / 5, (2 * half_width - 0.002) / 25, 0, 0}',[[local font = assert(fontdescription["font_DED"])
+local glyph_aspect = font.default[1] / font.default[2]
+local usable_width, usable_height = 2 * half_width - 0.002, 2 * half_height - 0.002
+local glyph_height = math.min(usable_height / 5, usable_width / ((25 - 24 / 2.5) * glyph_aspect))
+local glyph_width = glyph_height * glyph_aspect
+text.stringdefs = {glyph_height, glyph_width, -glyph_width / 2.5, (usable_height - 5 * glyph_height) / 4}]],1,path)
     elseif path == "Indicator/host_eicas_indication.lua" then
         text = replace(text,'valid.element_params = {"AVIONICS_HDG"}\n    valid.controllers = {{"parameter_in_range", 0, -0.05, 360.05}}',
             'valid.element_params = {"AVIONICS_HDG_VALID"}\n    valid.controllers = {{"parameter_in_range", 0, 0.5, 1.5}}',1,path)

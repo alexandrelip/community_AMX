@@ -1,0 +1,174 @@
+{
+  "Schema": "AMXDENIS_DISPLAY_INTERIOR_AUDIT_1",
+  "Run": "Native-REV07-Displays-P-20260918",
+  "BuildId": "396A3B739E2E8CDEBCE150970AF7F4E83145C94979525663BDEF9F7E47F3BE69",
+  "ScreenshotNames": [
+    "02-all-powered",
+    "03-all-off",
+    "04-all-restored"
+  ],
+  "ScreenshotHashes": [
+    "9DE8A2B9D7540EB8389DA224DEABE48F8BC9471E0F70D61EF25E9285BE7D4623",
+    "DCF3309CB6C50EF1901CA7B089944323F9B04DE9763E2330BF76BE479ED46B15",
+    "DA36336A5A7880D83F47BED9B5BF63B5CE754051A4F1F8DC44E7B6F267E3DB2E"
+  ],
+  "CameraPositionDriftM": 9.537958758434123E-05,
+  "CameraBasisMaxDelta": 1.194755313571605E-07,
+  "InteriorScope": "Manually selected fixed rectangles inside each physical display; not whole-frame differences",
+  "OffRule": "Metric <= max(5, 5% of powered)",
+  "ReturnRule": "Metric >= 60% of powered and >20 changed pixels per transition",
+  "Displays": [
+    {
+      "Display": "LEFT",
+      "InteriorXYWH": [
+        647,
+        516,
+        86,
+        111
+      ],
+      "AreaPixels": 9546,
+      "Metric": "BrightPixels",
+      "Powered": {
+        "GreenDominantPixels": 114,
+        "BrightPixels": 2983,
+        "UniqueColors": 1808
+      },
+      "Off": {
+        "GreenDominantPixels": 0,
+        "BrightPixels": 0,
+        "UniqueColors": 306
+      },
+      "Restored": {
+        "GreenDominantPixels": 111,
+        "BrightPixels": 2975,
+        "UniqueColors": 1758
+      },
+      "ChangedPixelsOnToOff": 3027,
+      "ChangedPixelsOffToRestored": 3012,
+      "DynamicPowerEvidence": true,
+      "LegibilityAutomaticallyApproved": false
+    },
+    {
+      "Display": "RIGHT",
+      "InteriorXYWH": [
+        893,
+        517,
+        83,
+        113
+      ],
+      "AreaPixels": 9379,
+      "Metric": "BrightPixels",
+      "Powered": {
+        "GreenDominantPixels": 26,
+        "BrightPixels": 1035,
+        "UniqueColors": 815
+      },
+      "Off": {
+        "GreenDominantPixels": 0,
+        "BrightPixels": 0,
+        "UniqueColors": 418
+      },
+      "Restored": {
+        "GreenDominantPixels": 25,
+        "BrightPixels": 1030,
+        "UniqueColors": 814
+      },
+      "ChangedPixelsOnToOff": 1075,
+      "ChangedPixelsOffToRestored": 1079,
+      "DynamicPowerEvidence": true,
+      "LegibilityAutomaticallyApproved": false
+    },
+    {
+      "Display": "AUX",
+      "InteriorXYWH": [
+        778,
+        543,
+        61,
+        80
+      ],
+      "AreaPixels": 4880,
+      "Metric": "BrightPixels",
+      "Powered": {
+        "GreenDominantPixels": 25,
+        "BrightPixels": 685,
+        "UniqueColors": 627
+      },
+      "Off": {
+        "GreenDominantPixels": 0,
+        "BrightPixels": 0,
+        "UniqueColors": 77
+      },
+      "Restored": {
+        "GreenDominantPixels": 25,
+        "BrightPixels": 687,
+        "UniqueColors": 620
+      },
+      "ChangedPixelsOnToOff": 822,
+      "ChangedPixelsOffToRestored": 816,
+      "DynamicPowerEvidence": true,
+      "LegibilityAutomaticallyApproved": false
+    },
+    {
+      "Display": "ICP",
+      "InteriorXYWH": [
+        777,
+        434,
+        83,
+        29
+      ],
+      "AreaPixels": 2407,
+      "Metric": "BrightPixels",
+      "Powered": {
+        "GreenDominantPixels": 447,
+        "BrightPixels": 447,
+        "UniqueColors": 289
+      },
+      "Off": {
+        "GreenDominantPixels": 0,
+        "BrightPixels": 0,
+        "UniqueColors": 7
+      },
+      "Restored": {
+        "GreenDominantPixels": 432,
+        "BrightPixels": 432,
+        "UniqueColors": 287
+      },
+      "ChangedPixelsOnToOff": 549,
+      "ChangedPixelsOffToRestored": 538,
+      "DynamicPowerEvidence": true,
+      "LegibilityAutomaticallyApproved": false
+    },
+    {
+      "Display": "HUD",
+      "InteriorXYWH": [
+        763,
+        214,
+        103,
+        89
+      ],
+      "AreaPixels": 9167,
+      "Metric": "GreenDominantPixels",
+      "Powered": {
+        "GreenDominantPixels": 553,
+        "BrightPixels": 9167,
+        "UniqueColors": 4382
+      },
+      "Off": {
+        "GreenDominantPixels": 13,
+        "BrightPixels": 9167,
+        "UniqueColors": 3951
+      },
+      "Restored": {
+        "GreenDominantPixels": 562,
+        "BrightPixels": 9167,
+        "UniqueColors": 4424
+      },
+      "ChangedPixelsOnToOff": 692,
+      "ChangedPixelsOffToRestored": 674,
+      "DynamicPowerEvidence": true,
+      "LegibilityAutomaticallyApproved": false
+    }
+  ],
+  "FiveDisplayDynamicPowerEvidence": true,
+  "FullNativeAcceptance": false
+}

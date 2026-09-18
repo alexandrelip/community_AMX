@@ -9,6 +9,7 @@ param(
     [ValidateRange(800,2560)][int]$Width=1600,
     [ValidateRange(600,1440)][int]$Height=900,
     [ValidateRange(5,600)][int]$TimeoutSeconds=180,
+    [ValidateRange(0,100000)][int]$Sequence=0,
     [string]$Control,
     [double]$Value=1
 )
@@ -36,10 +37,13 @@ function FreshCopy([string]$Source,[string]$Destination) {
     [IO.File]::Copy($Source,$Destination,$false)
     if((PlainHash $Destination) -ne $hash -or (PlainHash $Source) -ne $hash){throw 'Copy verification failed'}
 }
-function SharedText([string]$Path) {
+function SharedText([string]$Path,[int]$TailBytes=0) {
     if(-not(Test-Path -LiteralPath $Path -PathType Leaf)){return ''}
     $stream=[IO.FileStream]::new($Path,[IO.FileMode]::Open,[IO.FileAccess]::Read,([IO.FileShare]::ReadWrite -bor [IO.FileShare]::Delete))
-    $reader=[IO.StreamReader]::new($stream);try{return $reader.ReadToEnd()}finally{$reader.Dispose()}
+    $offset=if($TailBytes -gt 0){[Math]::Max(0,$stream.Length-$TailBytes)}else{0}
+    if($offset -gt 0){[void]$stream.Seek($offset,[IO.SeekOrigin]::Begin)}
+    $reader=[IO.StreamReader]::new($stream)
+    try{if($offset -gt 0){[void]$reader.ReadLine()};return $reader.ReadToEnd()}finally{$reader.Dispose()}
 }
 function FreeEnvironment {
     if(@(Get-CimInstance Win32_Process -Filter "Name='DCS.exe' OR Name='DCS_updater.exe' OR Name='ModelViewer2.exe'").Count){throw 'Another simulator/viewer session exists; nothing will be closed or reused.'}
@@ -134,7 +138,7 @@ if($Action -eq 'Start') {
 if($Action -in @('Await','Inspect','Command')) {
     if(-not(OwnedProcess $state)){throw 'Owned DCS is not running'}
     if($Action -eq 'Command') {
-        if($Control -notmatch '^(Icp\w+|Mfd\w+|Master|HudBrightness|CautionAcknowledge|Battery|Generator[12])$' -or
+        if($Control -notmatch '^(Icp\w+|Mfd\w+|Master|HudBrightness|CautionAcknowledge|Battery|Generator[12]|View(Right|Up|Forward|Yaw|Pitch|Zoom|Reset))$' -or
             [double]::IsNaN($Value) -or [double]::IsInfinity($Value) -or $Value -lt -1 -or $Value -gt 1){throw 'Diagnostic request outside allowed display/system selectors'}
         $path=PrivatePath $state.Profile 'Scripts/request.txt';$sequence=1
         if(Test-Path -LiteralPath $path){$sequence=[int]((Get-Content -LiteralPath $path -Raw).Split('|')[0])+1}
@@ -148,13 +152,15 @@ if($Action -in @('Await','Inspect','Command')) {
         $deadline=[datetime]::UtcNow.AddSeconds($TimeoutSeconds)
         try {while([datetime]::UtcNow -lt $deadline){
             if(-not(OwnedProcess $state)){throw 'DCS exited before cockpit readiness'}
-            $text=SharedText $path;$hook=SharedText (PrivatePath $state.Profile 'Logs/AMXDENIS-hook.log')
+            $text=SharedText $path $(if($Sequence -gt 0){2097152}else{0});$hook=SharedText (PrivatePath $state.Profile 'Logs/AMXDENIS-hook.log')
             if($text -match '"kind":"ERROR"' -or $hook -match '\|ERROR\|'){throw 'Private observer/hook error; preserve logs'}
-            if($text -match '"kind":"READY"'){CheckFiles $state;Write-Output 'AMXDENIS_COCKPIT_READY|visual_and_input_verdict=PENDING';return}
+            if($Sequence -gt 0 -and $text -match ('"kind":"REJECT"[^\r\n]*"sequence":'+$Sequence+'[,}]')){throw 'Requested observation command was rejected; no capture approval'}
+            $observed=if($Sequence -gt 0){[regex]::Matches($text,'(?m)^\{[^\r\n]*"kind":"STATE"[^\r\n]*"sequence":'+$Sequence+'[,}]').Count -ge 3}else{$text -match '"kind":"READY"'}
+            if($observed){CheckFiles $state;Write-Output "AMXDENIS_COCKPIT_OBSERVED|sequence=$Sequence|visual_and_input_verdict=PENDING";return}
             $native=SharedText (PrivatePath $state.Profile 'Logs/dcs.log')
             if($native -match 'C0000005|offline auth is not available|login was cancelled|missed aicraft descriptor for AMXT_M'){throw 'Native startup blocked; inspect raw DCS log'}
             [void]$watcher.WaitForChanged(([IO.WatcherChangeTypes]::Changed -bor [IO.WatcherChangeTypes]::Created),1000)
-        };throw 'No cockpit READY within the observation period; no PASS inferred'}finally{$watcher.Dispose()}
+        };throw "Observation timed out for sequence $Sequence; inspect telemetry before classifying the request"}finally{$watcher.Dispose()}
     }
     $text=SharedText $path
     $records=@($text -split "`n" | Where-Object {$_ -match '^\{.*\}$'} | ForEach-Object {$_ | ConvertFrom-Json -Depth 30 -DateKind String})

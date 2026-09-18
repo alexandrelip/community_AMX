@@ -1,0 +1,446 @@
+{
+  "Schema": "AMXDENIS_DISPLAY_VIEW_POSES_1",
+  "ReferenceSequence": 3,
+  "SampleSelection": "Last complete native STATE for each sequence; direct screenshot-adjacent samples for views 03/04/05 are separately preserved",
+  "Projection": "World camera displacement relative to ownship, projected on reference camera axes; not an optical calibration",
+  "Views": [
+    {
+      "Sequence": 0,
+      "ModelTime": 23.336,
+      "LateralRelativeToCenterM": -0.0016104010533920694,
+      "VerticalRelativeToCenterM": 0.014956483921154553,
+      "ForwardRelativeToCenterM": 0.04768343853598096,
+      "Camera": {
+        "p": {
+          "x": -41419.48701241843,
+          "y": 43.09737322653877,
+          "z": 278573.9481792285
+        },
+        "x": {
+          "x": -0.6077566146850586,
+          "y": -0.026969008147716522,
+          "z": 0.7936652898788452
+        },
+        "y": {
+          "x": -0.01639655791223049,
+          "y": 0.9996362924575806,
+          "z": 0.021412156522274017
+        },
+        "z": {
+          "x": -0.793954074382782,
+          "y": 9.313225746154785E-10,
+          "z": -0.6079777479171753
+        }
+      },
+      "OwnPosition": {
+        "x": -41417.66015625,
+        "y": 41.84195327758789,
+        "z": 278571.5625
+      },
+      "FieldOfViewDegrees": null
+    },
+    {
+      "Sequence": 3,
+      "ModelTime": 131.037,
+      "LateralRelativeToCenterM": 0.0,
+      "VerticalRelativeToCenterM": 0.0,
+      "ForwardRelativeToCenterM": 0.0,
+      "Camera": {
+        "p": {
+          "x": -41419.45662458769,
+          "y": 43.09903066742467,
+          "z": 278573.908495964
+        },
+        "x": {
+          "x": -0.5990908311021121,
+          "y": -0.32489559006553753,
+          "z": 0.7318012400044406
+        },
+        "y": {
+          "x": -0.20509625934212644,
+          "y": 0.9457495152814365,
+          "z": 0.251979013090016
+        },
+        "z": {
+          "x": -0.7739675203308468,
+          "y": 0.0008686194237715097,
+          "z": -0.6332247127663219
+        }
+      },
+      "OwnPosition": {
+        "x": -41417.66015625,
+        "y": 41.842262268066406,
+        "z": 278571.5625
+      },
+      "FieldOfViewDegrees": null
+    },
+    {
+      "Sequence": 5,
+      "ModelTime": 160.454,
+      "LateralRelativeToCenterM": 0.09994812007907035,
+      "VerticalRelativeToCenterM": 0.0009639378816260272,
+      "ForwardRelativeToCenterM": 0.0030731736419711553,
+      "Camera": {
+        "p": {
+          "x": -41419.53601999513,
+          "y": 43.099114590857646,
+          "z": 278573.84769818926
+        },
+        "x": {
+          "x": -0.3927444675841091,
+          "y": -0.32426946290913794,
+          "z": 0.8605818492873987
+        },
+        "y": {
+          "x": -0.14037324157258155,
+          "y": 0.9459459075918156,
+          "z": 0.29237259948954814
+        },
+        "z": {
+          "x": -0.9088713650821618,
+          "y": -0.005974942152402429,
+          "z": -0.4170337618378773
+        }
+      },
+      "OwnPosition": {
+        "x": -41417.66015625,
+        "y": 41.84234619140625,
+        "z": 278571.5625
+      },
+      "FieldOfViewDegrees": null
+    },
+    {
+      "Sequence": 7,
+      "ModelTime": 194.338,
+      "LateralRelativeToCenterM": -0.09994812011029752,
+      "VerticalRelativeToCenterM": -0.0009639378654666478,
+      "ForwardRelativeToCenterM": -0.0030731735950157574,
+      "Camera": {
+        "p": {
+          "x": -41419.37722918026,
+          "y": 43.09921377280029,
+          "z": 278573.96929373883
+        },
+        "x": {
+          "x": -0.7284180021906149,
+          "y": -0.3242694625153868,
+          "z": 0.6035367050023035
+        },
+        "y": {
+          "x": -0.24566128142314728,
+          "y": 0.9459459077153204,
+          "z": 0.2117472995932989
+        },
+        "z": {
+          "x": -0.6395762432486078,
+          "y": 0.005974943968759646,
+          "z": -0.768704456600685
+        }
+      },
+      "OwnPosition": {
+        "x": -41417.66015625,
+        "y": 41.842445373535156,
+        "z": 278571.5625
+      },
+      "FieldOfViewDegrees": null
+    },
+    {
+      "Sequence": 10,
+      "ModelTime": 372.06,
+      "LateralRelativeToCenterM": -3.64010611692174E-10,
+      "VerticalRelativeToCenterM": 0.01908327536951464,
+      "ForwardRelativeToCenterM": -0.005985702396772429,
+      "Camera": {
+        "p": {
+          "x": -41419.45695251633,
+          "y": 43.11972148287343,
+          "z": 278573.90892420465
+        },
+        "x": {
+          "x": -0.5749921078711467,
+          "y": -0.32490894063235476,
+          "z": 0.7508783394209115
+        },
+        "y": {
+          "x": -0.19753740311552506,
+          "y": 0.9457453277156436,
+          "z": 0.25796277272919377
+        },
+        "z": {
+          "x": -0.793954074382782,
+          "y": 0,
+          "z": -0.6079777479171753
+        }
+      },
+      "OwnPosition": {
+        "x": -41417.66015625,
+        "y": 41.842960357666016,
+        "z": 278571.5625
+      },
+      "FieldOfViewDegrees": null
+    },
+    {
+      "Sequence": 12,
+      "ModelTime": 636.167,
+      "LateralRelativeToCenterM": 0.024987030387464786,
+      "VerticalRelativeToCenterM": 0.00024098447621659965,
+      "ForwardRelativeToCenterM": 0.0007682934283831655,
+      "Camera": {
+        "p": {
+          "x": -41419.47647343985,
+          "y": 43.10049169650069,
+          "z": 278573.8932965201
+        },
+        "x": {
+          "x": -0.5749921073136851,
+          "y": -0.32490894063235476,
+          "z": 0.7508783388634499
+        },
+        "y": {
+          "x": -0.1975374048927936,
+          "y": 0.9457453277156436,
+          "z": 0.2579627745064623
+        },
+        "z": {
+          "x": -0.793954074382782,
+          "y": 9.313225746154785E-10,
+          "z": -0.6079777479171753
+        }
+      },
+      "OwnPosition": {
+        "x": -41417.66015625,
+        "y": 41.84372329711914,
+        "z": 278571.5625
+      },
+      "FieldOfViewDegrees": null
+    },
+    {
+      "Sequence": 13,
+      "ModelTime": 641.667,
+      "LateralRelativeToCenterM": -0.024987030381833433,
+      "VerticalRelativeToCenterM": -0.0002409844747243272,
+      "ForwardRelativeToCenterM": -0.0007682934240242061,
+      "Camera": {
+        "p": {
+          "x": -41419.43677573554,
+          "y": 43.10050695524318,
+          "z": 278573.9236954079
+        },
+        "x": {
+          "x": -0.5749921073136851,
+          "y": -0.32490894063235476,
+          "z": 0.7508783388634499
+        },
+        "y": {
+          "x": -0.1975374048927936,
+          "y": 0.9457453277156436,
+          "z": 0.2579627745064623
+        },
+        "z": {
+          "x": -0.793954074382782,
+          "y": 9.313225746154785E-10,
+          "z": -0.6079777479171753
+        }
+      },
+      "OwnPosition": {
+        "x": -41417.66015625,
+        "y": 41.8437385559082,
+        "z": 278571.5625
+      },
+      "FieldOfViewDegrees": null
+    },
+    {
+      "Sequence": 16,
+      "ModelTime": 678.787,
+      "LateralRelativeToCenterM": 0.0,
+      "VerticalRelativeToCenterM": 0.0,
+      "ForwardRelativeToCenterM": 0.0,
+      "Camera": {
+        "p": {
+          "x": -41419.45662458769,
+          "y": 43.100613766789905,
+          "z": 278573.908495964
+        },
+        "x": {
+          "x": -0.5749921073136851,
+          "y": -0.32490894063235476,
+          "z": 0.7508783388634499
+        },
+        "y": {
+          "x": -0.1975374048927936,
+          "y": 0.9457453277156436,
+          "z": 0.2579627745064623
+        },
+        "z": {
+          "x": -0.793954074382782,
+          "y": 9.313225746154785E-10,
+          "z": -0.6079777479171753
+        }
+      },
+      "OwnPosition": {
+        "x": -41417.66015625,
+        "y": 41.84384536743164,
+        "z": 278571.5625
+      },
+      "FieldOfViewDegrees": null
+    }
+  ],
+  "NativeCameraEvents": [
+    {
+      "kind": "START",
+      "mode": "GroundHot",
+      "model_time": 0,
+      "profile": "DCS.AMXDENIS-Native-REV07-Displays-N-20260918",
+      "sequence": 0
+    },
+    {
+      "aircraft": "AMXT_M",
+      "kind": "READY",
+      "model_time": 0,
+      "scope": "cockpit_started_not_visual_or_input_approval",
+      "sequence": 0
+    },
+    {
+      "control": "ViewZoom",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 23.336,
+      "sequence": 1,
+      "value": 0.6
+    },
+    {
+      "control": "ViewPitch",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 47.619,
+      "sequence": 2,
+      "value": -0.1
+    },
+    {
+      "control": "ViewForward",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 56.235,
+      "sequence": 3,
+      "value": 0.25
+    },
+    {
+      "control": "ViewRight",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 131.037,
+      "sequence": 4,
+      "value": -0.5
+    },
+    {
+      "control": "ViewYaw",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 145.104,
+      "sequence": 5,
+      "value": -0.04
+    },
+    {
+      "control": "ViewRight",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 160.454,
+      "sequence": 6,
+      "value": 0.5
+    },
+    {
+      "control": "ViewYaw",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 176.538,
+      "sequence": 7,
+      "value": 0.04
+    },
+    {
+      "control": "ViewRight",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 194.338,
+      "sequence": 8,
+      "value": 0
+    },
+    {
+      "control": "ViewYaw",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 212.739,
+      "sequence": 9,
+      "value": 0
+    },
+    {
+      "control": "ViewUp",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 233.055,
+      "sequence": 10,
+      "value": 0.5
+    },
+    {
+      "control": "ViewUp",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 372.06,
+      "sequence": 11,
+      "value": 0
+    },
+    {
+      "control": "ViewRight",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 403.178,
+      "sequence": 12,
+      "value": -0.1
+    },
+    {
+      "control": "ViewRight",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 636.167,
+      "sequence": 13,
+      "value": 0.1
+    },
+    {
+      "control": "ViewRight",
+      "input_source": "native_camera_only_NOT_pilot_control",
+      "kind": "CAMERA_COMMAND",
+      "model_time": 641.667,
+      "sequence": 14,
+      "value": 0
+    },
+    {
+      "call_succeeded": true,
+      "control": "IcpCOM1",
+      "explicit_rejection": false,
+      "input_source": "export_performClickableAction_NOT_keyboard_or_mouse",
+      "kind": "DIAGNOSTIC_COMMAND",
+      "model_time": 646.968,
+      "route": 4016,
+      "sequence": 15,
+      "value": 1
+    },
+    {
+      "call_succeeded": true,
+      "control": "IcpCOM1",
+      "explicit_rejection": false,
+      "input_source": "export_performClickableAction_NOT_keyboard_or_mouse",
+      "kind": "DIAGNOSTIC_COMMAND",
+      "model_time": 652.268,
+      "route": 4016,
+      "sequence": 16,
+      "value": 0
+    },
+    {
+      "kind": "STOP",
+      "model_time": 678.82,
+      "ready": true,
+      "sequence": 16
+    }
+  ],
+  "FullEyeboxValidated": false,
+  "FieldOfViewUnavailable": true
+}

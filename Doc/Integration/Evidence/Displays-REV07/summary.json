@@ -1,0 +1,89 @@
+{
+  "Schema": "AMXDENIS_DISPLAY_ALIGNMENT_1",
+  "Scope": "Native 2D front-seat display alignment/readability checks in sampled ground views",
+  "Candidate": "AMXT_M-REV07-Displays-M",
+  "BuildId": "396A3B739E2E8CDEBCE150970AF7F4E83145C94979525663BDEF9F7E47F3BE69",
+  "State": "VERIFICADO_NO_ESCOPO_2D_AMOSTRADO",
+  "ICPGlyphAspectCorrected": true,
+  "ICPMainAndCOM1Visible": true,
+  "DisplayGeometryModified": false,
+  "CockpitInstallationModified": false,
+  "Views": [
+    "default",
+    "close-center",
+    "left-oblique",
+    "right-oblique",
+    "raised-center",
+    "small-left",
+    "small-right"
+  ],
+  "FullOpticalCalibration": false,
+  "FullEyeboxValidated": false,
+  "VRTested": false,
+  "FullNativeMenuTested": false,
+  "AllNativeSystemsApproved": false,
+  "KeyboardApproved": false,
+  "MouseApproved": false,
+  "HotasApproved": false,
+  "PowerOffAndRestorationObservedForFiveDisplays": true,
+  "PowerProofRun": "Native-REV07-Displays-P-20260918",
+  "PowerInputSource": "explicit_export_diagnostic_NOT_physical_input",
+  "RejectedVisualPowerRun": "Native-REV07-Displays-O-20260918",
+  "RejectedVisualPowerReason": "MFDs outside captured frame; parameter results alone not sufficient",
+  "HudLateralClippingObserved": true,
+  "HudOpticalConformanceClaimed": false,
+  "OriginalFilesChecked": 84,
+  "OriginalFilesChanged": 0,
+  "SourceFilesChecked": 2243,
+  "SourceFilesChanged": 0,
+  "NormalOptionsBaselineAndFinalSHA256": "934CF441D4899BE6E31B4D9CF1B7106ECA27082C7A26B11A94AA8C94A5DDFD09",
+  "NormalProfileRestored": false,
+  "MissingTextureNames": [
+    "f18c_cpt-naces1",
+    "f18c_cpt-tex12",
+    "mb339_glass"
+  ],
+  "Runs": [
+    {
+      "Run": "Native-REV07-Displays-M-20260918",
+      "CandidateBuildId": "396A3B739E2E8CDEBCE150970AF7F4E83145C94979525663BDEF9F7E47F3BE69",
+      "IntegrityPassed": true,
+      "TemporaryAuthenticationRemoved": true,
+      "NativeLogSHA256": "B5766B3FE79793212E3B5DDD1C8A6D5DE58DC83275B3D03E70A108E5EE26C74D",
+      "ObserverLogSHA256": "D237F57402AE9CCC1D71107D7BA04B29874FBCEAF0841A12B467C31D6C2A326F",
+      "NativeSeverityErrorLines": 146,
+      "AccessViolationRecorded": false
+    },
+    {
+      "Run": "Native-REV07-Displays-N-20260918",
+      "CandidateBuildId": "396A3B739E2E8CDEBCE150970AF7F4E83145C94979525663BDEF9F7E47F3BE69",
+      "IntegrityPassed": true,
+      "TemporaryAuthenticationRemoved": true,
+      "NativeLogSHA256": "657F3EE30E26D0FE51036BF980748521190196285501BDAE7CA0622ED0BE3A38",
+      "ObserverLogSHA256": "F623BE4E7D7AE4A4CBB179D3AB998EC396A969946F1F00380EB7BD6CCE308C73",
+      "NativeSeverityErrorLines": 147,
+      "AccessViolationRecorded": false
+    },
+    {
+      "Run": "Native-REV07-Displays-O-20260918",
+      "CandidateBuildId": "396A3B739E2E8CDEBCE150970AF7F4E83145C94979525663BDEF9F7E47F3BE69",
+      "IntegrityPassed": true,
+      "TemporaryAuthenticationRemoved": true,
+      "NativeLogSHA256": "91ADE0F7045CDD50D779E750E2C2EE61BA58B65F4707D03FE2E70DE5C581F919",
+      "ObserverLogSHA256": "109EB59A664F0B40876DB4BE234BBEC1F0E70FD6CC071B40D0B500B86EA59696",
+      "NativeSeverityErrorLines": 146,
+      "AccessViolationRecorded": false
+    },
+    {
+      "Run": "Native-REV07-Displays-P-20260918",
+      "CandidateBuildId": "396A3B739E2E8CDEBCE150970AF7F4E83145C94979525663BDEF9F7E47F3BE69",
+      "IntegrityPassed": true,
+      "TemporaryAuthenticationRemoved": true,
+      "NativeLogSHA256": "39CA74D8A5CBABAF8E9A358069B8E06CCF0524BE22C396C37BA2B67595663863",
+      "ObserverLogSHA256": "65BA3318E5E7B1563F1303EAD3892834305F9E457BC9A32F84F004505339B38A",
+      "NativeSeverityErrorLines": 146,
+      "AccessViolationRecorded": false
+    }
+  ],
+  "RecordedUtc": "2026-09-18T02:23:38.5251294Z"
+}

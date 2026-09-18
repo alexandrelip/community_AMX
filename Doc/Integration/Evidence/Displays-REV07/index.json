@@ -1,0 +1,160 @@
+{
+  "Schema": "AMXDENIS_DISPLAY_EVIDENCE_INDEX_1",
+  "BuildId": "396A3B739E2E8CDEBCE150970AF7F4E83145C94979525663BDEF9F7E47F3BE69",
+  "Scope": "sampled_native_2D_display_readability_and_clipping_not_full_module_approval",
+  "Files": [
+    {
+      "Path": "bench-final.json",
+      "Bytes": 1585,
+      "SHA256": "4D024FFCB0BD86812F44BA00A76604696A24F1CF9C538F556A0ED3489AF28A4A"
+    },
+    {
+      "Path": "candidate-manifest.json",
+      "Bytes": 144261,
+      "SHA256": "C4E6477854E6A020858EC26CC7DD017475A3816BCE83BF0DD700AA54CE4355D7"
+    },
+    {
+      "Path": "ci-final.log",
+      "Bytes": 3683,
+      "SHA256": "20CE0B04953342B4152E16795F7ADA2D725F3B837411F4269AB074BFDC641AE1"
+    },
+    {
+      "Path": "close-center.png",
+      "Bytes": 2836075,
+      "SHA256": "DA0C2C63FFAE77FD679420EAFCA05A01C5DA2529FD1F05841AF4D029C520811D"
+    },
+    {
+      "Path": "finalization-M.json",
+      "Bytes": 335,
+      "SHA256": "D4224DDB7A71B9BD9755776247E957E39B31A8FF8095A8744C11EB3F99BE2676"
+    },
+    {
+      "Path": "finalization-N.json",
+      "Bytes": 335,
+      "SHA256": "79D1E3C1D16320FDF44C45E184BC00B52C3751644B227B052F4B12186C811F3B"
+    },
+    {
+      "Path": "finalization-O.json",
+      "Bytes": 335,
+      "SHA256": "898AC887BA0381D85527A5DCF50B40ADBFF761795C71DF9DDD2BFA2D90E1B7D7"
+    },
+    {
+      "Path": "finalization-P.json",
+      "Bytes": 335,
+      "SHA256": "C46169214FCE64480321E5E29DAEE32034EBA3891CD5079DCEA15B9005E95E48"
+    },
+    {
+      "Path": "icp-com1.png",
+      "Bytes": 2811958,
+      "SHA256": "1544801C5AD83F545CF152A0FE7B3608995C933C4915C265816DA94B5EC97E5E"
+    },
+    {
+      "Path": "interior-audit.json",
+      "Bytes": 4608,
+      "SHA256": "8946EE1C113966F5888B5C273A8D3DB704C17979F75A7989553ACDAA50FFEB1F"
+    },
+    {
+      "Path": "left-oblique.json",
+      "Bytes": 122006,
+      "SHA256": "5A06CA280B9BE1926FB80D0CF0AB868FBBC726160C9B5AB184D69070B0249C24"
+    },
+    {
+      "Path": "left-oblique.png",
+      "Bytes": 2889684,
+      "SHA256": "6494B07A084756FC9997BE6CE8B9D2AC52DCDCA27EF85C094D060AD3687B736D"
+    },
+    {
+      "Path": "power-off.json",
+      "Bytes": 50790,
+      "SHA256": "58642767666744961254766F51E3CA5805636F3C74E969AC2ED7149BC5C0DF5C"
+    },
+    {
+      "Path": "power-off.png",
+      "Bytes": 3116090,
+      "SHA256": "DCF3309CB6C50EF1901CA7B089944323F9B04DE9763E2330BF76BE479ED46B15"
+    },
+    {
+      "Path": "power-on.json",
+      "Bytes": 122267,
+      "SHA256": "6F67380C4C500AE769D38426F4AEC10BD1075BD4B61D0B71055F9D2F3311CF99"
+    },
+    {
+      "Path": "power-on.png",
+      "Bytes": 3129605,
+      "SHA256": "9DE8A2B9D7540EB8389DA224DEABE48F8BC9471E0F70D61EF25E9285BE7D4623"
+    },
+    {
+      "Path": "power-restored.json",
+      "Bytes": 122330,
+      "SHA256": "764EC7A53A9C0CE63DF97498434491E9D6457FFA9D7F2AF3B8E0A20789DD5692"
+    },
+    {
+      "Path": "power-restored.png",
+      "Bytes": 3129993,
+      "SHA256": "DA36336A5A7880D83F47BED9B5BF63B5CE754051A4F1F8DC44E7B6F267E3DB2E"
+    },
+    {
+      "Path": "raised-center.json",
+      "Bytes": 121999,
+      "SHA256": "13A46428EA31DE60C35FAFE024C4360447CF3AF47F732348C6941CE1E5E7B20F"
+    },
+    {
+      "Path": "raised-center.png",
+      "Bytes": 2856682,
+      "SHA256": "1E407F6034FE1E94536A9D421EA210E45F4299FC58528001CD98E2E65453CAAF"
+    },
+    {
+      "Path": "right-oblique.json",
+      "Bytes": 121996,
+      "SHA256": "F1C4D60BB8151903EA50C7ECFC3E85D2A82908EF527E6BD8A8B764DA7AE99534"
+    },
+    {
+      "Path": "right-oblique.png",
+      "Bytes": 2874838,
+      "SHA256": "5026A0A646B3B8D7EC1136A33191DA327ADCD3D155AA53FE39FCE291324478A4"
+    },
+    {
+      "Path": "summary.json",
+      "Bytes": 3779,
+      "SHA256": "AD01A858E28CB8E9AE140F90792B915217D6CABD39A0DA58A2254BDBC611A4BC"
+    },
+    {
+      "Path": "view-poses.json",
+      "Bytes": 12235,
+      "SHA256": "273E8258E0403D7A8FF6280D2F6D4286B84AC02D3A62DAF31DD144D26DD0F772"
+    }
+  ],
+  "CurrentCode": [
+    {
+      "Path": "Avionics/AMXDENIS/patches.lua",
+      "SHA256": "25FFA0812375ACB22AA94529C75E7173D1F5856F2BC3F7931A378B133961DFBC"
+    },
+    {
+      "Path": "Tools/Native/hook.lua",
+      "SHA256": "54FC34294AA338C4CBEC697D24EF8FF6249566255CE39164DD38DDC74569E020"
+    },
+    {
+      "Path": "Tools/Native/observer.lua",
+      "SHA256": "9D99CD79B1B807848FE3477EFFE57996653B72D5108561A105B62D8E97E7D81B"
+    },
+    {
+      "Path": "Tools/Test-AMXDENISNative.ps1",
+      "SHA256": "4C247289A3618F2179C4C54FA77E235C812B7F6F10E99DA4983BFF68CF42CCEC"
+    },
+    {
+      "Path": "ci/tests/test_indicators.lua",
+      "SHA256": "0CC85C0E21C5E28ABB4DD5A9D6FC26DCC6500942E76245ABE64AA5244AB30137"
+    },
+    {
+      "Path": "ci/tests/test_native_observer.lua",
+      "SHA256": "84B85D482142FEF759CE03EC1A99A0E5DB0E2099A7D08A76443A13275EAC9693"
+    },
+    {
+      "Path": "Doc/Integration/DISPLAY_ALIGNMENT.md",
+      "SHA256": "73F4F407532B8C0D7683752EE95A1E976708EA04B170C2CA141C550A44162198"
+    }
+  ],
+  "OwnedSessionsRunning": 0,
+  "NativeInputApproved": false,
+  "RecordedUtc": "2026-09-18T02:26:53.3451592Z"
+}

@@ -27,6 +27,29 @@ local data=require('Input.Data')
 local raw=DCS.getInputProfiles()
 local lines={}
 local input=require('Input')
+local wanted={ViewRight='iCommandViewHorTransAbs',ViewUp='iCommandViewVertTransAbs',
+    ViewForward='iCommandViewLongitudeTransAbs',ViewYaw='iCommandViewHorizontalAbs',
+    ViewPitch='iCommandViewVerticalAbs',ViewZoom='iCommandViewZoomAbs'}
+local camera_ids={}
+local function find_commands(container,depth)
+    if type(container)~='table'or depth>3 then return end
+    for key,value in pairs(container)do
+        for action,name in pairs(wanted)do
+            if key==name and type(value)=='number'and value>0 and value<10000 and value%1==0 then
+                camera_ids[action]=value
+            end
+        end
+        if type(value)=='table'then find_commands(value,depth+1)end
+    end
+end
+find_commands(input.getEnvTable(),0)
+local complete=true;for action in pairs(wanted)do if not camera_ids[action]then complete=false end end
+if complete then
+    local file=assert(io.open(require('lfs').writedir()..'Scripts/native-camera-ids.txt','wb'))
+    for action in pairs(wanted)do file:write(action..'|'..camera_ids[action]..'\n')end
+    file:close()
+end
+lines[#lines+1]='camera_commands_available='..tostring(complete)
 for _,layer in ipairs(input.getLayerStack())do lines[#lines+1]='active_layer='..tostring(layer)end
 for _,layer in ipairs(input.getLoadedLayers())do lines[#lines+1]='loaded_layer='..tostring(layer)end
 for name,value in pairs(input.getEnvTable())do

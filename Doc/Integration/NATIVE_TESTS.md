@@ -1,5 +1,8 @@
 # REV07: teste nativo e encaixe dianteiro
 
+Complemento posterior: [inspeção e correção da leitura dos visores](DISPLAY_ALIGNMENT.md).
+Os resultados abaixo permanecem como registro do encaixe e da primeira campanha.
+
 ## Resultado atual
 
 Em 17/09/2026 local (18/09 UTC), o usuario pediu teste em jogo e depois

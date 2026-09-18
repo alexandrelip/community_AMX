@@ -40,6 +40,33 @@ local function params()
     return values
 end
 local specs={};for _,spec in ipairs(config.controls.controls)do specs[spec.name]=spec end
+local camera_limits={ViewRight=0.5,ViewUp=0.5,ViewForward=0.5,ViewYaw=0.18,ViewPitch=0.3,ViewZoom=1}
+local function camera_request(name,value)
+    if not finite(value)or math.abs(value)>(camera_limits[name]or 0)then return false,"value_out_of_range" end
+    local velocity=call(LoGetVectorVelocity)
+    if type(velocity)~="table"then return false,"velocity_unavailable" end
+    for _,component in ipairs({"x","y","z"})do
+        if not finite(velocity[component])or math.abs(velocity[component])>0.25 then return false,"not_stationary" end
+    end
+    local height=call(LoGetAltitudeAboveGroundLevel)
+    if not finite(height)or height<0 or height>6 then return false,"not_near_ground" end
+    if type(LoSetCommand)~="function"then return false,"native_command_api_unavailable" end
+    local file=io.open(directory.."/Scripts/native-camera-ids.txt","rb");if not file then return false,"camera_identifiers_unavailable" end
+    local text=file:read(1024);file:close()
+    local identifiers={}
+    for action,number in text:gmatch("([%w_]+)|(%d+)")do
+        local id=tonumber(number)
+        if camera_limits[action]and id>0 and id<10000 then identifiers[action]=id end
+    end
+    if name=="ViewReset"then
+        for action in pairs(camera_limits)do if not identifiers[action]then return false,"camera_identifier_missing:"..action end end
+        for action in pairs(camera_limits)do LoSetCommand(identifiers[action],0)end
+    else
+        if not identifiers[name]then return false,"camera_identifier_missing:"..name end
+        LoSetCommand(identifiers[name],value)
+    end
+    return true
+end
 local function request()
     local f=io.open(directory.."/Scripts/request.txt","rb");if not f then return end
     local text=f:read(200);f:close()
@@ -47,6 +74,12 @@ local function request()
     n,value=tonumber(n),tonumber(value)
     if not n or n<=sequence then return end
     sequence=n
+    if camera_limits[name]or name=="ViewReset"then
+        local accepted,reason=camera_request(name,value)
+        write({kind=accepted and "CAMERA_COMMAND"or"REJECT",control=name,value=value,reason=reason,
+            input_source="native_camera_only_NOT_pilot_control"})
+        return
+    end
     local spec=specs[name]
     -- Display/system selector diagnostics only. Flight/start/fuel/release requests
     -- are not accepted by this observer. Physical inputs are tested separately.
@@ -82,6 +115,9 @@ local function sample()
     row.external_canopy=call(LoGetAircraftDrawArgumentValue,38)
     row.velocity=call(LoGetVectorVelocity);row.engine=call(LoGetEngineInfo);row.mechanisms=call(LoGetMechInfo)
     row.camera=call(LoGetCameraPosition);row.ias=call(LoGetIndicatedAirSpeed);row.agl=call(LoGetAltitudeAboveGroundLevel)
+    row.camera_api={set_command=type(LoSetCommand),create_request=type(LoCreateCameraRequest)}
+    local camera_request_data=call(LoCreateCameraRequest)
+    if type(camera_request_data)=="table"then row.camera_fov_deg=camera_request_data.fov;row.camera_name=camera_request_data.name end
     local sensor=call(get_base_data)
     if sensor then
         row.pilot_axes={pitch=call(sensor.getStickPitchPosition),roll=call(sensor.getStickRollPosition),rudder=call(sensor.getRudderPosition)}

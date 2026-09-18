@@ -130,7 +130,32 @@ for _,case in ipairs(cases) do
         check(params["CMFD"..n.."Format"],"MFD uses its own selector")
         check(params.AMXDENIS_STORE_7 and params.AMXDENIS_STORE_7_VALID,"SMS includes original station seven")
     end
-    if case.side=="ICP" then check(params.UFCP_TEXT and params.UFCP_BRIGHT,"ICP is live and power-gated")end
+    if case.side=="ICP" then
+        check(params.UFCP_TEXT and params.UFCP_BRIGHT,"ICP is live and power-gated")
+        local font=assert(env.fonts.ufcp_font_def)[1]
+        local atlas=assert(io.open(font.texture,"rb"))
+        local header=atlas:read(128);atlas:close()
+        check(header:sub(1,4)=="DDS ","ICP font resource has a DDS header")
+        local function uint32(offset)
+            local byte1,byte2,byte3,byte4=header:byte(offset,offset+3)
+            return byte1+byte2*256+byte3*65536+byte4*16777216
+        end
+        local width,height=uint32(17),uint32(13)
+        check(font.resolution[1]==width and font.resolution[2]==height,"ICP declared font resolution matches the actual atlas")
+        check(font.default[1]*font.size[2]==width and font.default[2]*font.size[1]==height,
+            "ICP font grid matches glyph dimensions without stretching")
+        local text
+        for _,element in ipairs(elements)do if element.name=="AMX_ICP_TEXT"then text=element end end
+        check(text~=nil,"ICP has one measurable text layout")
+        local layout=text.stringdefs
+        check(math.abs(layout[2]/layout[1]-font.default[1]/font.default[2])<0.000001,
+            "ICP layout preserves the atlas glyph aspect ratio")
+        check(layout[2]+layout[3]>0 and layout[4]>=0,"ICP character advance and line gap remain usable")
+        check(25*layout[2]+24*layout[3]<=2*geometry.indicators.ICP.half_width_m-0.002+0.000001,
+            "ICP 25-character row fits the measured aperture with margin")
+        check(5*layout[1]+4*layout[4]<=2*geometry.indicators.ICP.half_height_m-0.002+0.000001,
+            "ICP five rows fit the measured aperture with margin")
+    end
     for _,path in ipairs(env.preload_texture or {})do texture_resource(path)end
 end
 check(pages_executed>50,"both MFDs and independent HUD/EFI/ICP pages executed")

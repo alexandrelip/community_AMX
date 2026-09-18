@@ -40,4 +40,21 @@ env.LoGetSelfData=function()return {Name="AMX"}end
 env.LuaExportStart();env.LuaExportAfterNextFrame()
 check(table.concat(output):find('"kind":"ERROR"',1,true),"wrong aircraft explicitly rejected")
 check(not table.concat(output):find('"kind":"READY"',1,true),"wrong aircraft cannot approve readiness")
+for _,moving in ipairs({true,false})do
+    local camera_env,camera_output=fixture("DCS.AMXDENIS-camera",true)
+    local stream_open=camera_env.io.open
+    local native_calls={}
+    camera_env.io.open=function(path,mode)
+        if path:match("request.txt$")then return {read=function()return "1|ViewYaw|0.05"end,close=function()end}end
+        if path:match("native%-camera%-ids.txt$")then return {read=function()return "ViewYaw|2012\n"end,close=function()end}end
+        return stream_open(path,mode)
+    end
+    camera_env.LoGetVectorVelocity=function()return {x=moving and 1 or 0,y=0,z=0}end
+    camera_env.LoGetAltitudeAboveGroundLevel=function()return 2 end
+    camera_env.LoSetCommand=function(command,value)native_calls[#native_calls+1]={command,value}end
+    camera_env.LuaExportStart();camera_env.LuaExportAfterNextFrame()
+    check(#native_calls==(moving and 0 or 1),"camera commands are restricted to a stationary ground aircraft")
+    local text=table.concat(camera_output)
+    check(text:find(moving and '"kind":"REJECT"'or'"kind":"CAMERA_COMMAND"',1,true),"camera acceptance/rejection is recorded")
+end
 print(string.format("AMXDENIS NATIVE OBSERVER: %d/%d checks passed",checks,checks))
