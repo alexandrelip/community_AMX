@@ -1,0 +1,21 @@
+{
+  "Schema": "AMXDENIS_NATIVE_PRESERVATION_1",
+  "OriginalFiles": 84,
+  "OriginalChanges": 0,
+  "SourceFilesChecked": 2243,
+  "SourceDifferences": [],
+  "SourceWritesByTask": 0,
+  "NormalOptionsBeforeSHA256": "2A2408348023A93CED395902F7AD5099951E1DAC8D8A6BEB39BB3E40D34DC1AE",
+  "NormalOptionsAfterSHA256": "934CF441D4899BE6E31B4D9CF1B7106ECA27082C7A26B11A94AA8C94A5DDFD09",
+  "NormalOptionsLastWriteUtc": "2026-09-18T01:08:27.1059642Z",
+  "NormalOptionsChangedFields": [
+    "difficulty.compassTape",
+    "difficulty.tacticalMap",
+    "difficulty.easyRadar",
+    "difficulty.aircraftMode"
+  ],
+  "NormalOptionsWriter": "NOT_ESTABLISHED",
+  "NormalOptionsRestored": false,
+  "NativeFullApproval": false,
+  "RecordedUtc": "2026-09-18T01:20:23.3619107Z"
+}

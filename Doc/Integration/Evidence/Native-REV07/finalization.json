@@ -1,0 +1,12 @@
+{
+  "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+  "IntegrityPassed": false,
+  "Errors": [
+    "Protected file changed, not restored: C:\\Users\\Alexandre\\Saved Games\\DCS\\Config\\options.lua"
+  ],
+  "RuntimeBuildId": "5D41C50ED61EDA5940AE588AF78ED807ED0A2AB2368BC0ED8AFB547028652039",
+  "NativeAcceptanceGranted": false,
+  "NormalProfileRestored": false,
+  "ProfileRetained": true,
+  "RecordedUtc": "2026-09-18T01:11:19.4505261Z"
+}

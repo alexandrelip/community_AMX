@@ -1,0 +1,3674 @@
+{
+  "AircraftType": "AMXT_M",
+  "BuildId": "5D41C50ED61EDA5940AE588AF78ED807ED0A2AB2368BC0ED8AFB547028652039",
+  "DesktopCandidateOnly": true,
+  "ExternalResourcesChanged": false,
+  "Files": [
+    {
+      "Bytes": 1048620,
+      "Path": "Avionics/Runtime/Cockpit/IndicationTextures/font_RWR.tga",
+      "SHA256": "C57F99322E3A775FCF0795B1324A1C98F1D450A97F8D747690AD0DD8C23C9231"
+    },
+    {
+      "Bytes": 4194348,
+      "Path": "Avionics/Runtime/Cockpit/IndicationTextures/font_sheet_F5.tga",
+      "SHA256": "967AAD2EC26E5B35EDEA3B2B4C33F849A9C556B3E223F01608B264C5971CB85B"
+    },
+    {
+      "Bytes": 1048594,
+      "Path": "Avionics/Runtime/Cockpit/IndicationTextures/indication_RWR.tga",
+      "SHA256": "918F5B885BF9D98881325F290F1975E1D1C35A6A79CD4D5095A21730979458B2"
+    },
+    {
+      "Bytes": 1711,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/clickabledata.lua",
+      "SHA256": "2F71F20363BFF05DCC5414F3E09CBB35DC17EA5478D52D8A2060675961ECE0BA"
+    },
+    {
+      "Bytes": 14663,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_defs.lua",
+      "SHA256": "8EF00B0A962A72135918F99B9B5D792E0E726B4C5F9FAC2C0AF141DDCCA8559E"
+    },
+    {
+      "Bytes": 330,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_DTE_ID_defs.lua",
+      "SHA256": "FEBB11423CAAE07F0957B3A4080071237356FB230141BF4445573F42A00BE0E3"
+    },
+    {
+      "Bytes": 724,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_DVR_ID_defs.lua",
+      "SHA256": "26D43DA391A15327ADF3D259CD781E1AACD86EF58CD2602D40C3DDE09D2AF5FA"
+    },
+    {
+      "Bytes": 7240,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_init_COMMON.lua",
+      "SHA256": "9FEA0800302D61DFEA46C1841021E82F08CBE1264259F1144F951CE4DAE783E4"
+    },
+    {
+      "Bytes": 1416,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_Left_init.lua",
+      "SHA256": "8CEEB8285D896BB75016DF8AA8988DB8A501D105CA7DBFE4853FD4BD92B66EDA"
+    },
+    {
+      "Bytes": 288,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_NAV_ID_defs.lua",
+      "SHA256": "7AF8E5276264A1CB4135265DFE5280A25293AB45C4A6DD3F5964A0DB4C6A93F9"
+    },
+    {
+      "Bytes": 2422,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_pageID_defs.lua",
+      "SHA256": "7F62B18F7EFCE65EEC7F249601CBD282267A480B33507927C6F34A80A9393CE3"
+    },
+    {
+      "Bytes": 1375,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_Right_init.lua",
+      "SHA256": "8982C5BA513C90B0785032F3AD9E4CDA58FB81148BBE36FD51D734E9987B6265"
+    },
+    {
+      "Bytes": 1490,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_SMS_ID_defs.lua",
+      "SHA256": "77B31AB1B2AF50FD7889A03908D698A471E976105C1F4213142540042B80EA1B"
+    },
+    {
+      "Bytes": 199,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/CMFD_UFCP_ID_defs.lua",
+      "SHA256": "61C90F81206349A6027E0E1948EECF1B6FA09DF1F7BDFECFC5DD10D6D2AB15AC"
+    },
+    {
+      "Bytes": 16000,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/adhsi.lua",
+      "SHA256": "46F8FD1D4F02860D46FAE1C6A98A7EEAA63DEB73D5CAADDD4C8C1B05BA44CC60"
+    },
+    {
+      "Bytes": 766,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/cmfd_text.lua",
+      "SHA256": "B6CAA81DC598ADFA432253580BB8077F81A55C1251B5078B52E47BC684F5F7E5"
+    },
+    {
+      "Bytes": 30002,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/cmfds.lua",
+      "SHA256": "2A8AB375A9B31925E5E404E6752B17EC7D174949668545EFB493CD766E135A27"
+    },
+    {
+      "Bytes": 10428,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/dvr.lua",
+      "SHA256": "11B09D2F72BEEC3E898B8D343E6F035D78131C4CD332546191DD2E92F3F7BBE9"
+    },
+    {
+      "Bytes": 31207,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/eicas.lua",
+      "SHA256": "1D66BB04AF7EA294043511C216E4B83CED1187054F6E74591F245355582D2B60"
+    },
+    {
+      "Bytes": 4561,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/emer.lua",
+      "SHA256": "30F978958B9780F26A72073A0A9E10DC87CDCAFDF33D30AC41B0CBFB3F127598"
+    },
+    {
+      "Bytes": 15649,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/ew.lua",
+      "SHA256": "3EDF1CA1825CDF60E45B73A7B5B485EDD4EA50195C76754C8AAC9D7F59917091"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/hud.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 5627,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/menu1.lua",
+      "SHA256": "4137EC22C5820D1EDD18832B31E246E85FDA368B0D9A267371DD142156AC724A"
+    },
+    {
+      "Bytes": 2017,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/menu2.lua",
+      "SHA256": "30098B6F788045A2199A47F8E250E9B5C99686859387E0EAE1EC609D35062F0A"
+    },
+    {
+      "Bytes": 56460,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/nav.lua",
+      "SHA256": "6A77ACFAEBF9A6183AB15977854C0C33AC8879E4EA25148B5263B70B94DEF6BD"
+    },
+    {
+      "Bytes": 4998,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/pfl.lua",
+      "SHA256": "7452E01C326904131B27C8B07FC806720321C847D8FEAA4D76E3F813D861FDA1"
+    },
+    {
+      "Bytes": 12737,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/rdr.lua",
+      "SHA256": "71DB163BB999E09E2A1FEFF6DCB91210640666691A79E0F02EE79A7FF31E8F49"
+    },
+    {
+      "Bytes": 292,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/sms.lua",
+      "SHA256": "96AB81310CEC32370071D1413B4B24E1397CFE728A0ABD6B4CBED2A0F1E17BE7"
+    },
+    {
+      "Bytes": 24235,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/tsd.lua",
+      "SHA256": "6D561E487344F8ADB5E869FF0F16364B6E055AF50DEB34B86C5D663CEDAFF3F5"
+    },
+    {
+      "Bytes": 6077,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Device/ufc.lua",
+      "SHA256": "EDE80969D55540879A7061187037E5DA8312CAF31478D3FC182959D46C1627EA"
+    },
+    {
+      "Bytes": 37659,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_ADHSI.lua",
+      "SHA256": "59639624DBE0413BB1515E28872372C91B6331EB75D3EEE41CC9BDBD134A376E"
+    },
+    {
+      "Bytes": 6543,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_ADHSI_small.lua",
+      "SHA256": "B7439BAA2355C671496E88D9ABE5C66D769EB354891F6B403C63275B79DDD3D7"
+    },
+    {
+      "Bytes": 568,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_BIT.lua",
+      "SHA256": "EB14494D4E499A6F0A16DC225161416E8FA36DCD296E97B383CEBE1AC0E9FD13"
+    },
+    {
+      "Bytes": 575,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_DLMSG.lua",
+      "SHA256": "EBAF3C84969F340963B40410796C825026D6D7FE15326CC7EA95F1DC4592D276"
+    },
+    {
+      "Bytes": 575,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_DLSET.lua",
+      "SHA256": "23526ECF9E3C4F093F4EFE66BA0D58047079EA399FA9499A8820DDAC9FB6B774"
+    },
+    {
+      "Bytes": 578,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_DTU.lua",
+      "SHA256": "6F72A761FAC1EE58674DAB079A6569C63180A0D0C0EF9664299B23AE715B314B"
+    },
+    {
+      "Bytes": 568,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_DVR.lua",
+      "SHA256": "9A54B2A07F3F5916EA8060E32E235CB9B3B33867093E6C32E8B6D207E4521633"
+    },
+    {
+      "Bytes": 568,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_EFB.lua",
+      "SHA256": "5AA94BB0E97DCFB15E33420EF28E59A0E058B065D5AA10CF72F1CB7EA0F50C68"
+    },
+    {
+      "Bytes": 1315,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_EICAS.lua",
+      "SHA256": "E17445057C88AEEBCD358630D646A784AED146FA61D4F939E8A8CA81A9643730"
+    },
+    {
+      "Bytes": 19911,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_EMER.lua",
+      "SHA256": "01E728E8F9D4877150907AD13CDFD936B7DDEA10DDB900BA2770A0ADD29B4CB0"
+    },
+    {
+      "Bytes": 572,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_EW.lua",
+      "SHA256": "006E36EA78869BBD2D1B99DE55976E6C43D6122231F4E135BC45306DF5239089"
+    },
+    {
+      "Bytes": 568,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_HMD.lua",
+      "SHA256": "7D0C162D5340EE91043805D69A7508B30568A892E667059E9AE733C2B58B7F33"
+    },
+    {
+      "Bytes": 827,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_HUD.lua",
+      "SHA256": "6D32AF988EDE45F4B795205668FBDE31DB6F001EE5870EBE5CDF1BBF2C497DD3"
+    },
+    {
+      "Bytes": 568,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_IFR.lua",
+      "SHA256": "D9971AACA661E4A4D8A52156EABEA6D484148E96F2CCAAB916FEFD47BF654567"
+    },
+    {
+      "Bytes": 574,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_LDP.lua",
+      "SHA256": "31305CE34118B6CACFEE515C21496F9592DD3D41606D42317ACB2AF7AFCF1773"
+    },
+    {
+      "Bytes": 568,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_LT.lua",
+      "SHA256": "940104517C72D99DDCB0173648AC6AB537D07DA4ED5A0E83AEB9C1C438FF5953"
+    },
+    {
+      "Bytes": 577,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_MAP.lua",
+      "SHA256": "D85961909BDB6339BF87BE2D8B0146B2DA1E62B4D8C22032EC254487D2A2A69A"
+    },
+    {
+      "Bytes": 3912,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_Menu1.lua",
+      "SHA256": "704A66C6A95C37910A008CF1A8C159247FE7590434F22A105CCECA35087262D5"
+    },
+    {
+      "Bytes": 7081,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_Menu2.lua",
+      "SHA256": "B21C3A41FDA917EB3AE2F55498EF6AD3B55363ACC5A1241E3783A100A9B7C574"
+    },
+    {
+      "Bytes": 13388,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_NAV.lua",
+      "SHA256": "4514D034E4E98E601540C25EA27ADD247FE6CF6134F517D21C63D8E53691F045"
+    },
+    {
+      "Bytes": 869,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_NOAUX.lua",
+      "SHA256": "FB71ED8A5342C5AF8E225101D0BF9B7337EE9F80A58412FF62E84F017B7AC21D"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_OFF.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 3420,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_PFL.lua",
+      "SHA256": "783C9A142BB4F49061570D163B5315261AB5C9A3624FE40F68734700B9BD875B"
+    },
+    {
+      "Bytes": 570,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_RDR.lua",
+      "SHA256": "805219F80E4C44EA9F9D01BA9B56EBFD08EFABD7CBFCE4E4708E0AF9990FA7F1"
+    },
+    {
+      "Bytes": 1570,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_SMS.lua",
+      "SHA256": "DC41D9FD658313DDBFB629F2523E1DC4F2E0E4406FA7C0A446B3AE9E614AF250"
+    },
+    {
+      "Bytes": 578,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_SURV.lua",
+      "SHA256": "8FCEE23F80C56BB30201E0A87326EF5100404AFE8AD833E5E55EDB34AA629831"
+    },
+    {
+      "Bytes": 581,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_TSD.lua",
+      "SHA256": "A4E51A05D1EE05BA3218E81B6DE5E915DBADF0D0DAE21906A4AD2199380E8009"
+    },
+    {
+      "Bytes": 7332,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/CMFD_UFC.lua",
+      "SHA256": "E44B7B996079567B446179B552932FEC474A875189AF92187BE8C56340592647"
+    },
+    {
+      "Bytes": 3002,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Indicator/FULL_BASE.lua",
+      "SHA256": "AABB3E6B09969FEEB63F13151A5981662DE11E35FF5E63B21DE1465171833CD8"
+    },
+    {
+      "Bytes": 13930,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/materials.lua",
+      "SHA256": "ACE0534D91EBC28C93A7F60CF34753F7D98329E2D244A6C4D565088393A0151D"
+    },
+    {
+      "Bytes": 2765712,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Resources/a29b_font_CMFD.dds",
+      "SHA256": "E3DCC97EFC7CEF26326F6DABF96F24C084851A11C7DE79FFDECC0788451EBB6A"
+    },
+    {
+      "Bytes": 40610,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Resources/f5em_stroke_symbols.svg",
+      "SHA256": "72E1C89B1AB4C3AFE10CC94AF6BB8E8C55B9B6839D50CD111CA1E9D164E67137"
+    },
+    {
+      "Bytes": 25163,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/Resources/stroke_symbols_MFD.svg",
+      "SHA256": "EAA358FBB9CEE48A7C9F85CB5997C95DF8B8C74E0BA0154D82C502EF717F28EB"
+    },
+    {
+      "Bytes": 1545,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/CMFD/utils.lua",
+      "SHA256": "316ED6D1688F74A300C5D724EAB88FF3A2ACC0BC94A5CE7D7129EE49E780231C"
+    },
+    {
+      "Bytes": 29143,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/command_defs.lua",
+      "SHA256": "F23B75A92D10454B860DDD7A2DB373966FD95F7DCADE214F1DB231C18DFC0716"
+    },
+    {
+      "Bytes": 32550,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Controls/data.lua",
+      "SHA256": "0C519288AF91A0ADD8DDFFCB8CE0173BD74C6775A4E215E2C202619649E90FA1"
+    },
+    {
+      "Bytes": 2353,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Controls/geometry.lua",
+      "SHA256": "0486972B2A921F6F0C270985976BA5E00980BB0108E2020EC020E57EF3EDAF6C"
+    },
+    {
+      "Bytes": 1936,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Controls/input.lua",
+      "SHA256": "E56DAB0EE28D2F14F553C205178F01BD7CA57ABD20F6AD930BBE707626C93CB9"
+    },
+    {
+      "Bytes": 3588,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Controls/router.lua",
+      "SHA256": "48635AB8B4129440EF392847D0B41D2599021D7818F173D7179062F10EFF0A2F"
+    },
+    {
+      "Bytes": 2796,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/device_init.lua",
+      "SHA256": "89DEB5FE6404ACAA9293FE0445AC770045F1716851D2277E9A509D9F3531912F"
+    },
+    {
+      "Bytes": 380,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/devices.lua",
+      "SHA256": "0112D71C5A88A56C7C6B9CB3CD76BEB5E5A5A40902B776D83B7869A6E29B56A7"
+    },
+    {
+      "Bytes": 3280,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/devices_donor.lua",
+      "SHA256": "926FCBE036AC0B17E1AB6ED9DDA9D5B6ED58E6480212544CDF5A867C1B18A1D7"
+    },
+    {
+      "Bytes": 1699,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/dump.lua",
+      "SHA256": "F29DB07271B99CD54AF2D8548676A57EF0F5F5CA46B18AD263D3A4EC7E732AF5"
+    },
+    {
+      "Bytes": 13844,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/EFI/EFI_defs.lua",
+      "SHA256": "16E107C1C53BE8E0CDEEA4D2A16CCD5FC7B620EA1E1B8459F2EAB3069DAB7469"
+    },
+    {
+      "Bytes": 5050,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/EFI/EFI_init.lua",
+      "SHA256": "7FDF22D43A114ED32D1398D843D3ED329A3477AE36128B83A54CF9963D518DE4"
+    },
+    {
+      "Bytes": 1773,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/EFI/Indicator/EFI.lua",
+      "SHA256": "D171FBFCA9DB5C456339870355B70FC3A8B6060477D2B7DF6387F92A24D28CA7"
+    },
+    {
+      "Bytes": 869,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/EFI/Indicator/EFI_NOAUX.lua",
+      "SHA256": "FB71ED8A5342C5AF8E225101D0BF9B7337EE9F80A58412FF62E84F017B7AC21D"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/EFI/Indicator/EFI_OFF.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 2098,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/EFI/Indicator/FULL_BASE.lua",
+      "SHA256": "A798AB2BCA4675B4BF4E85009D42346BF599AD9680C5C92C927BD11500A14F3E"
+    },
+    {
+      "Bytes": 12924,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/fonts.lua",
+      "SHA256": "9BAE4E21083F8518D9142D2447E33C8C2FF7F4DE64D0091AC98C56E11745338D"
+    },
+    {
+      "Bytes": 1893,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/functions.lua",
+      "SHA256": "8C383CC756D5AAA92E0958D5B32C3688BAE9F8847F4B4F224E60C82D445C7A52"
+    },
+    {
+      "Bytes": 3303,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/avionics.lua",
+      "SHA256": "AEF5AA4776B5B137DC223E7B25C9AAF674995C01DA2FA5992BE82E47453BAB92"
+    },
+    {
+      "Bytes": 2045,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/bridge.lua",
+      "SHA256": "E25850F4616A32D6BA94DAB0DAADB96768C97ED5480910632ABDB5A9C09B5067"
+    },
+    {
+      "Bytes": 1013,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/common.lua",
+      "SHA256": "6BD368FA9A8B90BBAEA053C76418D8E7670B9EF0FD82CBB3A1B4B3B773CA168D"
+    },
+    {
+      "Bytes": 1264,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/hydraulics.lua",
+      "SHA256": "3191BF0653590987DE5929AE69F6FCFD43B305C5AAB30AD0C574F1410F96B660"
+    },
+    {
+      "Bytes": 1869,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/inventory.lua",
+      "SHA256": "CFBB003971DF4E58699CE32218CDF79B6A7355525162D8008A9047F31113ADBB"
+    },
+    {
+      "Bytes": 2856,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/mechanisms.lua",
+      "SHA256": "93F1145CA55C5E626C15DF57D2D51D82D74CAA3EDD0E2C593E7878B4AEDC4C0F"
+    },
+    {
+      "Bytes": 2342,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/power.lua",
+      "SHA256": "950D288D43A0D4C7A80816B68E7C6412C24695FFB095AD4CD675B7D26998565B"
+    },
+    {
+      "Bytes": 1973,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/starter.lua",
+      "SHA256": "1E15825509C7BC4CE0901AE4493AC24E71B64C4867535E037FCF50B0F4147E62"
+    },
+    {
+      "Bytes": 659,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Host/unavailable.lua",
+      "SHA256": "0E41BD474137BF98014F372E2A841F8DEA56BAAC0FCC052A847BF7DE6B158A11"
+    },
+    {
+      "Bytes": 67489,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Device/hud.lua",
+      "SHA256": "F97E961DC256D8FBC39F872B9F6A7316E941949FF33355EDC893A9F21389D8E7"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/HUD_ID_defs.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 10615,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_AA_DGFT.lua",
+      "SHA256": "4EDFA1A06578E1E847E7A3AEE142692A0A7C2DCCC5CDB4B0C6D9CE71332B7AD3"
+    },
+    {
+      "Bytes": 7526,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_AA_INT.lua",
+      "SHA256": "7AA0292740A3870427E82564409EBB13D2CC9A5FFAA66C5E0415E95F213040F3"
+    },
+    {
+      "Bytes": 8087,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_AG.lua",
+      "SHA256": "1E3AF21AF57ED2F6E059E2747A089E44EB194FB15C1BE90B2A4AA642FFAA2A0D"
+    },
+    {
+      "Bytes": 65621,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_ALL.lua",
+      "SHA256": "2E869F426CDA3BD5BCD5BBD86D339277F487E9AD344981585BE13550AA795139"
+    },
+    {
+      "Bytes": 3489,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_BASE.lua",
+      "SHA256": "F0991AFB323351EB1CCBD2928020C38D70BC22B5B9D0193EEDD9590B0F947447"
+    },
+    {
+      "Bytes": 15187,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_defs.lua",
+      "SHA256": "64BE81D8D938D0694A148BE2236078031B4FBAA02429C15796A841ED2B533BAC"
+    },
+    {
+      "Bytes": 136,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_OFF.lua",
+      "SHA256": "9230BF81580C75022B90FCD18C3A224CF968AB17BE3E82B9615E4BF5148C5407"
+    },
+    {
+      "Bytes": 9205,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_Page_defs.lua",
+      "SHA256": "0F9B875A94B80A5A5A8A48D762A374C6BD7F8F19F8455CA6EACA1D183EB32F2D"
+    },
+    {
+      "Bytes": 1655,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/HUD_page_init.lua",
+      "SHA256": "B6B6FCEFA4F971143A5DEDD48836911A459C7790572286D3438157D642471ED5"
+    },
+    {
+      "Bytes": 1302,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Indicator/Units.lua",
+      "SHA256": "8884EB03FCC4BE00AF59783FD225CD4676ED9F1BA93D99FC8997610D420C35BA"
+    },
+    {
+      "Bytes": 8103,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/materials.lua",
+      "SHA256": "AC1E843D91B31984BCA7508BBC2035F64590626C51B182D3F01052BFA17D874B"
+    },
+    {
+      "Bytes": 2765712,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Resources/a29b_font_HUD.dds",
+      "SHA256": "C5EF544A95F1CF1355973C864CD0683AEF32329374712B351D839F83215A5354"
+    },
+    {
+      "Bytes": 105602,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Resources/a29b_hud.svg",
+      "SHA256": "5C44D0E33B7613AB5FFD1CB7B983A842421B9D5468ED426B10FA354E585D29D2"
+    },
+    {
+      "Bytes": 8336,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Resources/a29b_Indication_Line_Dashed.dds",
+      "SHA256": "70AB6915D8DA67B0D20408E667DE0F73A9A63889978C077A1526BA3A49CC551B"
+    },
+    {
+      "Bytes": 60230,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Resources/a29b_stroke_font.svg",
+      "SHA256": "0FC134D952EA7EE59C09F13DA6D3D512DBDC5632418403C00DBD5DA09E46521C"
+    },
+    {
+      "Bytes": 60896,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/Resources/a29b_stroke_symbols_HUD.svg",
+      "SHA256": "905880B97099A8A8FEE5BE4F3138A8C785DC308D69C56B391D3F182E6D84484B"
+    },
+    {
+      "Bytes": 23163,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/HUD/symbology_defs.lua",
+      "SHA256": "E72E2F86FC6F529C12B2671F280AF4AF0A2788262AF9D1F68FF538B9B2644FFC"
+    },
+    {
+      "Bytes": 14111,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Indicator/host_eicas_indication.lua",
+      "SHA256": "CCE344DD5734D5BCF8EF41E9D2DA52F04B051668B1E5FD059BF6C664635BE6E1"
+    },
+    {
+      "Bytes": 1376,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Indicator/host_geometry.lua",
+      "SHA256": "2DB801B7F75E867CD7FBA99A541A96859E5FD92A7361335C7CC4C5C7B5436860"
+    },
+    {
+      "Bytes": 37526,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Indicator/Indicator_defs.lua",
+      "SHA256": "01F5C4427E09534AE36ADB063C55A90F066BDF3893A3D823850150530156B264"
+    },
+    {
+      "Bytes": 1545,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Indicator/utils.lua",
+      "SHA256": "316ED6D1688F74A300C5D724EAB88FF3A2ACC0BC94A5CE7D7129EE49E780231C"
+    },
+    {
+      "Bytes": 1179,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/mainpanel_init.lua",
+      "SHA256": "962019C9B1807316D396ECD6BC161FABF687F59663EEAF44C68ED2AAA3E97D68"
+    },
+    {
+      "Bytes": 21115,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/materials.lua",
+      "SHA256": "5E43F221D92F7B9D3B93D5E0F5D2CAA5767AA29DF6E78228A28368D37D57FC6D"
+    },
+    {
+      "Bytes": 11,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/sounds_init.lua",
+      "SHA256": "0DFB88962362B6ED0F9A38FA454B7AC810BDD2F959096F5FC39BD135B86B9BCE"
+    },
+    {
+      "Bytes": 6325,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/adhsi_nav_logic.lua",
+      "SHA256": "75925E09FC69E39EE0A848F855BDB957FE190220C7E4497F64DB9BA467B20A0D"
+    },
+    {
+      "Bytes": 9463,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/alarm.lua",
+      "SHA256": "AA3335BA7017FED0C352E11C4131996A8F1F811B27718FD4A4C1BC54020AA3F7"
+    },
+    {
+      "Bytes": 3420,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/alarm_api.lua",
+      "SHA256": "B1AFA3BF4B77C658B7AE2E22022E60B32DB5CADA109DBB023F19EBA3B6B8606E"
+    },
+    {
+      "Bytes": 5022,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/avionics_api.lua",
+      "SHA256": "C7ABE36754F12851CCE8BB3F99ED4CCB9811748F28C19C356CBA562B0895AB36"
+    },
+    {
+      "Bytes": 6885,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/checklists_f5em.lua",
+      "SHA256": "D831924B8655E5F6A4B66B247E706443A31BE0DE1AA1A772CF47452B102FE008"
+    },
+    {
+      "Bytes": 5348,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/combat_display.lua",
+      "SHA256": "6C9FAC908DD8ADF886820A783DF396C9EF51CDC0BE8C620E5D14355670791BCA"
+    },
+    {
+      "Bytes": 14348,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/coordinate_api.lua",
+      "SHA256": "18DDF1C02CF3247E726910473BD48C3032FAC5B8F541E74D233ED2C641AFB21C"
+    },
+    {
+      "Bytes": 844,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/efi.lua",
+      "SHA256": "B705A7B263EE12920FDABD447C4AC6BFD05DFF6027F161D8EA1313557ACDA8CD"
+    },
+    {
+      "Bytes": 922,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/electric_system_api.lua",
+      "SHA256": "F9587CA19C32DE8FD299AA08FB3DD3550F0D2D0A686E7458225D6D7635C0CF2B"
+    },
+    {
+      "Bytes": 334,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/engine_api.lua",
+      "SHA256": "068D78BA49AC10457EAA748EF7CDBAA0AC0DF93ECDFE9D6B7B067B271A20525E"
+    },
+    {
+      "Bytes": 17788,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/F5EM_Link_BR2_Fusion.lua",
+      "SHA256": "9A3A4D10D96E0D4B1330DE68A579315C6CB9A4F57BEDC5B382FA54C11693822A"
+    },
+    {
+      "Bytes": 1281,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/host_alarm_sources.lua",
+      "SHA256": "12070D1CB28D7C02F622C6FB559ECE151DA5E15472BB73DF2DCCDF3747BEAB97"
+    },
+    {
+      "Bytes": 576,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/host_controls.lua",
+      "SHA256": "AE321B338B3D95D8C872A99C578546B9F5847CD7206AE380D1E08ABA73C48287"
+    },
+    {
+      "Bytes": 2050,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/host_eicas.lua",
+      "SHA256": "4C5DD83BDC3B1BFC1518EADF790505E59740C4848E6161ED1399BFF2C85DE7BE"
+    },
+    {
+      "Bytes": 1643,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/host_fuel.lua",
+      "SHA256": "517356F87C8E1BA3724D35669252C9E94F00FB4512AA631C3765A670C07C6A07"
+    },
+    {
+      "Bytes": 1022,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/host_telemetry.lua",
+      "SHA256": "5F54851DD988989D68BE8EA94F64B4640FA26E057FBCF71BA978F54727CF25BC"
+    },
+    {
+      "Bytes": 1462,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/host_text.lua",
+      "SHA256": "08FEF99496D36618D9F8116D913E250F59E709E8A2EF99ADEB7F6F29127491E8"
+    },
+    {
+      "Bytes": 4077,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/hud_nav_cues.lua",
+      "SHA256": "E980899AD39CFC630FFEBC29067C802ED136BDD7271D17335C7D000F32099D44"
+    },
+    {
+      "Bytes": 902,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/hud_ralt.lua",
+      "SHA256": "BE4651CFB6735DEC83E1508CC4DAA2657BFC1B8D5F77A1A38E98F4730FF8A8AB"
+    },
+    {
+      "Bytes": 9270,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/navaid_receiver.lua",
+      "SHA256": "BB4C1C38F31135171871A52C39F8CDDCF0F4F5CA52E18AF860BC49766383CBA9"
+    },
+    {
+      "Bytes": 4134,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/pfl_check.lua",
+      "SHA256": "99B49D434B62419A24C01FAA84AA6AA589C179E8DF698D6413671A2365B5F8C2"
+    },
+    {
+      "Bytes": 1036,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/radar_ag_logic.lua",
+      "SHA256": "DBDE7A9C58868B24D8FD54AA83C83B764F683D6B9CDE25CD62891D7B43A6F435"
+    },
+    {
+      "Bytes": 7188,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/radar_control_logic.lua",
+      "SHA256": "897E7241B5AEED1D0DDAC2268D96A7EF21A7823975CF0170CAB2050AAD8DA064"
+    },
+    {
+      "Bytes": 11876,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/radar_engagement_sequence.lua",
+      "SHA256": "857C2A18A2D5665A51290D3BAB9DFBEFD729B8078120B0FAEF47658723113875"
+    },
+    {
+      "Bytes": 4635,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/rdr_api.lua",
+      "SHA256": "406E567610650511ABB0D36A47790881E3F2B398D9B308390A0BEBBB3C3A7D0F"
+    },
+    {
+      "Bytes": 3726,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/sounds_callouts.lua",
+      "SHA256": "44E2CF8D37B4C963CB0977051BF9D5242860799CFD7A3B5A8685F2AFFC120A18"
+    },
+    {
+      "Bytes": 2432,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/ufcp_api.lua",
+      "SHA256": "075F51A4F965A45B962D10EB8A4AE8BC2C4DB6949FAA0D8D2B712D64D00D664C"
+    },
+    {
+      "Bytes": 7461,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/Systems/weapon_system_api.lua",
+      "SHA256": "B2BA612A1DFC95745B09460A0FDD271825E69494628E14C056BB8EFA9DBA3287"
+    },
+    {
+      "Bytes": 156,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/acal.lua",
+      "SHA256": "496228547ACE2284633C21BC36EA29101D930C04EF8DB2A01D6E6D60F0A396C7"
+    },
+    {
+      "Bytes": 7881,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/bal.lua",
+      "SHA256": "FF533DB35FD830E59B54B363507165FD2FB9540002ECFBA5849AA5F7CBA79D2E"
+    },
+    {
+      "Bytes": 151,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/cf.lua",
+      "SHA256": "3D84E088168D92E3E329D9BDCEB3B8D6A01C186756193FDAE35BF76AA71D310E"
+    },
+    {
+      "Bytes": 155,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/crus.lua",
+      "SHA256": "00A13C429763126124056DDFC685C67594263294061CFCF9BF3989E03A1A2B0F"
+    },
+    {
+      "Bytes": 4535,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/dah.lua",
+      "SHA256": "FE855CD7A05AED088FF29E73E6B122E226CAD0C80AD6FE520590BD1FF3EBFCB5"
+    },
+    {
+      "Bytes": 723,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/date_validation.lua",
+      "SHA256": "53A703D697D2C3EB53E64DF54E88FD6D374C64B731D96CCCC9D05CE303DD0BCC"
+    },
+    {
+      "Bytes": 2437,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/dclt.lua",
+      "SHA256": "2B435A410A1F964D903BC67910A7C0F35281E419D658EE6C80F5883EBE5190ED"
+    },
+    {
+      "Bytes": 1664,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/dl.lua",
+      "SHA256": "0EDBB4679F8265F47AAC9069E15147A70F9C3175D44D1D92D9796DDD8F3A6C33"
+    },
+    {
+      "Bytes": 551,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/drft.lua",
+      "SHA256": "472CBBBC4E723ABDF0B64DBD0268D78274F5CA7C3F949C15E9C3031A3A520671"
+    },
+    {
+      "Bytes": 5125,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/dtk.lua",
+      "SHA256": "B6D391A8A67F638EC32FBDBAB2DA6204A9637481A4F074AE45572FBF3693595E"
+    },
+    {
+      "Bytes": 28939,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/egi.lua",
+      "SHA256": "BAD59391EF88A608F529D045924FDB3D048EB3A459057B781AD2849C5714BD68"
+    },
+    {
+      "Bytes": 3542,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/fix.lua",
+      "SHA256": "2494A447B79E8F83D6B9B3B734CE17D4EB8C316A9C9CD4DB717E0E1F653384C3"
+    },
+    {
+      "Bytes": 155,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/flir.lua",
+      "SHA256": "213676C2B0E29D7BEED49E0181294AD05F5788FA160747D8DEF9963A5CC2F062"
+    },
+    {
+      "Bytes": 152,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/fti.lua",
+      "SHA256": "8DEEC55B88F99D67228E7FC57E1940BDC9551AB958923070AF29AFB4E9F69DB8"
+    },
+    {
+      "Bytes": 5262,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/fuel.lua",
+      "SHA256": "B13402D93EF11CD1B4063CD8B18284ABF16E8AD78C02B68F62A43A4F401DFCB4"
+    },
+    {
+      "Bytes": 10021,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/lmt.lua",
+      "SHA256": "A266DFBB5758B8FE9FA863CBC1F02C8612B505CB78318865F0A30268A3C00CF3"
+    },
+    {
+      "Bytes": 9562,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/main.lua",
+      "SHA256": "AB91E57FA6687CE8E13FB9780C881BD7D9D79485E6917FB3A9D8D1616F173AEE"
+    },
+    {
+      "Bytes": 3375,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/manr.lua",
+      "SHA256": "A3977DCA6AF662F7C4251D56D03B435F8ED0E31E9F49FDE391EB4DC8C3001733"
+    },
+    {
+      "Bytes": 5060,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/mark.lua",
+      "SHA256": "6AEA5C166C4CB856A91F9D01584575EB07E0D21D3AB83C1874E00121707870C9"
+    },
+    {
+      "Bytes": 3732,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/menu.lua",
+      "SHA256": "9395F6FD1A1AA7EF9283FAB23A683690F84944D5096277527C2E57E2C166EF7A"
+    },
+    {
+      "Bytes": 3091,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/mode.lua",
+      "SHA256": "A7DF10F7E3B3FED13F9AAB41F7DB408075EDC24587BDD75E5542A70214604C17"
+    },
+    {
+      "Bytes": 12993,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/nav.lua",
+      "SHA256": "97B2469D998C245760124BB7C23E03497D533BA262C24CAF5D15641A2526DB36"
+    },
+    {
+      "Bytes": 13159,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/navaids.lua",
+      "SHA256": "2D32734B04F84BBBA28F80C7442AC7DAE61703ECDF1FA3443E71850F61264E9B"
+    },
+    {
+      "Bytes": 9550,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/oap.lua",
+      "SHA256": "0FFBC45E61896FC05066B80D3C420DDAA0D8BE273C3E6297B34AAD72EC126650"
+    },
+    {
+      "Bytes": 155,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/para.lua",
+      "SHA256": "BC7C702C31946BB82EBCC1955904C6BA75DC6FF17FB4752AA9346D09B8EEB002"
+    },
+    {
+      "Bytes": 2468,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/strm.lua",
+      "SHA256": "76FB72CC3A0ECFB479035BCA7ED76A6AB3F9A17E999D859E0000DD4FA4DDC33D"
+    },
+    {
+      "Bytes": 867,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/tac.lua",
+      "SHA256": "41AB0C3DC2E21901247EF190EB8872E99BD2D9678DC18E8283C293518C388DF9"
+    },
+    {
+      "Bytes": 7856,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/time.lua",
+      "SHA256": "378B8059369EC1B91551F8DE66EB76B2D7690F0AD25E6A7D2E7722DD98B1CC0D"
+    },
+    {
+      "Bytes": 6537,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/tip.lua",
+      "SHA256": "219EC56EBAA2B7E845E08D034AA8621CE13823DDE220FB675087FF388AA1144B"
+    },
+    {
+      "Bytes": 154,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/tkl.lua",
+      "SHA256": "75D8661BEACD7F6FFE82F13BC112058BD14E9B344248E15B5778E03236BB9BDC"
+    },
+    {
+      "Bytes": 27629,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/ufcp.lua",
+      "SHA256": "2B918BD9694257179F138F8C4C6910ED3425A0D185E69F6D64C0517AEB21F1A8"
+    },
+    {
+      "Bytes": 16921,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/ufcp_com1.lua",
+      "SHA256": "6575F7D537A8CEB8400C9C79B5626FDF49903707E245F4CEE69D38642DC2A854"
+    },
+    {
+      "Bytes": 28978,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/ufcp_com2.lua",
+      "SHA256": "0CD4A1CC403AE80ADE11C53C205D39906F9B3AE828B0A43FD9E2C6BFB7A16633"
+    },
+    {
+      "Bytes": 1710,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/vvvah.lua",
+      "SHA256": "0BA314D706BEA5F138B381E764403AFC027380DA62DF9001388CA269AAAC0703"
+    },
+    {
+      "Bytes": 30973,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/wpt.lua",
+      "SHA256": "D1A38A4FF6CBCDF49DD1E2EF75A6BC623188B6755CAA304E0B9A73200BB75F5A"
+    },
+    {
+      "Bytes": 4199,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/ws.lua",
+      "SHA256": "C8037DBE629E44843D80600808EDB189D774791359ED015CB126B14221079063"
+    },
+    {
+      "Bytes": 8305,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Device/xpdr.lua",
+      "SHA256": "8B09535A8DAD5D5D875BF11FA3C6FFD7269E5462C5AC772CEC6BF8B585D61DBB"
+    },
+    {
+      "Bytes": 6948,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/emergency_checklists.lua",
+      "SHA256": "E5F7B7F4631D8ADE107E1485E61ABCD68F10184B96A5BF9795450031B31F5997"
+    },
+    {
+      "Bytes": 253,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/host_icp_init.lua",
+      "SHA256": "909DAA7BFB46C2F9D7E3013D7CB726A47D05DCB5AB61295A7E996B2FF8D42950"
+    },
+    {
+      "Bytes": 1342,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/host_icp_page.lua",
+      "SHA256": "F9222EB678D739960786EAC35B82DB8F243E966DDA23F604961A7B5669AE61EA"
+    },
+    {
+      "Bytes": 768,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Indicator/UFCP_BASE.lua",
+      "SHA256": "179656782AD66C777E0622A14925D28DB3C5DBF67B603FC3278392AFD0AF46DC"
+    },
+    {
+      "Bytes": 2797,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Indicator/UFCP_MAIN.lua",
+      "SHA256": "FD2466605F3308127956E2376A045D510230E8A74AD9D2382FDDABC32ACB8B95"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Indicator/UFCP_OFF.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 10165,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/materials.lua",
+      "SHA256": "DE7E6B3C1A5E3B272FCBD896732E50465A752A20374AFA36F68677CAA115BD4F"
+    },
+    {
+      "Bytes": 2555916,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/Resources/a29b_ded_font.dds",
+      "SHA256": "405B5C56F100D8A601731A66B12A7B8DD70826ED571D4A41A1581A07802F7BAD"
+    },
+    {
+      "Bytes": 900,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/UFCP_defs.lua",
+      "SHA256": "693D20F97680A45513777EEAC5E794EDCBF78A96A582DABA10ADEF690D86460D"
+    },
+    {
+      "Bytes": 1799,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/UFCP_page_init.lua",
+      "SHA256": "90BFB20E74405347608706BDC0BDFEBFDB23FBC6A2D0DDA316398F7DE662FE97"
+    },
+    {
+      "Bytes": 220,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/UFCP/UFCP_pageID_defs.lua",
+      "SHA256": "3733DA505F4770CD071771BDBA1D1F21220E201E6D04385732AAA950A45F1B55"
+    },
+    {
+      "Bytes": 46741,
+      "Path": "Avionics/Runtime/Cockpit/Scripts/utils.lua",
+      "SHA256": "241B945AC38085A9882CB7195BAEA27F10F5440304F1557F5182E159F89B4B70"
+    },
+    {
+      "Bytes": 118,
+      "Path": "Avionics/Runtime/runtime.lua",
+      "SHA256": "574C9CB881E26DDC1F95D039B2B41083E0070FB9557626BBC1D37AB3193F6FF1"
+    },
+    {
+      "Bytes": 22369776,
+      "Path": "Cockpit/AMX-A1M/Textures/a-4e_instr_bckgd_2.dds",
+      "SHA256": "6674CEF41E9B92C9EDFA3C57E3298DFACFDD7639CEEE166904753A0833EC3651"
+    },
+    {
+      "Bytes": 87536,
+      "Path": "Cockpit/AMX-A1M/Textures/a29_glass.dds",
+      "SHA256": "6D3ADEFCE164E0FDFE5DAF38271ED6FC9017CA512219FD12ACF8CE434855E280"
+    },
+    {
+      "Bytes": 5570688,
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_CPT-INSTR-02.dds",
+      "SHA256": "7531073B01D9261753977B92E235379DF1A69CE060DB6A4A58FDC24604A0C059"
+    },
+    {
+      "Bytes": 5592580,
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments.dds",
+      "SHA256": "CD46D45712579B7D9A9FDA317F65CE81839A194F1A0F5AF42FC1817D8D44FFB5"
+    },
+    {
+      "Bytes": 507449,
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments_lm.png",
+      "SHA256": "92864AEBEED251D44B25FA463D8FD500FD65E1A62F5E447884762DFEDC9D5D44"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments_nml.dds",
+      "SHA256": "3DE80C35399233A7BE1B4F24037FEB21036CEAAF2216CBFF938440F371554F6B"
+    },
+    {
+      "Bytes": 1755331,
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp.png",
+      "SHA256": "36312A81E3297A40E49685F3B503C2614C048CA9E893DD8B45D16493698FFFC9"
+    },
+    {
+      "Bytes": 1006033,
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp_lm.png",
+      "SHA256": "93BBC888094EA3350371ABDEE32DB95386E20B747438239C4F4D9BD118B53BED"
+    },
+    {
+      "Bytes": 2592575,
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp_nml.png",
+      "SHA256": "2D11A83F55E0D891D913D1444564504F068E9CEAC9308DDE083A3FCFFA78B0C9"
+    },
+    {
+      "Bytes": 1398248,
+      "Path": "Cockpit/AMX-A1M/Textures/a4 main2.dds",
+      "SHA256": "07D28DE3479A44C8AA5F9D263451E80224B6B7D53426F21A395671BD0F4DDAAA"
+    },
+    {
+      "Bytes": 2796344,
+      "Path": "Cockpit/AMX-A1M/Textures/a4e_aggr_usmc_topgun_mig17_pilot.dds",
+      "SHA256": "E8EE5BBD163BAE64115103F3A8A010A39A72A5C6CB2781899CF63181A50B7AC4"
+    },
+    {
+      "Bytes": 2796344,
+      "Path": "Cockpit/AMX-A1M/Textures/amx 3.dds",
+      "SHA256": "DA7304C53FDD806B8BE283F02B0F83FF3AAB081327D0782C15071E8859669CDD"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/amx belt.dds",
+      "SHA256": "A73FA01E4B828FB4C38538C8A61D45C7F89CF63402AB63ECBA171A77703F1DCF"
+    },
+    {
+      "Bytes": 828130,
+      "Path": "Cockpit/AMX-A1M/Textures/AMX CANOPY FRAME.jpg",
+      "SHA256": "522ED3C9323DB0D88AD110A51EF009E42F52321010E5A34CFCE5BF23444DAAD7"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/amx cock.dds",
+      "SHA256": "2F890892AB01FD1E069809414B9C5CFA719CF55DBC1D5FBD0A5F2B05A5E1E3E0"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/amx pedal.dds",
+      "SHA256": "E52EF240B538FFE68E5200186DBFBA57D0F678F1A7A2F671312B81FF11B5E297"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Cockpit/AMX-A1M/Textures/amx seat.dds",
+      "SHA256": "1CA8B28EF346CD6A163820F4E04A36E18E85F11B54E8433BD62C6F1A7E283F8F"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/amx stick.dds",
+      "SHA256": "E52EF240B538FFE68E5200186DBFBA57D0F678F1A7A2F671312B81FF11B5E297"
+    },
+    {
+      "Bytes": 22369776,
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex01.dds",
+      "SHA256": "B94E1D2DFEA3A98D4CECB5C555AB21A3AFAC81D75BF86ED72E5493C02D2B1FC9"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex02.dds",
+      "SHA256": "472B3B8A707BABF2DB541A2A8F76C0E6D810950EF9A5B3F277A13B9DD24F2878"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/amx_cpt-tex03.dds",
+      "SHA256": "032EE9A33741F66140CF97146A0F9623A2E5E44F4E14C9195C929288B3097E1F"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex04.dds",
+      "SHA256": "A8ABB0B789180CE488D778C17FC07D6E2418EC71F3ED172E6B19CDC279A12D1B"
+    },
+    {
+      "Bytes": 5592560,
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex06.dds",
+      "SHA256": "343A1632D3926203446252E414A84C5FF42DEDEBDFB21FF798D16BD84FCFE9E6"
+    },
+    {
+      "Bytes": 699216,
+      "Path": "Cockpit/AMX-A1M/Textures/amx_cpt-wire.dds",
+      "SHA256": "30C8F692F4C1A7C8081999300020442D48E431B925F0E52F24A2DDA7BC8EA872"
+    },
+    {
+      "Bytes": 22369776,
+      "Path": "Cockpit/AMX-A1M/Textures/amx_lateral.dds",
+      "SHA256": "D8440FC17B3810889899D7690008A89CAFFC3541B66CF823E7DF6D70888AEE08"
+    },
+    {
+      "Bytes": 1531948,
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle.png",
+      "SHA256": "3BF3289220762B9FCFCF0428560C055D13F7FAF6E98E97646686606027C5CB94"
+    },
+    {
+      "Bytes": 55849,
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle_lm.png",
+      "SHA256": "2DF25D3721EE670F1F4958B87C4483F9C5EF5CF6FBAA43EA060E6F04B8795E71"
+    },
+    {
+      "Bytes": 2810660,
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle_nml.png",
+      "SHA256": "3C3452CE6FC3902366D1A26A46EECA960CF755E20A34C91D2ABF251FBCE6E9DA"
+    },
+    {
+      "Bytes": 1213083,
+      "Path": "Cockpit/AMX-A1M/Textures/Assento AMX.png",
+      "SHA256": "7D4A6C8C4DF5ABDC4843D6F17BF778D6EB5706B72002B3B55D988F1923ED4646"
+    },
+    {
+      "Bytes": 14254989,
+      "Path": "Cockpit/AMX-A1M/Textures/ASSENTO HIGHRES_albedo.png",
+      "SHA256": "7E5CEF3838CB03419EAF6EE8E04A859ACFC2092B448FCE91608D056E6D8376FA"
+    },
+    {
+      "Bytes": 9473108,
+      "Path": "Cockpit/AMX-A1M/Textures/ASSENTO LOWRES_albedo.png",
+      "SHA256": "8206554A46AE730775579681FF4CEF40919C2723704D387524F170857ABD9C55"
+    },
+    {
+      "Bytes": 124609,
+      "Path": "Cockpit/AMX-A1M/Textures/cano AMX.jpg",
+      "SHA256": "CC1AB2BB2B17C1D9B2A2EDDD469EC9472B956FC62744F78F90369A74AB5F1609"
+    },
+    {
+      "Bytes": 8968337,
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY FRONTAL_albedo.png",
+      "SHA256": "A7F85F9F9EF44D8EE0BB4DA425B257CBC697868C51F26733353A7909068EC989"
+    },
+    {
+      "Bytes": 6818145,
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY INTERMEDIARIO_albedo.png",
+      "SHA256": "6A99676E842E2971B432426BC4B26A95CF24C045CF7CA4F57B6931012492F60E"
+    },
+    {
+      "Bytes": 7127951,
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY TRASEIRO_albedo.png",
+      "SHA256": "F105CE7B98993683E3B71A6CE53FDA1BA35DF637658E98B2B1784100528241DA"
+    },
+    {
+      "Bytes": 2946260,
+      "Path": "Cockpit/AMX-A1M/Textures/CINTO AMX.png",
+      "SHA256": "8A74C817428ABC0C2A8208DF97F29934588DEC46AD965684042EDDB2381FB3C3"
+    },
+    {
+      "Bytes": 22369776,
+      "Path": "Cockpit/AMX-A1M/Textures/cockpit_switchesknobs.dds",
+      "SHA256": "A07620E120EFF097491FE3C620AF9888DC3679B2DB2F4F41EFF66C507A049535"
+    },
+    {
+      "Bytes": 44696,
+      "Path": "Cockpit/AMX-A1M/Textures/dangr.bmp",
+      "SHA256": "0BFE18F901E8375FE56B7BBC0EB310D1E4FC2442F99D347B5C5B890959051236"
+    },
+    {
+      "Bytes": 10006519,
+      "Path": "Cockpit/AMX-A1M/Textures/ELECTRIC_albedo.png",
+      "SHA256": "E6E9777B620D74481EFC549FF7FB6FECA80620A0B88DB52D1439CB7BF802DF4A"
+    },
+    {
+      "Bytes": 1937996,
+      "Path": "Cockpit/AMX-A1M/Textures/F5EM_INTR_1.png",
+      "SHA256": "547BA2EE60A8E955CE34152A76C0B48E645925D1B82E537F2F4063A0866FCBB4"
+    },
+    {
+      "Bytes": 25522,
+      "Path": "Cockpit/AMX-A1M/Textures/F5EM_INTR_1_nml.png",
+      "SHA256": "4B74A073C4BD7F044FE5A247DE17DB1C19BE794F621DB01C7FFC94357412EB1B"
+    },
+    {
+      "Bytes": 2032014,
+      "Path": "Cockpit/AMX-A1M/Textures/FUEL_albedo.png",
+      "SHA256": "C4F120FE19A27E129940CD1278A8CA8B749991CAEED57DEBDD0EEFB1EE4FA98A"
+    },
+    {
+      "Bytes": 2126116,
+      "Path": "Cockpit/AMX-A1M/Textures/GPS_albedo.png",
+      "SHA256": "57A03EF1A487F00298D7F2AC818731C771BCF6530BF35D5629F4CC21BF9D68FC"
+    },
+    {
+      "Bytes": 3562576,
+      "Path": "Cockpit/AMX-A1M/Textures/iff.bmp",
+      "SHA256": "E4256AAB1C067827DEA6B65FB3A9BA3CAA19CAA1D995F34515E15080C97C31CD"
+    },
+    {
+      "Bytes": 8906738,
+      "Path": "Cockpit/AMX-A1M/Textures/MANCHE E MANETE_albedo.png",
+      "SHA256": "3B63FE86F6E87EAC5FD7FB9384400895238DE444C0DB01ED8B58762E75F39C4B"
+    },
+    {
+      "Bytes": 208396,
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION preto.jpg",
+      "SHA256": "2D964098AEBA9A8918ADEF5913B262D943E9C6555F9ADC85D4D30D265CF51739"
+    },
+    {
+      "Bytes": 287770,
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION.jpg",
+      "SHA256": "E3C360E5B25EAD8B1F0B01CB68566C05948661F4604DF49E33B6F1849A5F7C0C"
+    },
+    {
+      "Bytes": 240689,
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION_NRML.jpg",
+      "SHA256": "4D41E91AEC9367ADDE81428B324DBDD7ED01C8C57914E20CEF9EE1EC6BAD68D6"
+    },
+    {
+      "Bytes": 10155030,
+      "Path": "Cockpit/AMX-A1M/Textures/MECANISMO CANOPY_albedo.png",
+      "SHA256": "7173BECD1467F8EAF18536559E5F3A6A978941493E1C381D1B6806C80233FFBC"
+    },
+    {
+      "Bytes": 337590,
+      "Path": "Cockpit/AMX-A1M/Textures/melhor.jpg",
+      "SHA256": "80E8EB6FF5ED681BD6A9519E2F7C1C84C2FFE2F50463E4EA391646C8ABD8C8D3"
+    },
+    {
+      "Bytes": 4520921,
+      "Path": "Cockpit/AMX-A1M/Textures/Meshy_AI_Fighter_Jet_Cockpit_0825134829_texture.png",
+      "SHA256": "3AD780AF4134B128B888DD4F4C23DC5AB9D49B28531E6F03E6B3D2486EA021B0"
+    },
+    {
+      "Bytes": 4527278,
+      "Path": "Cockpit/AMX-A1M/Textures/Meshy_AI_Fighter_Jet_Cockpit_0825134829_texture_normal.png",
+      "SHA256": "5E2ED9450FE3D090485604FF12F20EE155919AC80500B79CC3F52B8B6AB001D8"
+    },
+    {
+      "Bytes": 594488,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX ANTI ICE.jpg",
+      "SHA256": "4EF9E87FC2823DB340CC52F2FD5A6702FDDBABA1C0CEC044C7C8895D23269A47"
+    },
+    {
+      "Bytes": 635685,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX ARR HOOK.jpg",
+      "SHA256": "0C8F8E3D4304135C425AFDC8926A98E35C87DD5F0F158C14A773247C8002AC7A"
+    },
+    {
+      "Bytes": 287323,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX canopy frame.jpg",
+      "SHA256": "41F27FF59EEC6CB3D25056E437825FB5BACD73056DD602578FB0C1CF29FEF39D"
+    },
+    {
+      "Bytes": 578176,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX CANOPY SEVERANCE.jpg",
+      "SHA256": "B48030A5A3BA45C6F6636616103E49CD20258075F6974C49BDEDCB00A71DE8F9"
+    },
+    {
+      "Bytes": 697250,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX GARMIN.jpg",
+      "SHA256": "594B1D357FEE55DC974AB5E2CC53E3B78A2B9FCBE1EFFF1AAE3C73EC1F7B0042"
+    },
+    {
+      "Bytes": 680301,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX HYDRAULICO.jpg",
+      "SHA256": "23B5478A5B44B04C0A08D327B89CEF6830E21FADE55C92760809222BB652A1F1"
+    },
+    {
+      "Bytes": 512435,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX LDG.jpg",
+      "SHA256": "8B8FD6EBDF34BC8EC227424AB38B9B0F195A7773E941D51FBF94D65D732DE9D7"
+    },
+    {
+      "Bytes": 532043,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX LIFT DUMP.jpg",
+      "SHA256": "413E6A218120903BCCFDAE82EC7F8299536928E388DA8303CBB3EDF373293EE9"
+    },
+    {
+      "Bytes": 525249,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX PARK BRK.jpg",
+      "SHA256": "D5D8ED127119C2C285FA331E54E2CA1E063D65B09CFF8BD5F2EAB70F2806337F"
+    },
+    {
+      "Bytes": 529725,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX PEDAL ADJUST.jpg",
+      "SHA256": "E9C472A6870D68EEBD66E56AB8028D00807180BA359A924F7B549E20B4D78EC2"
+    },
+    {
+      "Bytes": 552078,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX REFUEL.jpg",
+      "SHA256": "BA369E0AC8B4F8B422C9F479A9387CD7B2C45F44769FE020CFC54EEC79B52B08"
+    },
+    {
+      "Bytes": 668355,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX SEFETY JETT.jpg",
+      "SHA256": "BFA727F51B1E120404D3E048F5ABD10EFBEA324F7F9BDDF4BF6A503232E0D5F4"
+    },
+    {
+      "Bytes": 584676,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX SLAT FLAP.jpg",
+      "SHA256": "7FAF97C6FCE806DF0B7FC8683EF8FF2527075058AE00245AAE1AA2C361B617AE"
+    },
+    {
+      "Bytes": 428627,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS BATT ELECT.png",
+      "SHA256": "29EB85DECBD980F99BC7767E5B53EB59187434DCFE3CCFB6B0545B0101DF4AE1"
+    },
+    {
+      "Bytes": 855269,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS CONSOLE AMX PEDESTAL iluminacao.png",
+      "SHA256": "BC51CE0EAA6949DCABD7D3CCDA7EE328421246D0345E76C986F0BF08B598F4A4"
+    },
+    {
+      "Bytes": 2510577,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS CONSOLE AMX PEDESTAL.png",
+      "SHA256": "36E3FF2BADC524C27DBC5892F70174D76FBBF318712331D1EB5C11B5FB7E89CA"
+    },
+    {
+      "Bytes": 422441,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS FAB BRZ.png",
+      "SHA256": "DE039B0F38DE7A03853A8DF0B91A88D5A7980AE0ABF81337D42C101E96A27538"
+    },
+    {
+      "Bytes": 417720,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS FLAP AMX.png",
+      "SHA256": "90C94D470811FA289C270DC9A1F3583F42265761AC2A5EA734D54C2D8A47FD2A"
+    },
+    {
+      "Bytes": 437281,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS LIGHT STEADY.png",
+      "SHA256": "F60C08E731EEE86B41E6FB568FC8E108CDCFF391BB88FF6287D5C22626E20447"
+    },
+    {
+      "Bytes": 56996,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS MFD AMX.png",
+      "SHA256": "E27DF3C737A4614B9D90914D53F06CFEA1E935F2C29999606CF953C5FC8890CF"
+    },
+    {
+      "Bytes": 640340,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS REFUELING PANEL.jpg",
+      "SHA256": "A6A728EB6ABD4211E684A896B3CEC02333DD724E1376CBA4EB90A65E816E46D4"
+    },
+    {
+      "Bytes": 394101,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS TRIM AMX.png",
+      "SHA256": "9B63AC98F2B18BB5A415E556229BEC5EFD5DCEF9A807B246451236AEE359FB0B"
+    },
+    {
+      "Bytes": 42651,
+      "Path": "Cockpit/AMX-A1M/Textures/painel bege frame canopy.jpg",
+      "SHA256": "81AB8FA67A9F4A999807DCF28042FC30E6F9C83243CCC7CCC079F64DE0439B3F"
+    },
+    {
+      "Bytes": 6220856,
+      "Path": "Cockpit/AMX-A1M/Textures/painel cinza 2.bmp",
+      "SHA256": "A497ABFF7065013573B267D19DF8C0D4C25DCAF90C0FB2A9F647CCB815934F5E"
+    },
+    {
+      "Bytes": 127079,
+      "Path": "Cockpit/AMX-A1M/Textures/painel cinza frame canopy.jpg",
+      "SHA256": "3085FA0CF65704007EABF64F6F857F06D7F3CA13371B09691B97A2688ECED3DF"
+    },
+    {
+      "Bytes": 1108141,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL COCKPIT NORMAL.jpg",
+      "SHA256": "BEA8F8733591F5DF8E625DF6E500E467AAC05D539CE94C2D2C12903AF1821258"
+    },
+    {
+      "Bytes": 563177,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL COCKPIT.jpg",
+      "SHA256": "3DBD25646D1CD5E4914B4C3ACC2565A4B3251311374CB704599A697352E2F4EA"
+    },
+    {
+      "Bytes": 468009,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL FLT CTR AMX.png",
+      "SHA256": "3EBD2C0E4B06953867614BCBE568F27307E5A50DBDC8C996AC2C0ACD4C2B0EF3"
+    },
+    {
+      "Bytes": 982382,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL GLARESHIELD AMX.jpg",
+      "SHA256": "E9547014BD62449723FFD9D7CF81815BAA2B483E99391A66AD4A7939AA6FE016"
+    },
+    {
+      "Bytes": 2184775,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL GLARESHIELD AMX_BUMP.jpg",
+      "SHA256": "3E7C561C50142B87A603647EC56448F29744D464F6F5F165BAFD07ECEC12B88D"
+    },
+    {
+      "Bytes": 612676,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES Base ajustada NRML.jpg",
+      "SHA256": "A3079C313784F0155D7509285721AFD9A0AEAD6C55F7A398930643D306FBA990"
+    },
+    {
+      "Bytes": 511536,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES Base ajustada.jpg",
+      "SHA256": "5314AE730B2839504E5158B4D35A2CBBCC3D37E16CC3039A892FDF4C4C2103DE"
+    },
+    {
+      "Bytes": 416506,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES.jpg",
+      "SHA256": "9BAEE0F2D5E2FFA9E7573A53F447CB46ACD0CBFB84AE3DA1CBE93CD4413470B6"
+    },
+    {
+      "Bytes": 228763,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL MAPA LUZES normal.jpg",
+      "SHA256": "0301F78351BCBD2572CD341A9E95E67D41525F6587F7AF08456A3ADC5AB045CF"
+    },
+    {
+      "Bytes": 71759,
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL MAPA LUZES.jpg",
+      "SHA256": "C240407A1598B10770B87ACBD1C8F4F29382DFC6BB11824803F64658911FFEDE"
+    },
+    {
+      "Bytes": 59293,
+      "Path": "Cockpit/AMX-A1M/Textures/parafuso canopy 2.jpg",
+      "SHA256": "62EB9D77B460B9EBED78E470B7E8981E15A74577F4A9734861D21B55AFB2AE94"
+    },
+    {
+      "Bytes": 77125,
+      "Path": "Cockpit/AMX-A1M/Textures/parafuso canopy.jpg",
+      "SHA256": "745DBEED1103DA2A6BAA9E176FACB06852943431846C74FF47CC7044E284FFB8"
+    },
+    {
+      "Bytes": 6822816,
+      "Path": "Cockpit/AMX-A1M/Textures/PAREDES INTERIOR_albedo.png",
+      "SHA256": "49005E7F25F5743515F3C79A82409E618A8BE9358B0EC2CDB217DF552BD0F24B"
+    },
+    {
+      "Bytes": 127997,
+      "Path": "Cockpit/AMX-A1M/Textures/PISO AMX FOOT.jpg",
+      "SHA256": "DC13293E588693EC63FDCF4918B43DFF4736B4C4C1B6AC32D1848206A411E050"
+    },
+    {
+      "Bytes": 25131,
+      "Path": "Cockpit/AMX-A1M/Textures/PLAQUETA AMX 2.jpg",
+      "SHA256": "D04CE1AA2946BEB6E534D6C00CC28890036CB51F170ED36DACCE298750167103"
+    },
+    {
+      "Bytes": 484942,
+      "Path": "Cockpit/AMX-A1M/Textures/PLAQUETA AMX.jpg",
+      "SHA256": "4B2414BE1DF9E85C4363D839DCDB261A3CDCDE23CAED2F5F229EDD97F53C0971"
+    },
+    {
+      "Bytes": 2277388,
+      "Path": "Cockpit/AMX-A1M/Textures/RADIO VSI BFI_albedo.png",
+      "SHA256": "A59180AA28F6282F1DDE8015F71DC05317334303EE3A142B2C91383E52F777D1"
+    },
+    {
+      "Bytes": 1525760,
+      "Path": "Cockpit/AMX-A1M/Textures/tecido cinto.bmp",
+      "SHA256": "B653C5008EF9DFB6EF23EBC776B972B69E9BEB1E3D53AE20BB1F7D818EE12008"
+    },
+    {
+      "Bytes": 887019,
+      "Path": "Cockpit/AMX-A1M/Textures/TECIDO TRAS ASSENTO AMX NORMAL.jpg",
+      "SHA256": "A054D090CF39FDF884F8194791BCC44716468C9152634B15EEC1F204D0FDB995"
+    },
+    {
+      "Bytes": 451998,
+      "Path": "Cockpit/AMX-A1M/Textures/TECIDO TRAS ASSENTO AMX.jpg",
+      "SHA256": "50A4073F51F2AF8D4A56191941831B0D4793F773A0B84C36086BF4AAF2CEB6AA"
+    },
+    {
+      "Bytes": 1527064,
+      "Path": "Cockpit/AMX-A1M/Textures/tecido verde.bmp",
+      "SHA256": "BD47505ED8FB54FB1723D814A1C59A00E70FCB6B0F49E38F70E0F8082C64DCC7"
+    },
+    {
+      "Bytes": 93369,
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP iluminacao.png",
+      "SHA256": "8D80E05035E79BB7B914FCDB958439CD6196D3847E6D0134297025F3E1E6FCA4"
+    },
+    {
+      "Bytes": 2358008,
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP.png",
+      "SHA256": "71E22552C88ED70763E84AD2F0AC83DCEAD7A02FEEC10BE130B5EAC743E111AB"
+    },
+    {
+      "Bytes": 1106427,
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP_nml.png",
+      "SHA256": "C29AE0E818E0290F66B293E5713F166246883D1097766F19C53CF652AB7871E6"
+    },
+    {
+      "Bytes": 6428,
+      "Path": "Cockpit/AMX-A1M/Textures/WhatsApp Image 2020-11-17 at 17.46.35.jpeg",
+      "SHA256": "9684BE9BBDF8C20B4B0C2CDC5FDB76A2C138D0A0B803FBD7D4CF3C80C605972E"
+    },
+    {
+      "Bytes": 103,
+      "Path": "Config/AMX_AVIONICS.lua",
+      "SHA256": "5E12A8C11CF358017ED864BEEA770BD7575AF579AB96F0331E28B3D3F1982CD6"
+    },
+    {
+      "Bytes": 327,
+      "Path": "Config/AMXDENIS_COCKPIT.lua",
+      "SHA256": "2FBC3798CC7668E2E55CE9F7548D394A5EC3D231042180BD55B98783843F8732"
+    },
+    {
+      "Bytes": 4386,
+      "Path": "Doc/Integration/controls.csv",
+      "SHA256": "9037B846D40F82145BEFB33C797E02F3E52EFD76220FCFF6B29D5646EE0717A9"
+    },
+    {
+      "Bytes": 1080,
+      "Path": "Doc/Integration/Notices/A29-NOTICE.txt",
+      "SHA256": "CBE219017E2A8053E45C08E2FCDD75AE640A3B9BFE23AE5C1A96690152595179"
+    },
+    {
+      "Bytes": 19744,
+      "Path": "Doc/Integration/Notices/A29-README.md",
+      "SHA256": "56B183CC7E4896D3E253C905EF21B9C16BD96DC655835216B95B55B07B947D72"
+    },
+    {
+      "Bytes": 1069,
+      "Path": "Doc/Integration/Notices/AMX-A1M-LICENSE.txt",
+      "SHA256": "3ABA57A2D293A4E43AD1A02CA46A6FC693A65B6FA1712F1599394919D9895B5E"
+    },
+    {
+      "Bytes": 4939,
+      "Path": "Doc/Integration/Notices/F5EM-NOTICE.txt",
+      "SHA256": "98B8C765A13C3CF4D1FFDD2E9AFC45E130C81FDC39D9387D268B06B29B84490C"
+    },
+    {
+      "Bytes": 1083,
+      "Path": "Doc/Integration/PERMISSIONS.json",
+      "SHA256": "ECA558DB152372CAF150C859D1A5D8A088C527FEE5AED8E6AB23F3B36B5D6D23"
+    },
+    {
+      "Bytes": 1994717,
+      "Path": "Encyclopedia/Plane/AMX.png",
+      "SHA256": "459346E62C3EF3C478DBECD239C83F9964C404C1EA5CB8F5E8E0E7EE16836215"
+    },
+    {
+      "Bytes": 1501,
+      "Path": "Encyclopedia/Plane/AMX.txt",
+      "SHA256": "E03AF4E337B9859DDDC74DB87AA8A38BD49FD6EE2E27AD55B0C5A1036BA7DEB3"
+    },
+    {
+      "Bytes": 17066,
+      "Path": "Entry/AMX.lua",
+      "SHA256": "D941EE7B99398C869538BD5218DFB18AEB61FFFE5A9457F86890AA6C1B3B7B49"
+    },
+    {
+      "Bytes": 17075,
+      "Path": "Entry/AMX_M.lua",
+      "SHA256": "20BFF4105639C82E6E09241480FAE3C06F07156BFC39CC2F6FB522AD0846FD50"
+    },
+    {
+      "Bytes": 17762,
+      "Path": "Entry/AMXT.lua",
+      "SHA256": "CDD9D27CE605CE40C57713223D2DF44AAAF1957A091D8ECB4C6B6B92E03B2753"
+    },
+    {
+      "Bytes": 17767,
+      "Path": "Entry/AMXT_M.lua",
+      "SHA256": "61D21385D8E37650C47291E10197A2F7365BEF3647C8775AA6C2930E2030CD91"
+    },
+    {
+      "Bytes": 2322,
+      "Path": "Entry/comm.lua",
+      "SHA256": "CA3423964B31EA7380082DBF973BEFA6D82EC50CE99FBEDD0642FD155D565E7E"
+    },
+    {
+      "Bytes": 679,
+      "Path": "Entry/Data/amx_engines_fm.lua",
+      "SHA256": "C0D837E6C9FBEB1EB625114F0DB5F63E96BCCD799804C9B3C262274024CCC40F"
+    },
+    {
+      "Bytes": 895,
+      "Path": "Entry/Data/amx_gun_mount_fm.lua",
+      "SHA256": "2B485CB5F0A72287630BA7D69E4F449E40E09A24F3123DE719CF30A83E4D846C"
+    },
+    {
+      "Bytes": 1788,
+      "Path": "Entry/Data/amx_lights_data_fm.lua",
+      "SHA256": "9BD19571F71DDCD9948E8A19542E45C2BFB4D13832950A333A43190D19C4DB5C"
+    },
+    {
+      "Bytes": 2035,
+      "Path": "Entry/Data/amx_pilones_fm.lua",
+      "SHA256": "7FAAC78D505E6A76D25F63BCD6E086B8B36934DB572804B82E4CFCA3DE4DBBA4"
+    },
+    {
+      "Bytes": 14449,
+      "Path": "Entry/Data/AMX_SFM.lua",
+      "SHA256": "6360F0E2D0F24B1ABD2483428F0C151F40C45DCBFD3D3D1591B0DCC97F1F5C26"
+    },
+    {
+      "Bytes": 583,
+      "Path": "Entry/loadout.lua",
+      "SHA256": "D8C6822B5B200BA3E729C45A90DD3991D370F4BA48C33BCA352A5A17A71C310F"
+    },
+    {
+      "Bytes": 508,
+      "Path": "Entry/Views.lua",
+      "SHA256": "5328D30B102B037AA63C8DD814B07DA2733E6F0C17E9C033021BB0E15BCADEE4"
+    },
+    {
+      "Bytes": 3092,
+      "Path": "Entry/weapons.lua",
+      "SHA256": "A9174E058A97B5E88216AA391344D080993266B704664530A018553F3A399E82"
+    },
+    {
+      "Bytes": 4362,
+      "Path": "entry.lua",
+      "SHA256": "4702AAEA4D08989E7D96B3EE5BC0263100A3B994D82EF3FA0A6F5C0EC075C152"
+    },
+    {
+      "Bytes": 7998,
+      "Path": "FM/config.lua",
+      "SHA256": "D7436EE66276450E68818BDC6C94C7CE612471B689C93D17E6A9C89DB30E2845"
+    },
+    {
+      "Bytes": 59973,
+      "Path": "ImagesGUI/AMX.png",
+      "SHA256": "760EC1F2CC7C2E4C007229A31A2A7C777791257C9AFE3E1CD6A71C92E44A0B70"
+    },
+    {
+      "Bytes": 5842,
+      "Path": "Input/AMX/joystick/default.lua",
+      "SHA256": "5E77681F3FF127336CFC672343ABFB0AD5F7662208897D1270AFE1CC6DD63DB9"
+    },
+    {
+      "Bytes": 6844,
+      "Path": "Input/AMX/keyboard/default.lua",
+      "SHA256": "6AF78E8EE88F37B53F8BC088AF69F4A9B48FB95FF0BA085B41493BC0ADCCDB1D"
+    },
+    {
+      "Bytes": 15,
+      "Path": "Input/AMX/name.lua",
+      "SHA256": "E2B7CDD411C206BED7CAA9F3146ADF56272387F61BEA2586C5742B7D2FEFC8C7"
+    },
+    {
+      "Bytes": 5808,
+      "Path": "Input/AMXT_M/joystick/default.lua",
+      "SHA256": "1D42F6C10D310BE23DA6686C0A535B5B2A0F1789D6F7946E555402178457B3E0"
+    },
+    {
+      "Bytes": 6764,
+      "Path": "Input/AMXT_M/keyboard/default.lua",
+      "SHA256": "F5DFEDE199FB0241529D89A70C6FD1436DFA1082F206A0396A8A0F8069CC6CA1"
+    },
+    {
+      "Bytes": 44,
+      "Path": "Input/AMXT_M/name.lua",
+      "SHA256": "4B32F9048200E5B540D3CB78AA4823116FB1EBD264E9D29B539298A57A24FBBA"
+    },
+    {
+      "Bytes": 35823,
+      "Path": "LICENSE",
+      "SHA256": "230184F60BAE2FEAF244F10A8BAC053C8FF33A183BCC365B4D8B876D2B7F4809"
+    },
+    {
+      "Bytes": 2842,
+      "Path": "Liveries/AMX/5506/description.lua",
+      "SHA256": "047534BEAE3FF1D8C7D4674864FC45B810C1490F01D926020ADE5737BF6EC0E0"
+    },
+    {
+      "Bytes": 2867,
+      "Path": "Liveries/AMX/5530/description.lua",
+      "SHA256": "A9904E970BF2A2219B2B09A2A9EB8A2CDC9F92CE91266D32B15D3E63ABFFAFC1"
+    },
+    {
+      "Bytes": 2855,
+      "Path": "Liveries/AMX/5531/description.lua",
+      "SHA256": "FBE94DD844008193F82FE55C36F2A4B6F59ADEE6288B76C3AE2F8E7BCDF9EBAD"
+    },
+    {
+      "Bytes": 2842,
+      "Path": "Liveries/AMX/5540/description.lua",
+      "SHA256": "F8EDFCB8F4BA676A509E874F0F8A19AC378506150705098B9C8A66C8BDFDA81A"
+    },
+    {
+      "Bytes": 2842,
+      "Path": "Liveries/AMX/5544/description.lua",
+      "SHA256": "4A5D6189FEEA1D00292F2A6F69D751A067F69FA8E7EC484C35BF137E08D75363"
+    },
+    {
+      "Bytes": 2845,
+      "Path": "Liveries/AMX_M/5504/description.lua",
+      "SHA256": "A8528063A6C1F97C845880D23CF47B29A935991BFEC5FD14527C60F70F09A10C"
+    },
+    {
+      "Bytes": 2845,
+      "Path": "Liveries/AMX_M/5510/description.lua",
+      "SHA256": "5D2DED8591D2C6382A64D84BE28ADE99BC39EBE51291CC1968B95977249AEF19"
+    },
+    {
+      "Bytes": 3659,
+      "Path": "Liveries/AMXT/A1B_5652/description.lua",
+      "SHA256": "13E7F98CBCE9CCE803B276E4397EF8AC50E99A79378B945910633EC54C5D6790"
+    },
+    {
+      "Bytes": 3659,
+      "Path": "Liveries/AMXT/A1B_5654/description.lua",
+      "SHA256": "088D31D997EBFAC4EA2BE17393C6615F73E300975BC39906E343FFD6E1BB381D"
+    },
+    {
+      "Bytes": 3710,
+      "Path": "Liveries/AMXT/A1B_5654_BV/description.lua",
+      "SHA256": "74F07E32AB7B511D2BD1F86C3A8AC872EC065609A8C91A932A02D8927C5E9BCD"
+    },
+    {
+      "Bytes": 3659,
+      "Path": "Liveries/AMXT/A1B_5658/description.lua",
+      "SHA256": "D85E93751C14B0BAE898A3F5030D27CE8D8D6BA832FFA6D5C8D8613002F87E54"
+    },
+    {
+      "Bytes": 3659,
+      "Path": "Liveries/AMXT/A1B_5659_1/description.lua",
+      "SHA256": "03A1CD0B67854AE4AC6C65411B008FAF5DFE4CFF978CB0780931864138252080"
+    },
+    {
+      "Bytes": 3659,
+      "Path": "Liveries/AMXT/A1B_5659_2/description.lua",
+      "SHA256": "BC243EA9DFC40F4C59631E297DDD8C5406AF2CC73646AE6AF84842106B3BBD0B"
+    },
+    {
+      "Bytes": 3621,
+      "Path": "Liveries/AMXT_M/1/description.lua",
+      "SHA256": "71BEED2E3B1BAD78B9A6613EADCF5A90B6A9CBC6629F1BBD497F97D221DAFE86"
+    },
+    {
+      "Bytes": 52,
+      "Path": "README.md",
+      "SHA256": "4B3083B554686DFDB9F048F36C1B288160A3A96599F45612DBFB1E44FF76ADFF"
+    },
+    {
+      "Bytes": 14636803,
+      "Path": "Shapes/AMX.edm",
+      "SHA256": "3372D5598EF82B76C23E35B87D583C728E639DE2B19F154163952EB21B101B16"
+    },
+    {
+      "Bytes": 95,
+      "Path": "Shapes/AMX.lods",
+      "SHA256": "D40FC5331DA5F7D6675D79B21E02278FD3B262B1EDD821AB23ABE0FEF10CD8CD"
+    },
+    {
+      "Bytes": 48056855,
+      "Path": "Shapes/AMX_COCKPIT_REV07_184.edm",
+      "SHA256": "7C2F1DE3C8AF4F8684C0C892A24EEFA4497C438CB85CAD0D09A177445B1D3342"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_cockpit.dds",
+      "SHA256": "4631AB10CB8F530A6F1D10DEB4F1FCFF34C5FC98B658A8900192EAF78883E94A"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_cockpit_NM.dds",
+      "SHA256": "D7A0E7DFEBADAF2F72DC101F27952D12D2CE699A6F722D3024FEAF48113DC23E"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_cockpit_RoughMet.dds",
+      "SHA256": "790116C30FD84BA3C2626FD65B557856C2CA1B17064C5E112145C155DA0B6DF9"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_fuse_01.dds",
+      "SHA256": "7F0BE42F12425B5EFA003FE1744969A6EBF1C1C7F377E37D372206B1E6358E3C"
+    },
+    {
+      "Bytes": 1398256,
+      "Path": "Textures/amx_fuse_01_NM.dds",
+      "SHA256": "1CA958C12565312AD27266A629F3C70CC6ED63692AA79CA3FABDFA783935C17A"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_fuse_01_RoughMet.dds",
+      "SHA256": "098395EC6532C193D1886D08BD5C7FA6590C279751A5F45C8A0426C91CC33549"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_fuse_02.dds",
+      "SHA256": "BDB9ADB4AD365D9299F04396483FE8BBFCB5CB392577340D5BEE7069BF455A21"
+    },
+    {
+      "Bytes": 1398256,
+      "Path": "Textures/amx_fuse_02_NM.dds",
+      "SHA256": "1CA958C12565312AD27266A629F3C70CC6ED63692AA79CA3FABDFA783935C17A"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_fuse_02_RoughMet.dds",
+      "SHA256": "A54AC64D92B05CD70716FA4DF3C7E28AFFEDBB3F4C36F7DB06D7AB56D3DED0DB"
+    },
+    {
+      "Bytes": 22369776,
+      "Path": "Textures/AMX_glass.dds",
+      "SHA256": "4D82CB28589E546C8CB1324B6075EF061CCE7240E73AF7329AF3334E40C3E47A"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/AMX_glass_NM.dds",
+      "SHA256": "95D0D078432F5A842C4FA015AE9565B9A3FCF702E1054ED38BDCEA19256E177A"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/AMX_glass_RoughMet.dds",
+      "SHA256": "E28F679155DC932B538C846B83F795B02AAE18D6D0987AE21BAF02EA79748FD1"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_parts.dds",
+      "SHA256": "3563A297FB803DBB61CCD354C23297F58DBD8127BEDBD57DC0834A375592F3C2"
+    },
+    {
+      "Bytes": 652577,
+      "Path": "Textures/amx_parts.jpg",
+      "SHA256": "632D18465CC68B7C961B56B1E7C6C33277B9874AF976389B61F0B045D14DB3CC"
+    },
+    {
+      "Bytes": 1398256,
+      "Path": "Textures/amx_parts_NM.dds",
+      "SHA256": "1CA958C12565312AD27266A629F3C70CC6ED63692AA79CA3FABDFA783935C17A"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_parts_RoughMet.dds",
+      "SHA256": "01FE5D31783C0C5628DC0E3DACE622A85CE036B33EDBA2D12D35C7DE3B013907"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/amx_Wings.dds",
+      "SHA256": "2B0967C7B3C1931DFCB28555A1632A1E60C4DF22E4F254C8582998F047FE59F8"
+    },
+    {
+      "Bytes": 1398256,
+      "Path": "Textures/amx_Wings_NM.dds",
+      "SHA256": "1CA958C12565312AD27266A629F3C70CC6ED63692AA79CA3FABDFA783935C17A"
+    },
+    {
+      "Bytes": 11064,
+      "Path": "Textures/amx_Wings_RoughMet.dds",
+      "SHA256": "07BBEC1D7EBB4563613F827115F3CAB06E985A6A1EE10EDEF399176C1AA77C95"
+    },
+    {
+      "Bytes": 699192,
+      "Path": "Textures/AT-27_SEAT.dds",
+      "SHA256": "5B4F5516345103FEB155582B5423988FB4417419F0501858CBA8545BC0E78FBD"
+    },
+    {
+      "Bytes": 1398256,
+      "Path": "Textures/AT-27_SEAT_NM.dds",
+      "SHA256": "4678A0DD5731BB090D04F4285682DE8219CFF98E704115B08F868953D5054926"
+    },
+    {
+      "Bytes": 699192,
+      "Path": "Textures/AT-27_SEAT_RoughMet.dds",
+      "SHA256": "403E1B6DBECE9CD99ACD343BA75258B93F9BBBE103CA061FE55896CCF9D480E2"
+    },
+    {
+      "Bytes": 1398256,
+      "Path": "Textures/cap_Viseira.dds",
+      "SHA256": "D5DD8960B0EAA8FC26BC06FDA7D92F57F01F083EFC1BA29289C8C3FA255262F3"
+    },
+    {
+      "Bytes": 699192,
+      "Path": "Textures/cap_Viseira_RoughMet.dds",
+      "SHA256": "B46A594090AF227026F35B300E344D7B9E3556A39C087ACF0ECE88532A15A63C"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/capmasks.dds",
+      "SHA256": "07215797F499C84E22821DE47709B9C7CB54D5CA7BADFB7755566B4DEC37207A"
+    },
+    {
+      "Bytes": 2796344,
+      "Path": "Textures/capmasks_NM.dds",
+      "SHA256": "168B9EEBFB6BF8B3244CF205706DDEC34B96486055F1C00D354A727AAF727DE2"
+    },
+    {
+      "Bytes": 11184952,
+      "Path": "Textures/capmasks_RoughMet.dds",
+      "SHA256": "09FCA165D5E7B08EABF358018FF7A32907941734758BC2481B5524D3108BFC5C"
+    },
+    {
+      "Bytes": 699192,
+      "Path": "Textures/capPilot01.dds",
+      "SHA256": "D25770CB313D3D9ABACB61C8F8AFA3181B158D8C27ABC2F5C6D7AC97EB541B32"
+    },
+    {
+      "Bytes": 1398256,
+      "Path": "Textures/capPilot01_NM.dds",
+      "SHA256": "FCBBFAC1E91CF0C58C29DA7874ACEB30578E9E36AADDF0B5773FE531AEB1636A"
+    },
+    {
+      "Bytes": 699192,
+      "Path": "Textures/capPilot01_RoughMet.dds",
+      "SHA256": "55F64DD78A71D2FCABFC6F03883E85DA029C7E70DD6D5705B91BDCE06E861A6E"
+    },
+    {
+      "Bytes": 699192,
+      "Path": "Textures/capPilot02.dds",
+      "SHA256": "E8E43F5BCF7EC72AA81DD7EDCE29DA04E99DC05FF94835915ACAE4B028A1123A"
+    },
+    {
+      "Bytes": 1398256,
+      "Path": "Textures/capPilot02_NM.dds",
+      "SHA256": "2450D0BAC6AB8EF861263C677D01C598601607115EB303810CC4B1EF89BAFEAD"
+    },
+    {
+      "Bytes": 699192,
+      "Path": "Textures/capPilot02_RoughMet.dds",
+      "SHA256": "21229885601D1652056A28EBF7CFC416221A4B7A87AEEC9C9D8DDFB1C883BE97"
+    },
+    {
+      "Bytes": 699192,
+      "Path": "Textures/Pilot_AL.dds",
+      "SHA256": "E89869379358AAC5DE4A4650115273CDC9A2CF42DBAD00DB00F8DB5EFB4FD54B"
+    },
+    {
+      "Bytes": 10669,
+      "Path": "Theme/icon 76x76.png",
+      "SHA256": "2BC2F1978560F760991674CEDDE878518E40DF85F8B5747040D3521CA5749E8F"
+    },
+    {
+      "Bytes": 6123,
+      "Path": "Theme/icon-38x38.png",
+      "SHA256": "A37735A4715ABE9E924E91273464EE603EF61C6137EECB7541360692D33EB125"
+    },
+    {
+      "Bytes": 11984,
+      "Path": "Theme/icon.png",
+      "SHA256": "A74063BD53EBC72EC81344B9C7544C774128E85584F3EFA7A412BE69C80668C5"
+    },
+    {
+      "Bytes": 13053,
+      "Path": "Theme/icon_active.png",
+      "SHA256": "71EC143C37ED94F45DD3D5D3D60585F06FC950E5AE7761E096278C00B254C4D0"
+    },
+    {
+      "Bytes": 16327,
+      "Path": "Theme/icon_select.png",
+      "SHA256": "165F2286A2DE53C5D847ACF64E1CB8DCF0F4A5FA28405958630A1CCB9AFE0DD9"
+    },
+    {
+      "Bytes": 3079638,
+      "Path": "Theme/ME/BackGround-AMX.png",
+      "SHA256": "33B83C2ABF7E8614E71DF95FED393B89EA459FB7D979C45D3C95EA340AB22B24"
+    },
+    {
+      "Bytes": 5515140,
+      "Path": "Theme/ME/base-menu-window.png",
+      "SHA256": "E6BF97BD3D958D47029B2FD9F72598A3EA4A0E457680A958AE8E94941D8381C7"
+    },
+    {
+      "Bytes": 151325,
+      "Path": "Theme/ME/briefing-map-default.png",
+      "SHA256": "882F6C9E2769E070B16CAAE85E3E2EE5D2A605C681B9AADD7E3D1E0B75C6EA8C"
+    },
+    {
+      "Bytes": 4283824,
+      "Path": "Theme/ME/loading-window.jpg",
+      "SHA256": "C6C87770B5C66AFF3FCCBD9A0169C89870FE052786D80B48C5E3393EA9E5C705"
+    },
+    {
+      "Bytes": 1954917,
+      "Path": "Theme/ME/loading-window.png",
+      "SHA256": "B5BC32F2474FA46C4B56C0BF865AF26BBF826AF6BC614E4588837BD0815F3AD2"
+    },
+    {
+      "Bytes": 34158,
+      "Path": "Theme/ME/MainMenulogo.png",
+      "SHA256": "CBDB6C39FE0582AC2A97B3E3094A0BA1FF142F0E71F2E57B68AAAAC0A97BD6B6"
+    }
+  ],
+  "FlightModelChanged": false,
+  "InputSetSHA256": "289062F6CFEC2A9104535612EBD546E5CB0BA27F39F25B68776512570824AD40",
+  "Inputs": [
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/CMFD/Device/sms.lua",
+      "SHA256": "97C60DFE2A18E3BC92A6CEF2154264E233CEB300F99541069887791538796AE0"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/CMFD/Indicator/CMFD_SMS.lua",
+      "SHA256": "DD3F467F2ED861AAC2963FF01A7456F70948AC6DB06DC3C928740F077A6543F3"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Controls/input.lua",
+      "SHA256": "BEBC92D589DB409DDB7EE91D38AF590DED97FF8E7C46018388C8E2FED3C777C7"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Controls/router.lua",
+      "SHA256": "78AD6EBF07C0C4C877DEA65A7BBC7DAB096EC9C0434EC5B11A4F56558931C181"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/avionics.lua",
+      "SHA256": "C39C1182B996D167AA31E59C6568D77752DC53910FB02309F49F920D0CFB32DE"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/bridge.lua",
+      "SHA256": "97DABF2080FF59B9F1AE0EE9A958383D1172731F248E93CB8E98406B1D603CC2"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/common.lua",
+      "SHA256": "96DFA438BFC95D45B30A48E2373ECDEC9F55D32DA1CDF672E1E3C34EAF9DA042"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/hydraulics.lua",
+      "SHA256": "C58F64986EE7ABE1DFFB34BD7A4C6669B5D4AD7AB747B90E089EE704EFDBA6B1"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/inventory.lua",
+      "SHA256": "CF7CFEE6EE79DEAC70F3225ACE002AAF8C18582C9D459F45C943EE3B5D73B03F"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/mechanisms.lua",
+      "SHA256": "34EC47DB9E83CBAEA220F15B10E344952EF1157AA7B831BD573E3A2B55CAC470"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/power.lua",
+      "SHA256": "E67AF7D26D6AF814643C56AB57FB81121AFAC9263D7862210B8572C2CC9D42FD"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/starter.lua",
+      "SHA256": "E0C9144A234FE33EBA6CCAD7B0E88284566CD0080BE0FB1A28AE49F70C97147C"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/Host/unavailable.lua",
+      "SHA256": "4D148315C4E02128C5B71421311EE0CE8B943BAF6F4F34430236678EBA26BDA4"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/clickabledata.lua",
+      "SHA256": "F8B2B0A7A749159725263C842E04A1F7224DE2D503BFFE229F12B105DD806D78"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/device_init.lua",
+      "SHA256": "1697B31B66FE67AC562EF4A3B0167F26266BAE3A4ECE1A8CF765DA17F0455710"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/devices.lua",
+      "SHA256": "01D54F112D3C3BD654D103EF95309CE6F7F66E98D602E8AC7F1F03EC13F7D951"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/Scripts/mainpanel_init.lua",
+      "SHA256": "EFB9A0A2E6039BAEECFD83270A14EBF562740B91D1AAF01FB68C9AD865E42B62"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/bindings.lua",
+      "SHA256": "A13C0ECB8D09EAF6CABC86E16746306253893B9FC655D4D7E4D8EFB7872DC963"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/controls.lua",
+      "SHA256": "0F730845B991D3DAE7212A170260AA465F5D77961C7DC03DEAAC7AA86EC88B03"
+    },
+    {
+      "Path": "Avionics/AMXDENIS/patches.lua",
+      "SHA256": "8D3C11EA8994651AB9FA554E2137F4112EDBC346C1C7BAB174305BF41AC19205"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/A29/NOTICE",
+      "SHA256": "CBE219017E2A8053E45C08E2FCDD75AE640A3B9BFE23AE5C1A96690152595179"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/A29/README.md",
+      "SHA256": "56B183CC7E4896D3E253C905EF21B9C16BD96DC655835216B95B55B07B947D72"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/CMFD/Indicator/CMFD_EICAS.lua",
+      "SHA256": "DE1C96869428454AECA891AB69911ED6C9504FB6DBDFB921CB27085CBF365DB3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/EFI/Indicator/EFI.lua",
+      "SHA256": "3E4F8854CF8E6817FE0D242BC72B8699126F9F92ADE7316CAF633F7E7E249C0D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Indicator/host_eicas_indication.lua",
+      "SHA256": "014037E6B1F58B477F176AE6C2F587086B3CCE2AF299267B4E7BF6C59D4E03F6"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Indicator/host_geometry.lua",
+      "SHA256": "91D9972464C1FBC880B203AE5BB6F6661A1190568CFC8883BDF7F6E9A31F1DF3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Systems/electric_system_api.lua",
+      "SHA256": "9A1DFED20BBCAB2E270C4FB22E42E8EFCB0AF29E4F9B43CACADADA8E4C40C973"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Systems/host_alarm_sources.lua",
+      "SHA256": "ADCDE1CB5FE4EF2DFB7432F116904EED86C2EDA33D21D26FB0085DBF0AE0342F"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Systems/host_controls.lua",
+      "SHA256": "9B856150EE65F786789183DDA3DB625FADE54A8BD9E807CAE4EDBF8F2B255D71"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Systems/host_eicas.lua",
+      "SHA256": "0F96DDAA00996F51DBE277F7AA331972D826A9E87AF68718C7DD76A2DF98F7EC"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Systems/host_fuel.lua",
+      "SHA256": "595928B7C3AE53764EFABC0B27F88A63F35DECCF49DA091565FD4DC06268713A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Systems/host_telemetry.lua",
+      "SHA256": "F1EF770D64A4907BA317E48C49EF350B1DA03065BCAF00736980684321B299EE"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/Systems/host_text.lua",
+      "SHA256": "EFF2CADA9A69C017C27853E47FC0D978662938FA4FEB1453E98BEB9D5207DB0B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/UFCP/host_icp_init.lua",
+      "SHA256": "8748E6958F1DC6F1BA59DEDF5BF5D44D3B479EF2CBDBA766EB5DCB68F1247AD1"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/UFCP/host_icp_page.lua",
+      "SHA256": "E593E6EC9A20C16902CA4DB8A49D438138C595FE5CDE60692AE78A9E1B0A6E84"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/Cockpit/Scripts/sounds_init.lua",
+      "SHA256": "0DFB88962362B6ED0F9A38FA454B7AC810BDD2F959096F5FC39BD135B86B9BCE"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/AMX/patches.lua",
+      "SHA256": "20F98C9D3E78AF52C66277038842CD564690B9217611EE349047B709B73F89AD"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/IndicationTextures/font_RWR.tga",
+      "SHA256": "C57F99322E3A775FCF0795B1324A1C98F1D450A97F8D747690AD0DD8C23C9231"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/IndicationTextures/font_sheet_F5.tga",
+      "SHA256": "967AAD2EC26E5B35EDEA3B2B4C33F849A9C556B3E223F01608B264C5971CB85B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/IndicationTextures/indication_RWR.tga",
+      "SHA256": "918F5B885BF9D98881325F290F1975E1D1C35A6A79CD4D5095A21730979458B2"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_DTE_ID_defs.lua",
+      "SHA256": "FEBB11423CAAE07F0957B3A4080071237356FB230141BF4445573F42A00BE0E3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_DVR_ID_defs.lua",
+      "SHA256": "26D43DA391A15327ADF3D259CD781E1AACD86EF58CD2602D40C3DDE09D2AF5FA"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_Left_init.lua",
+      "SHA256": "38079B66ED0A4C5EB80FC35E9534C2C01D637857AE55CFBA51E92D015FE737CF"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_NAV_ID_defs.lua",
+      "SHA256": "7AF8E5276264A1CB4135265DFE5280A25293AB45C4A6DD3F5964A0DB4C6A93F9"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_Right_init.lua",
+      "SHA256": "12E3BD7800F530B0282E5BAF890C23F3CA624C82CAEA20BF4773E7D31346E326"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_SMS_ID_defs.lua",
+      "SHA256": "77B31AB1B2AF50FD7889A03908D698A471E976105C1F4213142540042B80EA1B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_UFCP_ID_defs.lua",
+      "SHA256": "61C90F81206349A6027E0E1948EECF1B6FA09DF1F7BDFECFC5DD10D6D2AB15AC"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_defs.lua",
+      "SHA256": "8EF00B0A962A72135918F99B9B5D792E0E726B4C5F9FAC2C0AF141DDCCA8559E"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_init_COMMON.lua",
+      "SHA256": "9FEA0800302D61DFEA46C1841021E82F08CBE1264259F1144F951CE4DAE783E4"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_pageID_defs.lua",
+      "SHA256": "7F62B18F7EFCE65EEC7F249601CBD282267A480B33507927C6F34A80A9393CE3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/adhsi.lua",
+      "SHA256": "46F8FD1D4F02860D46FAE1C6A98A7EEAA63DEB73D5CAADDD4C8C1B05BA44CC60"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/cmfd_text.lua",
+      "SHA256": "B6CAA81DC598ADFA432253580BB8077F81A55C1251B5078B52E47BC684F5F7E5"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/cmfds.lua",
+      "SHA256": "92C7D088A63FDA3AAE9F541980F9ABFFE8D86DCE1E1BA68358775C19527A7799"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/dvr.lua",
+      "SHA256": "11B09D2F72BEEC3E898B8D343E6F035D78131C4CD332546191DD2E92F3F7BBE9"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/eicas.lua",
+      "SHA256": "266AEA33B7B088A56073FEC2A90C5F01C35B166447E5E0CB047B061CA0FE673B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/emer.lua",
+      "SHA256": "30F978958B9780F26A72073A0A9E10DC87CDCAFDF33D30AC41B0CBFB3F127598"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/ew.lua",
+      "SHA256": "3EDF1CA1825CDF60E45B73A7B5B485EDD4EA50195C76754C8AAC9D7F59917091"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/hud.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/menu1.lua",
+      "SHA256": "4137EC22C5820D1EDD18832B31E246E85FDA368B0D9A267371DD142156AC724A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/menu2.lua",
+      "SHA256": "30098B6F788045A2199A47F8E250E9B5C99686859387E0EAE1EC609D35062F0A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/nav.lua",
+      "SHA256": "6A77ACFAEBF9A6183AB15977854C0C33AC8879E4EA25148B5263B70B94DEF6BD"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/pfl.lua",
+      "SHA256": "7452E01C326904131B27C8B07FC806720321C847D8FEAA4D76E3F813D861FDA1"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/rdr.lua",
+      "SHA256": "71DB163BB999E09E2A1FEFF6DCB91210640666691A79E0F02EE79A7FF31E8F49"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/sms.lua",
+      "SHA256": "70E87F4FB42B8CECBCB1A521A0AF2C998F630DE4BCBF71A02E1E6EF24F31C2A9"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/tsd.lua",
+      "SHA256": "6D561E487344F8ADB5E869FF0F16364B6E055AF50DEB34B86C5D663CEDAFF3F5"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Device/ufc.lua",
+      "SHA256": "EDE80969D55540879A7061187037E5DA8312CAF31478D3FC182959D46C1627EA"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_ADHSI.lua",
+      "SHA256": "D09D5052C83CC4C43DE5A600F420390A1C7CD85E0B976B87FCBB01EDDADBEC7F"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_ADHSI_small.lua",
+      "SHA256": "B7439BAA2355C671496E88D9ABE5C66D769EB354891F6B403C63275B79DDD3D7"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_BIT.lua",
+      "SHA256": "8080142DFBDED920FF38CEC3E2CD32528C8C72B0E4758A9723A1AF42A523AF33"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_DLMSG.lua",
+      "SHA256": "910783F4DB0BFF57A7AF413318D695A01E6333797464584CFBEE3CDD04CA3058"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_DLSET.lua",
+      "SHA256": "D8A83EDA8D0ED0851C18A1ACA076AA603E0908C34AB81A227D8CD1F216231DFA"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_DTU.lua",
+      "SHA256": "89ADE13364C853525092D05A32B707D4C4811BCBC0BE6E10EA128BB7D1D19B56"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_DVR.lua",
+      "SHA256": "AF75A5D30CD049D119E6C643C81FE2D1FF65CEE6331E7AF75512CD259B464FE6"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_EFB.lua",
+      "SHA256": "78BE22CECD82ED3E0D6DAC0D706944A89771E60F36FCCB509F87B73C05CE9D7D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_EICAS.lua",
+      "SHA256": "C7F57ABCA2C9DDBA12FA06C6382AC82A432C347BEBF284D827C94FC7AF552A81"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_EMER.lua",
+      "SHA256": "01E728E8F9D4877150907AD13CDFD936B7DDEA10DDB900BA2770A0ADD29B4CB0"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_EW.lua",
+      "SHA256": "19DE6BFA9E5CA012C8436AD81038DC3FAA10DC17BA85D7C1538A056ECEE5F15C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_HMD.lua",
+      "SHA256": "57E3B4D189F63D08EB1CD2508455B1796A90A540F300E04673022485646918FF"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_HUD.lua",
+      "SHA256": "6D32AF988EDE45F4B795205668FBDE31DB6F001EE5870EBE5CDF1BBF2C497DD3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_IFR.lua",
+      "SHA256": "F35C7FE2CDF9E01E683AA2711E5E6A4670062B9149BB272657F59AB32F3C6AE8"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_LDP.lua",
+      "SHA256": "F6C24E85BF3CF9083EC207D2C48E7D8F3A91B7AAEA51ED43244368E56C4209BC"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_LT.lua",
+      "SHA256": "85A9DAF750D2B01BDE325FA47D0E3291C86B22B35A964D881AFAD9865D445FF0"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_MAP.lua",
+      "SHA256": "A5D6D20EF6615AD6DFE9A04C496BF5926DD7705AC930A57CED85D8DA8FCB0600"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_Menu1.lua",
+      "SHA256": "704A66C6A95C37910A008CF1A8C159247FE7590434F22A105CCECA35087262D5"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_Menu2.lua",
+      "SHA256": "B21C3A41FDA917EB3AE2F55498EF6AD3B55363ACC5A1241E3783A100A9B7C574"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_NAV.lua",
+      "SHA256": "4514D034E4E98E601540C25EA27ADD247FE6CF6134F517D21C63D8E53691F045"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_NOAUX.lua",
+      "SHA256": "FB71ED8A5342C5AF8E225101D0BF9B7337EE9F80A58412FF62E84F017B7AC21D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_OFF.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_PFL.lua",
+      "SHA256": "783C9A142BB4F49061570D163B5315261AB5C9A3624FE40F68734700B9BD875B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_RDR.lua",
+      "SHA256": "E0DF229FB20C0E2B30015EA3D54857C15562950571CEDBFF251F7FBA52EBC231"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_SMS.lua",
+      "SHA256": "ABD40996245690BFE675E36CF29205ED1151A35086A4A92B128BB4E5EBF88B1A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_SURV.lua",
+      "SHA256": "0E275603DCABEAC83B133D12D68DDF401713A1518C2332B200F2C06DCB6ED8E5"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_TSD.lua",
+      "SHA256": "3D280B5D3118A741056DC7CCF863561563292DED15647D61B56FB11E45526BE1"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_UFC.lua",
+      "SHA256": "E44B7B996079567B446179B552932FEC474A875189AF92187BE8C56340592647"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/FULL_BASE.lua",
+      "SHA256": "AABB3E6B09969FEEB63F13151A5981662DE11E35FF5E63B21DE1465171833CD8"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Resources/a29b_font_CMFD.dds",
+      "SHA256": "E3DCC97EFC7CEF26326F6DABF96F24C084851A11C7DE79FFDECC0788451EBB6A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Resources/f5em_stroke_symbols.svg",
+      "SHA256": "72E1C89B1AB4C3AFE10CC94AF6BB8E8C55B9B6839D50CD111CA1E9D164E67137"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/Resources/stroke_symbols_MFD.svg",
+      "SHA256": "EAA358FBB9CEE48A7C9F85CB5997C95DF8B8C74E0BA0154D82C502EF717F28EB"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/materials.lua",
+      "SHA256": "ACE0534D91EBC28C93A7F60CF34753F7D98329E2D244A6C4D565088393A0151D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/CMFD/utils.lua",
+      "SHA256": "316ED6D1688F74A300C5D724EAB88FF3A2ACC0BC94A5CE7D7129EE49E780231C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/EFI/EFI_defs.lua",
+      "SHA256": "16E107C1C53BE8E0CDEEA4D2A16CCD5FC7B620EA1E1B8459F2EAB3069DAB7469"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/EFI/EFI_init.lua",
+      "SHA256": "7FDF22D43A114ED32D1398D843D3ED329A3477AE36128B83A54CF9963D518DE4"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/EFI/Indicator/EFI.lua",
+      "SHA256": "2B272B88535A3E6A923E5742820DCC7CDC246462436F428614743EE34F81A489"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/EFI/Indicator/EFI_NOAUX.lua",
+      "SHA256": "FB71ED8A5342C5AF8E225101D0BF9B7337EE9F80A58412FF62E84F017B7AC21D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/EFI/Indicator/EFI_OFF.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/EFI/Indicator/FULL_BASE.lua",
+      "SHA256": "A798AB2BCA4675B4BF4E85009D42346BF599AD9680C5C92C927BD11500A14F3E"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Device/hud.lua",
+      "SHA256": "35246B019D68CD11A6DF6EB4EAFBE88FAA6C97E60907197B011398A74243907A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/HUD_ID_defs.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_AA_DGFT.lua",
+      "SHA256": "4EDFA1A06578E1E847E7A3AEE142692A0A7C2DCCC5CDB4B0C6D9CE71332B7AD3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_AA_INT.lua",
+      "SHA256": "7AA0292740A3870427E82564409EBB13D2CC9A5FFAA66C5E0415E95F213040F3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_AG.lua",
+      "SHA256": "1E3AF21AF57ED2F6E059E2747A089E44EB194FB15C1BE90B2A4AA642FFAA2A0D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_ALL.lua",
+      "SHA256": "2E869F426CDA3BD5BCD5BBD86D339277F487E9AD344981585BE13550AA795139"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_BASE.lua",
+      "SHA256": "F0991AFB323351EB1CCBD2928020C38D70BC22B5B9D0193EEDD9590B0F947447"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_OFF.lua",
+      "SHA256": "9230BF81580C75022B90FCD18C3A224CF968AB17BE3E82B9615E4BF5148C5407"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_Page_defs.lua",
+      "SHA256": "0F9B875A94B80A5A5A8A48D762A374C6BD7F8F19F8455CA6EACA1D183EB32F2D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_defs.lua",
+      "SHA256": "64BE81D8D938D0694A148BE2236078031B4FBAA02429C15796A841ED2B533BAC"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_page_init.lua",
+      "SHA256": "B6B6FCEFA4F971143A5DEDD48836911A459C7790572286D3438157D642471ED5"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/Units.lua",
+      "SHA256": "8884EB03FCC4BE00AF59783FD225CD4676ED9F1BA93D99FC8997610D420C35BA"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_Indication_Line_Dashed.dds",
+      "SHA256": "70AB6915D8DA67B0D20408E667DE0F73A9A63889978C077A1526BA3A49CC551B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_font_HUD.dds",
+      "SHA256": "C5EF544A95F1CF1355973C864CD0683AEF32329374712B351D839F83215A5354"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_hud.svg",
+      "SHA256": "5C44D0E33B7613AB5FFD1CB7B983A842421B9D5468ED426B10FA354E585D29D2"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_stroke_font.svg",
+      "SHA256": "0FC134D952EA7EE59C09F13DA6D3D512DBDC5632418403C00DBD5DA09E46521C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_stroke_symbols_HUD.svg",
+      "SHA256": "905880B97099A8A8FEE5BE4F3138A8C785DC308D69C56B391D3F182E6D84484B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/materials.lua",
+      "SHA256": "AC1E843D91B31984BCA7508BBC2035F64590626C51B182D3F01052BFA17D874B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/HUD/symbology_defs.lua",
+      "SHA256": "E72E2F86FC6F529C12B2671F280AF4AF0A2788262AF9D1F68FF538B9B2644FFC"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Indicator/Indicator_defs.lua",
+      "SHA256": "964AE46CDE54441756A5509EDBAB843ED239FEC97F1BD46AA92E0BF5F164265D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Indicator/utils.lua",
+      "SHA256": "316ED6D1688F74A300C5D724EAB88FF3A2ACC0BC94A5CE7D7129EE49E780231C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/F5EM_Link_BR2_Fusion.lua",
+      "SHA256": "9A3A4D10D96E0D4B1330DE68A579315C6CB9A4F57BEDC5B382FA54C11693822A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/adhsi_nav_logic.lua",
+      "SHA256": "75925E09FC69E39EE0A848F855BDB957FE190220C7E4497F64DB9BA467B20A0D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/alarm.lua",
+      "SHA256": "6028AD10AE6F3AB8F3F3F28E133C87AB8E8D3930361AF13B6B43B401A1F190EF"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/alarm_api.lua",
+      "SHA256": "362996C111BE0A8FF4BC2C07FDEA1E76CBB0540F59E4048A5C1C35D6F8B80E3F"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/avionics_api.lua",
+      "SHA256": "C7ABE36754F12851CCE8BB3F99ED4CCB9811748F28C19C356CBA562B0895AB36"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/checklists_f5em.lua",
+      "SHA256": "D831924B8655E5F6A4B66B247E706443A31BE0DE1AA1A772CF47452B102FE008"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/combat_display.lua",
+      "SHA256": "6C9FAC908DD8ADF886820A783DF396C9EF51CDC0BE8C620E5D14355670791BCA"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/coordinate_api.lua",
+      "SHA256": "18DDF1C02CF3247E726910473BD48C3032FAC5B8F541E74D233ED2C641AFB21C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/efi.lua",
+      "SHA256": "144A6A07B249326E5B94F55C167B1ABCCABF4041217A4CD2924055FF220F6CE2"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/electric_system_api.lua",
+      "SHA256": "AE8A11C21EAE5CE6D318B7B592B57E83BE617B4FF95BC87B8C4D22D29DEE43C7"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/engine_api.lua",
+      "SHA256": "068D78BA49AC10457EAA748EF7CDBAA0AC0DF93ECDFE9D6B7B067B271A20525E"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/hud_nav_cues.lua",
+      "SHA256": "E980899AD39CFC630FFEBC29067C802ED136BDD7271D17335C7D000F32099D44"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/hud_ralt.lua",
+      "SHA256": "BE4651CFB6735DEC83E1508CC4DAA2657BFC1B8D5F77A1A38E98F4730FF8A8AB"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/navaid_receiver.lua",
+      "SHA256": "BB4C1C38F31135171871A52C39F8CDDCF0F4F5CA52E18AF860BC49766383CBA9"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/pfl_check.lua",
+      "SHA256": "99B49D434B62419A24C01FAA84AA6AA589C179E8DF698D6413671A2365B5F8C2"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/radar_ag_logic.lua",
+      "SHA256": "DBDE7A9C58868B24D8FD54AA83C83B764F683D6B9CDE25CD62891D7B43A6F435"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/radar_control_logic.lua",
+      "SHA256": "897E7241B5AEED1D0DDAC2268D96A7EF21A7823975CF0170CAB2050AAD8DA064"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/radar_engagement_sequence.lua",
+      "SHA256": "C7928F5E9ED72B63C5A2C5C728B344B86D05E695574703254A95D21467F5E58C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/rdr_api.lua",
+      "SHA256": "406E567610650511ABB0D36A47790881E3F2B398D9B308390A0BEBBB3C3A7D0F"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/sounds_callouts.lua",
+      "SHA256": "1E5770721255B63C1A2995ADAC3CD655424BBDE97F293A7EAD5A1EE8C45DB3C9"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/ufcp_api.lua",
+      "SHA256": "075F51A4F965A45B962D10EB8A4AE8BC2C4DB6949FAA0D8D2B712D64D00D664C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/Systems/weapon_system_api.lua",
+      "SHA256": "6710756CF7D8E6703E7A2646A3D2F03A5001B02874B6844AF3BE6487E4EC2B41"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/acal.lua",
+      "SHA256": "496228547ACE2284633C21BC36EA29101D930C04EF8DB2A01D6E6D60F0A396C7"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/bal.lua",
+      "SHA256": "FF533DB35FD830E59B54B363507165FD2FB9540002ECFBA5849AA5F7CBA79D2E"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/cf.lua",
+      "SHA256": "3D84E088168D92E3E329D9BDCEB3B8D6A01C186756193FDAE35BF76AA71D310E"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/crus.lua",
+      "SHA256": "00A13C429763126124056DDFC685C67594263294061CFCF9BF3989E03A1A2B0F"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/dah.lua",
+      "SHA256": "FE855CD7A05AED088FF29E73E6B122E226CAD0C80AD6FE520590BD1FF3EBFCB5"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/date_validation.lua",
+      "SHA256": "53A703D697D2C3EB53E64DF54E88FD6D374C64B731D96CCCC9D05CE303DD0BCC"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/dclt.lua",
+      "SHA256": "2B435A410A1F964D903BC67910A7C0F35281E419D658EE6C80F5883EBE5190ED"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/dl.lua",
+      "SHA256": "0EDBB4679F8265F47AAC9069E15147A70F9C3175D44D1D92D9796DDD8F3A6C33"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/drft.lua",
+      "SHA256": "472CBBBC4E723ABDF0B64DBD0268D78274F5CA7C3F949C15E9C3031A3A520671"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/dtk.lua",
+      "SHA256": "B6D391A8A67F638EC32FBDBAB2DA6204A9637481A4F074AE45572FBF3693595E"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/egi.lua",
+      "SHA256": "69EF6D37A97CC23461855E9AB54DB6ED12CC5E360373C92DC1FA18EE68801E7C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/fix.lua",
+      "SHA256": "2494A447B79E8F83D6B9B3B734CE17D4EB8C316A9C9CD4DB717E0E1F653384C3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/flir.lua",
+      "SHA256": "213676C2B0E29D7BEED49E0181294AD05F5788FA160747D8DEF9963A5CC2F062"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/fti.lua",
+      "SHA256": "8DEEC55B88F99D67228E7FC57E1940BDC9551AB958923070AF29AFB4E9F69DB8"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/fuel.lua",
+      "SHA256": "B13402D93EF11CD1B4063CD8B18284ABF16E8AD78C02B68F62A43A4F401DFCB4"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/lmt.lua",
+      "SHA256": "A266DFBB5758B8FE9FA863CBC1F02C8612B505CB78318865F0A30268A3C00CF3"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/main.lua",
+      "SHA256": "AB91E57FA6687CE8E13FB9780C881BD7D9D79485E6917FB3A9D8D1616F173AEE"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/manr.lua",
+      "SHA256": "A3977DCA6AF662F7C4251D56D03B435F8ED0E31E9F49FDE391EB4DC8C3001733"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/mark.lua",
+      "SHA256": "6AEA5C166C4CB856A91F9D01584575EB07E0D21D3AB83C1874E00121707870C9"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/menu.lua",
+      "SHA256": "9395F6FD1A1AA7EF9283FAB23A683690F84944D5096277527C2E57E2C166EF7A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/mode.lua",
+      "SHA256": "A7DF10F7E3B3FED13F9AAB41F7DB408075EDC24587BDD75E5542A70214604C17"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/nav.lua",
+      "SHA256": "97B2469D998C245760124BB7C23E03497D533BA262C24CAF5D15641A2526DB36"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/navaids.lua",
+      "SHA256": "2D32734B04F84BBBA28F80C7442AC7DAE61703ECDF1FA3443E71850F61264E9B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/oap.lua",
+      "SHA256": "0FFBC45E61896FC05066B80D3C420DDAA0D8BE273C3E6297B34AAD72EC126650"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/para.lua",
+      "SHA256": "BC7C702C31946BB82EBCC1955904C6BA75DC6FF17FB4752AA9346D09B8EEB002"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/strm.lua",
+      "SHA256": "76FB72CC3A0ECFB479035BCA7ED76A6AB3F9A17E999D859E0000DD4FA4DDC33D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/tac.lua",
+      "SHA256": "41AB0C3DC2E21901247EF190EB8872E99BD2D9678DC18E8283C293518C388DF9"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/time.lua",
+      "SHA256": "378B8059369EC1B91551F8DE66EB76B2D7690F0AD25E6A7D2E7722DD98B1CC0D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/tip.lua",
+      "SHA256": "219EC56EBAA2B7E845E08D034AA8621CE13823DDE220FB675087FF388AA1144B"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/tkl.lua",
+      "SHA256": "75D8661BEACD7F6FFE82F13BC112058BD14E9B344248E15B5778E03236BB9BDC"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/ufcp.lua",
+      "SHA256": "A78E1DE068C6CEB78FD608F05D8AFA217172AD9D44D2512D6A42D525CE8522D5"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/ufcp_com1.lua",
+      "SHA256": "6575F7D537A8CEB8400C9C79B5626FDF49903707E245F4CEE69D38642DC2A854"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/ufcp_com2.lua",
+      "SHA256": "0CD4A1CC403AE80ADE11C53C205D39906F9B3AE828B0A43FD9E2C6BFB7A16633"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/vvvah.lua",
+      "SHA256": "0BA314D706BEA5F138B381E764403AFC027380DA62DF9001388CA269AAAC0703"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/wpt.lua",
+      "SHA256": "D1A38A4FF6CBCDF49DD1E2EF75A6BC623188B6755CAA304E0B9A73200BB75F5A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/ws.lua",
+      "SHA256": "C8037DBE629E44843D80600808EDB189D774791359ED015CB126B14221079063"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Device/xpdr.lua",
+      "SHA256": "8B09535A8DAD5D5D875BF11FA3C6FFD7269E5462C5AC772CEC6BF8B585D61DBB"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Indicator/UFCP_BASE.lua",
+      "SHA256": "179656782AD66C777E0622A14925D28DB3C5DBF67B603FC3278392AFD0AF46DC"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Indicator/UFCP_MAIN.lua",
+      "SHA256": "FD2466605F3308127956E2376A045D510230E8A74AD9D2382FDDABC32ACB8B95"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Indicator/UFCP_OFF.lua",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/Resources/a29b_ded_font.dds",
+      "SHA256": "405B5C56F100D8A601731A66B12A7B8DD70826ED571D4A41A1581A07802F7BAD"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/UFCP_defs.lua",
+      "SHA256": "693D20F97680A45513777EEAC5E794EDCBF78A96A582DABA10ADEF690D86460D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/UFCP_pageID_defs.lua",
+      "SHA256": "3733DA505F4770CD071771BDBA1D1F21220E201E6D04385732AAA950A45F1B55"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/UFCP_page_init.lua",
+      "SHA256": "90BFB20E74405347608706BDC0BDFEBFDB23FBC6A2D0DDA316398F7DE662FE97"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/emergency_checklists.lua",
+      "SHA256": "E5F7B7F4631D8ADE107E1485E61ABCD68F10184B96A5BF9795450031B31F5997"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/UFCP/materials.lua",
+      "SHA256": "DE7E6B3C1A5E3B272FCBD896732E50465A752A20374AFA36F68677CAA115BD4F"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/command_defs.lua",
+      "SHA256": "F23B75A92D10454B860DDD7A2DB373966FD95F7DCADE214F1DB231C18DFC0716"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/devices.lua",
+      "SHA256": "926FCBE036AC0B17E1AB6ED9DDA9D5B6ED58E6480212544CDF5A867C1B18A1D7"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/dump.lua",
+      "SHA256": "F29DB07271B99CD54AF2D8548676A57EF0F5F5CA46B18AD263D3A4EC7E732AF5"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/fonts.lua",
+      "SHA256": "9BAE4E21083F8518D9142D2447E33C8C2FF7F4DE64D0091AC98C56E11745338D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/functions.lua",
+      "SHA256": "8C383CC756D5AAA92E0958D5B32C3688BAE9F8847F4B4F224E60C82D445C7A52"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/materials.lua",
+      "SHA256": "5E43F221D92F7B9D3B93D5E0F5D2CAA5767AA29DF6E78228A28368D37D57FC6D"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/Cockpit/Scripts/utils.lua",
+      "SHA256": "52FB23647017BC7020DF93200EF22DA1E51FB932199AE462F173FD0D20209E7A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Avionics/F5EM/NOTICE",
+      "SHA256": "98B8C765A13C3CF4D1FFDD2E9AFC45E130C81FDC39D9387D268B06B29B84490C"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Cockpit/scripts/Systems/electric_system.lua",
+      "SHA256": "A4E2B15306A39CE34DFB67DE5CB14F364A49A101E6DD5A618A49FB0C1B5D4552"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Cockpit/scripts/Systems/hydraulic_system.lua",
+      "SHA256": "8D6DC329E150B18E92A9714D42483142FD9A46D749B48AC9EA312DD10DC7BEFE"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Cockpit/scripts/Systems/start_panel.lua",
+      "SHA256": "CEA7D58103BFDE2ED4971C970E4F4EEE73B254F863B272B5096DA8629B45EE59"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Cockpit/scripts/clickabledata.lua",
+      "SHA256": "DBE79913AF675337B64D3F9ED18404FBBDDDEC74A441D6A7590B115C1CAC5478"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Cockpit/scripts/command_defs.lua",
+      "SHA256": "1DD3F861F879CD0744DE2CC54271C1A5EC50036285F5C0AD77642FFB5CED839A"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/Cockpit/scripts/mainpanel_init.lua",
+      "SHA256": "FAF3968A3959594F2160F34F0EF613022B0C576F5BEC845C55F12E4E2BB6ACDB"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/LICENSE",
+      "SHA256": "3ABA57A2D293A4E43AD1A02CA46A6FC693A65B6FA1712F1599394919D9895B5E"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/import-intent.json",
+      "SHA256": "50CA4547B56DF45FC3DC0EF85B863BDF364AC60641B70F05900B72D1561D2C08"
+    },
+    {
+      "Path": "Avionics/Reference/AMX-A1M/import-manifest.json",
+      "SHA256": "F7A9F193B1001911C9B3148AF9A9614B01694B9C2ADF444A29C6CC31E7B103AB"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/AMX CANOPY FRAME.jpg",
+      "SHA256": "522ED3C9323DB0D88AD110A51EF009E42F52321010E5A34CFCE5BF23444DAAD7"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex01.dds",
+      "SHA256": "B94E1D2DFEA3A98D4CECB5C555AB21A3AFAC81D75BF86ED72E5493C02D2B1FC9"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex02.dds",
+      "SHA256": "472B3B8A707BABF2DB541A2A8F76C0E6D810950EF9A5B3F277A13B9DD24F2878"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex04.dds",
+      "SHA256": "A8ABB0B789180CE488D778C17FC07D6E2418EC71F3ED172E6B19CDC279A12D1B"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex06.dds",
+      "SHA256": "343A1632D3926203446252E414A84C5FF42DEDEBDFB21FF798D16BD84FCFE9E6"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/ASSENTO HIGHRES_albedo.png",
+      "SHA256": "7E5CEF3838CB03419EAF6EE8E04A859ACFC2092B448FCE91608D056E6D8376FA"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/ASSENTO LOWRES_albedo.png",
+      "SHA256": "8206554A46AE730775579681FF4CEF40919C2723704D387524F170857ABD9C55"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/Assento AMX.png",
+      "SHA256": "7D4A6C8C4DF5ABDC4843D6F17BF778D6EB5706B72002B3B55D988F1923ED4646"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY FRONTAL_albedo.png",
+      "SHA256": "A7F85F9F9EF44D8EE0BB4DA425B257CBC697868C51F26733353A7909068EC989"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY INTERMEDIARIO_albedo.png",
+      "SHA256": "6A99676E842E2971B432426BC4B26A95CF24C045CF7CA4F57B6931012492F60E"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY TRASEIRO_albedo.png",
+      "SHA256": "F105CE7B98993683E3B71A6CE53FDA1BA35DF637658E98B2B1784100528241DA"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/CINTO AMX.png",
+      "SHA256": "8A74C817428ABC0C2A8208DF97F29934588DEC46AD965684042EDDB2381FB3C3"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/ELECTRIC_albedo.png",
+      "SHA256": "E6E9777B620D74481EFC549FF7FB6FECA80620A0B88DB52D1439CB7BF802DF4A"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/F5EM_INTR_1.png",
+      "SHA256": "547BA2EE60A8E955CE34152A76C0B48E645925D1B82E537F2F4063A0866FCBB4"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/F5EM_INTR_1_nml.png",
+      "SHA256": "4B74A073C4BD7F044FE5A247DE17DB1C19BE794F621DB01C7FFC94357412EB1B"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/FUEL_albedo.png",
+      "SHA256": "C4F120FE19A27E129940CD1278A8CA8B749991CAEED57DEBDD0EEFB1EE4FA98A"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/GPS_albedo.png",
+      "SHA256": "57A03EF1A487F00298D7F2AC818731C771BCF6530BF35D5629F4CC21BF9D68FC"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/MANCHE E MANETE_albedo.png",
+      "SHA256": "3B63FE86F6E87EAC5FD7FB9384400895238DE444C0DB01ED8B58762E75F39C4B"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION preto.jpg",
+      "SHA256": "2D964098AEBA9A8918ADEF5913B262D943E9C6555F9ADC85D4D30D265CF51739"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION.jpg",
+      "SHA256": "E3C360E5B25EAD8B1F0B01CB68566C05948661F4604DF49E33B6F1849A5F7C0C"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION_NRML.jpg",
+      "SHA256": "4D41E91AEC9367ADDE81428B324DBDD7ED01C8C57914E20CEF9EE1EC6BAD68D6"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/MECANISMO CANOPY_albedo.png",
+      "SHA256": "7173BECD1467F8EAF18536559E5F3A6A978941493E1C381D1B6806C80233FFBC"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/Meshy_AI_Fighter_Jet_Cockpit_0825134829_texture.png",
+      "SHA256": "3AD780AF4134B128B888DD4F4C23DC5AB9D49B28531E6F03E6B3D2486EA021B0"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/Meshy_AI_Fighter_Jet_Cockpit_0825134829_texture_normal.png",
+      "SHA256": "5E2ED9450FE3D090485604FF12F20EE155919AC80500B79CC3F52B8B6AB001D8"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX ANTI ICE.jpg",
+      "SHA256": "4EF9E87FC2823DB340CC52F2FD5A6702FDDBABA1C0CEC044C7C8895D23269A47"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX ARR HOOK.jpg",
+      "SHA256": "0C8F8E3D4304135C425AFDC8926A98E35C87DD5F0F158C14A773247C8002AC7A"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX CANOPY SEVERANCE.jpg",
+      "SHA256": "B48030A5A3BA45C6F6636616103E49CD20258075F6974C49BDEDCB00A71DE8F9"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX GARMIN.jpg",
+      "SHA256": "594B1D357FEE55DC974AB5E2CC53E3B78A2B9FCBE1EFFF1AAE3C73EC1F7B0042"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX HYDRAULICO.jpg",
+      "SHA256": "23B5478A5B44B04C0A08D327B89CEF6830E21FADE55C92760809222BB652A1F1"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX LDG.jpg",
+      "SHA256": "8B8FD6EBDF34BC8EC227424AB38B9B0F195A7773E941D51FBF94D65D732DE9D7"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX LIFT DUMP.jpg",
+      "SHA256": "413E6A218120903BCCFDAE82EC7F8299536928E388DA8303CBB3EDF373293EE9"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX PARK BRK.jpg",
+      "SHA256": "D5D8ED127119C2C285FA331E54E2CA1E063D65B09CFF8BD5F2EAB70F2806337F"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX PEDAL ADJUST.jpg",
+      "SHA256": "E9C472A6870D68EEBD66E56AB8028D00807180BA359A924F7B549E20B4D78EC2"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX REFUEL.jpg",
+      "SHA256": "BA369E0AC8B4F8B422C9F479A9387CD7B2C45F44769FE020CFC54EEC79B52B08"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX SEFETY JETT.jpg",
+      "SHA256": "BFA727F51B1E120404D3E048F5ABD10EFBEA324F7F9BDDF4BF6A503232E0D5F4"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX SLAT FLAP.jpg",
+      "SHA256": "7FAF97C6FCE806DF0B7FC8683EF8FF2527075058AE00245AAE1AA2C361B617AE"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX canopy frame.jpg",
+      "SHA256": "41F27FF59EEC6CB3D25056E437825FB5BACD73056DD602578FB0C1CF29FEF39D"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS BATT ELECT.png",
+      "SHA256": "29EB85DECBD980F99BC7767E5B53EB59187434DCFE3CCFB6B0545B0101DF4AE1"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS CONSOLE AMX PEDESTAL iluminacao.png",
+      "SHA256": "BC51CE0EAA6949DCABD7D3CCDA7EE328421246D0345E76C986F0BF08B598F4A4"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS CONSOLE AMX PEDESTAL.png",
+      "SHA256": "36E3FF2BADC524C27DBC5892F70174D76FBBF318712331D1EB5C11B5FB7E89CA"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS FAB BRZ.png",
+      "SHA256": "DE039B0F38DE7A03853A8DF0B91A88D5A7980AE0ABF81337D42C101E96A27538"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS FLAP AMX.png",
+      "SHA256": "90C94D470811FA289C270DC9A1F3583F42265761AC2A5EA734D54C2D8A47FD2A"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS LIGHT STEADY.png",
+      "SHA256": "F60C08E731EEE86B41E6FB568FC8E108CDCFF391BB88FF6287D5C22626E20447"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS MFD AMX.png",
+      "SHA256": "E27DF3C737A4614B9D90914D53F06CFEA1E935F2C29999606CF953C5FC8890CF"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS REFUELING PANEL.jpg",
+      "SHA256": "A6A728EB6ABD4211E684A896B3CEC02333DD724E1376CBA4EB90A65E816E46D4"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS TRIM AMX.png",
+      "SHA256": "9B63AC98F2B18BB5A415E556229BEC5EFD5DCEF9A807B246451236AEE359FB0B"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL COCKPIT NORMAL.jpg",
+      "SHA256": "BEA8F8733591F5DF8E625DF6E500E467AAC05D539CE94C2D2C12903AF1821258"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL COCKPIT.jpg",
+      "SHA256": "3DBD25646D1CD5E4914B4C3ACC2565A4B3251311374CB704599A697352E2F4EA"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL FLT CTR AMX.png",
+      "SHA256": "3EBD2C0E4B06953867614BCBE568F27307E5A50DBDC8C996AC2C0ACD4C2B0EF3"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL GLARESHIELD AMX.jpg",
+      "SHA256": "E9547014BD62449723FFD9D7CF81815BAA2B483E99391A66AD4A7939AA6FE016"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL GLARESHIELD AMX_BUMP.jpg",
+      "SHA256": "3E7C561C50142B87A603647EC56448F29744D464F6F5F165BAFD07ECEC12B88D"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES Base ajustada NRML.jpg",
+      "SHA256": "A3079C313784F0155D7509285721AFD9A0AEAD6C55F7A398930643D306FBA990"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES Base ajustada.jpg",
+      "SHA256": "5314AE730B2839504E5158B4D35A2CBBCC3D37E16CC3039A892FDF4C4C2103DE"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES.jpg",
+      "SHA256": "9BAEE0F2D5E2FFA9E7573A53F447CB46ACD0CBFB84AE3DA1CBE93CD4413470B6"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL MAPA LUZES normal.jpg",
+      "SHA256": "0301F78351BCBD2572CD341A9E95E67D41525F6587F7AF08456A3ADC5AB045CF"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL MAPA LUZES.jpg",
+      "SHA256": "C240407A1598B10770B87ACBD1C8F4F29382DFC6BB11824803F64658911FFEDE"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PAREDES INTERIOR_albedo.png",
+      "SHA256": "49005E7F25F5743515F3C79A82409E618A8BE9358B0EC2CDB217DF552BD0F24B"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PISO AMX FOOT.jpg",
+      "SHA256": "DC13293E588693EC63FDCF4918B43DFF4736B4C4C1B6AC32D1848206A411E050"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PLAQUETA AMX 2.jpg",
+      "SHA256": "D04CE1AA2946BEB6E534D6C00CC28890036CB51F170ED36DACCE298750167103"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/PLAQUETA AMX.jpg",
+      "SHA256": "4B2414BE1DF9E85C4363D839DCDB261A3CDCDE23CAED2F5F229EDD97F53C0971"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/RADIO VSI BFI_albedo.png",
+      "SHA256": "A59180AA28F6282F1DDE8015F71DC05317334303EE3A142B2C91383E52F777D1"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/TECIDO TRAS ASSENTO AMX NORMAL.jpg",
+      "SHA256": "A054D090CF39FDF884F8194791BCC44716468C9152634B15EEC1F204D0FDB995"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/TECIDO TRAS ASSENTO AMX.jpg",
+      "SHA256": "50A4073F51F2AF8D4A56191941831B0D4793F773A0B84C36086BF4AAF2CEB6AA"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP iluminacao.png",
+      "SHA256": "8D80E05035E79BB7B914FCDB958439CD6196D3847E6D0134297025F3E1E6FCA4"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP.png",
+      "SHA256": "71E22552C88ED70763E84AD2F0AC83DCEAD7A02FEEC10BE130B5EAC743E111AB"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP_nml.png",
+      "SHA256": "C29AE0E818E0290F66B293E5713F166246883D1097766F19C53CF652AB7871E6"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/WhatsApp Image 2020-11-17 at 17.46.35.jpeg",
+      "SHA256": "9684BE9BBDF8C20B4B0C2CDC5FDB76A2C138D0A0B803FBD7D4CF3C80C605972E"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a-4e_instr_bckgd_2.dds",
+      "SHA256": "6674CEF41E9B92C9EDFA3C57E3298DFACFDD7639CEEE166904753A0833EC3651"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a29_glass.dds",
+      "SHA256": "6D3ADEFCE164E0FDFE5DAF38271ED6FC9017CA512219FD12ACF8CE434855E280"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_CPT-INSTR-02.dds",
+      "SHA256": "7531073B01D9261753977B92E235379DF1A69CE060DB6A4A58FDC24604A0C059"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments.dds",
+      "SHA256": "CD46D45712579B7D9A9FDA317F65CE81839A194F1A0F5AF42FC1817D8D44FFB5"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments_lm.png",
+      "SHA256": "92864AEBEED251D44B25FA463D8FD500FD65E1A62F5E447884762DFEDC9D5D44"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments_nml.dds",
+      "SHA256": "3DE80C35399233A7BE1B4F24037FEB21036CEAAF2216CBFF938440F371554F6B"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp.png",
+      "SHA256": "36312A81E3297A40E49685F3B503C2614C048CA9E893DD8B45D16493698FFFC9"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp_lm.png",
+      "SHA256": "93BBC888094EA3350371ABDEE32DB95386E20B747438239C4F4D9BD118B53BED"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp_nml.png",
+      "SHA256": "2D11A83F55E0D891D913D1444564504F068E9CEAC9308DDE083A3FCFFA78B0C9"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a4 main2.dds",
+      "SHA256": "07D28DE3479A44C8AA5F9D263451E80224B6B7D53426F21A395671BD0F4DDAAA"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/a4e_aggr_usmc_topgun_mig17_pilot.dds",
+      "SHA256": "E8EE5BBD163BAE64115103F3A8A010A39A72A5C6CB2781899CF63181A50B7AC4"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx 3.dds",
+      "SHA256": "DA7304C53FDD806B8BE283F02B0F83FF3AAB081327D0782C15071E8859669CDD"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx belt.dds",
+      "SHA256": "A73FA01E4B828FB4C38538C8A61D45C7F89CF63402AB63ECBA171A77703F1DCF"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx cock.dds",
+      "SHA256": "2F890892AB01FD1E069809414B9C5CFA719CF55DBC1D5FBD0A5F2B05A5E1E3E0"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx pedal.dds",
+      "SHA256": "E52EF240B538FFE68E5200186DBFBA57D0F678F1A7A2F671312B81FF11B5E297"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx seat.dds",
+      "SHA256": "1CA8B28EF346CD6A163820F4E04A36E18E85F11B54E8433BD62C6F1A7E283F8F"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx stick.dds",
+      "SHA256": "E52EF240B538FFE68E5200186DBFBA57D0F678F1A7A2F671312B81FF11B5E297"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx_cpt-tex03.dds",
+      "SHA256": "032EE9A33741F66140CF97146A0F9623A2E5E44F4E14C9195C929288B3097E1F"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx_cpt-wire.dds",
+      "SHA256": "30C8F692F4C1A7C8081999300020442D48E431B925F0E52F24A2DDA7BC8EA872"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx_lateral.dds",
+      "SHA256": "D8440FC17B3810889899D7690008A89CAFFC3541B66CF823E7DF6D70888AEE08"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle.png",
+      "SHA256": "3BF3289220762B9FCFCF0428560C055D13F7FAF6E98E97646686606027C5CB94"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle_lm.png",
+      "SHA256": "2DF25D3721EE670F1F4958B87C4483F9C5EF5CF6FBAA43EA060E6F04B8795E71"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle_nml.png",
+      "SHA256": "3C3452CE6FC3902366D1A26A46EECA960CF755E20A34C91D2ABF251FBCE6E9DA"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/cano AMX.jpg",
+      "SHA256": "CC1AB2BB2B17C1D9B2A2EDDD469EC9472B956FC62744F78F90369A74AB5F1609"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/cockpit_switchesknobs.dds",
+      "SHA256": "A07620E120EFF097491FE3C620AF9888DC3679B2DB2F4F41EFF66C507A049535"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/dangr.bmp",
+      "SHA256": "0BFE18F901E8375FE56B7BBC0EB310D1E4FC2442F99D347B5C5B890959051236"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/iff.bmp",
+      "SHA256": "E4256AAB1C067827DEA6B65FB3A9BA3CAA19CAA1D995F34515E15080C97C31CD"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/melhor.jpg",
+      "SHA256": "80E8EB6FF5ED681BD6A9519E2F7C1C84C2FFE2F50463E4EA391646C8ABD8C8D3"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/painel bege frame canopy.jpg",
+      "SHA256": "81AB8FA67A9F4A999807DCF28042FC30E6F9C83243CCC7CCC079F64DE0439B3F"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/painel cinza 2.bmp",
+      "SHA256": "A497ABFF7065013573B267D19DF8C0D4C25DCAF90C0FB2A9F647CCB815934F5E"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/painel cinza frame canopy.jpg",
+      "SHA256": "3085FA0CF65704007EABF64F6F857F06D7F3CA13371B09691B97A2688ECED3DF"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/parafuso canopy 2.jpg",
+      "SHA256": "62EB9D77B460B9EBED78E470B7E8981E15A74577F4A9734861D21B55AFB2AE94"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/parafuso canopy.jpg",
+      "SHA256": "745DBEED1103DA2A6BAA9E176FACB06852943431846C74FF47CC7044E284FFB8"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/tecido cinto.bmp",
+      "SHA256": "B653C5008EF9DFB6EF23EBC776B972B69E9BEB1E3D53AE20BB1F7D818EE12008"
+    },
+    {
+      "Path": "Cockpit/AMX-A1M/Textures/tecido verde.bmp",
+      "SHA256": "BD47505ED8FB54FB1723D814A1C59A00E70FCB6B0F49E38F70E0F8082C64DCC7"
+    },
+    {
+      "Path": "Config/AMXDENIS_COCKPIT.lua",
+      "SHA256": "84ED295278492ED4A3EE24CC48F86F8836AD7ECF67577284D449AFB3CBDB61E9"
+    },
+    {
+      "Path": "Config/AMXDENIS_INTEGRATION.json",
+      "SHA256": "9A65DC11616CAFEF8CCF8677EEBA3040D66B312C8D917F9554E812915D9F8351"
+    },
+    {
+      "Path": "Config/AMXDENIS_ORIGINAL.json",
+      "SHA256": "27095AE9593424801CC4C3A47559BB0165342F65BB7D79DB987B6C9C75B9A57A"
+    },
+    {
+      "Path": "Config/AMXDENIS_TEXTURES.json",
+      "SHA256": "55D6BCAAB6049B0A9945ABBE319EBF01791A3052E43D63B6E59871D9B9953657"
+    },
+    {
+      "Path": "Config/REV07_RECORDS.json",
+      "SHA256": "68FD27C4078EBE5CCA6BB83B9ECC1860ED86BEDFB36E94CD5AE01A21ADB2D15C"
+    },
+    {
+      "Path": "Doc/Integration/Evidence/REV07-user-visual-acceptance.json",
+      "SHA256": "E36230E8BD87B4CD2F3D39A3BFE682AE9A71AB6429CF15A55893558729163630"
+    },
+    {
+      "Path": "Doc/Integration/Notices/F5EM-NOTICE.txt",
+      "SHA256": "98B8C765A13C3CF4D1FFDD2E9AFC45E130C81FDC39D9387D268B06B29B84490C"
+    },
+    {
+      "Path": "Doc/Integration/PERMISSIONS.json",
+      "SHA256": "ECA558DB152372CAF150C859D1A5D8A088C527FEE5AED8E6AB23F3B36B5D6D23"
+    },
+    {
+      "Path": "Encyclopedia/Plane/AMX.png",
+      "SHA256": "459346E62C3EF3C478DBECD239C83F9964C404C1EA5CB8F5E8E0E7EE16836215"
+    },
+    {
+      "Path": "Encyclopedia/Plane/AMX.txt",
+      "SHA256": "E03AF4E337B9859DDDC74DB87AA8A38BD49FD6EE2E27AD55B0C5A1036BA7DEB3"
+    },
+    {
+      "Path": "Entry/AMX.lua",
+      "SHA256": "D941EE7B99398C869538BD5218DFB18AEB61FFFE5A9457F86890AA6C1B3B7B49"
+    },
+    {
+      "Path": "Entry/AMXT.lua",
+      "SHA256": "CDD9D27CE605CE40C57713223D2DF44AAAF1957A091D8ECB4C6B6B92E03B2753"
+    },
+    {
+      "Path": "Entry/AMXT_M.lua",
+      "SHA256": "61D21385D8E37650C47291E10197A2F7365BEF3647C8775AA6C2930E2030CD91"
+    },
+    {
+      "Path": "Entry/AMX_M.lua",
+      "SHA256": "20BFF4105639C82E6E09241480FAE3C06F07156BFC39CC2F6FB522AD0846FD50"
+    },
+    {
+      "Path": "Entry/Data/AMX_SFM.lua",
+      "SHA256": "6360F0E2D0F24B1ABD2483428F0C151F40C45DCBFD3D3D1591B0DCC97F1F5C26"
+    },
+    {
+      "Path": "Entry/Data/amx_engines_fm.lua",
+      "SHA256": "C0D837E6C9FBEB1EB625114F0DB5F63E96BCCD799804C9B3C262274024CCC40F"
+    },
+    {
+      "Path": "Entry/Data/amx_gun_mount_fm.lua",
+      "SHA256": "2B485CB5F0A72287630BA7D69E4F449E40E09A24F3123DE719CF30A83E4D846C"
+    },
+    {
+      "Path": "Entry/Data/amx_lights_data_fm.lua",
+      "SHA256": "9BD19571F71DDCD9948E8A19542E45C2BFB4D13832950A333A43190D19C4DB5C"
+    },
+    {
+      "Path": "Entry/Data/amx_pilones_fm.lua",
+      "SHA256": "7FAAC78D505E6A76D25F63BCD6E086B8B36934DB572804B82E4CFCA3DE4DBBA4"
+    },
+    {
+      "Path": "Entry/Views.lua",
+      "SHA256": "5328D30B102B037AA63C8DD814B07DA2733E6F0C17E9C033021BB0E15BCADEE4"
+    },
+    {
+      "Path": "Entry/comm.lua",
+      "SHA256": "CA3423964B31EA7380082DBF973BEFA6D82EC50CE99FBEDD0642FD155D565E7E"
+    },
+    {
+      "Path": "Entry/loadout.lua",
+      "SHA256": "D8C6822B5B200BA3E729C45A90DD3991D370F4BA48C33BCA352A5A17A71C310F"
+    },
+    {
+      "Path": "Entry/weapons.lua",
+      "SHA256": "A9174E058A97B5E88216AA391344D080993266B704664530A018553F3A399E82"
+    },
+    {
+      "Path": "FM/config.lua",
+      "SHA256": "D7436EE66276450E68818BDC6C94C7CE612471B689C93D17E6A9C89DB30E2845"
+    },
+    {
+      "Path": "ImagesGUI/AMX.png",
+      "SHA256": "760EC1F2CC7C2E4C007229A31A2A7C777791257C9AFE3E1CD6A71C92E44A0B70"
+    },
+    {
+      "Path": "Input/AMX/joystick/default.lua",
+      "SHA256": "5E77681F3FF127336CFC672343ABFB0AD5F7662208897D1270AFE1CC6DD63DB9"
+    },
+    {
+      "Path": "Input/AMX/keyboard/default.lua",
+      "SHA256": "6AF78E8EE88F37B53F8BC088AF69F4A9B48FB95FF0BA085B41493BC0ADCCDB1D"
+    },
+    {
+      "Path": "Input/AMX/name.lua",
+      "SHA256": "E2B7CDD411C206BED7CAA9F3146ADF56272387F61BEA2586C5742B7D2FEFC8C7"
+    },
+    {
+      "Path": "LICENSE",
+      "SHA256": "230184F60BAE2FEAF244F10A8BAC053C8FF33A183BCC365B4D8B876D2B7F4809"
+    },
+    {
+      "Path": "Liveries/AMX/5506/description.lua",
+      "SHA256": "047534BEAE3FF1D8C7D4674864FC45B810C1490F01D926020ADE5737BF6EC0E0"
+    },
+    {
+      "Path": "Liveries/AMX/5530/description.lua",
+      "SHA256": "A9904E970BF2A2219B2B09A2A9EB8A2CDC9F92CE91266D32B15D3E63ABFFAFC1"
+    },
+    {
+      "Path": "Liveries/AMX/5531/description.lua",
+      "SHA256": "FBE94DD844008193F82FE55C36F2A4B6F59ADEE6288B76C3AE2F8E7BCDF9EBAD"
+    },
+    {
+      "Path": "Liveries/AMX/5540/description.lua",
+      "SHA256": "F8EDFCB8F4BA676A509E874F0F8A19AC378506150705098B9C8A66C8BDFDA81A"
+    },
+    {
+      "Path": "Liveries/AMX/5544/description.lua",
+      "SHA256": "4A5D6189FEEA1D00292F2A6F69D751A067F69FA8E7EC484C35BF137E08D75363"
+    },
+    {
+      "Path": "Liveries/AMXT/A1B_5652/description.lua",
+      "SHA256": "13E7F98CBCE9CCE803B276E4397EF8AC50E99A79378B945910633EC54C5D6790"
+    },
+    {
+      "Path": "Liveries/AMXT/A1B_5654/description.lua",
+      "SHA256": "088D31D997EBFAC4EA2BE17393C6615F73E300975BC39906E343FFD6E1BB381D"
+    },
+    {
+      "Path": "Liveries/AMXT/A1B_5654_BV/description.lua",
+      "SHA256": "74F07E32AB7B511D2BD1F86C3A8AC872EC065609A8C91A932A02D8927C5E9BCD"
+    },
+    {
+      "Path": "Liveries/AMXT/A1B_5658/description.lua",
+      "SHA256": "D85E93751C14B0BAE898A3F5030D27CE8D8D6BA832FFA6D5C8D8613002F87E54"
+    },
+    {
+      "Path": "Liveries/AMXT/A1B_5659_1/description.lua",
+      "SHA256": "03A1CD0B67854AE4AC6C65411B008FAF5DFE4CFF978CB0780931864138252080"
+    },
+    {
+      "Path": "Liveries/AMXT/A1B_5659_2/description.lua",
+      "SHA256": "BC243EA9DFC40F4C59631E297DDD8C5406AF2CC73646AE6AF84842106B3BBD0B"
+    },
+    {
+      "Path": "Liveries/AMXT_M/1/description.lua",
+      "SHA256": "71BEED2E3B1BAD78B9A6613EADCF5A90B6A9CBC6629F1BBD497F97D221DAFE86"
+    },
+    {
+      "Path": "Liveries/AMX_M/5504/description.lua",
+      "SHA256": "A8528063A6C1F97C845880D23CF47B29A935991BFEC5FD14527C60F70F09A10C"
+    },
+    {
+      "Path": "Liveries/AMX_M/5510/description.lua",
+      "SHA256": "5D2DED8591D2C6382A64D84BE28ADE99BC39EBE51291CC1968B95977249AEF19"
+    },
+    {
+      "Path": "README.md",
+      "SHA256": "4B3083B554686DFDB9F048F36C1B288160A3A96599F45612DBFB1E44FF76ADFF"
+    },
+    {
+      "Path": "Shapes/AMX.edm",
+      "SHA256": "3372D5598EF82B76C23E35B87D583C728E639DE2B19F154163952EB21B101B16"
+    },
+    {
+      "Path": "Shapes/AMX.lods",
+      "SHA256": "D40FC5331DA5F7D6675D79B21E02278FD3B262B1EDD821AB23ABE0FEF10CD8CD"
+    },
+    {
+      "Path": "Shapes/AMX_COCKPIT_REV07_184.edm",
+      "SHA256": "7C2F1DE3C8AF4F8684C0C892A24EEFA4497C438CB85CAD0D09A177445B1D3342"
+    },
+    {
+      "Path": "Textures/AMX_glass.dds",
+      "SHA256": "4D82CB28589E546C8CB1324B6075EF061CCE7240E73AF7329AF3334E40C3E47A"
+    },
+    {
+      "Path": "Textures/AMX_glass_NM.dds",
+      "SHA256": "95D0D078432F5A842C4FA015AE9565B9A3FCF702E1054ED38BDCEA19256E177A"
+    },
+    {
+      "Path": "Textures/AMX_glass_RoughMet.dds",
+      "SHA256": "E28F679155DC932B538C846B83F795B02AAE18D6D0987AE21BAF02EA79748FD1"
+    },
+    {
+      "Path": "Textures/AT-27_SEAT.dds",
+      "SHA256": "5B4F5516345103FEB155582B5423988FB4417419F0501858CBA8545BC0E78FBD"
+    },
+    {
+      "Path": "Textures/AT-27_SEAT_NM.dds",
+      "SHA256": "4678A0DD5731BB090D04F4285682DE8219CFF98E704115B08F868953D5054926"
+    },
+    {
+      "Path": "Textures/AT-27_SEAT_RoughMet.dds",
+      "SHA256": "403E1B6DBECE9CD99ACD343BA75258B93F9BBBE103CA061FE55896CCF9D480E2"
+    },
+    {
+      "Path": "Textures/Pilot_AL.dds",
+      "SHA256": "E89869379358AAC5DE4A4650115273CDC9A2CF42DBAD00DB00F8DB5EFB4FD54B"
+    },
+    {
+      "Path": "Textures/amx_Wings.dds",
+      "SHA256": "2B0967C7B3C1931DFCB28555A1632A1E60C4DF22E4F254C8582998F047FE59F8"
+    },
+    {
+      "Path": "Textures/amx_Wings_NM.dds",
+      "SHA256": "1CA958C12565312AD27266A629F3C70CC6ED63692AA79CA3FABDFA783935C17A"
+    },
+    {
+      "Path": "Textures/amx_Wings_RoughMet.dds",
+      "SHA256": "07BBEC1D7EBB4563613F827115F3CAB06E985A6A1EE10EDEF399176C1AA77C95"
+    },
+    {
+      "Path": "Textures/amx_cockpit.dds",
+      "SHA256": "4631AB10CB8F530A6F1D10DEB4F1FCFF34C5FC98B658A8900192EAF78883E94A"
+    },
+    {
+      "Path": "Textures/amx_cockpit_NM.dds",
+      "SHA256": "D7A0E7DFEBADAF2F72DC101F27952D12D2CE699A6F722D3024FEAF48113DC23E"
+    },
+    {
+      "Path": "Textures/amx_cockpit_RoughMet.dds",
+      "SHA256": "790116C30FD84BA3C2626FD65B557856C2CA1B17064C5E112145C155DA0B6DF9"
+    },
+    {
+      "Path": "Textures/amx_fuse_01.dds",
+      "SHA256": "7F0BE42F12425B5EFA003FE1744969A6EBF1C1C7F377E37D372206B1E6358E3C"
+    },
+    {
+      "Path": "Textures/amx_fuse_01_NM.dds",
+      "SHA256": "1CA958C12565312AD27266A629F3C70CC6ED63692AA79CA3FABDFA783935C17A"
+    },
+    {
+      "Path": "Textures/amx_fuse_01_RoughMet.dds",
+      "SHA256": "098395EC6532C193D1886D08BD5C7FA6590C279751A5F45C8A0426C91CC33549"
+    },
+    {
+      "Path": "Textures/amx_fuse_02.dds",
+      "SHA256": "BDB9ADB4AD365D9299F04396483FE8BBFCB5CB392577340D5BEE7069BF455A21"
+    },
+    {
+      "Path": "Textures/amx_fuse_02_NM.dds",
+      "SHA256": "1CA958C12565312AD27266A629F3C70CC6ED63692AA79CA3FABDFA783935C17A"
+    },
+    {
+      "Path": "Textures/amx_fuse_02_RoughMet.dds",
+      "SHA256": "A54AC64D92B05CD70716FA4DF3C7E28AFFEDBB3F4C36F7DB06D7AB56D3DED0DB"
+    },
+    {
+      "Path": "Textures/amx_parts.dds",
+      "SHA256": "3563A297FB803DBB61CCD354C23297F58DBD8127BEDBD57DC0834A375592F3C2"
+    },
+    {
+      "Path": "Textures/amx_parts.jpg",
+      "SHA256": "632D18465CC68B7C961B56B1E7C6C33277B9874AF976389B61F0B045D14DB3CC"
+    },
+    {
+      "Path": "Textures/amx_parts_NM.dds",
+      "SHA256": "1CA958C12565312AD27266A629F3C70CC6ED63692AA79CA3FABDFA783935C17A"
+    },
+    {
+      "Path": "Textures/amx_parts_RoughMet.dds",
+      "SHA256": "01FE5D31783C0C5628DC0E3DACE622A85CE036B33EDBA2D12D35C7DE3B013907"
+    },
+    {
+      "Path": "Textures/capPilot01.dds",
+      "SHA256": "D25770CB313D3D9ABACB61C8F8AFA3181B158D8C27ABC2F5C6D7AC97EB541B32"
+    },
+    {
+      "Path": "Textures/capPilot01_NM.dds",
+      "SHA256": "FCBBFAC1E91CF0C58C29DA7874ACEB30578E9E36AADDF0B5773FE531AEB1636A"
+    },
+    {
+      "Path": "Textures/capPilot01_RoughMet.dds",
+      "SHA256": "55F64DD78A71D2FCABFC6F03883E85DA029C7E70DD6D5705B91BDCE06E861A6E"
+    },
+    {
+      "Path": "Textures/capPilot02.dds",
+      "SHA256": "E8E43F5BCF7EC72AA81DD7EDCE29DA04E99DC05FF94835915ACAE4B028A1123A"
+    },
+    {
+      "Path": "Textures/capPilot02_NM.dds",
+      "SHA256": "2450D0BAC6AB8EF861263C677D01C598601607115EB303810CC4B1EF89BAFEAD"
+    },
+    {
+      "Path": "Textures/capPilot02_RoughMet.dds",
+      "SHA256": "21229885601D1652056A28EBF7CFC416221A4B7A87AEEC9C9D8DDFB1C883BE97"
+    },
+    {
+      "Path": "Textures/cap_Viseira.dds",
+      "SHA256": "D5DD8960B0EAA8FC26BC06FDA7D92F57F01F083EFC1BA29289C8C3FA255262F3"
+    },
+    {
+      "Path": "Textures/cap_Viseira_RoughMet.dds",
+      "SHA256": "B46A594090AF227026F35B300E344D7B9E3556A39C087ACF0ECE88532A15A63C"
+    },
+    {
+      "Path": "Textures/capmasks.dds",
+      "SHA256": "07215797F499C84E22821DE47709B9C7CB54D5CA7BADFB7755566B4DEC37207A"
+    },
+    {
+      "Path": "Textures/capmasks_NM.dds",
+      "SHA256": "168B9EEBFB6BF8B3244CF205706DDEC34B96486055F1C00D354A727AAF727DE2"
+    },
+    {
+      "Path": "Textures/capmasks_RoughMet.dds",
+      "SHA256": "09FCA165D5E7B08EABF358018FF7A32907941734758BC2481B5524D3108BFC5C"
+    },
+    {
+      "Path": "Theme/ME/BackGround-AMX.png",
+      "SHA256": "33B83C2ABF7E8614E71DF95FED393B89EA459FB7D979C45D3C95EA340AB22B24"
+    },
+    {
+      "Path": "Theme/ME/MainMenulogo.png",
+      "SHA256": "CBDB6C39FE0582AC2A97B3E3094A0BA1FF142F0E71F2E57B68AAAAC0A97BD6B6"
+    },
+    {
+      "Path": "Theme/ME/base-menu-window.png",
+      "SHA256": "E6BF97BD3D958D47029B2FD9F72598A3EA4A0E457680A958AE8E94941D8381C7"
+    },
+    {
+      "Path": "Theme/ME/briefing-map-default.png",
+      "SHA256": "882F6C9E2769E070B16CAAE85E3E2EE5D2A605C681B9AADD7E3D1E0B75C6EA8C"
+    },
+    {
+      "Path": "Theme/ME/loading-window.jpg",
+      "SHA256": "C6C87770B5C66AFF3FCCBD9A0169C89870FE052786D80B48C5E3393EA9E5C705"
+    },
+    {
+      "Path": "Theme/ME/loading-window.png",
+      "SHA256": "B5BC32F2474FA46C4B56C0BF865AF26BBF826AF6BC614E4588837BD0815F3AD2"
+    },
+    {
+      "Path": "Theme/icon 76x76.png",
+      "SHA256": "2BC2F1978560F760991674CEDDE878518E40DF85F8B5747040D3521CA5749E8F"
+    },
+    {
+      "Path": "Theme/icon-38x38.png",
+      "SHA256": "A37735A4715ABE9E924E91273464EE603EF61C6137EECB7541360692D33EB125"
+    },
+    {
+      "Path": "Theme/icon.png",
+      "SHA256": "A74063BD53EBC72EC81344B9C7544C774128E85584F3EFA7A412BE69C80668C5"
+    },
+    {
+      "Path": "Theme/icon_active.png",
+      "SHA256": "71EC143C37ED94F45DD3D5D3D60585F06FC950E5AE7761E096278C00B254C4D0"
+    },
+    {
+      "Path": "Theme/icon_select.png",
+      "SHA256": "165F2286A2DE53C5D847ACF64E1CB8DCF0F4A5FA28405958630A1CCB9AFE0DD9"
+    },
+    {
+      "Path": "Tools/build_amxdenis.lua",
+      "SHA256": "63919CEF7F31F9C4E7CE6C6E272CED7D8CFE98630AA2E075B02300F12ACA8C65"
+    },
+    {
+      "Path": "Tools/build_amxdenis.py",
+      "SHA256": "66E778D0E2577E7C5CC3414319BEC2823EB197AFBA0076FD06480F1CBB1ABA4F"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/AMX.lua",
+      "SHA256": "D941EE7B99398C869538BD5218DFB18AEB61FFFE5A9457F86890AA6C1B3B7B49"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/AMXT.lua",
+      "SHA256": "CDD9D27CE605CE40C57713223D2DF44AAAF1957A091D8ECB4C6B6B92E03B2753"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/AMXT_M.lua",
+      "SHA256": "61D21385D8E37650C47291E10197A2F7365BEF3647C8775AA6C2930E2030CD91"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/AMX_M.lua",
+      "SHA256": "20BFF4105639C82E6E09241480FAE3C06F07156BFC39CC2F6FB522AD0846FD50"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/Data/AMX_SFM.lua",
+      "SHA256": "6360F0E2D0F24B1ABD2483428F0C151F40C45DCBFD3D3D1591B0DCC97F1F5C26"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/Data/amx_engines_fm.lua",
+      "SHA256": "C0D837E6C9FBEB1EB625114F0DB5F63E96BCCD799804C9B3C262274024CCC40F"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/Data/amx_gun_mount_fm.lua",
+      "SHA256": "2B485CB5F0A72287630BA7D69E4F449E40E09A24F3123DE719CF30A83E4D846C"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/Data/amx_lights_data_fm.lua",
+      "SHA256": "9BD19571F71DDCD9948E8A19542E45C2BFB4D13832950A333A43190D19C4DB5C"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/Data/amx_pilones_fm.lua",
+      "SHA256": "7FAAC78D505E6A76D25F63BCD6E086B8B36934DB572804B82E4CFCA3DE4DBBA4"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/comm.lua",
+      "SHA256": "CA3423964B31EA7380082DBF973BEFA6D82EC50CE99FBEDD0642FD155D565E7E"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/loadout.lua",
+      "SHA256": "D8C6822B5B200BA3E729C45A90DD3991D370F4BA48C33BCA352A5A17A71C310F"
+    },
+    {
+      "Path": "ci/fixtures/original/Entry/weapons.lua",
+      "SHA256": "A9174E058A97B5E88216AA391344D080993266B704664530A018553F3A399E82"
+    },
+    {
+      "Path": "ci/fixtures/original/LICENSE",
+      "SHA256": "230184F60BAE2FEAF244F10A8BAC053C8FF33A183BCC365B4D8B876D2B7F4809"
+    },
+    {
+      "Path": "ci/fixtures/original/entry.lua",
+      "SHA256": "D0D10D82985F715C39429D662C09CDED1032A03B96A4C763F72F4B4AE391645B"
+    },
+    {
+      "Path": "entry.lua",
+      "SHA256": "D0D10D82985F715C39429D662C09CDED1032A03B96A4C763F72F4B4AE391645B"
+    }
+  ],
+  "LuaExecutableSHA256": "343E514A4B884659436C33B9B227AA8EA7407A6088F6B7BBB094176CA0666115",
+  "MissingLocalTextures": [
+    "f18c_cpt-naces1",
+    "f18c_cpt-tex12",
+    "mb339_glass"
+  ],
+  "NativeValidated": false,
+  "PilotSeat": 1,
+  "Schema": "AMXDENIS_CANDIDATE_1",
+  "Stage": "IMPLEMENTADO_NAO_VALIDADO"
+}

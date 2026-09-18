@@ -50,9 +50,11 @@ exige telemetria recente antes das entradas. Um cursor deslocado bloqueia o cliq
 
 ## Falhas e preservacao
 
-- As execucoes A/B em `bin-mt` falharam antes da missao em `amdxc64.dll`,
-  incluindo a repeticao com upscaling privado OFF. Nao houve edicao de driver,
-  proxy grafico ou OptiScaler. A pasta padrao `bin` conseguiu abrir a missao.
+- As execucoes A/B em `bin-mt` registraram access violation em `amdxc64.dll`
+  durante a inicializacao grafica, e o observador rejeitou a espera. A execucao
+  A depois registrou READY e 88 amostras, mas nao foi aprovada; B, repetida com
+  upscaling privado OFF, nao registrou READY. Nao houve edicao de driver, proxy
+  grafico ou OptiScaler. A pasta padrao `bin` permitiu continuar os testes.
 - A execucao H terminou com `0xc0000374` em `ntdll.dll`. A repeticao I com
   o mesmo candidato carregou. A causa do erro de heap nao foi estabelecida.
 - Os logs registram o modelo de dano original como corrompido, alem de erros

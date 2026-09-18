@@ -1,0 +1,63 @@
+{
+  "Schema": "AMXDENIS_NATIVE_EVIDENCE_INDEX_1",
+  "BuildId": "5D41C50ED61EDA5940AE588AF78ED807ED0A2AB2368BC0ED8AFB547028652039",
+  "Scope": "user_accepted_native_visual_alignment_only",
+  "Files": [
+    {
+      "Path": "alignment-accepted.png",
+      "SHA256": "4AD59AB71E24EEFC17B1FF7974510AE864403F5880A70C0AAC5B8C299770787A",
+      "Bytes": 2514800
+    },
+    {
+      "Path": "before.png",
+      "SHA256": "210B4FEA7655A2F699FAC7C9477CE99C37442C96B0668F05A4E50A8BA63FCC5D",
+      "Bytes": 2628722
+    },
+    {
+      "Path": "bench-final.json",
+      "SHA256": "6C429202720CF75E31ADC92C80FB9CB9B734B4E204E1D476548F29E6EB672026",
+      "Bytes": 1585
+    },
+    {
+      "Path": "candidate-manifest.json",
+      "SHA256": "C74C94DD5F4F2A889AF2EF9BE5169BB522A0A6D4006FCA266EB2F43C04E2B3E4",
+      "Bytes": 144261
+    },
+    {
+      "Path": "ci-final.log",
+      "SHA256": "119308FEFD8E28B573685D7FE1E8EA33C7385F1990CF59227B6A9F87A29758ED",
+      "Bytes": 3688
+    },
+    {
+      "Path": "controls.csv",
+      "SHA256": "9037B846D40F82145BEFB33C797E02F3E52EFD76220FCFF6B29D5646EE0717A9",
+      "Bytes": 4386
+    },
+    {
+      "Path": "finalization.json",
+      "SHA256": "7AA8C3FEF24992F91832EB95A58C845A875CC6E32522F486043A322CB925D751",
+      "Bytes": 445
+    },
+    {
+      "Path": "preservation.json",
+      "SHA256": "2D1CCEEE258756501D2548191FDDEAA4DDC46C6F77DAFE816AD7E6FEBF170871",
+      "Bytes": 775
+    },
+    {
+      "Path": "run-summary.json",
+      "SHA256": "ADCB32A20DFDA6DE347A703D9BB41CF7F633ABDFC22E00B4BC5431B42E592983",
+      "Bytes": 6822
+    },
+    {
+      "Path": "visual-acceptance.json",
+      "SHA256": "2B7EC3675478D6E6FA12C2187A806B560BF607CE5E610FA005572BD8005DB8A6",
+      "Bytes": 1278
+    },
+    {
+      "Path": "zero-offset-rejected.png",
+      "SHA256": "A67542FAF02A96F34E366EC34747AEA0AB237A5326512616D639EA5555E2E29D",
+      "Bytes": 2170399
+    }
+  ],
+  "RecordedUtc": "2026-09-18T01:25:27.7040825Z"
+}
