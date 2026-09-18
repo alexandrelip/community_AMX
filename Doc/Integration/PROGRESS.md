@@ -2,6 +2,13 @@
 
 ## Checkpoint atual: teclado por efeito funcional
 
+O [subitem de layout](Evidence/Operational-REV07/keyboard-layout-results.json)
+passou em BX/BY: 36 transicoes de FULL, troca entre MFDs e retencao de selecoes
+em ciclos de energia. Acrescenta quatro acoes, chegando a 54 acoes distintas
+nas tres suites. Sao estados funcionais confirmados, nao prova de pixels ou
+legibilidade. Os ensaios terminaram com integridade verdadeira e os erros
+nativos continuam registrados.
+
 O subconjunto basico foi sincronizado em `ecdee0e`, com
 [93 transicoes de 13 controles](Evidence/Operational-REV07/keyboard-core-results.json).
 A [continuacao de navegacao e edicao](Evidence/Operational-REV07/keyboard-navigation-results.json)
@@ -17,12 +24,14 @@ interrompidos, com interacao externa confirmada pelo usuario para esse grupo
 de ensaios, sem atribuir cada evento individualmente.
 
 R03 continua 5/10: selecao de pagina nao aprova radio, sensor ou armamento,
-e 55 acoes ainda estao fora dessas suites. CI final BW passou, com o mesmo
+e 51 acoes ainda estao fora das tres suites. CI BW passou, com o mesmo
 BuildId testado em BU/BV: 233 guardas de integracao, 866 do observador,
 1801 de runtime e 22743 dos indicadores em 69 paginas, alem das demais suites.
 Ambas as sessoes finalizaram com integridade verdadeira, zero erros/rejeicoes
 do observador e 159 erros ERROR/ERROR_ONCE do DCS cada; sem alegar logs limpos.
 Nenhuma instalacao no perfil normal ou nova aprovacao de mecanismos/voo/X56.
+Navegacao/soltura sincronizadas em `80eb2e8`. A adicao posterior de DisplayLayout
+passou em 257 guardas de integracao e nos dois ensaios BX/BY; nao mudou o runtime.
 
 ## Historico: diagnostico de mecanismos e sensores
 

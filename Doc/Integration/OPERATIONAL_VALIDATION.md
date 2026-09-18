@@ -21,7 +21,7 @@ reversivel inicial dos IDs explicitamente identificada. Nenhum commit/push novo.
 
 | Etapa | Estado | Criterio de conclusao |
 | --- | --- | --- |
-| Teclado | BU/BV: 246 transicoes funcionais repetidas, 50 acoes em contextos selecionados; basico BN/BO preservado | Cobrir as 55 acoes fora das suites e demais contextos; nota 5/10, sem aprovar atuacao de mecanismos por recebimento |
+| Teclado | BU/BV e BX/BY: 282 transicoes funcionais, 54 acoes em contextos selecionados; basico BN/BO preservado | Cobrir as 51 acoes fora das suites e demais contextos; nota 5/10, sem aprovar atuacao de mecanismos por recebimento |
 | Mouse | AQ confirmou COM1/COM2 em prova experimental; controle AR nao concluiu resultado equivalente | Prova OBB de COM1 retirada; repetir no baseline em vistas controladas e cobrir seletores/knobs e demais zonas |
 | X56 fisico | Ambos detectados e lidos por WinMM: manche 5 eixos/17 botoes, manete 6 eixos/32 botoes expostos | WinMM limita a 32 botoes; curso completo, todos os botoes e mapeamento nativo continuam sem aprovacao fisica |
 | Partida/desligamento | Confirmados por comandos diagnosticos em AF, missao corrigida | Negativos sem energia/combustivel; RPM nativo de marcha lenta; parada com RPM/fluxo zero. Nao certifica NH/TGT ou HOTAS |
@@ -66,6 +66,17 @@ BW passou e reconstruiu o mesmo BuildId
 `5A236FF163314E4951959DB9BB1841866CF497A732312CE3AE00C80B515C398B`.
 R03 permanece 5/10. Nao ha aprovacao nova de mecanismo, voo completo, mouse,
 X56 fisico ou capacidades de sensores/armamento por abrir suas paginas.
+
+O subitem acima foi sincronizado em `80eb2e8`. A
+[continuacao de layout](Evidence/Operational-REV07/keyboard-layout-results.json)
+testou FULL e troca entre telas nos dois MFDs, incluindo retorno e retencao das
+selecoes ao desligar/religar cada visor e o master. BX/BY passaram em 18 etapas
+cada, com os dez estados de layout esperados, efeito funcional e soltura.
+Sao 36 transicoes adicionais, quatro acoes novas e 54 acoes distintas nas tres
+suites. Os dois runs foram finalizados com integridade verdadeira; zero erros
+ou rejeicoes do observador e 159 ERROR/ERROR_ONCE do DCS em cada um.
+As 257 guardas de integracao passaram; a CI de runtime BW continua historica,
+pois este subitem so ampliou o teste. Estado de layout nao comprova pixels.
 
 ## Primeiras evidencias
 

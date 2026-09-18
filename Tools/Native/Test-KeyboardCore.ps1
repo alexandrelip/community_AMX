@@ -2,7 +2,7 @@
 param(
     [string]$RunRoot,
     [string]$ReportName='keyboard-core.json',
-    [ValidateSet('Core','Navigation')][string]$Suite='Core',
+    [ValidateSet('Core','Navigation','DisplayLayout')][string]$Suite='Core',
     [ValidateRange(1,3)][int]$Cycles=1,
     [switch]$Describe
 )
@@ -95,9 +95,49 @@ function Get-KeyboardNavigationCases {
     @{Control='Battery';Value=0;Expected=@{T_BATT=0;ELEC_P1=0}}
 }
 
-$cases=if($Suite -eq 'Core'){@(Get-KeyboardCoreCases)}else{@(Get-KeyboardNavigationCases)}
+function Get-KeyboardDisplayLayoutCases {
+    $initial=@{CMFD1Format=15;CMFD1SelTop=15;CMFD1SelLeft=15;CMFD1SelRight=16;CMFD1FULL=0;
+        CMFD2Format=14;CMFD2SelTop=14;CMFD2SelLeft=17;CMFD2SelRight=6;CMFD2FULL=1}
+    $swapped=@{CMFD1Format=14;CMFD1SelTop=14;CMFD1SelLeft=17;CMFD1SelRight=6;CMFD1FULL=1;
+        CMFD2Format=15;CMFD2SelTop=15;CMFD2SelLeft=15;CMFD2SelRight=16;CMFD2FULL=0}
+    @{Control='Battery';Value=1;Expected=@{T_BATT=1;ELEC_P1=1}}
+    @{Control='Master';Value=1;Expected=@{AMX_AVIONICS_MASTER=1;CMFD1On=1;CMFD2On=1}}
+    foreach($entry in @(@('Mfd1Oss15',1,1),@('Mfd1Oss15',0,1),@('Mfd2Oss15',0,0),@('Mfd2Oss15',0,1))){
+        $expected=$initial.Clone()
+        $expected.CMFD1FULL=$entry[1]
+        $expected.CMFD2FULL=$entry[2]
+        @{Control=$entry[0];Value=1;Expected=$expected}
+    }
+    foreach($side in 1..2){
+        @{Control=('Mfd'+$side+'Oss17');Value=1;Expected=$swapped.Clone()}
+        @{Control=('Mfd'+$side+'Oss17');Value=1;Expected=$initial.Clone()}
+    }
+    foreach($side in 1..2){
+        foreach($on in 0..1){
+            $expected=$initial.Clone()
+            $expected.CMFD1On=1
+            $expected.CMFD2On=1
+            $expected['CMFD'+$side+'On']=$on
+            @{Control=('Mfd'+$side+'Power');Value=$on;Expected=$expected}
+        }
+    }
+    foreach($on in @(0,1,0)){
+        $expected=$initial.Clone()
+        $expected.AMX_AVIONICS_MASTER=$on
+        $expected.CMFD1On=$on
+        $expected.CMFD2On=$on
+        @{Control='Master';Value=$on;Expected=$expected}
+    }
+    @{Control='Battery';Value=0;Expected=@{T_BATT=0;ELEC_P1=0}}
+}
+
+$cases=@(switch($Suite){
+    'Core' {Get-KeyboardCoreCases}
+    'Navigation' {Get-KeyboardNavigationCases}
+    'DisplayLayout' {Get-KeyboardDisplayLayoutCases}
+})
 if($Describe){return $cases}
-if($Suite -ne 'Core' -and -not $PSBoundParameters.ContainsKey('ReportName')){$ReportName='keyboard-navigation.json'}
+if(-not $PSBoundParameters.ContainsKey('ReportName')){$ReportName='keyboard-'+$Suite.ToLowerInvariant()+'.json'}
 if(-not $RunRoot){throw 'A prepared private run is required.'}
 Import-Module (Join-Path (Split-Path -Parent $PSScriptRoot) 'AMXDENISIntegration.psm1') -Force
 $run=Assert-IntegrationPath $RunRoot
@@ -117,6 +157,13 @@ if($initial.parameters.T_BATT -ne 0 -or $initial.parameters.AMX_AVIONICS_MASTER 
 if($Suite -eq 'Navigation' -and ($state.RequestedFuelKg -ne 1500 -or
     $initial.parameters.UFCP_FUEL_BINGO -ne 140)){
     throw 'Navigation suite requires the documented 1500 kg fixture and initial BINGO 140.'
+}
+if($Suite -eq 'DisplayLayout'){
+    foreach($parameter in $cases[3].Expected.GetEnumerator()){
+        if($initial.parameters.PSObject.Properties[$parameter.Key].Value -ne $parameter.Value){
+            throw 'Display layout suite requires the untouched initial layouts; no suite keys sent.'
+        }
+    }
 }
 $results=[Collections.Generic.List[object]]::new()
 $failure=$null

@@ -151,6 +151,18 @@ try {
     foreach($case in $navigation){
         Check ($case.Expected.Count -gt 0 -and -not @($case.Expected.Keys | Where-Object {$_ -match '^AMXDENIS_(INPUT_|CONTROL_)'}).Count) 'Navigation case relies on router feedback.'
     }
+    $layouts=@(& (Join-Path $repo 'Tools/Native/Test-KeyboardCore.ps1') -Describe -Suite DisplayLayout)
+    Check ($layouts.Count -eq 18 -and @($layouts.Control | Sort-Object -Unique).Count -eq 8) 'Display layout coverage changed without review.'
+    Check (@($layouts | Where-Object {$_.Control -match '^Mfd[12]Oss(15|17)$'}).Count -eq 8) 'Display layout suite omitted reversible FULL/swap actions.'
+    foreach($case in $layouts){
+        Check ($case.Expected.Count -gt 0 -and -not @($case.Expected.Keys | Where-Object {$_ -match '^AMXDENIS_(INPUT_|CONTROL_)'}).Count) 'Display layout case relies on router feedback.'
+    }
+    Check ($layouts[6].Expected.CMFD1SelTop -eq 14 -and $layouts[6].Expected.CMFD2SelTop -eq 15 -and
+        $layouts[6].Expected.CMFD1FULL -eq 1 -and $layouts[6].Expected.CMFD2FULL -eq 0) 'Swap must exchange both selected pages and layout flags.'
+    Check ($layouts[7].Expected.CMFD1SelTop -eq 15 -and $layouts[7].Expected.CMFD2SelTop -eq 14 -and
+        $layouts[7].Expected.CMFD1FULL -eq 0 -and $layouts[7].Expected.CMFD2FULL -eq 1) 'Second swap must restore both original layouts.'
+    Check ($layouts[3].Expected.CMFD1SelLeft -eq 15 -and $layouts[3].Expected.CMFD2SelLeft -eq 17) 'Native cold baseline must not use the navigation suite final layout.'
+    Check ($layouts[6].Expected.CMFD1SelLeft -eq 17 -and $layouts[6].Expected.CMFD2SelLeft -eq 15) 'Swap must exchange lower-left selections as well.'
     $windowAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Window.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Window helper syntax is invalid.'
     $releaseFunction=$windowAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Complete-KeyboardChord'},$true)
