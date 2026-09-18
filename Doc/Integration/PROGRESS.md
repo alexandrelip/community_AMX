@@ -1,6 +1,23 @@
 # AMXDENIS M1 — integração interna REV07
 
-## Checkpoint atual — integração e bancada, 17/09/2026 UTC
+## Checkpoint atual — encaixe em missão aceito pelo usuário
+
+O cockpit dianteiro REV07 foi aberto em missão isolada e reposicionado para
+`{2.9698572158813477, 1.3359999656677246, 0}`, usando o ponto medido do exterior
+original. Após a comparação, o usuário confirmou **“funcionou”**.
+Os modelos, os descritores e o SFM permanecem intactos.
+
+O [relatório nativo](NATIVE_TESTS.md) identifica as capturas e o candidato L.
+**O aceite é do encaixe visual:** teclado, mouse/HOTAS, três texturas ausentes
+e os sistemas nativos fora do escopo não foram promovidos a PASS. A alteração
+observada nas opções normais foi preservada; o alerta de integridade permanece
+registrado sem atribuição de autoria ou restauração automática.
+
+CI final: 219 scripts Lua, 527 verificações de registro/inputs, 1.599 de runtime,
+22.008 dos indicadores e 16 do observador, além das guardas existentes.
+Commit/sincronização solicitados com autor Alexandre Lippi; créditos originais mantidos.
+
+## Histórico — integração e bancada, 17/09/2026 UTC
 
 **BANCADA concluída para o candidato AMXT_M dianteiro; aprovação nativa falsa.**
 O [relatório da integração](SYSTEMS_BENCH.md) detalha escopo, comandos,
