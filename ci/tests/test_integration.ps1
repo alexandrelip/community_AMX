@@ -143,6 +143,35 @@ try {
         Check ($case.Expected.Count -gt 0 -and -not @($case.Expected.Keys | Where-Object {$_ -match '^AMXDENIS_(INPUT_|CONTROL_)'}).Count) 'Suite uses router feedback instead of producer state.'
         Check ($case.Control -notin @('Gear','Flaps','Canopy','Starter')) 'Core indication suite silently included physical actuation.'
     }
+    $navigation=@(& (Join-Path $repo 'Tools/Native/Test-KeyboardCore.ps1') -Describe -Suite Navigation)
+    Check ($navigation.Count -eq 92 -and @($navigation.Control | Sort-Object -Unique).Count -eq 39) 'Navigation coverage changed without review.'
+    Check (@($navigation | Where-Object {$_.Expected.ContainsKey('AMX_ICP_EDIT_INVALID') -and $_.Expected.AMX_ICP_EDIT_INVALID -eq 1}).Count -eq 1) 'Invalid fuel entry is not exercised.'
+    Check (@($navigation | Where-Object Control -eq 'IcpCLR').Count -eq 3) 'Edit recovery coverage changed without review.'
+    foreach($digit in 0..9){Check (@($navigation | Where-Object Control -eq ('Icp'+$digit)).Count -gt 0) 'Navigation suite omitted a digit.'}
+    foreach($case in $navigation){
+        Check ($case.Expected.Count -gt 0 -and -not @($case.Expected.Keys | Where-Object {$_ -match '^AMXDENIS_(INPUT_|CONTROL_)'}).Count) 'Navigation case relies on router feedback.'
+    }
+    $windowAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Window.ps1'),[ref]$tokens,[ref]$parseErrors)
+    Check ($parseErrors.Count -eq 0) 'Window helper syntax is invalid.'
+    $releaseFunction=$windowAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Complete-KeyboardChord'},$true)
+    Check ($null -ne $releaseFunction) 'Keyboard release ordering helper is missing.'
+    . ([scriptblock]::Create($releaseFunction.Extent.Text))
+    $pressed=[Collections.Generic.List[ushort]]::new()
+    $released=[Collections.Generic.List[ushort]]::new()
+    foreach($code in @(0x2A,0x38,87)){$pressed.Add($code)}
+    $sendRelease={param($code) $released.Add($code)}.GetNewClosure()
+    $observeRelease={
+        if($released.Count -ne 1 -or $released[0] -ne 87 -or $pressed.Count -ne 2){throw 'Modifiers released before observation'}
+    }.GetNewClosure()
+    Complete-KeyboardChord $pressed $sendRelease $observeRelease
+    Check ($pressed.Count -eq 0 -and ($released -join ',') -eq '87,56,42') 'Primary release did not precede modifier releases.'
+    $released.Clear()
+    foreach($code in @(0x2A,0x38,87)){$pressed.Add($code)}
+    Rejected {Complete-KeyboardChord $pressed $sendRelease {throw 'No fresh observation'}} 'Release observation failure was hidden.'
+    Check ($pressed.Count -eq 0 -and ($released -join ',') -eq '87,56,42') 'Observation failure left modifiers held.'
+    $released.Clear()
+    Complete-KeyboardChord $pressed $sendRelease {throw 'Empty chord cannot observe release'}
+    Check ($released.Count -eq 0) 'Empty chord invented a key release.'
     Write-Output "AMXDENIS INTEGRATION GUARDS: $checks/$checks checks passed"
 } finally {
     if (Test-Path -LiteralPath (Join-Path $fixture 'Target\linked')) { Remove-Item -LiteralPath (Join-Path $fixture 'Target\linked') }

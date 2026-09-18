@@ -110,6 +110,11 @@ local function combo_key(key,modifiers)
     return key.."|"..table.concat(names,"+")
 end
 local reserved={}
+for _,modifiers in ipairs(banks)do
+    for _,modifier in ipairs(modifiers)do
+        if modifier=="LAlt"or modifier=="RAlt"then reserved[combo_key("F4",modifiers)]=true end
+    end
+end
 local binding_env={_=function(value)return value end,defaultDeviceAssignmentFor=function()return {}end,
     join=function(destination,extra)for _,entry in ipairs(extra)do destination[#destination+1]=entry end end}
 setmetatable(binding_env,{__index=function(_,name)

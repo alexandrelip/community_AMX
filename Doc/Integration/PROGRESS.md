@@ -1,6 +1,30 @@
 # AMXDENIS M1 — integração interna REV07
 
-## Checkpoint atual: diagnostico de mecanismos e sensores
+## Checkpoint atual: teclado por efeito funcional
+
+O subconjunto basico foi sincronizado em `ecdee0e`, com
+[93 transicoes de 13 controles](Evidence/Operational-REV07/keyboard-core-results.json).
+A [continuacao de navegacao e edicao](Evidence/Operational-REV07/keyboard-navigation-results.json)
+registra BU/BV: duas sessoes da versao final, cada uma com 92 etapas de
+navegacao/BINGO e 31 de regressao basica. As 246 transicoes passaram com efeito
+no produtor, tres amostras estaveis e soltura quando exigida; 50 acoes distintas
+do catalogo foram exercitadas em contextos selecionados.
+
+O helper separa a soltura da tecla principal da soltura dos modificadores,
+mantendo limpeza em caso de erro, e o gerador evita Alt+F4 nos perfis privados.
+BQ permanece como falha real de confirmacao de soltura. BR/BS/BT permanecem
+interrompidos, com interacao externa confirmada pelo usuario para esse grupo
+de ensaios, sem atribuir cada evento individualmente.
+
+R03 continua 5/10: selecao de pagina nao aprova radio, sensor ou armamento,
+e 55 acoes ainda estao fora dessas suites. CI final BW passou, com o mesmo
+BuildId testado em BU/BV: 233 guardas de integracao, 866 do observador,
+1801 de runtime e 22743 dos indicadores em 69 paginas, alem das demais suites.
+Ambas as sessoes finalizaram com integridade verdadeira, zero erros/rejeicoes
+do observador e 159 erros ERROR/ERROR_ONCE do DCS cada; sem alegar logs limpos.
+Nenhuma instalacao no perfil normal ou nova aprovacao de mecanismos/voo/X56.
+
+## Historico: diagnostico de mecanismos e sensores
 
 A [continuidade operacional](OPERATIONAL_VALIDATION.md) registra 12 novos
 ensaios privados e o [resumo com hashes](Evidence/Operational-REV07/mechanisms-followup.json).

@@ -145,7 +145,7 @@ for _,mode in ipairs({"AirHot","RunwayHot","GroundCold"})do
         check(table.concat(output):find("private_flight_initialization_NOT_physical_HOTAS",1,true),"initial commands have explicit diagnostic provenance")
     end
 end
-local function preparation_fixture(mode,operational,fuel,profile_name)
+local function preparation_fixture(mode,operational,fuel,profile_name,additional_buttons)
     local profile="C:/fixture/"..(profile_name or"DCS.AMXDENIS-preparation")
     local template="C:/fixture/template"
     local output={}
@@ -154,6 +154,7 @@ local function preparation_fixture(mode,operational,fuel,profile_name)
         {"IcpCOM1","button"},{"IcpCOM2","button"},{"IcpNAV","button"},
         {"HudBrightness","axis"},{"CautionAcknowledge","button"},{"Battery","set"},
         {"Starter","momentary"}}
+    for index=1,additional_buttons or 0 do definitions[#definitions+1]={"Fixture"..index,"button"}end
     for index,definition in ipairs(definitions)do
         commands.controls[#commands.controls+1]={name=definition[1],label=definition[1],kind=definition[2],
             id=3700+index,axis_id=3900+index,minimum=definition[2]=="momentary"and -1 or 0,maximum=1,available=true}
@@ -218,6 +219,23 @@ for _,mode in ipairs({"GroundCold","GroundHot","RunwayHot","AirHot"})do
         check(binding.key~="RCtrl+RShift+F2","reserved native combination is not stolen")
         check(type(binding.hash)=="string"and binding.hash:find("cd60",1,true),"binding hashes target the pilot router")
     end
+end
+do
+    local ok,message,files,profile=preparation_fixture("GroundCold",true,1500,nil,150)
+    check(ok,"full temporary keyboard banks: "..tostring(message))
+    local bindings=assert(loadstring(files[profile.."/Scripts/private-bindings.lua"]))()
+    local seen,left_alt,right_alt={},{},{}
+    for _,binding in ipairs(bindings)do
+        check(not seen[binding.key],"expanded temporary combinations remain unique")
+        seen[binding.key]=true
+        if binding.key:find("LAlt",1,true)then left_alt[#left_alt+1]=binding.key end
+        if binding.key:find("RAlt",1,true)then right_alt[#right_alt+1]=binding.key end
+        check(not(binding.key:match("F4$")and binding.key:find("Alt",1,true)),
+            "Windows Alt+F4 must never be a temporary cockpit binding")
+    end
+    check(#left_alt>0 and #right_alt>0,"Windows reservation is exercised for both Alt modifiers")
+    check(seen["LCtrl+RCtrl+F1"],"expanded fixture reaches the final keyboard bank")
+    check(not seen["RCtrl+RShift+F2"],"Windows reservations preserve existing native reservations")
 end
 for _,case in ipairs({{"RunwayHot",false,1500},{"AirHot",false,1500},{"GroundHot",true,2551},{"GroundCold",true,499},{"GroundHot",true,1500,"DCS"}})do
     local ok,_,files=preparation_fixture(case[1],case[2],case[3],case[4])

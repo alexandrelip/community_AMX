@@ -9,6 +9,23 @@ param(
     [int]$ViewportWidth=1600,[int]$ViewportHeight=900
 )
 $ErrorActionPreference='Stop'
+function Complete-KeyboardChord {
+    param([Collections.Generic.List[ushort]]$Pressed,[scriptblock]$ReleaseKey,[scriptblock]$ObserveRelease)
+    $failure=$null
+    try {
+        if($Pressed.Count -gt 0){
+            & $ReleaseKey $Pressed[$Pressed.Count-1]
+            $Pressed.RemoveAt($Pressed.Count-1)
+            & $ObserveRelease
+        }
+    } catch {$failure=$_} finally {
+        for($index=$Pressed.Count-1;$index -ge 0;$index--){
+            try {& $ReleaseKey $Pressed[$index]} catch {if($null -eq $failure){$failure=$_}}
+        }
+        $Pressed.Clear()
+    }
+    if($null -ne $failure){throw $failure}
+}
 $state=Get-Content -LiteralPath (Join-Path $RunRoot 'run.json') -Raw | ConvertFrom-Json -DateKind String
 if($state.Schema -ne 'AMXDENIS_NATIVE_RUN_1' -or $state.RunRoot -ne [IO.Path]::GetFullPath($RunRoot) -or
     $state.ProfileName -notmatch '^DCS\.AMXDENIS-[A-Za-z0-9_-]+$'){throw 'Window control requires an owned native run'}
@@ -52,11 +69,33 @@ $source=$source.Replace($keyboardWait,@'
             if ((Get-Item -LiteralPath $telemetry).Length -le $length) { throw 'No two fresh simulator samples after keyboard press.' }
         }
 '@)
+$releaseBlock=@'
+        for ($index = $pressed.Count - 1; $index -ge 0; $index--) { [AMXM1WindowV7]::Scan($pressed[$index], $true) }
+        $watcher.Dispose()
+'@
+$releaseBlock=$releaseBlock.Replace("`r`n","`n")
+if(([regex]::Matches($source,[regex]::Escape($releaseBlock))).Count -ne 1){throw 'Unexpected keyboard release contract'}
+$source=$source.Replace($releaseBlock,@'
+        try {
+            $release = { param($code) [AMXM1WindowV7]::Scan([ushort]$code, $true) }
+            $observe = {
+                if ([AMXM1WindowV7]::GetForegroundWindow() -ne $window) { throw 'Foreground lost before key release was observed.' }
+                $length = (Get-Item -LiteralPath $telemetry).Length
+                $deadline = [datetime]::UtcNow.AddSeconds(3)
+                while ((Get-Item -LiteralPath $telemetry).Length -le $length -and [datetime]::UtcNow -lt $deadline) {
+                    [void]$watcher.WaitForChanged([IO.WatcherChangeTypes]::Changed, 500)
+                }
+                if ((Get-Item -LiteralPath $telemetry).Length -le $length) { throw 'No fresh simulator sample after primary key release.' }
+            }.GetNewClosure()
+            Complete-KeyboardChord -Pressed $pressed -ReleaseKey $release -ObserveRelease $observe
+        } finally { $watcher.Dispose() }
+'@)
 if($RightButton){$source=$source.Replace('::mouse_event(2, 0, 0, 0','::mouse_event(8, 0, 0, 0').Replace('::mouse_event(4, 0, 0, 0','::mouse_event(16, 0, 0, 0')}
 $arguments=@{RunFile=(Join-Path $RunRoot 'active.json');ProcessName='DCS';Action=$Action;OutputPath=$OutputPath;Keys=$Keys;X=$X;Y=$Y;
     ScanCode=$ScanCode;Control=$Control;Shift=$Shift;Alt=$Alt;RightControl=$RightControl;RightShift=$RightShift;RightAlt=$RightAlt;Extended=$Extended;
     DesktopCapture=$DesktopCapture;ViewportWidth=$ViewportWidth;ViewportHeight=$ViewportHeight}
-$record=[ordered]@{Action=$Action;RequestedUtc=[DateTime]::UtcNow.ToString('o');RightButton=[bool]$RightButton;Succeeded=$false;Error=$null}
+$record=[ordered]@{Action=$Action;RequestedUtc=[DateTime]::UtcNow.ToString('o');RightButton=[bool]$RightButton;
+    KeyboardReleasePolicy='primary_release_then_fresh_sample_before_modifiers';Succeeded=$false;Error=$null}
 try {& ([scriptblock]::Create($source)) @arguments;$record.Succeeded=$true}
 catch {$record.Error=$_.Exception.Message;throw}
 finally {

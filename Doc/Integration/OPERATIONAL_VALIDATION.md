@@ -21,7 +21,7 @@ reversivel inicial dos IDs explicitamente identificada. Nenhum commit/push novo.
 
 | Etapa | Estado | Criterio de conclusao |
 | --- | --- | --- |
-| Teclado | AO/AP/AR repetiram bateria, master, COM1/COM2; AP confirmou OFF/ON independente dos dois MFDs | Ampliar cobertura dos 105 comandos, soltura, repeticao e negativos; envio recebido nao prova atuacao de mecanismos |
+| Teclado | BU/BV: 246 transicoes funcionais repetidas, 50 acoes em contextos selecionados; basico BN/BO preservado | Cobrir as 55 acoes fora das suites e demais contextos; nota 5/10, sem aprovar atuacao de mecanismos por recebimento |
 | Mouse | AQ confirmou COM1/COM2 em prova experimental; controle AR nao concluiu resultado equivalente | Prova OBB de COM1 retirada; repetir no baseline em vistas controladas e cobrir seletores/knobs e demais zonas |
 | X56 fisico | Ambos detectados e lidos por WinMM: manche 5 eixos/17 botoes, manete 6 eixos/32 botoes expostos | WinMM limita a 32 botoes; curso completo, todos os botoes e mapeamento nativo continuam sem aprovacao fisica |
 | Partida/desligamento | Confirmados por comandos diagnosticos em AF, missao corrigida | Negativos sem energia/combustivel; RPM nativo de marcha lenta; parada com RPM/fluxo zero. Nao certifica NH/TGT ou HOTAS |
@@ -34,6 +34,38 @@ reversivel inicial dos IDs explicitamente identificada. Nenhum commit/push novo.
 O usuario informou estar indisponivel e autorizou continuidade autonoma.
 Testes automatizados de voo/sistemas serao rotulados como tal; nao certificam
 HOTAS fisico. Nenhuma pendencia sera convertida em PASS para encerrar a campanha.
+
+## R03: Navegacao E Soltura
+
+O [subitem basico](Evidence/Operational-REV07/keyboard-core-results.json) foi
+concluido e sincronizado em `ecdee0e`: 93 transicoes de 13 controles em BN/BO.
+O [subitem de navegacao](Evidence/Operational-REV07/keyboard-navigation-results.json)
+acrescenta 92 casos: modos, dez digitos, edicao BINGO valida/invalida, CLR,
+ENTR e oito selecoes de pagina por MFD. A origem e Windows SendInput, sem
+comandos diagnosticos de cockpit durante as suites.
+
+BQ chegou ao BINGO 675 correto, mas a ultima entrada permaneceu em 1 e o
+criterio de soltura falhou. O helper passou a liberar a tecla principal,
+aguardar telemetria nova e so entao liberar os modificadores, com limpeza
+garantida no erro. A causa unica da omissao antiga nao foi estabelecida.
+BR/BS/BT foram abortados pela guarda de foco; o usuario confirmou que fechou,
+minimizou ou trocou de janela durante esse grupo de testes. Permanecem
+incompletos, sem atribuir autoria a cada evento. O gerador tambem passou a
+reservar Alt+F4 em todos os bancos, sem alterar atalhos pessoais.
+
+BU/BV usaram a mesma versao final e mapa privado, em GroundCold com 1500 kg:
+92 casos Navigation e 31 Core por sessao, todos aprovados. Cada transicao
+exige efeito no produtor e tres amostras estaveis; botoes exigem pressao e
+soltura. A sequencia diagnostica Export permaneceu zero. Total: 246 transicoes,
+50 acoes distintas em contextos selecionados, nao cobertura integral de 105.
+Os hashes das etapas e os resultados anteriores estao no resumo de evidencia.
+
+Ambas finalizaram com integridade verdadeira; zero erros/rejeicoes do
+observador, mas 159 registros ERROR/ERROR_ONCE do DCS por sessao. A CI completa
+BW passou e reconstruiu o mesmo BuildId
+`5A236FF163314E4951959DB9BB1841866CF497A732312CE3AE00C80B515C398B`.
+R03 permanece 5/10. Nao ha aprovacao nova de mecanismo, voo completo, mouse,
+X56 fisico ou capacidades de sensores/armamento por abrir suas paginas.
 
 ## Primeiras evidencias
 
