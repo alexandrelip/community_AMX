@@ -30,6 +30,12 @@ function SetCommand(command, value)
     end
 end
 function update()
+    for _, field in ipairs({
+        {"AMXDENIS_STICK_PITCH", "getStickPitchPosition"},
+        {"AMXDENIS_STICK_ROLL", "getStickRollPosition"},
+        {"AMXDENIS_RUDDER", "getRudderPosition"}}) do
+        common.publish(field[1], common.read(sensors, field[2]))
+    end
     local valid = true
     for _, field in ipairs(fields) do
         local value = common.read(sensors, field[2], field[4], field[5])

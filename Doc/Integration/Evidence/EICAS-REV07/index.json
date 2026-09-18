@@ -1,0 +1,96 @@
+{
+  "Schema": "AMXDENIS_EICAS_EVIDENCE_1",
+  "CandidateBuildId": "DD49487E8EAE8925598934B9403087D15171CDCFD3A4432EF6341D6A70B03C6D",
+  "State": "IMPLEMENTED_HYDRAULIC_BARS_PRIVATE_NATIVE_CHECKS",
+  "NativeApprovalForAllSystems": false,
+  "RunCount": 4,
+  "Files": [
+    {
+      "Path": "bench-result.json",
+      "Bytes": 1585,
+      "SHA256": "61CB440EA2C233BBA9D72EEEB1404E1C8A6EDFAC7C9375D72C9A10D576DD6F92"
+    },
+    {
+      "Path": "ci.log",
+      "Bytes": 3667,
+      "SHA256": "BDC33792FAA8A4AF71D87858F92E30F8838BF2FC07BD516D30B7EC9794124FAE"
+    },
+    {
+      "Path": "native-detail.png",
+      "Bytes": 193427,
+      "SHA256": "300F6490BC06D0A012E8FE1ABFF2B062A0935B3C74057A68DBDE6A8AC1B634CA"
+    },
+    {
+      "Path": "native-final.png",
+      "Bytes": 2525871,
+      "SHA256": "8D770AFD24C323E079BCCAAE90FF806E4D4D9DB00B6F605FCC673C2783D64AD0"
+    },
+    {
+      "Path": "native-power-off.png",
+      "Bytes": 2518091,
+      "SHA256": "8AAFE3526224F0606136C44AF9CC15AE440B0CF613A2878D38EB5EC9EED3B4A1"
+    },
+    {
+      "Path": "native-results.json",
+      "Bytes": 549610,
+      "SHA256": "F04582B736B719E5CFF229E4845BC031FAE29A479956BD8784D03A1D75047810"
+    },
+    {
+      "Path": "native-right-split.png",
+      "Bytes": 2535724,
+      "SHA256": "935357A9A4491B50525A5433B314E5F3046C0E44C07148B1CEB0365BF3F7F8B4"
+    },
+    {
+      "Path": "native-secondary-left.png",
+      "Bytes": 2533720,
+      "SHA256": "07933A2FF36909B1A278B66A4F72082DBCC3F46755AA0554808447F6A350C4F2"
+    },
+    {
+      "Path": "native-secondary-right.png",
+      "Bytes": 2529639,
+      "SHA256": "D6D6C30AFD808D5E8CC031F5FBD5D6B8B3F79BED1F925124AECE6CB52737FFB4"
+    },
+    {
+      "Path": "bench-hydraulic-result.json",
+      "Bytes": 1585,
+      "SHA256": "6B5466399010640DC5A8FB111A3EA44CBFD55DBE2EA86B0716429F65EC0A35E5"
+    },
+    {
+      "Path": "ci-hydraulic.log",
+      "Bytes": 3682,
+      "SHA256": "4238671C92EF4C40A4C181FDA54DFF4CC854F1E08B60FD7D90A8E58140A2BD2E"
+    },
+    {
+      "Path": "hydraulic-results.json",
+      "Bytes": 4125,
+      "SHA256": "5CBC840DF87DA9F0FBA2C628426B217312374C7DB82ADCD9C30BD720694B896B"
+    },
+    {
+      "Path": "native-hydraulic-low.png",
+      "Bytes": 2585572,
+      "SHA256": "ABEBC16C8300CBFC569443D0AA61E09BAF53EAB219F347ECA9815567961F014C"
+    },
+    {
+      "Path": "native-hydraulic-normal.png",
+      "Bytes": 2571244,
+      "SHA256": "D7F57F1C0197D1EC19CDBE57AEC24ED0A95799FA4B5DA3FE587C582B5A86CF07"
+    }
+  ],
+  "DerivedImage": {
+    "File": "native-detail.png",
+    "Source": "native-final.png",
+    "Crop": {
+      "X": 715,
+      "Y": 295,
+      "Width": 498,
+      "Height": 269
+    },
+    "Scaled": false
+  },
+  "HydraulicCycle": {
+    "Normal": "native-hydraulic-normal.png",
+    "LowPressure": "native-hydraulic-low.png",
+    "Results": "hydraulic-results.json"
+  },
+  "RecordedUtc": "2026-09-18T13:44:35.2049374Z"
+}

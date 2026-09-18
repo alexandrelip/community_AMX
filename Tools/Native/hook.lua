@@ -30,6 +30,23 @@ local input=require('Input')
 local wanted={ViewRight='iCommandViewHorTransAbs',ViewUp='iCommandViewVertTransAbs',
     ViewForward='iCommandViewLongitudeTransAbs',ViewYaw='iCommandViewHorizontalAbs',
     ViewPitch='iCommandViewVerticalAbs',ViewZoom='iCommandViewZoomAbs'}
+local operational_config=dofile(require('lfs').writedir()..'Scripts/native-config.lua')
+if operational_config.operational_test==true then
+    wanted.FlightThrottle='iCommandPlaneThrustCommon'
+    wanted.FlightPitch='iCommandPlanePitch'
+    wanted.FlightRoll='iCommandPlaneRoll'
+    wanted.FlightRudder='iCommandPlaneRudder'
+    wanted.FlightBrakeOn='iCommandPlaneWheelBrakeOn'
+    wanted.FlightBrakeOff='iCommandPlaneWheelBrakeOff'
+    wanted.FlightAltitudeHold='iCommandPlaneStabHbarBank'
+    wanted.FlightAttitudeHold='iCommandPlaneStabTangBank'
+    wanted.FlightCancel='iCommandPlaneStabCancel'
+    wanted.NativeGearUp='iCommandPlaneGearUp'
+    wanted.NativeGearDown='iCommandPlaneGearDown'
+    wanted.NativeFlapsDown='iCommandPlaneFlapsOn'
+    wanted.NativeFlapsUp='iCommandPlaneFlapsOff'
+    wanted.NativeCanopy='iCommandPlaneFonar'
+end
 local camera_ids={}
 local function find_commands(container,depth)
     if type(container)~='table'or depth>3 then return end
@@ -44,11 +61,6 @@ local function find_commands(container,depth)
 end
 find_commands(input.getEnvTable(),0)
 local complete=true;for action in pairs(wanted)do if not camera_ids[action]then complete=false end end
-if complete then
-    local file=assert(io.open(require('lfs').writedir()..'Scripts/native-camera-ids.txt','wb'))
-    for action in pairs(wanted)do file:write(action..'|'..camera_ids[action]..'\n')end
-    file:close()
-end
 lines[#lines+1]='camera_commands_available='..tostring(complete)
 for _,layer in ipairs(input.getLayerStack())do lines[#lines+1]='active_layer='..tostring(layer)end
 for _,layer in ipairs(input.getLoadedLayers())do lines[#lines+1]='loaded_layer='..tostring(layer)end
@@ -71,17 +83,46 @@ if not data.getProfileNameByUnitName('AMX')then
 end
 local profile=data.getProfileNameByUnitName('AMX')
 lines[#lines+1]='profile='..tostring(profile)
+if operational_config.operational_test==true and operational_config.isolate_hardware_axes==true then
+    for _,device_name in ipairs(input.getDevices())do
+        local device_type=input.getDeviceTypeName(device_name)
+        if device_type==input.getJoystickDeviceTypeName()or
+            device_type==input.getTrackirDeviceTypeName()or device_type==input.getHeadtrackerDeviceTypeName()then
+            data.setDeviceDisabled(device_name,true)
+            lines[#lines+1]='private_axis_isolation='..device_name..':disabled='..tostring(data.getDeviceDisabled(device_name))
+        end
+    end
+    lines[#lines+1]='hardware_axis_scope=this_private_process_only_no_saveChanges'
+end
+if complete then
+    local file=assert(io.open(require('lfs').writedir()..'Scripts/native-camera-ids.txt','wb'))
+    for action in pairs(wanted)do file:write(action..'|'..camera_ids[action]..'\n')end
+    if operational_config.operational_test==true and operational_config.isolate_hardware_axes==true then
+        file:write('HardwareAxesIsolated|1\n')
+    end
+    file:close()
+end
 if profile then
     lines[#lines+1]='unit='..tostring(data.getProfileUnitName(profile))
-    for _,hash in ipairs({'d4046pnilunilcd60vd0vpnilvunil','d4046pnilunilcd60vd1vpnilvunil','d4016pnilu4016cd60vd1vpnilvu0'})do
+    local bindings=dofile(require('lfs').writedir()..'Scripts/private-bindings.lua')
+    local validity={'Name|Value|Route|Valid|Reason'}
+    for _,binding in ipairs(bindings)do
+        local hash=assert(binding.hash,'Missing generated native binding hash')
         local command=data.getProfileKeyCommand(profile,hash)
         lines[#lines+1]='hash='..hash..' exists='..tostring(command~=nil)..' valid='..tostring(command and command.valid)
+        local warnings={}
         for device,combos in pairs(command and command.combos or {})do
             for _,combo in ipairs(combos)do
                 lines[#lines+1]='combo='..device..':'..tostring(combo.key)..':'..table.concat(combo.reformers or {},'+')..':valid='..tostring(combo.valid)
+                if combo.warnings then warnings[#warnings+1]=combo.warnings end
             end
         end
+        local reason=table.concat(warnings,'; '):gsub('[\r\n|]',' ')
+        lines[#lines+1]='binding_warning='..binding.control..':'..reason
+        validity[#validity+1]=table.concat({binding.control,tostring(binding.value),tostring(binding.route),tostring(command~=nil and command.valid==true),reason},'|')
     end
+    local validity_file=assert(io.open(require('lfs').writedir()..'Scripts/native-input-validity.csv','wb'))
+    validity_file:write(table.concat(validity,'\n')..'\n');validity_file:close()
     local modifiers=data.getProfileModifiers(profile)
     for _,name in ipairs({'LCtrl','LShift'})do
         local modifier=modifiers[name]

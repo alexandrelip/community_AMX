@@ -33,6 +33,17 @@ function update()
     get_param_handle("AMX_SUITE_TIME_S"):set(get_absolute_model_time())
 end
 function post_initialize()
+    local capabilities = {}
+    for name, method in pairs(type(sensors) == "table" and sensors or {}) do
+        if type(name) == "string" and type(method) == "function" and name:match("^get") then
+            capabilities[#capabilities + 1] = name
+        end
+    end
+    table.sort(capabilities)
+    get_param_handle("AMXDENIS_SENSOR_METHODS"):set(table.concat(capabilities, ";"))
+    get_param_handle("AMXDENIS_SENSOR_METHOD_COUNT"):set(#capabilities)
+    get_param_handle("AMXDENIS_SENSOR_METHODS_VALID"):set(type(sensors) == "table" and 1 or 0)
+    get_param_handle("AMXDENIS_SENSOR_METHODS_SCOPE"):set("DIRECT_TABLE_FUNCTIONS_ONLY")
     master:set(common.hot() and 1 or 0)
     sms:set(common.hot() and 1 or 0)
     get_param_handle("AMX_HUD_DIMMER"):set(1)

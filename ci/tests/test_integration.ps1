@@ -102,6 +102,22 @@ try {
     Rejected { & $preflight @preflightOptions -RequireReady } 'Strict preflight accepted a blocked candidate.'
     Check (Test-Path -LiteralPath $preflightOptions.ReportPath) 'Strict preflight lost its blocker evidence.'
     Check (@(Get-ChildItem -LiteralPath $source -Force).Count -eq 0) 'Preflight copied into the source.'
+    $tokens=$null;$parseErrors=$null
+    $nativeAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Test-AMXDENISNative.ps1'),[ref]$tokens,[ref]$parseErrors)
+    Check ($parseErrors.Count -eq 0) 'Native runner syntax is invalid.'
+    $guard=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'AssertNativeStartup'},$true)
+    Check ($null -ne $guard) 'Native startup guard is missing.'
+    . ([scriptblock]::Create($guard.Extent.Text))
+    AssertNativeStartup '2026-09-18 00:00:00.000 INFO Dispatcher (Main): COMPILE MISSION diagnostic text'
+    AssertNativeStartup '2026-09-18 00:00:00.000 WARNING Dispatcher (Main): COMPILE MISSION diagnostic text'
+    Check $true 'Non-error log text was mistaken for a compiler failure.'
+    foreach($failure in @('2026-09-18 00:00:00.000 ERROR Dispatcher (Main): COMPILE MISSION bad argument',
+        '# C0000005 access violation','offline auth is not available','missed aicraft descriptor for AMXT_M')){
+        Rejected {AssertNativeStartup $failure} 'Native startup failure was accepted.'
+    }
+    $guardCall=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.CommandAst] -and $node.GetCommandName() -eq 'AssertNativeStartup'},$true)
+    $readyReturn=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.IfStatementAst] -and $node.Extent.Text.StartsWith('if($observed)')},$true)
+    Check ($null -ne $guardCall -and $null -ne $readyReturn -and $guardCall.Extent.StartOffset -lt $readyReturn.Extent.StartOffset) 'READY can bypass native startup failures.'
     Write-Output "AMXDENIS INTEGRATION GUARDS: $checks/$checks checks passed"
 } finally {
     if (Test-Path -LiteralPath (Join-Path $fixture 'Target\linked')) { Remove-Item -LiteralPath (Join-Path $fixture 'Target\linked') }

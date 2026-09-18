@@ -289,7 +289,9 @@ def verify_reference(reference):
     return imported
 
 
-def build(candidate, lua):
+def build(candidate, lua, mechanism_probe=None):
+    if mechanism_probe not in (None, "without-mechanimations", "duplicate-canopy"):
+        raise ValueError("Unsupported mechanism descriptor probe")
     candidate = candidate_destination(candidate)
     inputs = {}
 
@@ -345,7 +347,8 @@ def build(candidate, lua):
     scripts = candidate / "Avionics/Runtime/Cockpit/Scripts"
     data = {"files": [], "root": ROOT.as_posix(), "candidate": candidate.as_posix(),
             "reference": reference.as_posix(), "scripts": scripts.as_posix() + "/",
-            "records": load(ROOT / "Config/REV07_RECORDS.json")}
+            "records": load(ROOT / "Config/REV07_RECORDS.json"),
+            "mechanism_probe": mechanism_probe or False}
     for row in imported["Files"]:
         relative = row["Path"]
         prefix = "Avionics/F5EM/Cockpit/"
@@ -406,6 +409,9 @@ def build(candidate, lua):
         "AircraftType": "AMXT_M", "PilotSeat": 1, "Stage": "IMPLEMENTADO_NAO_VALIDADO", "Files": outputs,
         "Inputs": input_rows, "InputSetSHA256": input_id, "LuaExecutableSHA256": lua_hash, "NativeValidated": False,
         "ExternalResourcesChanged": False, "FlightModelChanged": False,
+        "DescriptorChanged": mechanism_probe is not None,
+        "DescriptorProbe": mechanism_probe or "none",
+        "ExperimentalOnly": mechanism_probe is not None,
         "MissingLocalTextures": textures["MissingTextures"], "DesktopCandidateOnly": True})
     print(f"AMXDENIS_CANDIDATE_BUILT|files={len(outputs)}|id={build_id}|native=false")
 
@@ -420,11 +426,12 @@ def main():
     command = commands.add_parser("build")
     command.add_argument("--candidate", type=Path, required=True)
     command.add_argument("--lua", type=Path, required=True)
+    command.add_argument("--mechanism-probe", choices=("without-mechanimations", "duplicate-canopy"))
     options = parser.parse_args()
     if options.command == "import":
         import_sources(options.snapshot, options.inventory, options.baseline)
     else:
-        build(options.candidate, options.lua)
+        build(options.candidate, options.lua, options.mechanism_probe)
 
 
 if __name__ == "__main__":

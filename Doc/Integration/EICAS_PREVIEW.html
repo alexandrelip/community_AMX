@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AMX | Proposta visual do EICAS</title>
+  <style>
+    :root { color-scheme: light; --ink: #202a27; --muted: #5c6964; --paper: #f0f3f1; --line: #cad3cd; --accent: #116c53; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "Bahnschrift", "Trebuchet MS", sans-serif; letter-spacing: 0; }
+    main { max-width: 1480px; margin: 0 auto; padding: 32px 36px; }
+    header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); padding-bottom: 20px; }
+    h1 { font-size: 29px; font-weight: 600; margin: 4px 0 0; }
+    .eyebrow { color: var(--accent); font-size: 13px; margin: 0; }
+    .gate { color: var(--muted); font-size: 13px; text-align: right; margin: 0; line-height: 1.6; }
+    section { margin-top: 26px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 0; }
+    .sub { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 7px 0 16px; }
+    .drawing { width: 100%; height: auto; display: block; background: var(--paper); }
+    .capture { padding: 22px 22px 18px; background: var(--paper); border-bottom: 1px solid var(--line); }
+    .note { margin: 10px 0 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 13px; font-size: 13px; color: var(--muted); }
+    .legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .swatch { width: 10px; height: 10px; display: inline-block; border-radius: 0; }
+    footer { margin-top: 24px; display: flex; gap: 24px; justify-content: space-between; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    svg text { font-family: "Consolas", "Lucida Console", monospace; letter-spacing: 0; }
+    svg .annotation { font-family: "Bahnschrift", "Trebuchet MS", sans-serif; }
+    @media (max-width: 720px) {
+      main { padding: 18px 10px; }
+      header { align-items: flex-start; gap: 12px; }
+      h1 { font-size: 22px; }
+      .gate { max-width: 135px; font-size: 11px; }
+      .capture { padding: 14px 4px; }
+      h2 { font-size: 17px; }
+      .sub, .note { font-size: 12px; }
+    }
+    @media print { main { padding: 0; } .capture { break-inside: avoid; } footer { display: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div><p class="eyebrow">AMX / AMXT_M &middot; REV07</p><h1>Proposta visual do EICAS</h1></div>
+    <p class="gate">DESENHO PARA APROVA&Ccedil;&Atilde;O<br>N&atilde;o implementado no DCS</p>
+  </header>
+
+  <section class="capture" id="eicas-detail">
+    <h2>01 &nbsp; EICAS principal + central compacto</h2>
+    <p class="sub">Geometria da imagem 4. Central na ordem da foto 3: EICAS acima, instrumentos de voo abaixo.</p>
+    <svg id="detail-svg" class="drawing" viewBox="0 0 1320 1020" role="img" aria-labelledby="detail-title detail-description">
+      <title id="detail-title">Proposta do EICAS AMX em tela inteira e do display central</title>
+      <desc id="detail-description">Tres circulares sem valores, duas barras nao identificadas, area de sinotico reservada e quinze mensagens na direita. Central repete dados do EICAS acima dos instrumentos de voo. Nenhuma leitura de simulador ou falha esta representada.</desc>
+    </svg>
+    <div class="legend" aria-label="Legenda de severidade proposta, sem alertas ativos neste desenho">
+      <span><i class="swatch" style="background:#d24348"></i>Emerg&ecirc;ncia</span>
+      <span><i class="swatch" style="background:#d79b2c"></i>Cautela</span>
+      <span><i class="swatch" style="background:#158f80"></i>Estado</span>
+      <span><i class="swatch" style="background:#697b75"></i>Sem dado / sem condi&ccedil;&atilde;o confirmada</span>
+    </div>
+    <p class="note">Os 15 nomes est&atilde;o vis&iacute;veis para aprovar espa&ccedil;o e ordem; n&atilde;o s&atilde;o 15 falhas ativas. NL / NH / TGT e sua ordem s&atilde;o provis&oacute;rios. Sem valores, ponteiros ou escalas inventadas.</p>
+  </section>
+
+  <section class="capture" id="display-layout">
+    <h2>02 &nbsp; Composi&ccedil;&atilde;o dos tr&ecirc;s displays</h2>
+    <p class="sub">Mesma capacidade de divis&atilde;o nos dois laterais: uma &aacute;rea superior e duas inferiores, ou FULL. O central mant&eacute;m a composi&ccedil;&atilde;o da foto 3.</p>
+    <svg id="layout-svg" class="drawing" viewBox="0 0 1320 660" role="img" aria-labelledby="layout-title layout-description">
+      <title id="layout-title">Displays esquerdo, central e direito do AMX</title>
+      <desc id="layout-description">Os laterais mostram o EICAS na area superior e duas areas inferiores independentes sem dados. O central mostra EICAS acima dos instrumentos de voo. Referencia de composicao, sem validacao de legibilidade nativa.</desc>
+    </svg>
+    <p class="note">Propor&ccedil;&otilde;es de estudo, n&atilde;o medidas do EDM. As mesmas fontes e os mesmos estados alimentam todas as c&oacute;pias. Legibilidade no REV07, especialmente nas &aacute;reas menores, ainda precisa de teste nativo.</p>
+  </section>
+
+  <footer><span>Pr&eacute;via est&aacute;tica &middot; sem conex&atilde;o ao simulador</span><a href="EICAS_PROPOSAL.md">Fontes, limites e decis&otilde;es pendentes</a></footer>
+</main>
+<script>
+  "use strict";
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  const colors = {
+    black: "#030706", bezel: "#252b29", edge: "#68746e", button: "#363e3a",
+    cyan: "#32cbbb", white: "#d5e5df", green: "#56db89", muted: "#79948a",
+    faint: "#203b31", paper: "#f0f3f1", ink: "#263a31", gray: "#586c62"
+  };
+  const messages = ["ENG", "OIL", "CANOPY", "ELEC", "HYD", "AVIONICS", "FUEL BAL", "FUEL XFER", "FUEL LO", "FUEL PRESS", "EXT TANKS", "OXYGEN", "T/O CONFIG", "SEAT PIN", "ANTI-ICE"];
+
+  function element(parent, tag, attributes = {}, content) {
+    const node = document.createElementNS(SVG_NS, tag);
+    for (const [name, value] of Object.entries(attributes)) node.setAttribute(name, value);
+    if (content !== undefined) node.textContent = content;
+    parent.appendChild(node);
+    return node;
+  }
+  function rect(parent, left, top, width, height, fill, stroke = "none", extra = {}) {
+    return element(parent, "rect", {x: left, y: top, width, height, fill, stroke, ...extra});
+  }
+  function line(parent, left, top, right, bottom, stroke = colors.cyan, extra = {}) {
+    return element(parent, "line", {x1: left, y1: top, x2: right, y2: bottom, stroke, "stroke-width": 1.8, ...extra});
+  }
+  function text(parent, left, top, value, size = 20, fill = colors.white, extra = {}) {
+    return element(parent, "text", {x: left, y: top, fill, "font-size": size, "dominant-baseline": "middle", ...extra}, value);
+  }
+  function label(parent, left, top, value, size = 19, fill = colors.ink, extra = {}) {
+    return text(parent, left, top, value, size, fill, {class: "annotation", ...extra});
+  }
+  function viewport(parent, left, top, width, height, sourceWidth, sourceHeight, extra = {}) {
+    return element(parent, "svg", {x: left, y: top, width, height, viewBox: `0 0 ${sourceWidth} ${sourceHeight}`, overflow: "hidden", ...extra});
+  }
+  function gauge(parent, centerX, centerY, radius, name, unit, compact = false) {
+    const start = 140 * Math.PI / 180;
+    const finish = 400 * Math.PI / 180;
+    const path = `M ${centerX + radius * Math.cos(start)} ${centerY + radius * Math.sin(start)} A ${radius} ${radius} 0 1 1 ${centerX + radius * Math.cos(finish)} ${centerY + radius * Math.sin(finish)}`;
+    element(parent, "path", {d: path, fill: "none", stroke: colors.muted, "stroke-width": compact ? 1.8 : 2.4});
+    text(parent, centerX, centerY - radius - (compact ? 14 : 20), name, compact ? 19 : 24, colors.white, {"text-anchor": "middle"});
+    text(parent, centerX, centerY - 2, "---", compact ? 26 : 36, colors.white, {"text-anchor": "middle"});
+    text(parent, centerX, centerY + (compact ? 24 : 36), unit, compact ? 16 : 20, colors.muted, {"text-anchor": "middle"});
+  }
+  function messageColumn(parent, left, top, width, height, compact = false) {
+    const group = element(parent, "g", {"data-message-column": "true"});
+    const rowHeight = height / messages.length;
+    for (const [index, message] of messages.entries()) {
+      const baseline = top + rowHeight * (index + 0.5);
+      line(group, left + 9, top + rowHeight * (index + 1), left + width - 9, top + rowHeight * (index + 1), colors.faint, {"stroke-width": 1});
+      text(group, left + 11, baseline, String(index + 1).padStart(2, "0"), compact ? 10 : 13, colors.muted);
+      text(group, left + (compact ? 28 : 39), baseline, message, compact ? 13 : 20, colors.white, {"data-message": message});
+      text(group, left + width - 12, baseline, "-", compact ? 13 : 18, colors.muted, {"text-anchor": "end"});
+    }
+    return group;
+  }
+  function bars(parent, left, top, height, compact = false) {
+    const width = compact ? 14 : 28;
+    const gap = compact ? 22 : 42;
+    for (const [index, name] of ["A?", "B?"].entries()) {
+      const position = left + index * (width + gap);
+      text(parent, position + width / 2, top - 20, name, compact ? 13 : 20, colors.muted, {"text-anchor": "middle"});
+      rect(parent, position, top, width, height, "none", colors.muted, {"stroke-width": 1.6});
+      line(parent, position + 3, top + 3, position + width - 3, top + height - 3, colors.faint, {"stroke-width": 1});
+      text(parent, position + width / 2, top + height + 24, "---", compact ? 12 : 18, colors.muted, {"text-anchor": "middle"});
+    }
+  }
+  function reservedSynoptic(parent, left, top, width, height, compact = false) {
+    rect(parent, left, top, width, height, "none", colors.muted, {"stroke-width": 1, "stroke-dasharray": "6 7"});
+    text(parent, left + width / 2, top + height / 2 - 10, "SINOTICO", compact ? 14 : 20, colors.muted, {"text-anchor": "middle"});
+    text(parent, left + width / 2, top + height / 2 + 17, "A CONFIRMAR", compact ? 10 : 13, colors.muted, {"text-anchor": "middle"});
+  }
+  function eicasFull(parent) {
+    rect(parent, 0, 0, 700, 850, colors.black, colors.cyan, {"stroke-width": 2});
+    text(parent, 22, 23, "AMX  /  EICAS", 16, colors.green);
+    gauge(parent, 117, 146, 72, "NL", "%");
+    gauge(parent, 350, 146, 72, "NH", "%");
+    gauge(parent, 581, 146, 72, "TGT", "\u00b0C");
+    line(parent, 0, 238, 700, 238);
+    line(parent, 480, 238, 480, 810);
+    line(parent, 122, 238, 122, 458);
+    line(parent, 0, 458, 480, 458);
+    bars(parent, 22, 298, 102);
+    reservedSynoptic(parent, 152, 268, 298, 156);
+    text(parent, 22, 488, "TOTAL", 15, colors.muted);
+    text(parent, 22, 523, "---", 28);
+    text(parent, 94, 523, "kg", 17, colors.muted);
+    line(parent, 225, 458, 225, 548, colors.faint);
+    text(parent, 248, 488, "FLOW", 15, colors.muted);
+    text(parent, 248, 523, "---", 28);
+    text(parent, 326, 523, "kg/min", 17, colors.muted);
+    line(parent, 0, 548, 480, 548);
+    text(parent, 23, 581, "ESTADO / DETALHES", 16, colors.green);
+    text(parent, 240, 671, "---", 34, colors.muted, {"text-anchor": "middle"});
+    text(parent, 23, 775, "DVR ---     TEST ---", 15, colors.muted);
+    messageColumn(parent, 480, 245, 220, 554);
+    line(parent, 0, 810, 700, 810);
+    text(parent, 22, 832, "ENG", 17, colors.green);
+    text(parent, 164, 832, "SYS", 17, colors.green);
+    text(parent, 304, 832, "FUEL", 17, colors.green);
+    text(parent, 447, 832, "ELEC", 17, colors.green);
+    text(parent, 673, 832, "MENU", 17, colors.green, {"text-anchor": "end"});
+    line(parent, 16, 846, 65, 846, colors.green, {"stroke-width": 3});
+  }
+  function eicasCompact(parent) {
+    rect(parent, 0, 0, 520, 380, colors.black, colors.cyan, {"stroke-width": 1.5});
+    text(parent, 11, 14, "EICAS", 12, colors.green);
+    gauge(parent, 73, 86, 40, "NL", "%", true);
+    gauge(parent, 257, 86, 40, "NH", "%", true);
+    gauge(parent, 441, 86, 40, "TGT", "\u00b0C", true);
+    line(parent, 0, 150, 520, 150, colors.cyan, {"stroke-width": 1});
+    line(parent, 356, 150, 356, 380, colors.cyan, {"stroke-width": 1});
+    line(parent, 88, 150, 88, 305, colors.cyan, {"stroke-width": 1});
+    bars(parent, 17, 193, 63, true);
+    reservedSynoptic(parent, 107, 177, 230, 102, true);
+    line(parent, 0, 306, 356, 306, colors.cyan, {"stroke-width": 1});
+    text(parent, 10, 328, "TOTAL --- kg", 14);
+    text(parent, 182, 328, "FLOW --- kg/min", 12);
+    line(parent, 0, 348, 356, 348, colors.faint, {"stroke-width": 1});
+    text(parent, 10, 365, "ESTADO ---   DVR ---", 12, colors.muted);
+    messageColumn(parent, 356, 154, 164, 222, true);
+  }
+  function flightArea(parent, width, height) {
+    rect(parent, 0, 0, width, height, colors.black, colors.cyan, {"stroke-width": 1.2});
+    text(parent, 12, 19, "EFI / VOO", 14, colors.green);
+    text(parent, 12, 50, "IAS ---", 15);
+    text(parent, width - 12, 50, "ALT ---", 15, colors.white, {"text-anchor": "end"});
+    const centerX = width / 2;
+    const centerY = height * 0.53;
+    const radius = Math.min(width * 0.23, height * 0.27);
+    element(parent, "circle", {cx: centerX, cy: centerY, r: radius, fill: "none", stroke: colors.muted, "stroke-width": 1.3});
+    line(parent, centerX - radius * 0.74, centerY - radius * 0.74, centerX + radius * 0.74, centerY + radius * 0.74, colors.faint);
+    line(parent, centerX + radius * 0.74, centerY - radius * 0.74, centerX - radius * 0.74, centerY + radius * 0.74, colors.faint);
+    text(parent, centerX, centerY, "---", 28, colors.muted, {"text-anchor": "middle"});
+    text(parent, 12, height - 22, "HDG ---", 15);
+    text(parent, width - 12, height - 22, "VV ---", 15, colors.white, {"text-anchor": "end"});
+  }
+  function central(parent) {
+    rect(parent, 0, 0, 420, 680, colors.black, colors.cyan, {"stroke-width": 1.5});
+    text(parent, 11, 17, "EICAS", 12, colors.green);
+    gauge(parent, 70, 87, 38, "NL", "%", true);
+    gauge(parent, 210, 87, 38, "NH", "%", true);
+    gauge(parent, 350, 87, 38, "TGT", "\u00b0C", true);
+    line(parent, 0, 151, 420, 151, colors.cyan, {"stroke-width": 1.2});
+    line(parent, 276, 151, 276, 680, colors.cyan, {"stroke-width": 1.2});
+    bars(parent, 14, 197, 77, true);
+    reservedSynoptic(parent, 90, 177, 171, 128, true);
+    line(parent, 0, 330, 276, 330, colors.cyan, {"stroke-width": 1.2});
+    text(parent, 12, 353, "TOTAL --- kg", 14);
+    text(parent, 12, 379, "FLOW  --- kg/min", 14);
+    flightArea(viewport(parent, 0, 400, 276, 280, 276, 280), 276, 280);
+    messageColumn(parent, 276, 154, 144, 520, true);
+  }
+  function frame(parent, left, top, width, height, screenWidth, screenHeight, draw, sides = true) {
+    const bezel = sides ? 25 : 14;
+    rect(parent, left, top, width, height, colors.bezel, colors.edge, {rx: 5, "stroke-width": 1.4});
+    for (const position of [[left + 10, top + 10], [left + width - 10, top + 10], [left + 10, top + height - 10], [left + width - 10, top + height - 10]]) {
+      element(parent, "circle", {cx: position[0], cy: position[1], r: 3, fill: colors.black, stroke: colors.edge, "stroke-width": 0.8});
+    }
+    if (sides) {
+      for (let index = 0; index < 8; index++) {
+        const location = top + 57 + index * (height - 114) / 7;
+        rect(parent, left + 6, location - 5, 11, 10, colors.button, colors.edge, {rx: 1});
+        rect(parent, left + width - 17, location - 5, 11, 10, colors.button, colors.edge, {rx: 1});
+      }
+    }
+    const screen = viewport(parent, left + bezel, top + 21, width - bezel * 2, height - 42, screenWidth, screenHeight);
+    draw(screen);
+  }
+  function emptyPane(parent, left, top, width, height, heading) {
+    rect(parent, left, top, width, height, colors.black, colors.cyan, {"stroke-width": 1.2});
+    text(parent, left + 15, top + 22, heading, 17, colors.green);
+    text(parent, left + width / 2, top + height / 2, "---", 29, colors.muted, {"text-anchor": "middle"});
+  }
+  function splitLateral(parent) {
+    rect(parent, 0, 0, 520, 680, colors.black, colors.cyan, {"stroke-width": 1.5});
+    eicasCompact(viewport(parent, 0, 0, 520, 380, 520, 380));
+    emptyPane(parent, 0, 388, 260, 246, "SEC 1");
+    emptyPane(parent, 260, 388, 260, 246, "SEC 2");
+    line(parent, 0, 640, 520, 640);
+    text(parent, 14, 662, "MAIN", 17, colors.green);
+    text(parent, 178, 662, "SWAP", 17, colors.green);
+    text(parent, 506, 662, "FULL", 17, colors.green, {"text-anchor": "end"});
+  }
+
+  const detail = document.getElementById("detail-svg");
+  label(detail, 18, 23, "PRINCIPAL  /  FULL", 18);
+  frame(detail, 10, 49, 760, 952, 700, 850, eicasFull);
+  label(detail, 826, 23, "CENTRAL  /  FOTO 3", 18);
+  frame(detail, 826, 49, 462, 780, 420, 680, central, false);
+  line(detail, 840, 872, 875, 872, colors.gray, {"stroke-width": 1.2});
+  label(detail, 887, 872, "A? / B?: parametros a identificar", 15, colors.gray);
+  line(detail, 840, 907, 875, 907, colors.gray, {"stroke-width": 1.2, "stroke-dasharray": "3 3"});
+  label(detail, 887, 907, "Sinotico reservado, sem circuito", 15, colors.gray);
+  label(detail, 840, 954, "MESMOS DADOS. MESMOS ESTADOS.", 16, colors.ink);
+  label(detail, 840, 982, "Sem leitura simulada ou normalidade presumida.", 14, colors.gray);
+
+  const layout = document.getElementById("layout-svg");
+  label(layout, 215, 22, "ESQUERDO", 18, colors.ink, {"text-anchor": "middle"});
+  label(layout, 660, 22, "CENTRAL", 18, colors.ink, {"text-anchor": "middle"});
+  label(layout, 1105, 22, "DIREITO", 18, colors.ink, {"text-anchor": "middle"});
+  frame(layout, 9, 48, 414, 550, 520, 680, splitLateral);
+  frame(layout, 505, 131, 310, 466, 420, 680, central, false);
+  frame(layout, 897, 48, 414, 550, 520, 680, splitLateral);
+  label(layout, 216, 630, "TOP + SEC 1 + SEC 2  /  FULL", 16, colors.gray, {"text-anchor": "middle"});
+  label(layout, 660, 630, "EICAS + VOO", 16, colors.gray, {"text-anchor": "middle"});
+  label(layout, 1104, 630, "TOP + SEC 1 + SEC 2  /  FULL", 16, colors.gray, {"text-anchor": "middle"});
+
+  const columns = [...document.querySelectorAll("[data-message-column]")];
+  const complete = columns.length === 5 && columns.every(column =>
+    [...column.querySelectorAll("[data-message]")].map(node => node.textContent).join("|") === messages.join("|"));
+  if (!complete) throw new Error("Every EICAS drawing must show all fifteen message positions in order");
+  document.documentElement.dataset.previewReady = "true";
+  window.amxPreview = Object.freeze({approvalOnly: true, nativeValidated: false, messageGroups: messages.length, renderedCopies: columns.length});
+</script>
+</body>
+</html>

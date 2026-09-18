@@ -29,6 +29,11 @@ if ($manifest.Schema -ne 'AMXDENIS_CANDIDATE_1' -or $manifest.AircraftType -ne '
     $manifest.ExternalResourcesChanged -ne $false -or $manifest.FlightModelChanged -ne $false -or
     $manifest.DesktopCandidateOnly -ne $true -or $manifest.Files.Count -eq 0 -or
     $manifest.BuildId -notmatch '^[A-F0-9]{64}$' -or $manifest.InputSetSHA256 -notmatch '^[A-F0-9]{64}$') { throw 'Unexpected candidate identity.' }
+$descriptorProbe=if($manifest.PSObject.Properties['DescriptorProbe']){$manifest.DescriptorProbe}else{'none'}
+if($descriptorProbe -notin @('none','without-mechanimations','duplicate-canopy')){throw 'Unknown experimental descriptor probe.'}
+if($manifest.PSObject.Properties['DescriptorProbe'] -and
+    ($manifest.DescriptorChanged -ne ($descriptorProbe -ne 'none') -or
+     $manifest.ExperimentalOnly -ne ($descriptorProbe -ne 'none'))){throw 'Descriptor experiment flags disagree.'}
 $luaHash = (Get-FileHash -LiteralPath $Lua -Algorithm SHA256).Hash
 if ($luaHash -ne $manifest.LuaExecutableSHA256) { throw 'Bench Lua differs from the recorded build toolchain.' }
 $runnerHash = Get-IntegrationHash $PSCommandPath
@@ -65,7 +70,7 @@ try {
         $syntaxText -match '\[FAIL\]|stack traceback:') { throw 'Candidate Lua syntax check failed.' }
     $syntaxOutput | Write-Output
     foreach ($test in @(
-        @{Name='registration';Marker='AMXDENIS REGISTRATION';Extra=@((Join-Path $repo 'ci\fixtures\original'))},
+        @{Name='registration';Marker='AMXDENIS REGISTRATION';Extra=@((Join-Path $repo 'ci\fixtures\original'),$descriptorProbe)},
         @{Name='runtime';Marker='AMXDENIS RUNTIME';Extra=@()},
         @{Name='indicators';Marker='AMXDENIS INDICATORS';Extra=@()}
     )) {
@@ -101,6 +106,7 @@ try {
         BuildId=$manifest.BuildId;State='BANCADA';Passed=$true;Tests=$results.ToArray();LuaFiles=$luaFiles.Count;
         CandidateManifestSHA256=$manifestHash;InputSetSHA256=$manifest.InputSetSHA256;LuaVersion='5.1';LuaSHA256=$luaHash;
         RunnerSHA256=$runnerHash;CandidateFilesUnchanged=$true;RepositoryInputsUnchanged=$true;
+        DescriptorProbe=$descriptorProbe;ExperimentalOnly=($descriptorProbe -ne 'none');
         NativeValidated=$false;NativeMissionStarted=$false;RecordedUtc=[DateTime]::UtcNow.ToString('o')})
     Write-Output "AMXDENIS_CANDIDATE_BENCH_OK|id=$($manifest.BuildId)|native=false|$report"
 } catch {
