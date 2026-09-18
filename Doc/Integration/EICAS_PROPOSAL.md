@@ -11,6 +11,22 @@ indicador hidraulico duplo para as duas barras digitais. Esse aceite e uma
 decisao de projeto do mod; nao afirma que as fotografias modernas identificam
 as barras nem amplia a aprovacao para os demais campos.
 
+## Atualizacao Da Dinamica Hidraulica
+
+Posteriormente, o usuario autorizou um modelo de projeto explicitamente nao
+calibrado. O adaptador agora usa dois estados de pressao independentes, carga
+e descarga graduais, falhas e demanda por movimento observado. Parametros e
+hipoteses estao no [plano R08](PLANO_RECUPERACAO.md#r08---hidraulica).
+As constantes de tempo e consumo sao escolhas do mod, nao curvas medidas do AMX.
+
+As [provas CA/CB](Evidence/Operational-REV07/hydraulic-dynamics-results.json)
+repetiram pressurizacao, falha isolada/total e recuperacao no DCS; CB
+tambem confirmou descarga apos desligar. A prova de demanda por aerofreio
+falhou por ausencia de movimento nativo, inclusive com comando direto. Assim,
+o modelo e parcial: `CALIBRATED=0`, `CONSUMERS_COMPLETE=0`, R08 em 6/10 e meta
+7 ainda aberta. Nao foi alterada a geometria, o SFM ou a disposicao dos visores.
+As capturas e resultados 0/206 bar abaixo sao historicos e nao foram regravados.
+
 ## Resultado Implementado
 
 Implementado somente no adaptador AMXDENIS e em candidatos isolados; nao foi

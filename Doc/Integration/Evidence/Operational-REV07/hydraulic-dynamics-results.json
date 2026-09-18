@@ -1,0 +1,1112 @@
+{
+  "Schema": "AMXDENIS_HYDRAULIC_DYNAMICS_EVIDENCE_1",
+  "RecordedUtc": "2026-09-18T23:30:56.2439733Z",
+  "WorkItem": "R08 project pressure dynamics, partial native consumer integration",
+  "ModelSpec": "AMXDENIS_PROJECT_HYD_1",
+  "UserAuthorizedUncalibratedProjectModel": true,
+  "BuildId": "7571598489F247C74AE7C939171EFB5BB071614542CACF5EDBBC4D662951E546",
+  "CurrentRating": 6,
+  "TargetRating": 7,
+  "DynamicCoreRepeated": true,
+  "OverallSequencePassed": false,
+  "NativeConsumerDemandValidated": false,
+  "PhysicalCalibrationApproved": false,
+  "OverallNativeAcceptanceGranted": false,
+  "Parameters": {
+    "NominalBar": 207,
+    "LowPressureBar": 93,
+    "ChargeTimeSeconds": 2.5,
+    "ReserveDecaySeconds": 40,
+    "FaultDecaySeconds": 1.5,
+    "PumpStartGenericRpm": 53,
+    "PumpFullGenericRpm": 60,
+    "Circuit1GearEndpointCostBar": 18,
+    "Circuit1FlapFullTravelCostBar": 12,
+    "Circuit2AirbrakeFullTravelCostBar": 8
+  },
+  "ParameterScope": "Only nominal/low pressure from AMX manual; rates, consumer allocation and costs are disclosed project assumptions",
+  "Runs": [
+    {
+      "Run": "Native-REV07-CA-HydraulicProject",
+      "BuildId": "7571598489F247C74AE7C939171EFB5BB071614542CACF5EDBBC4D662951E546",
+      "Source": "hydraulic-sequence.json",
+      "SHA256": "F7407010946CEDEF2790C8C9F8DDF0F0D399D675D993E2E88F9C02D486204561",
+      "Passed": false,
+      "Planned": 14,
+      "Executed": 10,
+      "Confirmed": 9,
+      "Failure": "Native condition was not observed in time; raw evidence retained.",
+      "Stages": [
+        {
+          "Stage": "Cold",
+          "Passed": true,
+          "Source": "hydraulic-01-Cold.json",
+          "SHA256": "A2652440E6A38ACE9329E2EBDA510A52C7161DDF51CC75385428F616B2AC6C30",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 6.467,
+          "Rpm": 0,
+          "Pressure1": 0,
+          "Pressure2": 0,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "SpinUp",
+          "Passed": true,
+          "Source": "hydraulic-02-SpinUp.json",
+          "SHA256": "1A971A2A09B9B80280678C99EAC31D497138D1D77D5DD4390D382F30C70F95C7",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 92.885,
+          "Rpm": 59.40034866333008,
+          "Pressure1": 97.953311,
+          "Pressure2": 97.953311,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Nominal",
+          "Passed": true,
+          "Source": "hydraulic-03-Nominal.json",
+          "SHA256": "B785804A6CA0C998971510B49E1E9718C2E35AB1874B272A13FA883BE754EA80",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 102.834,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 204.920651,
+          "Pressure2": 204.920651,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Fault1",
+          "Passed": true,
+          "Source": "hydraulic-04-Fault1.json",
+          "SHA256": "5DB05DFC983042BA041570864E3BC68946A4F23352AAF849D7849D64E10EF731",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 110.884,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 1.293634,
+          "Pressure2": 206.915075,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Recover1",
+          "Passed": true,
+          "Source": "hydraulic-05-Recover1.json",
+          "SHA256": "CBC02273F8AEC2D816F15B16633B31139350BF4C18A87F075F43416B9AE6B135",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 121.968,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 204.147968,
+          "Pressure2": 206.998831,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Fault2",
+          "Passed": true,
+          "Source": "hydraulic-06-Fault2.json",
+          "SHA256": "A3DDDBA935A78222810ECDDEA6278993CFDBFACDD4350A662DFD25F235C2AAC8",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 129.918,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 206.883578,
+          "Pressure2": 1.394748,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "TotalLoss",
+          "Passed": true,
+          "Source": "hydraulic-07-TotalLoss.json",
+          "SHA256": "466BF568ADF6DE3307C3E3F83ACF71ACCD286946A014E0673B20FB01C7A23149",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 137.918,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 1.304178,
+          "Pressure2": 0.006734,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Recover2",
+          "Passed": true,
+          "Source": "hydraulic-08-Recover2.json",
+          "SHA256": "92CE85506800AB2D70934B254FED0660F289B4BCAEEC47291FFDFA0D08D31236",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 149.001,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 0.000797,
+          "Pressure2": 204.246685,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "RestoreAll",
+          "Passed": true,
+          "Source": "hydraulic-09-RestoreAll.json",
+          "SHA256": "E218F01C036597044740A359E3EA594685872C8647A248E8360F51A21029CB30",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 165.752,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 206.694758,
+          "Pressure2": 206.996373,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "AirbrakeOut",
+          "Passed": false,
+          "Source": "hydraulic-10-AirbrakeOut.json",
+          "SHA256": "0BD628334097E58F7C75A6F5D343872F83A4CAE01818762199804A45DC84B9E5",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 0,
+          "ModelTime": 182.051,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 206.999381,
+          "Pressure2": 206.999826,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        }
+      ],
+      "ModelFaultRequests": [
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault1",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 103.252,
+          "sequence": 10,
+          "value": 1
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault1",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 111.252,
+          "sequence": 11,
+          "value": 0
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault2",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 122.419,
+          "sequence": 12,
+          "value": 1
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault1",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 130.352,
+          "sequence": 13,
+          "value": 1
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault2",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 138.252,
+          "sequence": 14,
+          "value": 0
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault1",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 149.468,
+          "sequence": 15,
+          "value": 0
+        }
+      ],
+      "CommandReports": [
+        {
+          "Path": "hydraulic-02-command-Battery.json",
+          "SHA256": "9600A409BE8DD1D52F25A3A6EAC9620F37901374C9028C3ABB33E3AA73C13D2D"
+        },
+        {
+          "Path": "hydraulic-02-command-FlightBrake.json",
+          "SHA256": "C0641622A5AFAEBABC2EBC87548A697F189AC2A729F258F7D33CBAC2E3427BCF"
+        },
+        {
+          "Path": "hydraulic-02-command-FlightThrottle.json",
+          "SHA256": "20B901500F60A635A90C2A2FFD1C96FFD408641BD0881583B5BFBCEA093C2020"
+        },
+        {
+          "Path": "hydraulic-02-command-FuelShutoff.json",
+          "SHA256": "D9525E791B7D31EB9B28BAD7C23D4E66F4A7D15BBD5AEB10635C7C74DA330721"
+        },
+        {
+          "Path": "hydraulic-02-command-Generator1.json",
+          "SHA256": "B7883530A8732A289EAAE0A27CF071A530AF32E684A410C78A8C3216740E441D"
+        },
+        {
+          "Path": "hydraulic-02-command-Generator2.json",
+          "SHA256": "D5ADB3FD4FCDD1B96D844C8A656EB3637D3FE0CB876BC38307EF38BFF44281BD"
+        },
+        {
+          "Path": "hydraulic-02-command-Master.json",
+          "SHA256": "64F46BD0606576995B0087D0CD8E57658BC51C7F4BB8DCE4C7A64CAE8B975A5B"
+        },
+        {
+          "Path": "hydraulic-02-command-Starter.json",
+          "SHA256": "026D328DDAA5AB212AAA36B733D80D405BFE2256A071726FDAA4D7C2CD15480E"
+        },
+        {
+          "Path": "hydraulic-04-command-ModelHydraulicFault1.json",
+          "SHA256": "CAB8DD1C782810E75B4910C446C4313C284FCDF0A548D0931593CB4E594F1225"
+        },
+        {
+          "Path": "hydraulic-05-command-ModelHydraulicFault1.json",
+          "SHA256": "A65BC00B2262239ACADF294A66E0A16C67588971C44CFFA56393A2BA10946FFD"
+        },
+        {
+          "Path": "hydraulic-06-command-ModelHydraulicFault2.json",
+          "SHA256": "E947C0BD790E090B9C7593335659A971611C220BE9F997C47E0EC1986D01FA78"
+        },
+        {
+          "Path": "hydraulic-07-command-ModelHydraulicFault1.json",
+          "SHA256": "BE8BE250EB5E8A0722DDEF24A46F1FA6164136C01274BD0355FAE6CAF8BC086F"
+        },
+        {
+          "Path": "hydraulic-08-command-ModelHydraulicFault2.json",
+          "SHA256": "314197FB94F987A22CAF3999041EF789F53E348110FEDA0F4363B4716F14CD67"
+        },
+        {
+          "Path": "hydraulic-09-command-ModelHydraulicFault1.json",
+          "SHA256": "A3616F8F43486A8A19F49D4DFFB777F7E9EECD528F136BD19A0E244342030A39"
+        }
+      ],
+      "PrivateScripts": [
+        {
+          "Path": "Scripts/Export.lua",
+          "SHA256": "34F57DAE4E3E323BF85AB303F0BE2ACB2DEA7D3CC89AFB81DCFD21B39694D99D"
+        },
+        {
+          "Path": "Scripts/native-config.lua",
+          "SHA256": "958E0C3E2FCF764C945AA342BC8B6D90871433E7A167A2A62503417A35D0E5AC"
+        },
+        {
+          "Path": "Scripts/private-bindings.csv",
+          "SHA256": "AD4E1CE90551550375750DAB88F351DB170D37ADF7850A7DDBA39CEE85E46C82"
+        },
+        {
+          "Path": "Scripts/private-bindings.lua",
+          "SHA256": "BDEEB2C0993A85C1272B75BC3EC0B695E5C874EAEAA5DC7D50C0A9B6BFB6EC2F"
+        },
+        {
+          "Path": "Scripts/Hooks/AMXDENIS-native.lua",
+          "SHA256": "6DC20FE01B5C6FDCB5FA1E18AA87FFF9913FC546AA883C72793843338773613C"
+        },
+        {
+          "Path": "Config/Input/AMX/keyboard/Keyboard.diff.lua",
+          "SHA256": "4BE4092A39C14911FC71B16824AC5CDEF1E7C24479D3EBACA3747F894C291CBA"
+        }
+      ],
+      "Finalization": "finalization-20260918T231736355Z",
+      "IntegrityPassed": true,
+      "NativeAcceptanceGranted": false,
+      "ObserverErrors": 0,
+      "ObserverRejects": 0,
+      "DcsSeverityErrorLines": 158,
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "251C1BFC2BE77A867CFC82275A4BFFBC547F6CF8AC8E20D70034A664CA439ED7"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "5C1ACA7949D6E2EF35D0FE32A3759C87C6EEF70A77DE1BB217DC45827AD8A125"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "633951F2A4B7CBB5EC308F04886AC3BA3295AE913FD83E7739FC945D37343359"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "950F63698A7FF49A7D649A0A1D9EE3ECDC027E45D3BF914C69534E32A401ADD6"
+        }
+      ],
+      "AirbrakeSource": "Windows Shift+B; no observed movement"
+    },
+    {
+      "Run": "Native-REV07-CB-HydraulicNativeConsumer",
+      "BuildId": "7571598489F247C74AE7C939171EFB5BB071614542CACF5EDBBC4D662951E546",
+      "Source": "hydraulic-sequence.json",
+      "SHA256": "B18DA1065537B41DD66E0AFD3EDB481AC63F511CB066D6404459A97C3B89E485",
+      "Passed": false,
+      "Planned": 14,
+      "Executed": 14,
+      "Confirmed": 12,
+      "Failure": "AirbrakeOut: Native condition was not observed in time; raw evidence retained.",
+      "Stages": [
+        {
+          "Stage": "Cold",
+          "Passed": true,
+          "Source": "hydraulic-01-Cold.json",
+          "SHA256": "236875C3DAFE434B8660309C18529F7209CF501A5F4C1E28CC97CCF893CDE894",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 8.05,
+          "Rpm": 0,
+          "Pressure1": 0,
+          "Pressure2": 0,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "SpinUp",
+          "Passed": true,
+          "Source": "hydraulic-02-SpinUp.json",
+          "SHA256": "F94AD54BCC95759396C9E23861B98DDBDEA52BD3AA9D26D6F93AF470B8DA625C",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 94.168,
+          "Rpm": 59.435611724853516,
+          "Pressure1": 101.07902,
+          "Pressure2": 101.07902,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Nominal",
+          "Passed": true,
+          "Source": "hydraulic-03-Nominal.json",
+          "SHA256": "3BA3353CFA3A13FA34478B439957426EFC307D6FF73C1400B10C5BA21E42F1A6",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 104.168,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 204.986154,
+          "Pressure2": 204.986154,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Fault1",
+          "Passed": true,
+          "Source": "hydraulic-04-Fault1.json",
+          "SHA256": "87F2E54B5D8E9D164AD7C1DFF03898F0B494DD504408A774C8F57EF4D90A63D4",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 112.202,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 1.29441,
+          "Pressure2": 206.920964,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Recover1",
+          "Passed": true,
+          "Source": "hydraulic-05-Recover1.json",
+          "SHA256": "4CE2FF252BE21EA05D7324FE4B29845ED6616C40E3C8556525576B7D1EC76BF2",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 123.385,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 204.260707,
+          "Pressure2": 206.9989,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Fault2",
+          "Passed": true,
+          "Source": "hydraulic-06-Fault2.json",
+          "SHA256": "25B80CAD539C4965C1CD8DFF1320515661E4D28CC78AECCDB02B862B847C598D",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 131.319,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 206.888174,
+          "Pressure2": 1.304797,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "TotalLoss",
+          "Passed": true,
+          "Source": "hydraulic-07-TotalLoss.json",
+          "SHA256": "C861DD5E67DB5E3ADF3861338FE16A60FFEA9A463073E870D52606727C234A46",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 139.269,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 1.394113,
+          "Pressure2": 0.006734,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Recover2",
+          "Passed": true,
+          "Source": "hydraulic-08-Recover2.json",
+          "SHA256": "0FC40A0DB2F5516F33755D65CA88BF9BE06CD5D693D64DE5752E156C493E4A10",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 150.802,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 0.000611,
+          "Pressure2": 204.557997,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "RestoreAll",
+          "Passed": true,
+          "Source": "hydraulic-09-RestoreAll.json",
+          "SHA256": "5D707E6E8A27B6988FAC5D752F546894FDFA84F32BD4E183262CB0922B6D6416",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 167.319,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 206.682308,
+          "Pressure2": 206.996509,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "AirbrakeOut",
+          "Passed": false,
+          "Source": "hydraulic-10-AirbrakeOut.json",
+          "SHA256": "4317E3197D053007CF7C6AFC87965C91F51B8CE7E67829E3F0FB14853CE5251E",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 0,
+          "ModelTime": 187.186,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 206.999715,
+          "Pressure2": 206.99983,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "AirbrakeIn",
+          "Passed": false,
+          "Source": "hydraulic-11-AirbrakeIn.json",
+          "SHA256": "0060AD9A23B890BF2AB15586EDB4F9626797D12125828E68C5E91743C3046D22",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 0,
+          "ModelTime": 207.919,
+          "Rpm": 59.999908447265625,
+          "Pressure1": 206.999831,
+          "Pressure2": 206.999831,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 0,
+          "Low2": 0,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "Shutdown",
+          "Passed": true,
+          "Source": "hydraulic-12-Shutdown.json",
+          "SHA256": "0C6EF0688F651ECB16739FBB0551303468F1EA76C4F6F5623C1FD23439ED830A",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 248.153,
+          "Rpm": 0,
+          "Pressure1": 80.097747,
+          "Pressure2": 80.097747,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "ReserveLow",
+          "Passed": true,
+          "Source": "hydraulic-13-ReserveLow.json",
+          "SHA256": "19EA1B9DCD4115D985C6D79D6EF70951573824821ECB8D7548F5EA8894EB320A",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 251.736,
+          "Rpm": 0,
+          "Pressure1": 73.203829,
+          "Pressure2": 73.203829,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "Stage": "PowerOff",
+          "Passed": true,
+          "Source": "hydraulic-14-PowerOff.json",
+          "SHA256": "3C8FEC7597713BA318DCFA84600CBA56E27234DB68641D46D55F3DA1937444C4",
+          "Condition": "param($sample)\r\n                foreach($component in @('x','y','z')){if([Math]::Abs($sample.velocity.$component) -gt 0.25){throw 'Hydraulic fixture moved; aborting.'}}\r\n                if($sample.parameters.AMXDENIS_HYD_1_VALID -ne 1 -or $sample.parameters.AMXDENIS_HYD_2_VALID -ne 1){return $false}\r\n                return [bool](& $expected $sample)\r\n            ",
+          "StableSamples": 3,
+          "ModelTime": 265.253,
+          "Rpm": 0,
+          "Pressure1": 52.234736,
+          "Pressure2": 52.234736,
+          "Valid1": 1,
+          "Valid2": 1,
+          "Demand1": 0,
+          "Demand2": 0,
+          "Low1": 1,
+          "Low2": 1,
+          "Speedbrake": {
+            "status": 0,
+            "value": 0
+          },
+          "External182": 0,
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        }
+      ],
+      "ModelFaultRequests": [
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault1",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 104.602,
+          "sequence": 10,
+          "value": 1
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault1",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 112.569,
+          "sequence": 11,
+          "value": 0
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault2",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 123.769,
+          "sequence": 12,
+          "value": 1
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault1",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 131.719,
+          "sequence": 13,
+          "value": 1
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault2",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 139.769,
+          "sequence": 14,
+          "value": 0
+        },
+        {
+          "call_succeeded": true,
+          "control": "ModelHydraulicFault1",
+          "explicit_rejection": false,
+          "input_source": "project_model_fault_NOT_native_damage_or_physical_input",
+          "kind": "MODEL_FAULT_COMMAND",
+          "model_time": 151.186,
+          "sequence": 15,
+          "value": 0
+        }
+      ],
+      "CommandReports": [
+        {
+          "Path": "hydraulic-02-command-Battery.json",
+          "SHA256": "CA538E4168B2ECEAB949814904C3DACEF14EE1FE12C1D9B7DB61C4DBBA0FE4F4"
+        },
+        {
+          "Path": "hydraulic-02-command-FlightBrake.json",
+          "SHA256": "A295D98940C2E1678F2E11AB9B93F4EA0DE07DCCE214B98604532598D40C8035"
+        },
+        {
+          "Path": "hydraulic-02-command-FlightThrottle.json",
+          "SHA256": "A3268BBA0EBE834BA7E88D32225E4F33E046A01F4F3081124D6045E555B7BC0D"
+        },
+        {
+          "Path": "hydraulic-02-command-FuelShutoff.json",
+          "SHA256": "E9E7D5833D9D82BA4B55B762F7AE219A634C563154D99096C882BBD2A3D0A424"
+        },
+        {
+          "Path": "hydraulic-02-command-Generator1.json",
+          "SHA256": "F4BE274CD317718F6E969E0C4CD3D5F9A843B97A0B3E57991BE15D62DFDD63E9"
+        },
+        {
+          "Path": "hydraulic-02-command-Generator2.json",
+          "SHA256": "610A3A7A76F6D3C868ABF704D6B8002984D91BA707BB5C1FA52B5ED558061696"
+        },
+        {
+          "Path": "hydraulic-02-command-Master.json",
+          "SHA256": "66EFF81AEEB283D1004DDF77963F0D8DEC34C2EE4D32438C4A67A125A4BFA70E"
+        },
+        {
+          "Path": "hydraulic-02-command-Starter.json",
+          "SHA256": "1281956D6139F6D00EE85CF9AC119EC34E3F90A1A3016DC99443501F0D45790A"
+        },
+        {
+          "Path": "hydraulic-04-command-ModelHydraulicFault1.json",
+          "SHA256": "823BBB9F747A3062FE84BBF546D78B7D3585E7704B649F1469E80347C5005044"
+        },
+        {
+          "Path": "hydraulic-05-command-ModelHydraulicFault1.json",
+          "SHA256": "CB543452860674E297E39C41B8FD608100D2AED1A0BA385A472C68FA5CCC9E22"
+        },
+        {
+          "Path": "hydraulic-06-command-ModelHydraulicFault2.json",
+          "SHA256": "14FD374C5BE837377AAFCC1928259DA538280F157CFA33CB67CC406A968D56C8"
+        },
+        {
+          "Path": "hydraulic-07-command-ModelHydraulicFault1.json",
+          "SHA256": "3DE03AE8C50BE23B8DF6EC6A8CC5BBE0DC80291EE77FD90AB32BFAC95DA77740"
+        },
+        {
+          "Path": "hydraulic-08-command-ModelHydraulicFault2.json",
+          "SHA256": "F35ADB204A6F56CF5268937189FF60C7ECCC8C4D59585B21A9BCBA10CAEA716E"
+        },
+        {
+          "Path": "hydraulic-09-command-ModelHydraulicFault1.json",
+          "SHA256": "C077FA5F51427DEC73645C727B4A7F94D026A25DC68E5152BA5DB4393301D9AF"
+        },
+        {
+          "Path": "hydraulic-10-command-NativeAirbrakeOn.json",
+          "SHA256": "C2D798BED7DEE7C98D63CF823874C8D357318727E46D01A0CA690A420B735C78"
+        },
+        {
+          "Path": "hydraulic-11-command-NativeAirbrakeOff.json",
+          "SHA256": "3831B4280B360192EDBC3174175FB7A557FD0429F478F71F93B6C2634EFC3F88"
+        },
+        {
+          "Path": "hydraulic-12-command-FuelShutoff.json",
+          "SHA256": "A90C4FD9517010ED354CE604CCCCF265DA44FAAA42DF155F15399D2B0C4E89BD"
+        },
+        {
+          "Path": "hydraulic-14-command-Battery.json",
+          "SHA256": "C5DA265B45CAC3E7CD206474D51847A7AE3424D679A356E098AF85CA3AA462B6"
+        },
+        {
+          "Path": "hydraulic-14-command-Master.json",
+          "SHA256": "BB6BD94CD0419721BA04228D78BB14E1A71F3E2AA58AE50F864474C918FFD1DB"
+        }
+      ],
+      "PrivateScripts": [
+        {
+          "Path": "Scripts/Export.lua",
+          "SHA256": "8E4389081F44FAB9ED787CDC46E581A6D76D9496645F136F5798795CD59C6DE2"
+        },
+        {
+          "Path": "Scripts/native-config.lua",
+          "SHA256": "97E9D981C25F5A970F122D287F9AD7FFF7A3C2B171AF2DF04C5F70BC56186AC3"
+        },
+        {
+          "Path": "Scripts/private-bindings.csv",
+          "SHA256": "AD4E1CE90551550375750DAB88F351DB170D37ADF7850A7DDBA39CEE85E46C82"
+        },
+        {
+          "Path": "Scripts/private-bindings.lua",
+          "SHA256": "BDEEB2C0993A85C1272B75BC3EC0B695E5C874EAEAA5DC7D50C0A9B6BFB6EC2F"
+        },
+        {
+          "Path": "Scripts/Hooks/AMXDENIS-native.lua",
+          "SHA256": "83C9F822780CA7BAFDF0432F992E59CE91886BE4DFFE870B039011629F537ADB"
+        },
+        {
+          "Path": "Config/Input/AMX/keyboard/Keyboard.diff.lua",
+          "SHA256": "4BE4092A39C14911FC71B16824AC5CDEF1E7C24479D3EBACA3747F894C291CBA"
+        }
+      ],
+      "Finalization": "finalization-20260918T232628065Z",
+      "IntegrityPassed": true,
+      "NativeAcceptanceGranted": false,
+      "ObserverErrors": 0,
+      "ObserverRejects": 0,
+      "DcsSeverityErrorLines": 158,
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "E24EFCBDDC06A016000375797F0F883998C46E692544CE9AEF3C9466D1A9C24A"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "0B3095DE40428B13E886962E2EA0A3F4F883872B68E23292580B1FB776007019"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "18529588C909A1E46E45B0443BAF9FCEA30E9E89FFC3B8FA66905999B49FCC69"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "FDE8B08393E3DD15A2BACB55A62B2B0D25F3913F4A3EBB13941F66088BECF1B2"
+        }
+      ],
+      "AirbrakeSource": "Native directional commands; no observed movement"
+    }
+  ],
+  "RuntimeModel": {
+    "Path": "Avionics/Runtime/Cockpit/Scripts/Host/hydraulics.lua",
+    "SHA256": "656787FDAB0E6C6D9CAA3939563E811D83DD5042A5C48ED83481C6D71FAC7294"
+  },
+  "Bench": {
+    "Run": "Bench-REV07-CA-HydraulicDynamics",
+    "Path": "result.json",
+    "SHA256": "43066C4C1918090081BBA77EB6646A80730C1CC50BBE4E1BF47436A50D637705",
+    "RuntimeChecks": 1844,
+    "ObserverChecksAtBench": 942,
+    "LaterObserverChecks": 990,
+    "LaterIntegrationChecks": 293
+  },
+  "HarnessScope": "CA stopped at first failed consumer; CB retained failed consumer verdicts and continued to shutdown. Additional finite/stationary checks before commands were validated offline after CB; native historical outputs are not rewritten.",
+  "Limitations": [
+    "Airbrake remained zero via both Windows and native directional commands, so no native consumer load passed",
+    "Gear input is a binary endpoint, not a continuous actuator position; allocation and pressure cost are project assumptions",
+    "No complete fluid-volume, temperature, priority-valve or calibrated accumulator simulation",
+    "No exterior animation or SFM force writes; missing native actuation is not concealed",
+    "X56 physical exercise was postponed by the user; these diagnostics are not keyboard/mouse/HOTAS approval",
+    "Native runs included pending passive power readback instrumentation; actual runtime identity is recorded"
+  ]
+}

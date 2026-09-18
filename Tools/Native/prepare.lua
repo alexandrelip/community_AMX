@@ -7,6 +7,8 @@ local width,height=assert(tonumber(arg[5])),assert(tonumber(arg[6]))
 local dcs_root=assert(arg[7],"DCS root required for native binding reservations"):gsub("\\","/"):gsub("/+$","")
 local operational=arg[8]=="1"
 local fuel_kg=tonumber(arg[9])or 2550
+local isolate_hardware=arg[10]=="1"
+assert(not isolate_hardware or operational,"Hardware isolation requires operational opt-in")
 assert(profile:match("/DCS%.AMXDENIS%-[%w_-]+$"),"Only private AMXDENIS profiles")
 assert(mode=="GroundHot" or mode=="GroundCold" or mode=="RunwayHot" or mode=="AirHot")
 assert(fuel_kg>=500 and fuel_kg<=2550 and fuel_kg%1==0,"Fuel fixture must fit the original AMXT_M capacity")
@@ -157,6 +159,7 @@ local binding_file=assert(io.open(profile.."/Scripts/private-bindings.csv","wb")
 binding_file:write(table.concat(rows,"\n").."\n");binding_file:close()
 write(profile.."/Scripts/native-config.lua","return ",{schema="AMXDENIS_NATIVE_1",profile=profile:match("([^/]+)$"),
     aircraft="AMXT_M",mode=mode,controls=controls,interval=0.2,operational_test=operational,fuel_kg=fuel_kg,
+    isolate_hardware_devices=isolate_hardware,
     isolate_hardware_axes=operational and(mode=="RunwayHot"or mode=="AirHot")})
 local check=read(template.."/mission","mission");local n=0
 for _,side in pairs(check.coalition)do if type(side)=="table"then

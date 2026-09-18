@@ -1,6 +1,25 @@
 # AMXDENIS M1 — integração interna REV07
 
-## Checkpoint atual: teclado por efeito funcional
+## Prioridade atual: teclado, hidraulica, mouse e X56
+
+Metas solicitadas: teclado 10, hidraulica 7, mouse 9 e X56 9. O usuario deixou
+o exercicio fisico do X56 para depois e aceitou dinamica hidraulica de projeto,
+sem alegacao de calibracao real. Criterios e hipoteses estao no
+[plano atualizado](PLANO_RECUPERACAO.md).
+
+O primeiro subitem implementado e a dinamica de pressao dos dois circuitos:
+carga/descarga graduais, falhas independentes e demanda por movimento observado,
+sem atuar no exterior/SFM. A bancada passou em 1844 verificacoes de runtime;
+[CA/CB](Evidence/Operational-REV07/hydraulic-dynamics-results.json) repetiram
+os estados de carga/falha/recuperacao. CB verificou tambem a
+descarga apos o corte do motor. O consumo integrado nao passou porque o
+aerofreio nativo nao se moveu por teclado nem por comando direto.
+
+Hidraulica reavaliada de 4 para 6/10, nao 7. CA foi 9/10 etapas executadas;
+CB 12/14, ambos com resultado geral falso e finalizacao integra. Teclado 5,
+mouse 3 e X56 3 permanecem; nenhuma nota-alvo foi atribuida por planejamento.
+
+## Historico recente: teclado por efeito funcional
 
 O [subitem de layout](Evidence/Operational-REV07/keyboard-layout-results.json)
 passou em BX/BY: 36 transicoes de FULL, troca entre MFDs e retencao de selecoes

@@ -12,6 +12,7 @@ param(
     [ValidateRange(5,600)][int]$TimeoutSeconds=180,
     [ValidateRange(0,100000)][int]$Sequence=0,
     [switch]$Operational,
+    [switch]$IsolateHardwareDevices,
     [ValidateSet('none','without-mechanimations','duplicate-canopy')][string]$DescriptorProbe='none',
     [string]$Control,
     [double]$Value=1
@@ -78,6 +79,7 @@ function OwnedProcess($State) {
     return $process
 }
 if($Action -eq 'Prepare') {
+    if($IsolateHardwareDevices -and -not $Operational){throw 'Hardware isolation requires an explicit operational test.'}
     FreeEnvironment
     if(Test-Path -LiteralPath $run){throw 'Native run already exists'}
     $candidate=Assert-IntegrationPath $CandidateRoot
@@ -119,7 +121,7 @@ if($Action -eq 'Prepare') {
         Add-Type -AssemblyName System.IO.Compression.FileSystem
         $zip=[IO.Compression.ZipFile]::OpenRead((Join-Path $reference 'AMX_Free_Flight.miz'))
         try {foreach($entry in $zip.Entries){if($entry.FullName -notin @('mission','options','warehouses','l10n/DEFAULT/dictionary','l10n/DEFAULT/mapResource')){continue};$dest=Resolve-IntegrationFile $template $entry.FullName;New-Item -ItemType Directory -Path (Split-Path -Parent $dest) -Force | Out-Null;[IO.Compression.ZipFileExtensions]::ExtractToFile($entry,$dest,$false)}}finally{$zip.Dispose()}
-        $preparation=@(& $lua (Join-Path $PSScriptRoot 'Native/prepare.lua') $profile $template (Join-Path $run 'options.before.lua') $StartMode $Width $Height $DcsRoot ([int]$Operational.IsPresent) $FuelKg 2>&1)
+        $preparation=@(& $lua (Join-Path $PSScriptRoot 'Native/prepare.lua') $profile $template (Join-Path $run 'options.before.lua') $StartMode $Width $Height $DcsRoot ([int]$Operational.IsPresent) $FuelKg ([int]$IsolateHardwareDevices.IsPresent) 2>&1)
         $code=$LASTEXITCODE;$preparation | Set-Content -LiteralPath (Join-Path $run 'prepare.log') -Encoding utf8NoBOM
         if($code -ne 0 -or ($preparation -join "`n") -notmatch 'AMXDENIS_NATIVE_PREPARE_OK'){$preparation | Write-Output;throw 'Native preparation failed'}
         $mission=Join-Path $run 'AMXT_M-cockpit.miz';[IO.Compression.ZipFile]::CreateFromDirectory($template,$mission)
@@ -132,6 +134,7 @@ if($Action -eq 'Prepare') {
             Mission=$mission;MissionSHA256=(PlainHash $mission);PrivateScripts=$scripts;Prepared=$true;StartMode=$StartMode;
             Scope='native_front_cockpit_displays_inputs_only';SourceReadOnly=$true;NativeValidated=$false;UserAuthorizedNativeLaunch=$true}
         $state.OperationalTest=[bool]$Operational
+        $state.HardwareIsolationRequested=[bool]$IsolateHardwareDevices
         $state.DescriptorProbe=$candidateProbe
         $state.ExperimentalOnly=$candidateProbe -ne 'none'
         $state.RequestedFuelKg=$FuelKg
@@ -158,7 +161,7 @@ if($Action -eq 'Start') {
 if($Action -in @('Await','Inspect','Command')) {
     if(-not(OwnedProcess $state)){throw 'Owned DCS is not running'}
     if($Action -eq 'Command') {
-        $operationalControl=$Control -match '^(Starter|FuelShutoff|Gear|Flaps|Canopy|Mode|Flight(Throttle|Pitch|Roll|Rudder|Brake|AltitudeHold|AttitudeHold|Cancel)|Native(GearUp|GearDown|FlapsDown|FlapsUp|Canopy))$'
+        $operationalControl=$Control -match '^(Starter|FuelShutoff|Gear|Flaps|Canopy|Mode|ModelHydraulicFault[12]|Flight(Throttle|Pitch|Roll|Rudder|Brake|AltitudeHold|AttitudeHold|Cancel)|Native(GearUp|GearDown|FlapsDown|FlapsUp|AirbrakeOn|AirbrakeOff|Canopy))$'
         if($operationalControl -and (-not $state.PSObject.Properties['OperationalTest'] -or $state.OperationalTest -ne $true)){throw 'Operational diagnostic controls require explicit preparation opt-in.'}
         if(($Control -notmatch '^(Icp\w+|Mfd\w+|Master|HudBrightness|CautionAcknowledge|Battery|Generator[12]|View(Right|Up|Forward|Yaw|Pitch|Zoom|Reset))$' -and -not $operationalControl) -or
             [double]::IsNaN($Value) -or [double]::IsInfinity($Value) -or $Value -lt -1 -or $Value -gt $(if($Control -eq 'Mode'){4}else{1})){throw 'Diagnostic request outside allowed selectors'}

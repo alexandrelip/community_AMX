@@ -102,6 +102,7 @@ local function simulation(birth)
         getLeftMainLandingGearUp=function() return 1-sim.wow end,
         getLeftMainLandingGearDown=function() return sim.wow end,
         getFlapsPos=function() return 0 end,
+        getSpeedBrakePos=function() return 0 end,
         getIndicatedAirSpeed=function() return 100 end,
         getTrueAirSpeed=function() return 101 end,
         getBarometricAltitude=function() return 1000 end,
@@ -198,6 +199,79 @@ do
     missing.create(67,"Host/bridge.lua").post_initialize()
     check(missing.values.AMXDENIS_SENSOR_METHODS=="" and missing.values.AMXDENIS_SENSOR_METHODS_VALID==0 and
         missing.values.AMXDENIS_SENSOR_METHOD_COUNT==0,"unavailable sensor API does not stop the cockpit bridge")
+end
+
+do
+    local sim=simulation("GROUND_COLD")
+    local hyd=sim.create(9,"Host/hydraulics.lua")
+    hyd.post_initialize()
+    near(sim.values.AMXDENIS_HYD_1_BAR,0,"cold hydraulic circuit starts depressurized")
+    check(sim.values.AMXDENIS_HYD_1_VALID==1 and sim.values.L_HYD1==1,"valid cold zero has a low-pressure caution")
+    sim.rpm=60
+    sim.tick({9})
+    check(sim.values.AMXDENIS_HYD_1_BAR>0 and sim.values.AMXDENIS_HYD_1_BAR<93,"pump start does not jump to nominal pressure")
+    for index=1,99 do sim.tick({9})end
+    near(sim.values.AMXDENIS_HYD_1_BAR,207*(1-math.exp(-10/2.5)),"charging follows elapsed-time project dynamics")
+    near(sim.values.AMXDENIS_HYD_2_BAR,sim.values.AMXDENIS_HYD_1_BAR,"unloaded identical circuits agree")
+    check(sim.values.L_HYD1==0 and sim.values.AMXDENIS_HYDRAULICS_CALIBRATED==0 and
+        sim.values.AMXDENIS_HYDRAULICS_CONSUMERS_COMPLETE==0,"dynamic project model never claims calibrated complete hydraulics")
+    local before=sim.values.AMXDENIS_HYD_1_BAR
+    check(hyd.SetCommand(3591,1)==true,"explicit model fault request is accepted")
+    check(hyd.SetCommand(3592,0.5)==false and sim.values.AMX_FAIL_HYD_R==nil,"fractional model faults are rejected")
+    check(hyd.SetCommand(3590,1)==false,"unknown model fault command is rejected")
+    for index=1,20 do sim.tick({9})end
+    near(sim.values.AMXDENIS_HYD_1_BAR,before*math.exp(-2/1.5),"isolated fault drains its stored pressure")
+    check(sim.values.L_HYD1==1 and sim.values.L_HYD2==0 and sim.values.AMXDENIS_HYD_2_BAR>200,
+        "one hydraulic fault preserves the other circuit")
+    check(hyd.SetCommand(3592,1)==true,"second model fault has its own command")
+    for index=1,20 do sim.tick({9})end
+    check(sim.values.L_HYD1==1 and sim.values.L_HYD2==1,"both failed circuits warn independently")
+    hyd.SetCommand(3591,0);hyd.SetCommand(3592,0)
+    for index=1,100 do sim.tick({9})end
+    check(sim.values.AMXDENIS_HYD_1_BAR>200 and sim.values.AMXDENIS_HYD_2_BAR>200,"pressure recovers after pump faults clear")
+    before=sim.values.AMXDENIS_HYD_1_BAR
+    sim.rpm=0
+    for index=1,10 do sim.tick({9})end
+    near(sim.values.AMXDENIS_HYD_1_BAR,before*math.exp(-1/40),"engine stop discharges reserve without an instantaneous collapse")
+    local held=sim.values.AMXDENIS_HYD_1_BAR
+    sim.sensors.getEngineLeftRPM=function()return 0/0 end
+    sim.tick({9})
+    check(sim.values.AMXDENIS_HYD_1_VALID==0 and sim.values.AMXDENIS_HYD_2_VALID==0,"nonfinite pump source invalidates both indications")
+    sim.sensors.getEngineLeftRPM=function()return 0 end
+    sim.tick({9})
+    near(sim.values.AMXDENIS_HYD_1_BAR,held*math.exp(-0.1/40),"invalid source is not silently integrated as engine off")
+    held=sim.values.AMXDENIS_HYD_1_BAR
+    sim.now=sim.now+5;hyd.update()
+    check(sim.values.AMXDENIS_HYD_1_VALID==0,"unobserved long interval invalidates hydraulic state")
+    sim.tick({9})
+    near(sim.values.AMXDENIS_HYD_1_BAR,held*math.exp(-0.1/40),"long interval is not fabricated as observed dynamics")
+    local second=sim.values.AMXDENIS_HYD_2_BAR
+    sim.sensors.getFlapsPos=function()return 0.5 end
+    sim.tick({9})
+    check(sim.values.AMXDENIS_HYD_1_DEMAND_BAR_S>59 and sim.values.AMXDENIS_HYD_2_DEMAND_BAR_S==0,
+        "observed flap movement loads only its assigned project circuit")
+    near(sim.values.AMXDENIS_HYD_2_BAR,second*math.exp(-0.1/40),"other circuit is not charged for flap demand")
+    sim.tick({9})
+    near(sim.values.AMXDENIS_HYD_1_DEMAND_BAR_S,0,"stationary actuator does not consume every update")
+    sim.sensors.getSpeedBrakePos=function()return 1 end
+    sim.tick({9})
+    check(sim.values.AMXDENIS_HYD_2_DEMAND_BAR_S>79 and sim.values.AMXDENIS_HYD_1_DEMAND_BAR_S==0,
+        "observed airbrake movement loads its separate project circuit")
+    sim.sensors.getFlapsPos=nil
+    sim.tick({9})
+    check(sim.values.AMXDENIS_HYD_1_VALID==0 and sim.values.AMXDENIS_HYD_2_VALID==1,
+        "missing consumer source invalidates only the affected circuit")
+    check(#sim.sent==0,"hydraulic dynamics never issue actuator or flight commands")
+    local fine,coarse=simulation("GROUND_COLD"),simulation("GROUND_COLD")
+    for _,fixture in ipairs({fine,coarse})do fixture.rpm=60;fixture.create(9,"Host/hydraulics.lua").post_initialize()end
+    for index=1,100 do fine.tick({9})end
+    for index=1,20 do coarse.now=coarse.now+0.5;coarse.envs[9].update()end
+    near(fine.values.AMXDENIS_HYD_1_BAR,coarse.values.AMXDENIS_HYD_1_BAR,"elapsed-time integration is independent of update subdivision")
+    for _,birth in ipairs({"GROUND_HOT","AIR_HOT"})do
+        local hot=simulation(birth)
+        hot.rpm=60;hot.create(9,"Host/hydraulics.lua").post_initialize()
+        near(hot.values.AMXDENIS_HYD_1_BAR,207,"running hot fixture initializes a charged project reserve")
+    end
 end
 
 for _, birth in ipairs({"GROUND_COLD","GROUND_HOT","AIR_HOT","UNKNOWN"}) do

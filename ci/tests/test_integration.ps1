@@ -184,6 +184,25 @@ try {
     $released.Clear()
     Complete-KeyboardChord $pressed $sendRelease {throw 'Empty chord cannot observe release'}
     Check ($released.Count -eq 0) 'Empty chord invented a key release.'
+    $hydraulicStages=@(& (Join-Path $repo 'Tools/Native/Test-Hydraulics.ps1') -Describe)
+    Check ($hydraulicStages.Count -eq 14 -and @($hydraulicStages.Name | Sort-Object -Unique).Count -eq 14) 'Hydraulic native sequence must retain fourteen distinct stages.'
+    foreach($stage in $hydraulicStages){Check ($stage.Condition -is [scriptblock] -and $stage.Timeout -le 100) 'Hydraulic stages require bounded functional conditions.'}
+    foreach($name in @('SpinUp','Fault1','Fault2','TotalLoss','Recover1','Recover2','AirbrakeOut','AirbrakeIn','Shutdown','ReserveLow')){
+        Check (@($hydraulicStages | Where-Object Name -eq $name).Count -eq 1) 'Hydraulic native sequence omitted a required condition.'
+    }
+    Check ($hydraulicStages[9].Commands[0].Shift -eq $true -and $hydraulicStages[10].Commands[0].Control -eq $true) 'Hydraulic consumer test must use explicit native airbrake on/off commands.'
+    $nativeHydraulicStages=@(& (Join-Path $repo 'Tools/Native/Test-Hydraulics.ps1') -Describe -AirbrakeSource Native)
+    Check ($nativeHydraulicStages[9].Commands[0].Control -eq 'NativeAirbrakeOn' -and $nativeHydraulicStages[10].Commands[0].Control -eq 'NativeAirbrakeOff') 'Native airbrake comparison must preserve separate directional commands.'
+    $hydraulicAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-Hydraulics.ps1'),[ref]$tokens,[ref]$parseErrors)
+    Check ($parseErrors.Count -eq 0) 'Hydraulic helper syntax is invalid.'
+    $stationary=$hydraulicAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Assert-HydraulicStationary'},$true)
+    Check ($null -ne $stationary) 'Hydraulic stationary guard is missing.'
+    . ([scriptblock]::Create($stationary.Extent.Text))
+    Assert-HydraulicStationary ([pscustomobject]@{velocity=[pscustomobject]@{x=0;y=0;z=0}})
+    Check $true 'Stationary fixture was rejected.'
+    foreach($value in @(0.26,-0.26,[double]::NaN,[double]::PositiveInfinity,$null,'0')){
+        Rejected {Assert-HydraulicStationary ([pscustomobject]@{velocity=[pscustomobject]@{x=$value;y=0;z=0}})} 'Unsafe or unavailable velocity was allowed before hydraulic commands.'
+    }
     Write-Output "AMXDENIS INTEGRATION GUARDS: $checks/$checks checks passed"
 } finally {
     if (Test-Path -LiteralPath (Join-Path $fixture 'Target\linked')) { Remove-Item -LiteralPath (Join-Path $fixture 'Target\linked') }

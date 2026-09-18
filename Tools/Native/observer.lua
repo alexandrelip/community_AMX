@@ -46,7 +46,8 @@ local camera_limits={ViewRight=0.5,ViewUp=0.5,ViewForward=0.5,ViewYaw=0.18,ViewP
 local flight_controls={FlightThrottle=true,FlightPitch=true,FlightRoll=true,FlightRudder=true,
     FlightBrake=true,FlightAltitudeHold=true,FlightAttitudeHold=true,FlightCancel=true}
 local mechanism_controls={NativeGearUp=true,NativeGearDown=true,NativeFlapsDown=true,
-    NativeFlapsUp=true,NativeCanopy=true}
+    NativeFlapsUp=true,NativeCanopy=true,NativeAirbrakeOn=true,NativeAirbrakeOff=true}
+local model_fault_controls={ModelHydraulicFault1=3591,ModelHydraulicFault2=3592}
 local function flight_request(name,value)
     if config.operational_test~=true then return false,"operational_opt_in_required"end
     if not finite(value)or math.abs(value)>1 then return false,"invalid_flight_axis_value"end
@@ -126,6 +127,26 @@ local function request()
     n,value=tonumber(n),tonumber(value)
     if not n or n<=sequence then return end
     sequence=n
+    if model_fault_controls[name]then
+        local values=params()
+        local velocity=call(LoGetVectorVelocity)
+        local height=call(LoGetAltitudeAboveGroundLevel)
+        local allowed=config.operational_test==true and(config.mode=="GroundCold"or config.mode=="GroundHot")and
+            (value==0 or value==1)and values.AMXDENIS_HYDRAULICS_DYNAMIC==1 and
+            values.AMXDENIS_HYDRAULICS_MODELLED==1 and finite(height)and height>=0 and height<=6 and type(velocity)=="table"
+        for _,component in ipairs({"x","y","z"})do
+            if type(velocity)~="table"or not finite(velocity[component])or math.abs(velocity[component])>0.25 then allowed=false end
+        end
+        if not allowed then write({kind="REJECT",control=name,value=value,reason="model_fault_fixture_required"});return end
+        local device=GetDevice(9)
+        assert(device and type(device.performClickableAction)=="function","Hydraulic model device unavailable")
+        local ok,result=pcall(device.performClickableAction,device,model_fault_controls[name],value,true)
+        write({kind=ok and result~=false and"MODEL_FAULT_COMMAND"or"REJECT",control=name,value=value,
+            call_succeeded=ok,explicit_rejection=result==false,
+            input_source="project_model_fault_NOT_native_damage_or_physical_input"})
+        if not ok then error(result)end
+        return
+    end
     if flight_controls[name]or mechanism_controls[name]then
         local accepted,reason=flight_request(name,value)
         write({kind=accepted and(mechanism_controls[name]and"MECHANISM_COMMAND"or"FLIGHT_COMMAND")or"REJECT",

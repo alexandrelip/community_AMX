@@ -45,6 +45,8 @@ if operational_config.operational_test==true then
     wanted.NativeGearDown='iCommandPlaneGearDown'
     wanted.NativeFlapsDown='iCommandPlaneFlapsOn'
     wanted.NativeFlapsUp='iCommandPlaneFlapsOff'
+    wanted.NativeAirbrakeOn='iCommandPlaneAirBrakeOn'
+    wanted.NativeAirbrakeOff='iCommandPlaneAirBrakeOff'
     wanted.NativeCanopy='iCommandPlaneFonar'
 end
 local camera_ids={}
@@ -83,12 +85,15 @@ if not data.getProfileNameByUnitName('AMX')then
 end
 local profile=data.getProfileNameByUnitName('AMX')
 lines[#lines+1]='profile='..tostring(profile)
-if operational_config.operational_test==true and operational_config.isolate_hardware_axes==true then
+local isolate_devices=operational_config.operational_test==true and
+    (operational_config.isolate_hardware_axes==true or operational_config.isolate_hardware_devices==true)
+if isolate_devices then
     for _,device_name in ipairs(input.getDevices())do
         local device_type=input.getDeviceTypeName(device_name)
         if device_type==input.getJoystickDeviceTypeName()or
             device_type==input.getTrackirDeviceTypeName()or device_type==input.getHeadtrackerDeviceTypeName()then
             data.setDeviceDisabled(device_name,true)
+            assert(data.getDeviceDisabled(device_name)==true,"Private hardware isolation did not take effect")
             lines[#lines+1]='private_axis_isolation='..device_name..':disabled='..tostring(data.getDeviceDisabled(device_name))
         end
     end
@@ -97,6 +102,7 @@ end
 if complete then
     local file=assert(io.open(require('lfs').writedir()..'Scripts/native-camera-ids.txt','wb'))
     for action in pairs(wanted)do file:write(action..'|'..camera_ids[action]..'\n')end
+    if isolate_devices then file:write('HardwareDevicesIsolated|1\n')end
     if operational_config.operational_test==true and operational_config.isolate_hardware_axes==true then
         file:write('HardwareAxesIsolated|1\n')
     end

@@ -99,7 +99,7 @@ for _,operational in ipairs({true,false})do
     check(table.concat(output):find(operational and '"kind":"FLIGHT_COMMAND"'or'"kind":"REJECT"',1,true),"automated flight source remains explicit")
 end
 for _,operational in ipairs({true,false})do
-    for _,name in ipairs({"NativeGearUp","NativeGearDown","NativeFlapsDown","NativeFlapsUp","NativeCanopy"})do
+    for _,name in ipairs({"NativeGearUp","NativeGearDown","NativeFlapsDown","NativeFlapsUp","NativeCanopy","NativeAirbrakeOn","NativeAirbrakeOff"})do
         for _,case in ipairs({{0,0},{0,1},{1000,0},{1000,1},{1000,0.5}})do
             local height,value=case[1],case[2]
             local probe,records=fixture("DCS.AMXDENIS-mechanism-probe",true,operational)
@@ -119,6 +119,30 @@ for _,operational in ipairs({true,false})do
             if accepted then check(calls[1][2]==value,"native discrete comparison preserves requested payload")end
             check(table.concat(records):find(accepted and'"kind":"MECHANISM_COMMAND"'or'"kind":"REJECT"',1,true),
                 "native mechanism comparison has separate diagnostic provenance")
+        end
+    end
+end
+for _,operational in ipairs({true,false})do
+    for _,case in ipairs({{0,0,1,"GroundCold"},{0,1,1,"GroundHot"},{0,0.5,1,"GroundCold"},
+        {1,1,1,"GroundCold"},{0,1,0,"GroundCold"},{0,1,1,"AirHot"}})do
+        for _,name in ipairs({"ModelHydraulicFault1","ModelHydraulicFault2"})do
+            local moving,value,dynamic,mode=case[1],case[2],case[3],case[4]
+            local probe,records,calls=fixture("DCS.AMXDENIS-model-fault",true,operational,false,mode)
+            local open=probe.io.open
+            probe.io.open=function(path,file_mode)
+                if path:match("request.txt$")then return {read=function()return "1|"..name.."|"..value end,close=function()end}end
+                return open(path,file_mode)
+            end
+            probe.list_cockpit_params=function()return "AMX_SUITE_TIME_S:2\nAMXDENIS_HYDRAULICS_DYNAMIC:"..dynamic.."\nAMXDENIS_HYDRAULICS_MODELLED:1\n"end
+            probe.LoGetVectorVelocity=function()return {x=moving,y=0,z=0}end
+            probe.LoGetAltitudeAboveGroundLevel=function()return 2 end
+            probe.LuaExportStart();probe.LuaExportAfterNextFrame();probe.LuaExportBeforeNextFrame()
+            local accepted=operational and(value==0 or value==1)and moving==0 and dynamic==1 and mode~="AirHot"
+            check(#calls==(accepted and 1 or 0),"model faults require a stationary opted-in ground fixture and project model")
+            if accepted then check(calls[1][1]==(name=="ModelHydraulicFault1"and 3591 or 3592)and calls[1][2]==value,"model fault command preserves circuit and value")end
+            local text=table.concat(records)
+            check(text:find(accepted and'"kind":"MODEL_FAULT_COMMAND"'or'"kind":"REJECT"',1,true),"simulated model fault is not labelled native damage")
+            check(not text:find('"kind":"ERROR"',1,true),"invalid model fault fixture is rejected without observer failure")
         end
     end
 end
@@ -145,7 +169,7 @@ for _,mode in ipairs({"AirHot","RunwayHot","GroundCold"})do
         check(table.concat(output):find("private_flight_initialization_NOT_physical_HOTAS",1,true),"initial commands have explicit diagnostic provenance")
     end
 end
-local function preparation_fixture(mode,operational,fuel,profile_name,additional_buttons)
+local function preparation_fixture(mode,operational,fuel,profile_name,isolate_hardware,additional_buttons)
     local profile="C:/fixture/"..(profile_name or"DCS.AMXDENIS-preparation")
     local template="C:/fixture/template"
     local output={}
@@ -166,7 +190,7 @@ local function preparation_fixture(mode,operational,fuel,profile_name,additional
             vehicle={group={{name="removed fixture target"}}}}}}}}]],
         ["C:/fixture/options.lua"]='options={graphics={Upscaling="DLSS"},VR={enable=true},miscellaneous={launcher=true}}',
     }
-    local environment={arg={profile,template,"C:/fixture/options.lua",mode,1600,900,"C:/DCS",operational and"1"or"0",fuel or 1500},
+    local environment={arg={profile,template,"C:/fixture/options.lua",mode,1600,900,"C:/DCS",operational and"1"or"0",fuel or 1500,isolate_hardware and"1"or"0"},
         print=function()end}
     environment.loadfile=function(path)
         if path:match("/Controls/data.lua$")then return function()return commands end end
@@ -211,6 +235,7 @@ for _,mode in ipairs({"GroundCold","GroundHot","RunwayHot","AirHot"})do
     local native_config=assert(loadstring(files[profile.."/Scripts/native-config.lua"]))()
     check(native_config.isolate_hardware_axes==(mode=="RunwayHot"or mode=="AirHot"),
         "hardware isolation is limited to explicitly automated flight fixtures")
+    check(native_config.isolate_hardware_devices==false,"explicit ground isolation is off by default")
     local bindings=assert(loadstring(files[profile.."/Scripts/private-bindings.lua"]))()
     local seen={}
     for _,binding in ipairs(bindings)do
@@ -221,7 +246,7 @@ for _,mode in ipairs({"GroundCold","GroundHot","RunwayHot","AirHot"})do
     end
 end
 do
-    local ok,message,files,profile=preparation_fixture("GroundCold",true,1500,nil,150)
+    local ok,message,files,profile=preparation_fixture("GroundCold",true,1500,nil,false,150)
     check(ok,"full temporary keyboard banks: "..tostring(message))
     local bindings=assert(loadstring(files[profile.."/Scripts/private-bindings.lua"]))()
     local seen,left_alt,right_alt={},{},{}
@@ -237,8 +262,15 @@ do
     check(seen["LCtrl+RCtrl+F1"],"expanded fixture reaches the final keyboard bank")
     check(not seen["RCtrl+RShift+F2"],"Windows reservations preserve existing native reservations")
 end
-for _,case in ipairs({{"RunwayHot",false,1500},{"AirHot",false,1500},{"GroundHot",true,2551},{"GroundCold",true,499},{"GroundHot",true,1500,"DCS"}})do
-    local ok,_,files=preparation_fixture(case[1],case[2],case[3],case[4])
+for _,mode in ipairs({"GroundCold","GroundHot"})do
+    local ok,message,files,profile=preparation_fixture(mode,true,1500,nil,true)
+    check(ok,"explicit ground isolation preparation: "..tostring(message))
+    local config=assert(loadstring(files[profile.."/Scripts/native-config.lua"]))()
+    check(config.isolate_hardware_devices and not config.isolate_hardware_axes,
+        "ground device isolation does not enable automated flight initialization")
+end
+for _,case in ipairs({{"RunwayHot",false,1500},{"AirHot",false,1500},{"GroundHot",true,2551},{"GroundCold",true,499},{"GroundHot",true,1500,"DCS"},{"GroundCold",false,1500,nil,true}})do
+    local ok,_,files=preparation_fixture(case[1],case[2],case[3],case[4],case[5])
     check(not ok and next(files)==nil,"invalid profile/fuel/flight opt-in rejected before writes")
 end
 print(string.format("AMXDENIS NATIVE OBSERVER: %d/%d checks passed",checks,checks))
