@@ -1,0 +1,9 @@
+# Scope byte preservation to the new cockpit assets; do not change original exterior rules.
+Cockpit/AMX-A1M/Textures/** -text
+Config/AMXDENIS_TEXTURES.json -text
+Doc/Integration/PERMISSIONS.json -text
+Doc/Integration/Evidence/** -text
+Doc/Integration/Notices/** -text
+Avionics/Reference/** -text
+ci/fixtures/original/** -text
+Tools/Native/Reference/** -text

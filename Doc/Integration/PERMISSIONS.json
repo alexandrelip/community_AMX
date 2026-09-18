@@ -1,0 +1,24 @@
+{
+  "Schema": "AMXDENIS_LOCAL_PERMISSION_1",
+  "State": "AUTHORIZED_LOCAL",
+  "Scope": "LOCAL_AMXDENIS_M1",
+  "RecordedDate": "2026-09-17",
+  "DeclaredBy": "Alexandre, usuario e participante do desenvolvimento conjunto",
+  "EvidenceType": "EXPLICIT_USER_DECLARATION",
+  "Question": "Voce possui autorizacao dos titulares para usar o REV07, suas texturas, os scripts F-5EM/A-29 e a DLL avSimplestWeaponSystem neste candidato AMXDENIS?",
+  "Statement": "Sim 100% autorizado eu estou no desenvolvimento conjunto",
+  "TextureSourceProvidedByUser": "D:/Desenvolvimento/manual amx/Textura/Textura",
+  "Components": [
+    "REV07 internal model",
+    "REV07 textures and indicator resources",
+    "Adapted F-5EM/A-29 Lua dependencies",
+    "avSimplestWeaponSystem.dll"
+  ],
+  "PublicRedistributionAuthorized": false,
+  "NormalProfileInstallationAuthorized": false,
+  "IdentityChangesAuthorized": false,
+  "LicenseCheckBypassAuthorized": false,
+  "OriginalNoticesMustBePreserved": true,
+  "IndependentLegalVerification": false,
+  "NativeCompatibilityValidated": false
+}

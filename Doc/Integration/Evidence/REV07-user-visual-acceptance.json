@@ -1,0 +1,65 @@
+{
+  "Schema": "AMXDENIS_REV07_USER_VISUAL_ACCEPTANCE_1",
+  "ReviewDate": "2026-09-17",
+  "State": "ACEITO_NO_ESCOPO",
+  "Scope": "Aparencia do modelo interno REV07 com as texturas mostradas no ModelViewer2",
+  "EvidenceType": "EXPLICIT_USER_VISUAL_CONFIRMATION",
+  "ApprovedBy": "Usuario",
+  "UserStatement": "validado esta perfeito",
+  "Model": {
+    "Path": "Shapes/AMX_COCKPIT_REV07_184.edm",
+    "Bytes": 48056855,
+    "SHA256": "7C2F1DE3C8AF4F8684C0C892A24EEFA4497C438CB85CAD0D09A177445B1D3342"
+  },
+  "Textures": {
+    "Manifest": "Config/AMXDENIS_TEXTURES.json",
+    "ManifestSHA256": "55D6BCAAB6049B0A9945ABBE319EBF01791A3052E43D63B6E59871D9B9953657",
+    "LocalFilesStaged": 102,
+    "LocalSetComplete": false,
+    "StillUnresolvedLocally": ["f18c_cpt-naces1", "f18c_cpt-tex12", "mb339_glass"]
+  },
+  "Viewer": {
+    "Version": "2.9.29.27468",
+    "Profile": "edModelViewer.AMXDENIS-REV07-b9742033f656",
+    "RunRoot": "C:/Users/Alexandre/AppData/Local/AMXDENIS-Integration/Runs/REV07-Viewer-20260917T195409Z-42134123",
+    "RunManifestSHA256": "B92711530309138CF281B938C3552F207A3D7ACEC1BAECD6248DE1DB45420B8C",
+    "ArchivedLog": "model-viewer-20260917T201259910Z.log",
+    "ArchivedLogSHA256": "9AF2CCE83408931D878151D610FF1286C745E1502231071E5442C4806566C2BF",
+    "RawInspection": "viewer-inspection-20260917T201259910Z.json",
+    "RawInspectionSHA256": "0E3F76CC17F51737787116E02417A2DD8476835EAF503DEA85A875F207DE8CA3",
+    "RawInspectionPreserved": true,
+    "RawProcessOwnershipObservation": "INCONCLUSIVE_NOT_CORRECTED",
+    "NativeLogReportedErrors": 61,
+    "LogCleanClaimed": false
+  },
+  "Approval": {
+    "UserVisualAppearanceAccepted": true,
+    "AutomatedVisualAuditPassed": false,
+    "AllTexturesProvenLocallyResolved": false,
+    "Rev07BindingsValidated": false,
+    "CockpitInDcsMissionValidated": false,
+    "InstrumentsAndControlsValidated": false,
+    "FlightModelValidated": false,
+    "CompleteMilestoneM1Accepted": false
+  },
+  "PostReviewChecks": {
+    "PreparedViewerAssetsChecked": 107,
+    "PreparedViewerAssetChanges": 0,
+    "SourceFilesChecked": 111,
+    "SourceFileChanges": 0,
+    "NormalOptionsChangeObserved": true,
+    "NormalOptionsRestored": false,
+    "NormalOptionsWriter": "NOT_ESTABLISHED",
+    "EnvironmentRecord": "C:/Users/Alexandre/AppData/Local/AMXDENIS-Integration/Runs/REV07-VisualApproval-20260917T201611Z/environment.json",
+    "ViewerRunningAtCheck": false,
+    "ViewerReopenedByThisReview": false,
+    "PrivateViewerProfileRetained": true,
+    "CleanupComplete": false
+  },
+  "Boundaries": [
+    "A aprovacao e a confirmacao visual do usuario, nao um PASS produzido pelo observador.",
+    "Os recursos ausentes, conectores duplicados e logs anteriores permanecem registrados sem alteracao retroativa.",
+    "O proximo marco e a integracao funcional AMXT_M dianteira com contratos proprios, exterior e SFM originais preservados.",
+    "Nenhum runtime, perfil normal, modelo, textura ou flag experimental foi alterado para registrar esta aprovacao."
+  ]
+}

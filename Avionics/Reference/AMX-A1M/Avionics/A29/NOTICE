@@ -1,0 +1,21 @@
+A-29B Community FLIR reference
+==============================
+
+Source: https://github.com/luizrenault/a-29b-community
+Revision: 1f632f004e28ef13a5f3404528de4c3fc982a0e2
+Author/project: Luiz Renault and the A-29B Community contributors.
+
+The files listed in import-manifest.json are unmodified upstream files.
+The complete FLIR directory and its command/display integration references
+are retained for the standalone Alpha compatibility port. Adaptations belong
+in Avionics/AMX, not in this reference snapshot.
+
+The upstream README permits reuse of Lua aircraft systems in non-paid DCS
+World modules. Its separate C++ reuse terms require a request for non-paid,
+public open-source modules. The unmodified avSimplest.dll from the same
+official revision is retained for private compatibility testing. This
+snapshot does not grant additional binary redistribution permissions.
+
+No A-29B entry point, flight model, installer, identity or external mod path
+is executed by the Alpha runtime. Keeping reference files does not establish
+native sensor or video approval.

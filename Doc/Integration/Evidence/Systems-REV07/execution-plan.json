@@ -1,0 +1,15 @@
+{
+  "Schema": "AMXDENIS_SYSTEMS_EXECUTION_1",
+  "Snapshot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Backups\\Systems-REV07-20260917T224209Z-da29bfd4",
+  "AircraftType": "AMXT_M",
+  "PilotSeat": 1,
+  "SourceReadOnly": true,
+  "InternalModelUnchanged": true,
+  "ExternalResourcesUnchanged": true,
+  "SFMUnchanged": true,
+  "Scope": "implementation_and_bench_only",
+  "NativeLaunchAuthorizedThisStep": false,
+  "KeyboardForImplementedFunctions": true,
+  "OnlyMeasuredClickspots": true,
+  "Status": "IN_PROGRESS"
+}

@@ -1,0 +1,35 @@
+{
+  "Schema": "AMXDENIS_M1_PLAN_1",
+  "Milestone": "M1_INITIAL_CANDIDATE",
+  "AircraftType": "AMXT_M",
+  "PilotSeat": 1,
+  "PluginId": "Embraer AMX",
+  "DeveloperName": "BR",
+  "EnabledInWorkingTree": false,
+  "NativeFlir": false,
+  "HelmetDisplay": false,
+  "NativeRadioProbe": false,
+  "ExternalResourcesMutable": false,
+  "FlightModelMutable": false,
+  "InternalModel": {
+    "Path": "Shapes/AMX_COCKPIT_REV07_184.edm",
+    "SHA256": "7C2F1DE3C8AF4F8684C0C892A24EEFA4497C438CB85CAD0D09A177445B1D3342",
+    "Bytes": 48056855
+  },
+  "InternalTextures": {
+    "Directory": "Cockpit/AMX-A1M/Textures",
+    "Manifest": "Config/AMXDENIS_TEXTURES.json",
+    "State": "IMPLEMENTADO_NAO_VALIDADO",
+    "Complete": false,
+    "NativeValidated": false
+  },
+  "BindingsState": "REVALIDAR",
+  "RuntimeState": "BANCADA",
+  "RuntimeNativeValidated": false,
+  "Permissions": [
+    {"Component": "REV07 internal model", "State": "AUTHORIZED_LOCAL", "Evidence": "Doc/Integration/PERMISSIONS.json"},
+    {"Component": "REV07 textures and indicator resources", "State": "AUTHORIZED_LOCAL", "Evidence": "Doc/Integration/PERMISSIONS.json"},
+    {"Component": "Adapted F-5EM/A-29 Lua dependencies", "State": "AUTHORIZED_LOCAL", "Evidence": "Doc/Integration/PERMISSIONS.json"},
+    {"Component": "avSimplestWeaponSystem.dll", "State": "AUTHORIZED_LOCAL", "Evidence": "Doc/Integration/PERMISSIONS.json"}
+  ]
+}

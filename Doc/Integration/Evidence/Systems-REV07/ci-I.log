@@ -1,0 +1,13 @@
+AMXDENIS_SYNTAX_OK files=219
+AMXDENIS REGISTRATION: 171/171 checks passed
+cmfd_right: load
+CMFD2: load end
+ufcs: load
+ufcs: load end
+cmfd_right: postinit start
+environ: postinit end
+ufcs: postinit start
+ufcs: postinit end
+AMXDENIS RUNTIME: 1596/1596 checks passed
+AMXDENIS INDICATORS: 22008/22008 checks passed; pages=69; resources=6
+AMXDENIS_CANDIDATE_BENCH_OK|id=952FB0BAE7527A0FB744CCEDB6BDE3919BCB92A8DC1136F2809821DFA95B1A34|native=false|C:\Users\Alexandre\AppData\Local\AMXDENIS-Integration\Runs\Systems-REV07-20260917T224209Z-da29bfd4\Bench-I

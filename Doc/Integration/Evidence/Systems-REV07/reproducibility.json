@@ -1,0 +1,17 @@
+{
+  "Schema": "AMXDENIS_REPRODUCIBILITY_1",
+  "FirstCandidate": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Candidates\\AMXT_M-REV07-Bench-H",
+  "SecondCandidate": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Candidates\\AMXT_M-REV07-Bench-I",
+  "BuildId": "952FB0BAE7527A0FB744CCEDB6BDE3919BCB92A8DC1136F2809821DFA95B1A34",
+  "InputSetSHA256": "8973E1543CABC3674FC729B4D0470129D98D27DE7FAB4113D34480D6996B3EB8",
+  "ManifestSHA256": "2541822FA61C4996D58D8CF66B1EB9E94ECE698A2F441F7C270E54D887D1FD5D",
+  "IdenticalManifestBytes": true,
+  "VerifiedOutputFilesPerCandidate": 392,
+  "Inputs": 423,
+  "TotalOutputBytes": 621028065.0,
+  "OperationalLuaFiles": 219,
+  "SourceWorkspacePathTextMatches": 0,
+  "NativeValidated": false,
+  "NativeMissionStarted": false,
+  "RecordedUtc": "2026-09-17T23:40:30.4325951Z"
+}

@@ -1,0 +1,23 @@
+{
+  "Schema": "AMXDENIS_SYSTEMS_PRESERVATION_1",
+  "RecordedUtc": "2026-09-17T23:47:01.3942154Z",
+  "OriginalSnapshotId": "M1-20260917T185749Z-fcc3bdc3",
+  "OriginalFilesVerified": 84,
+  "OriginalFilesChanged": 0,
+  "SourceSnapshotId": "Systems-REV07-20260917T224209Z-da29bfd4",
+  "SourceFilesVerified": 2243,
+  "SourceFileDifferences": 0,
+  "SourceRevision": "c60fab3ce11e273e76995ff95494fd2be1db2109",
+  "TargetRevision": "44ec86d5ec278d7e1cb3727cb2f2f55b273f43b4",
+  "TargetBranch": "integration/amxt-m-rev07-m1-20260917",
+  "OriginalRemote": "https://github.com/denissoliveira/community_AMX.git",
+  "OriginalEntryUnchanged": true,
+  "Rev07Unchanged": true,
+  "SourceWriteOperations": 0,
+  "NativeMissionsStartedByTask": 0,
+  "NativeProcessesControlledByTask": 0,
+  "NormalProfileInstalled": false,
+  "NativeValidated": false,
+  "WholeEnvironmentUnchangedClaimed": false,
+  "ObservedProcessesAtFinalCheck": []
+}

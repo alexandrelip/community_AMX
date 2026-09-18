@@ -1,0 +1,76 @@
+{
+  "Schema": "AMXDENIS_SYSTEMS_EVIDENCE_INDEX_1",
+  "BuildId": "952FB0BAE7527A0FB744CCEDB6BDE3919BCB92A8DC1136F2809821DFA95B1A34",
+  "State": "BANCADA",
+  "Scope": "implementation_and_bench_only",
+  "NativeValidated": false,
+  "Files": [
+    {
+      "Path": "bench-H.json",
+      "Bytes": 1585,
+      "SHA256": "7688886977C4830E8E63CD0291E1092D9C1367BAA29D869D3F12B8FA679DA6E7"
+    },
+    {
+      "Path": "bench-I.json",
+      "Bytes": 1585,
+      "SHA256": "8FD36AA2A297F13697B09198A1A939B0575328551F6A150C7ADE805984526583"
+    },
+    {
+      "Path": "build-H.log",
+      "Bytes": 213,
+      "SHA256": "815FE20FED67ADF6883025772112351F5E41B8F5FE4D85C03BCBBED0BBEFB0BE"
+    },
+    {
+      "Path": "candidate-manifest.json",
+      "Bytes": 144261,
+      "SHA256": "2541822FA61C4996D58D8CF66B1EB9E94ECE698A2F441F7C270E54D887D1FD5D"
+    },
+    {
+      "Path": "ci-H.log",
+      "Bytes": 3639,
+      "SHA256": "FC8F907A2C69C22E52076C843F95F4D3C070A3B0F79BA03184BB43DE9C1C6BFE"
+    },
+    {
+      "Path": "ci-I.log",
+      "Bytes": 563,
+      "SHA256": "881F52885184708100E4F6567A9C8114D24066DF7D89B2B03EF4B137FAD2D91B"
+    },
+    {
+      "Path": "controls.csv",
+      "Bytes": 4386,
+      "SHA256": "9037B846D40F82145BEFB33C797E02F3E52EFD76220FCFF6B29D5646EE0717A9"
+    },
+    {
+      "Path": "execution-plan.json",
+      "Bytes": 546,
+      "SHA256": "EF619B1AF5D27189EDFBB0775C42D4D37146D08BB7452962FB9F43BFEF85BEF2"
+    },
+    {
+      "Path": "preflight.json",
+      "Bytes": 1676,
+      "SHA256": "EEF22B4708CE9994790D5F6A8D46344B26709B3B210D48372E748E393C008B00"
+    },
+    {
+      "Path": "preservation.json",
+      "Bytes": 937,
+      "SHA256": "19D94675D8D48C41F60FD866966EED337E0B2DAD6835860F66D74845FDF92239"
+    },
+    {
+      "Path": "reproducibility.json",
+      "Bytes": 858,
+      "SHA256": "D1AB846F9B7A258113F686FC61314782136FF8F1CBF2EEDF9F9559105FE0865E"
+    },
+    {
+      "Path": "router-recovery-before.log",
+      "Bytes": 371,
+      "SHA256": "20C784EA11DE446B0683BD6A3A7B8CB87EEFAC10B4E918EE9762CEC27DC3E730"
+    },
+    {
+      "Path": "texture-verify.json",
+      "Bytes": 393,
+      "SHA256": "21811AF0F016D0DAB88FD6088710CA59C0565A555FE5B758A20168BD60FF77F9"
+    }
+  ],
+  "SourceRun": "Systems-REV07-20260917T224209Z-da29bfd4",
+  "RecordedUtc": "2026-09-17T23:48:41.7446485Z"
+}

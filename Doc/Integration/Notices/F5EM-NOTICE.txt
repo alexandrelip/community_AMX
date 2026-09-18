@@ -1,0 +1,108 @@
+F-5EM Community Mod for DCS World
+==================================
+
+Copyright (c) 2017-2026 F-5EM Community Mod contributors.
+Originally derived from luizrenault/f-5em-community.
+Named project contributors include alexandrelip and suak007, in addition
+to the other community contributors recorded in the repository history.
+
+No project-wide license is granted by the current repository. Except where
+a separate license or written permission applies, all rights remain reserved
+by their respective copyright holders. This current licensing state does not
+revoke permissions validly granted for earlier versions and does not alter
+the terms of any third-party component.
+
+----------------------------------------------------------------------
+1. Scope of this mod
+----------------------------------------------------------------------
+
+This repository contains a community-developed DCS World aircraft mod
+that models the Northrop F-5EM as operated by the Forca Aerea
+Brasileira (FAB) after the Embraer / IAI Mectron modernization
+program (2006-2013). The mod adds Brazilian-specific avionics, EW
+profiles, weapon options, liveries, sounds and missions on top of
+the publicly shipped F-5E-3 aircraft binary distributed by Eagle
+Dynamics with DCS World.
+
+This is a fan-made, non-commercial community project.
+It is not affiliated with, endorsed by, or sponsored by:
+
+  - Eagle Dynamics SA (creators of DCS World and the base F-5E-3)
+  - Northrop Grumman Corporation
+  - Embraer S.A.
+  - Israel Aerospace Industries (IAI) Mectron
+  - Forca Aerea Brasileira (FAB)
+
+All trademarks remain the property of their respective owners.
+
+----------------------------------------------------------------------
+2. Third-party assets and attributions
+----------------------------------------------------------------------
+
+The mod uses the following third-party assets, redistributed under
+the licenses granted by their original authors:
+
+  - Base F-5E-3 aircraft binary, EFM and stock cockpit shape:
+    Eagle Dynamics SA. Used as a runtime dependency only. Not
+    redistributed in this repository.
+
+  - Python-5 and Derby missile shapes (Shape/jas39_*.edm) and
+    textures (textures/JAS_*.dds): JAS-39C Gripen Community Mod.
+    Used with attribution per the original mod README.
+
+  - DCS Lua scripting helpers (Cockpit/Scripts/DCS_LUA_functions.lua):
+    Eagle Dynamics SA reference snippets. Marked as documentation
+    only and excluded from the CI luac validation pass.
+
+  - MinHook sources (ExternalFM/aar_hook_src/minhook/): Tsuda Kageyu
+    and other identified contributors. These files retain their own
+    BSD 2-Clause license in ExternalFM/aar_hook_src/minhook/LICENSE.txt.
+
+  - avSimplest.dll and avSimplestWeaponSystem.dll: C++ systems from
+    the A-29B Super Tucano Community Mod. Redistributed unmodified in
+    this public, non-paid F-5EM mod with explicit permission granted
+    on 2026-07-19 by Alexandre / alexandrelip, maintainer of the A-29B
+    project, satisfying the A-29B README requirement that C++ reuse is
+    allowed "upon request". The binaries remain the work of their
+    original contributors; this NOTICE does not relicense them or
+    expand the recorded permission. Release identity is pinned by
+    SHA-256 in ci/release-binaries.psd1.
+
+  - Sound effects and selected callouts: stock Eagle Dynamics
+    libraries, plus Brazilian PT-BR voice samples contributed by
+    community members (see Sounds/sdef/Aircrafts/F-5EM/AUTHORS.md
+    when present).
+
+----------------------------------------------------------------------
+3. Contribution
+----------------------------------------------------------------------
+
+Contributions are governed by CONTRIBUTING.md at the root of the
+repository. There is no blanket project license for new contributions.
+A contribution may be incorporated only after its author and the
+maintainers explicitly agree to applicable terms, and the author must
+have the right to provide every submitted file.
+
+----------------------------------------------------------------------
+4. Warranty disclaimer
+----------------------------------------------------------------------
+
+This mod is provided "AS IS", without warranty of any kind, express
+or implied, including but not limited to the warranties of
+merchantability, fitness for a particular purpose and non-
+infringement. Nothing in this disclaimer grants permission to copy,
+modify, redistribute, sublicense or commercially exploit the mod.
+
+----------------------------------------------------------------------
+5. Reporting violations
+----------------------------------------------------------------------
+
+If you believe any asset in this repository infringes your
+copyright or violates a third-party agreement, please open an
+issue at:
+
+    https://github.com/alexandrelip/F5EM-MOD/issues
+
+with a clear description of the asset, the alleged infringement,
+and the action you are requesting. The maintainers will respond
+in good faith.

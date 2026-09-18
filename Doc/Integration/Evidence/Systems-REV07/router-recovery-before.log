@@ -1,0 +1,6 @@
+D:\Program Files\DCS World\bin\luae.exe: D:\Desenvolvimento\AMXDENIS\ci\tests\test_runtime.lua:7: [FAIL] producer recovery accepts the previously rejected press
+stack traceback:
+	[C]: in function 'assert'
+	D:\Desenvolvimento\AMXDENIS\ci\tests\test_runtime.lua:7: in function 'check'
+	D:\Desenvolvimento\AMXDENIS\ci\tests\test_runtime.lua:199: in main chunk
+	[C]: ?

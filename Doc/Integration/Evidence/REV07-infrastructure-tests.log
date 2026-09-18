@@ -1,0 +1,17 @@
+AMXDENIS POWERSHELL SYNTAX: 7/7 files parsed
+AMXDENIS INTEGRATION GUARDS: 35/35 checks passed
+AMXDENIS TEXTURE GUARDS: 36/36 checks passed
+test_cyclic_connector_ancestry_is_rejected (__main__.InventoryTests.test_cyclic_connector_ancestry_is_rejected) ... ok
+test_existing_report_is_not_overwritten (__main__.InventoryTests.test_existing_report_is_not_overwritten) ... ok
+test_identity_checked_before_loading_parser (__main__.InventoryTests.test_identity_checked_before_loading_parser) ... ok
+test_parser_diagnostic_is_not_silently_accepted (__main__.InventoryTests.test_parser_diagnostic_is_not_silently_accepted) ... ok
+test_parser_recovery_is_rejected (__main__.InventoryTests.test_parser_recovery_is_rejected) ... ok
+test_report_cannot_be_written_beside_model (__main__.InventoryTests.test_report_cannot_be_written_beside_model) ... ok
+test_structured_inventory_does_not_grant_native_or_permission_approval (__main__.InventoryTests.test_structured_inventory_does_not_grant_native_or_permission_approval) ... ok
+test_unconsumed_bytes_are_rejected (__main__.InventoryTests.test_unconsumed_bytes_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.032s
+
+OK
+AMXDENIS INFRASTRUCTURE: BANCADA (no cockpit, Lua runtime or native acceptance implied)

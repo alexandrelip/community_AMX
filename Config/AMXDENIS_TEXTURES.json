@@ -1,0 +1,842 @@
+{
+  "Schema": "AMXDENIS_COCKPIT_TEXTURES_1",
+  "ModelPath": "Shapes/AMX_COCKPIT_REV07_184.edm",
+  "ModelSHA256": "7C2F1DE3C8AF4F8684C0C892A24EEFA4497C438CB85CAD0D09A177445B1D3342",
+  "Directory": "Cockpit/AMX-A1M/Textures",
+  "Permission": {
+    "Component": "REV07 textures and indicator resources",
+    "Path": "Doc/Integration/PERMISSIONS.json",
+    "SHA256": "ECA558DB152372CAF150C859D1A5D8A088C527FEE5AED8E6AB23F3B36B5D6D23",
+    "State": "AUTHORIZED_LOCAL",
+    "Scope": "LOCAL_AMXDENIS_M1",
+    "EvidenceType": "EXPLICIT_USER_DECLARATION"
+  },
+  "PlanSHA256": "87FDD644E9B892CA2B5617B8C6BCA2493D2B0A3684A769AE65E73444EFC9C13A",
+  "InventorySHA256": "C1DFBA990D6B336F2144665170D5E8F8F507883AA722892BD221EF8462F5E7B5",
+  "State": "IMPLEMENTADO_NAO_VALIDADO",
+  "Complete": false,
+  "NativeValidated": false,
+  "MissingTextures": [
+    "f18c_cpt-naces1",
+    "f18c_cpt-tex12",
+    "mb339_glass"
+  ],
+  "Files": [
+    {
+      "Name": "a-4e_instr_bckgd_2",
+      "Path": "Cockpit/AMX-A1M/Textures/a-4e_instr_bckgd_2.dds",
+      "Bytes": 22369776,
+      "SHA256": "6674CEF41E9B92C9EDFA3C57E3298DFACFDD7639CEEE166904753A0833EC3651",
+      "SourceIndex": 0,
+      "SourceRelative": "a-4e_instr_bckgd_2.dds"
+    },
+    {
+      "Name": "a29_glass",
+      "Path": "Cockpit/AMX-A1M/Textures/a29_glass.dds",
+      "Bytes": 87536,
+      "SHA256": "6D3ADEFCE164E0FDFE5DAF38271ED6FC9017CA512219FD12ACF8CE434855E280",
+      "SourceIndex": 0,
+      "SourceRelative": "a29_glass.dds"
+    },
+    {
+      "Name": "a29b_cpt-instr-02",
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_CPT-INSTR-02.dds",
+      "Bytes": 5570688,
+      "SHA256": "7531073B01D9261753977B92E235379DF1A69CE060DB6A4A58FDC24604A0C059",
+      "SourceIndex": 0,
+      "SourceRelative": "a29b_CPT-INSTR-02.dds"
+    },
+    {
+      "Name": "a29b_frontinstruments",
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments.dds",
+      "Bytes": 5592580,
+      "SHA256": "CD46D45712579B7D9A9FDA317F65CE81839A194F1A0F5AF42FC1817D8D44FFB5",
+      "SourceIndex": 0,
+      "SourceRelative": "a29b_frontinstruments.dds"
+    },
+    {
+      "Name": "a29b_frontinstruments_lm",
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments_lm.png",
+      "Bytes": 507449,
+      "SHA256": "92864AEBEED251D44B25FA463D8FD500FD65E1A62F5E447884762DFEDC9D5D44",
+      "SourceIndex": 0,
+      "SourceRelative": "a29b_frontinstruments_lm.png"
+    },
+    {
+      "Name": "a29b_frontinstruments_nml",
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_frontinstruments_nml.dds",
+      "Bytes": 5592560,
+      "SHA256": "3DE80C35399233A7BE1B4F24037FEB21036CEAAF2216CBFF938440F371554F6B",
+      "SourceIndex": 0,
+      "SourceRelative": "a29b_frontinstruments_nml.dds"
+    },
+    {
+      "Name": "a29b_ufcp",
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp.png",
+      "Bytes": 1755331,
+      "SHA256": "36312A81E3297A40E49685F3B503C2614C048CA9E893DD8B45D16493698FFFC9",
+      "SourceIndex": 0,
+      "SourceRelative": "a29b_ufcp.png"
+    },
+    {
+      "Name": "a29b_ufcp_lm",
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp_lm.png",
+      "Bytes": 1006033,
+      "SHA256": "93BBC888094EA3350371ABDEE32DB95386E20B747438239C4F4D9BD118B53BED",
+      "SourceIndex": 0,
+      "SourceRelative": "a29b_ufcp_lm.png"
+    },
+    {
+      "Name": "a29b_ufcp_nml",
+      "Path": "Cockpit/AMX-A1M/Textures/a29b_ufcp_nml.png",
+      "Bytes": 2592575,
+      "SHA256": "2D11A83F55E0D891D913D1444564504F068E9CEAC9308DDE083A3FCFFA78B0C9",
+      "SourceIndex": 0,
+      "SourceRelative": "a29b_ufcp_nml.png"
+    },
+    {
+      "Name": "a4 main2",
+      "Path": "Cockpit/AMX-A1M/Textures/a4 main2.dds",
+      "Bytes": 1398248,
+      "SHA256": "07D28DE3479A44C8AA5F9D263451E80224B6B7D53426F21A395671BD0F4DDAAA",
+      "SourceIndex": 0,
+      "SourceRelative": "a4 main2.dds"
+    },
+    {
+      "Name": "a4e_aggr_usmc_topgun_mig17_pilot",
+      "Path": "Cockpit/AMX-A1M/Textures/a4e_aggr_usmc_topgun_mig17_pilot.dds",
+      "Bytes": 2796344,
+      "SHA256": "E8EE5BBD163BAE64115103F3A8A010A39A72A5C6CB2781899CF63181A50B7AC4",
+      "SourceIndex": 0,
+      "SourceRelative": "a4e_aggr_usmc_topgun_mig17_pilot.dds"
+    },
+    {
+      "Name": "amx 3",
+      "Path": "Cockpit/AMX-A1M/Textures/amx 3.dds",
+      "Bytes": 2796344,
+      "SHA256": "DA7304C53FDD806B8BE283F02B0F83FF3AAB081327D0782C15071E8859669CDD",
+      "SourceIndex": 0,
+      "SourceRelative": "amx 3.dds"
+    },
+    {
+      "Name": "amx belt",
+      "Path": "Cockpit/AMX-A1M/Textures/amx belt.dds",
+      "Bytes": 5592560,
+      "SHA256": "A73FA01E4B828FB4C38538C8A61D45C7F89CF63402AB63ECBA171A77703F1DCF",
+      "SourceIndex": 0,
+      "SourceRelative": "amx belt.dds"
+    },
+    {
+      "Name": "amx canopy frame",
+      "Path": "Cockpit/AMX-A1M/Textures/AMX CANOPY FRAME.jpg",
+      "Bytes": 828130,
+      "SHA256": "522ED3C9323DB0D88AD110A51EF009E42F52321010E5A34CFCE5BF23444DAAD7",
+      "SourceIndex": 0,
+      "SourceRelative": "AMX CANOPY FRAME.jpg"
+    },
+    {
+      "Name": "amx cock",
+      "Path": "Cockpit/AMX-A1M/Textures/amx cock.dds",
+      "Bytes": 5592560,
+      "SHA256": "2F890892AB01FD1E069809414B9C5CFA719CF55DBC1D5FBD0A5F2B05A5E1E3E0",
+      "SourceIndex": 0,
+      "SourceRelative": "amx cock.dds"
+    },
+    {
+      "Name": "amx pedal",
+      "Path": "Cockpit/AMX-A1M/Textures/amx pedal.dds",
+      "Bytes": 5592560,
+      "SHA256": "E52EF240B538FFE68E5200186DBFBA57D0F678F1A7A2F671312B81FF11B5E297",
+      "SourceIndex": 0,
+      "SourceRelative": "amx pedal.dds"
+    },
+    {
+      "Name": "amx seat",
+      "Path": "Cockpit/AMX-A1M/Textures/amx seat.dds",
+      "Bytes": 11184952,
+      "SHA256": "1CA8B28EF346CD6A163820F4E04A36E18E85F11B54E8433BD62C6F1A7E283F8F",
+      "SourceIndex": 0,
+      "SourceRelative": "amx seat.dds"
+    },
+    {
+      "Name": "amx stick",
+      "Path": "Cockpit/AMX-A1M/Textures/amx stick.dds",
+      "Bytes": 5592560,
+      "SHA256": "E52EF240B538FFE68E5200186DBFBA57D0F678F1A7A2F671312B81FF11B5E297",
+      "SourceIndex": 0,
+      "SourceRelative": "amx stick.dds"
+    },
+    {
+      "Name": "amx_cpt-tex01",
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex01.dds",
+      "Bytes": 22369776,
+      "SHA256": "B94E1D2DFEA3A98D4CECB5C555AB21A3AFAC81D75BF86ED72E5493C02D2B1FC9",
+      "SourceIndex": 0,
+      "SourceRelative": "AMX_cpt-tex01.dds"
+    },
+    {
+      "Name": "amx_cpt-tex02",
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex02.dds",
+      "Bytes": 5592560,
+      "SHA256": "472B3B8A707BABF2DB541A2A8F76C0E6D810950EF9A5B3F277A13B9DD24F2878",
+      "SourceIndex": 0,
+      "SourceRelative": "AMX_cpt-tex02.dds"
+    },
+    {
+      "Name": "amx_cpt-tex03",
+      "Path": "Cockpit/AMX-A1M/Textures/amx_cpt-tex03.dds",
+      "Bytes": 5592560,
+      "SHA256": "032EE9A33741F66140CF97146A0F9623A2E5E44F4E14C9195C929288B3097E1F",
+      "SourceIndex": 0,
+      "SourceRelative": "amx_cpt-tex03.dds"
+    },
+    {
+      "Name": "amx_cpt-tex04",
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex04.dds",
+      "Bytes": 5592560,
+      "SHA256": "A8ABB0B789180CE488D778C17FC07D6E2418EC71F3ED172E6B19CDC279A12D1B",
+      "SourceIndex": 0,
+      "SourceRelative": "AMX_cpt-tex04.dds"
+    },
+    {
+      "Name": "amx_cpt-tex06",
+      "Path": "Cockpit/AMX-A1M/Textures/AMX_cpt-tex06.dds",
+      "Bytes": 5592560,
+      "SHA256": "343A1632D3926203446252E414A84C5FF42DEDEBDFB21FF798D16BD84FCFE9E6",
+      "SourceIndex": 0,
+      "SourceRelative": "AMX_cpt-tex06.dds"
+    },
+    {
+      "Name": "amx_cpt-wire",
+      "Path": "Cockpit/AMX-A1M/Textures/amx_cpt-wire.dds",
+      "Bytes": 699216,
+      "SHA256": "30C8F692F4C1A7C8081999300020442D48E431B925F0E52F24A2DDA7BC8EA872",
+      "SourceIndex": 0,
+      "SourceRelative": "amx_cpt-wire.dds"
+    },
+    {
+      "Name": "amx_lateral",
+      "Path": "Cockpit/AMX-A1M/Textures/amx_lateral.dds",
+      "Bytes": 22369776,
+      "SHA256": "D8440FC17B3810889899D7690008A89CAFFC3541B66CF823E7DF6D70888AEE08",
+      "SourceIndex": 0,
+      "SourceRelative": "amx_lateral.dds"
+    },
+    {
+      "Name": "amx_throttle",
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle.png",
+      "Bytes": 1531948,
+      "SHA256": "3BF3289220762B9FCFCF0428560C055D13F7FAF6E98E97646686606027C5CB94",
+      "SourceIndex": 0,
+      "SourceRelative": "amx_throttle.png"
+    },
+    {
+      "Name": "amx_throttle_lm",
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle_lm.png",
+      "Bytes": 55849,
+      "SHA256": "2DF25D3721EE670F1F4958B87C4483F9C5EF5CF6FBAA43EA060E6F04B8795E71",
+      "SourceIndex": 0,
+      "SourceRelative": "amx_throttle_lm.png"
+    },
+    {
+      "Name": "amx_throttle_nml",
+      "Path": "Cockpit/AMX-A1M/Textures/amx_throttle_nml.png",
+      "Bytes": 2810660,
+      "SHA256": "3C3452CE6FC3902366D1A26A46EECA960CF755E20A34C91D2ABF251FBCE6E9DA",
+      "SourceIndex": 0,
+      "SourceRelative": "amx_throttle_nml.png"
+    },
+    {
+      "Name": "assento amx",
+      "Path": "Cockpit/AMX-A1M/Textures/Assento AMX.png",
+      "Bytes": 1213083,
+      "SHA256": "7D4A6C8C4DF5ABDC4843D6F17BF778D6EB5706B72002B3B55D988F1923ED4646",
+      "SourceIndex": 0,
+      "SourceRelative": "Assento AMX.png"
+    },
+    {
+      "Name": "assento highres_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/ASSENTO HIGHRES_albedo.png",
+      "Bytes": 14254989,
+      "SHA256": "7E5CEF3838CB03419EAF6EE8E04A859ACFC2092B448FCE91608D056E6D8376FA",
+      "SourceIndex": 0,
+      "SourceRelative": "ASSENTO HIGHRES_albedo.png"
+    },
+    {
+      "Name": "assento lowres_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/ASSENTO LOWRES_albedo.png",
+      "Bytes": 9473108,
+      "SHA256": "8206554A46AE730775579681FF4CEF40919C2723704D387524F170857ABD9C55",
+      "SourceIndex": 0,
+      "SourceRelative": "ASSENTO LOWRES_albedo.png"
+    },
+    {
+      "Name": "cano amx",
+      "Path": "Cockpit/AMX-A1M/Textures/cano AMX.jpg",
+      "Bytes": 124609,
+      "SHA256": "CC1AB2BB2B17C1D9B2A2EDDD469EC9472B956FC62744F78F90369A74AB5F1609",
+      "SourceIndex": 0,
+      "SourceRelative": "cano AMX.jpg"
+    },
+    {
+      "Name": "canopy frontal_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY FRONTAL_albedo.png",
+      "Bytes": 8968337,
+      "SHA256": "A7F85F9F9EF44D8EE0BB4DA425B257CBC697868C51F26733353A7909068EC989",
+      "SourceIndex": 0,
+      "SourceRelative": "CANOPY FRONTAL_albedo.png"
+    },
+    {
+      "Name": "canopy intermediario_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY INTERMEDIARIO_albedo.png",
+      "Bytes": 6818145,
+      "SHA256": "6A99676E842E2971B432426BC4B26A95CF24C045CF7CA4F57B6931012492F60E",
+      "SourceIndex": 0,
+      "SourceRelative": "CANOPY INTERMEDIARIO_albedo.png"
+    },
+    {
+      "Name": "canopy traseiro_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/CANOPY TRASEIRO_albedo.png",
+      "Bytes": 7127951,
+      "SHA256": "F105CE7B98993683E3B71A6CE53FDA1BA35DF637658E98B2B1784100528241DA",
+      "SourceIndex": 0,
+      "SourceRelative": "CANOPY TRASEIRO_albedo.png"
+    },
+    {
+      "Name": "cinto amx",
+      "Path": "Cockpit/AMX-A1M/Textures/CINTO AMX.png",
+      "Bytes": 2946260,
+      "SHA256": "8A74C817428ABC0C2A8208DF97F29934588DEC46AD965684042EDDB2381FB3C3",
+      "SourceIndex": 0,
+      "SourceRelative": "CINTO AMX.png"
+    },
+    {
+      "Name": "cockpit_switchesknobs",
+      "Path": "Cockpit/AMX-A1M/Textures/cockpit_switchesknobs.dds",
+      "Bytes": 22369776,
+      "SHA256": "A07620E120EFF097491FE3C620AF9888DC3679B2DB2F4F41EFF66C507A049535",
+      "SourceIndex": 0,
+      "SourceRelative": "cockpit_switchesknobs.dds"
+    },
+    {
+      "Name": "dangr",
+      "Path": "Cockpit/AMX-A1M/Textures/dangr.bmp",
+      "Bytes": 44696,
+      "SHA256": "0BFE18F901E8375FE56B7BBC0EB310D1E4FC2442F99D347B5C5B890959051236",
+      "SourceIndex": 0,
+      "SourceRelative": "dangr.bmp"
+    },
+    {
+      "Name": "electric_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/ELECTRIC_albedo.png",
+      "Bytes": 10006519,
+      "SHA256": "E6E9777B620D74481EFC549FF7FB6FECA80620A0B88DB52D1439CB7BF802DF4A",
+      "SourceIndex": 0,
+      "SourceRelative": "ELECTRIC_albedo.png"
+    },
+    {
+      "Name": "f5em_intr_1",
+      "Path": "Cockpit/AMX-A1M/Textures/F5EM_INTR_1.png",
+      "Bytes": 1937996,
+      "SHA256": "547BA2EE60A8E955CE34152A76C0B48E645925D1B82E537F2F4063A0866FCBB4",
+      "SourceIndex": 0,
+      "SourceRelative": "F5EM_INTR_1.png"
+    },
+    {
+      "Name": "f5em_intr_1_nml",
+      "Path": "Cockpit/AMX-A1M/Textures/F5EM_INTR_1_nml.png",
+      "Bytes": 25522,
+      "SHA256": "4B74A073C4BD7F044FE5A247DE17DB1C19BE794F621DB01C7FFC94357412EB1B",
+      "SourceIndex": 1,
+      "SourceRelative": "F5EM_INTR_1_nml.png"
+    },
+    {
+      "Name": "fuel_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/FUEL_albedo.png",
+      "Bytes": 2032014,
+      "SHA256": "C4F120FE19A27E129940CD1278A8CA8B749991CAEED57DEBDD0EEFB1EE4FA98A",
+      "SourceIndex": 0,
+      "SourceRelative": "FUEL_albedo.png"
+    },
+    {
+      "Name": "gps_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/GPS_albedo.png",
+      "Bytes": 2126116,
+      "SHA256": "57A03EF1A487F00298D7F2AC818731C771BCF6530BF35D5629F4CC21BF9D68FC",
+      "SourceIndex": 0,
+      "SourceRelative": "GPS_albedo.png"
+    },
+    {
+      "Name": "iff",
+      "Path": "Cockpit/AMX-A1M/Textures/iff.bmp",
+      "Bytes": 3562576,
+      "SHA256": "E4256AAB1C067827DEA6B65FB3A9BA3CAA19CAA1D995F34515E15080C97C31CD",
+      "SourceIndex": 0,
+      "SourceRelative": "iff.bmp"
+    },
+    {
+      "Name": "manche e manete_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/MANCHE E MANETE_albedo.png",
+      "Bytes": 8906738,
+      "SHA256": "3B63FE86F6E87EAC5FD7FB9384400895238DE444C0DB01ED8B58762E75F39C4B",
+      "SourceIndex": 0,
+      "SourceRelative": "MANCHE E MANETE_albedo.png"
+    },
+    {
+      "Name": "master warn e caution",
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION.jpg",
+      "Bytes": 287770,
+      "SHA256": "E3C360E5B25EAD8B1F0B01CB68566C05948661F4604DF49E33B6F1849A5F7C0C",
+      "SourceIndex": 0,
+      "SourceRelative": "MASTER WARN E CAUTION.jpg"
+    },
+    {
+      "Name": "master warn e caution preto",
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION preto.jpg",
+      "Bytes": 208396,
+      "SHA256": "2D964098AEBA9A8918ADEF5913B262D943E9C6555F9ADC85D4D30D265CF51739",
+      "SourceIndex": 0,
+      "SourceRelative": "MASTER WARN E CAUTION preto.jpg"
+    },
+    {
+      "Name": "master warn e caution_nrml",
+      "Path": "Cockpit/AMX-A1M/Textures/MASTER WARN E CAUTION_NRML.jpg",
+      "Bytes": 240689,
+      "SHA256": "4D41E91AEC9367ADDE81428B324DBDD7ED01C8C57914E20CEF9EE1EC6BAD68D6",
+      "SourceIndex": 0,
+      "SourceRelative": "MASTER WARN E CAUTION_NRML.jpg"
+    },
+    {
+      "Name": "mecanismo canopy_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/MECANISMO CANOPY_albedo.png",
+      "Bytes": 10155030,
+      "SHA256": "7173BECD1467F8EAF18536559E5F3A6A978941493E1C381D1B6806C80233FFBC",
+      "SourceIndex": 0,
+      "SourceRelative": "MECANISMO CANOPY_albedo.png"
+    },
+    {
+      "Name": "melhor",
+      "Path": "Cockpit/AMX-A1M/Textures/melhor.jpg",
+      "Bytes": 337590,
+      "SHA256": "80E8EB6FF5ED681BD6A9519E2F7C1C84C2FFE2F50463E4EA391646C8ABD8C8D3",
+      "SourceIndex": 0,
+      "SourceRelative": "melhor.jpg"
+    },
+    {
+      "Name": "meshy_ai_fighter_jet_cockpit_0825134829_texture",
+      "Path": "Cockpit/AMX-A1M/Textures/Meshy_AI_Fighter_Jet_Cockpit_0825134829_texture.png",
+      "Bytes": 4520921,
+      "SHA256": "3AD780AF4134B128B888DD4F4C23DC5AB9D49B28531E6F03E6B3D2486EA021B0",
+      "SourceIndex": 0,
+      "SourceRelative": "Meshy_AI_Fighter_Jet_Cockpit_0825134829_texture.png"
+    },
+    {
+      "Name": "meshy_ai_fighter_jet_cockpit_0825134829_texture_normal",
+      "Path": "Cockpit/AMX-A1M/Textures/Meshy_AI_Fighter_Jet_Cockpit_0825134829_texture_normal.png",
+      "Bytes": 4527278,
+      "SHA256": "5E2ED9450FE3D090485604FF12F20EE155919AC80500B79CC3F52B8B6AB001D8",
+      "SourceIndex": 0,
+      "SourceRelative": "Meshy_AI_Fighter_Jet_Cockpit_0825134829_texture_normal.png"
+    },
+    {
+      "Name": "paineis amx anti ice",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX ANTI ICE.jpg",
+      "Bytes": 594488,
+      "SHA256": "4EF9E87FC2823DB340CC52F2FD5A6702FDDBABA1C0CEC044C7C8895D23269A47",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX ANTI ICE.jpg"
+    },
+    {
+      "Name": "paineis amx arr hook",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX ARR HOOK.jpg",
+      "Bytes": 635685,
+      "SHA256": "0C8F8E3D4304135C425AFDC8926A98E35C87DD5F0F158C14A773247C8002AC7A",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX ARR HOOK.jpg"
+    },
+    {
+      "Name": "paineis amx canopy frame",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX canopy frame.jpg",
+      "Bytes": 287323,
+      "SHA256": "41F27FF59EEC6CB3D25056E437825FB5BACD73056DD602578FB0C1CF29FEF39D",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX canopy frame.jpg"
+    },
+    {
+      "Name": "paineis amx canopy severance",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX CANOPY SEVERANCE.jpg",
+      "Bytes": 578176,
+      "SHA256": "B48030A5A3BA45C6F6636616103E49CD20258075F6974C49BDEDCB00A71DE8F9",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX CANOPY SEVERANCE.jpg"
+    },
+    {
+      "Name": "paineis amx garmin",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX GARMIN.jpg",
+      "Bytes": 697250,
+      "SHA256": "594B1D357FEE55DC974AB5E2CC53E3B78A2B9FCBE1EFFF1AAE3C73EC1F7B0042",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX GARMIN.jpg"
+    },
+    {
+      "Name": "paineis amx hydraulico",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX HYDRAULICO.jpg",
+      "Bytes": 680301,
+      "SHA256": "23B5478A5B44B04C0A08D327B89CEF6830E21FADE55C92760809222BB652A1F1",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX HYDRAULICO.jpg"
+    },
+    {
+      "Name": "paineis amx ldg",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX LDG.jpg",
+      "Bytes": 512435,
+      "SHA256": "8B8FD6EBDF34BC8EC227424AB38B9B0F195A7773E941D51FBF94D65D732DE9D7",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX LDG.jpg"
+    },
+    {
+      "Name": "paineis amx lift dump",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX LIFT DUMP.jpg",
+      "Bytes": 532043,
+      "SHA256": "413E6A218120903BCCFDAE82EC7F8299536928E388DA8303CBB3EDF373293EE9",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX LIFT DUMP.jpg"
+    },
+    {
+      "Name": "paineis amx park brk",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX PARK BRK.jpg",
+      "Bytes": 525249,
+      "SHA256": "D5D8ED127119C2C285FA331E54E2CA1E063D65B09CFF8BD5F2EAB70F2806337F",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX PARK BRK.jpg"
+    },
+    {
+      "Name": "paineis amx pedal adjust",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX PEDAL ADJUST.jpg",
+      "Bytes": 529725,
+      "SHA256": "E9C472A6870D68EEBD66E56AB8028D00807180BA359A924F7B549E20B4D78EC2",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX PEDAL ADJUST.jpg"
+    },
+    {
+      "Name": "paineis amx refuel",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX REFUEL.jpg",
+      "Bytes": 552078,
+      "SHA256": "BA369E0AC8B4F8B422C9F479A9387CD7B2C45F44769FE020CFC54EEC79B52B08",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX REFUEL.jpg"
+    },
+    {
+      "Name": "paineis amx sefety jett",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX SEFETY JETT.jpg",
+      "Bytes": 668355,
+      "SHA256": "BFA727F51B1E120404D3E048F5ABD10EFBEA324F7F9BDDF4BF6A503232E0D5F4",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX SEFETY JETT.jpg"
+    },
+    {
+      "Name": "paineis amx slat flap",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS AMX SLAT FLAP.jpg",
+      "Bytes": 584676,
+      "SHA256": "7FAF97C6FCE806DF0B7FC8683EF8FF2527075058AE00245AAE1AA2C361B617AE",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS AMX SLAT FLAP.jpg"
+    },
+    {
+      "Name": "paineis batt elect",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS BATT ELECT.png",
+      "Bytes": 428627,
+      "SHA256": "29EB85DECBD980F99BC7767E5B53EB59187434DCFE3CCFB6B0545B0101DF4AE1",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS BATT ELECT.png"
+    },
+    {
+      "Name": "paineis console amx pedestal",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS CONSOLE AMX PEDESTAL.png",
+      "Bytes": 2510577,
+      "SHA256": "36E3FF2BADC524C27DBC5892F70174D76FBBF318712331D1EB5C11B5FB7E89CA",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS CONSOLE AMX PEDESTAL.png"
+    },
+    {
+      "Name": "paineis console amx pedestal iluminacao",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS CONSOLE AMX PEDESTAL iluminacao.png",
+      "Bytes": 855269,
+      "SHA256": "BC51CE0EAA6949DCABD7D3CCDA7EE328421246D0345E76C986F0BF08B598F4A4",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS CONSOLE AMX PEDESTAL iluminacao.png"
+    },
+    {
+      "Name": "paineis fab brz",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS FAB BRZ.png",
+      "Bytes": 422441,
+      "SHA256": "DE039B0F38DE7A03853A8DF0B91A88D5A7980AE0ABF81337D42C101E96A27538",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS FAB BRZ.png"
+    },
+    {
+      "Name": "paineis flap amx",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS FLAP AMX.png",
+      "Bytes": 417720,
+      "SHA256": "90C94D470811FA289C270DC9A1F3583F42265761AC2A5EA734D54C2D8A47FD2A",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS FLAP AMX.png"
+    },
+    {
+      "Name": "paineis light steady",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS LIGHT STEADY.png",
+      "Bytes": 437281,
+      "SHA256": "F60C08E731EEE86B41E6FB568FC8E108CDCFF391BB88FF6287D5C22626E20447",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS LIGHT STEADY.png"
+    },
+    {
+      "Name": "paineis mfd amx",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS MFD AMX.png",
+      "Bytes": 56996,
+      "SHA256": "E27DF3C737A4614B9D90914D53F06CFEA1E935F2C29999606CF953C5FC8890CF",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS MFD AMX.png"
+    },
+    {
+      "Name": "paineis refueling panel",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS REFUELING PANEL.jpg",
+      "Bytes": 640340,
+      "SHA256": "A6A728EB6ABD4211E684A896B3CEC02333DD724E1376CBA4EB90A65E816E46D4",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS REFUELING PANEL.jpg"
+    },
+    {
+      "Name": "paineis trim amx",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEIS TRIM AMX.png",
+      "Bytes": 394101,
+      "SHA256": "9B63AC98F2B18BB5A415E556229BEC5EFD5DCEF9A807B246451236AEE359FB0B",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEIS TRIM AMX.png"
+    },
+    {
+      "Name": "painel bege frame canopy",
+      "Path": "Cockpit/AMX-A1M/Textures/painel bege frame canopy.jpg",
+      "Bytes": 42651,
+      "SHA256": "81AB8FA67A9F4A999807DCF28042FC30E6F9C83243CCC7CCC079F64DE0439B3F",
+      "SourceIndex": 0,
+      "SourceRelative": "painel bege frame canopy.jpg"
+    },
+    {
+      "Name": "painel cinza 2",
+      "Path": "Cockpit/AMX-A1M/Textures/painel cinza 2.bmp",
+      "Bytes": 6220856,
+      "SHA256": "A497ABFF7065013573B267D19DF8C0D4C25DCAF90C0FB2A9F647CCB815934F5E",
+      "SourceIndex": 0,
+      "SourceRelative": "painel cinza 2.bmp"
+    },
+    {
+      "Name": "painel cinza frame canopy",
+      "Path": "Cockpit/AMX-A1M/Textures/painel cinza frame canopy.jpg",
+      "Bytes": 127079,
+      "SHA256": "3085FA0CF65704007EABF64F6F857F06D7F3CA13371B09691B97A2688ECED3DF",
+      "SourceIndex": 0,
+      "SourceRelative": "painel cinza frame canopy.jpg"
+    },
+    {
+      "Name": "painel cockpit",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL COCKPIT.jpg",
+      "Bytes": 563177,
+      "SHA256": "3DBD25646D1CD5E4914B4C3ACC2565A4B3251311374CB704599A697352E2F4EA",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL COCKPIT.jpg"
+    },
+    {
+      "Name": "painel cockpit normal",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL COCKPIT NORMAL.jpg",
+      "Bytes": 1108141,
+      "SHA256": "BEA8F8733591F5DF8E625DF6E500E467AAC05D539CE94C2D2C12903AF1821258",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL COCKPIT NORMAL.jpg"
+    },
+    {
+      "Name": "painel flt ctr amx",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL FLT CTR AMX.png",
+      "Bytes": 468009,
+      "SHA256": "3EBD2C0E4B06953867614BCBE568F27307E5A50DBDC8C996AC2C0ACD4C2B0EF3",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL FLT CTR AMX.png"
+    },
+    {
+      "Name": "painel glareshield amx",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL GLARESHIELD AMX.jpg",
+      "Bytes": 982382,
+      "SHA256": "E9547014BD62449723FFD9D7CF81815BAA2B483E99391A66AD4A7939AA6FE016",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL GLARESHIELD AMX.jpg"
+    },
+    {
+      "Name": "painel glareshield amx_bump",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL GLARESHIELD AMX_BUMP.jpg",
+      "Bytes": 2184775,
+      "SHA256": "3E7C561C50142B87A603647EC56448F29744D464F6F5F165BAFD07ECEC12B88D",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL GLARESHIELD AMX_BUMP.jpg"
+    },
+    {
+      "Name": "painel lateral console paredes",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES.jpg",
+      "Bytes": 416506,
+      "SHA256": "9BAEE0F2D5E2FFA9E7573A53F447CB46ACD0CBFB84AE3DA1CBE93CD4413470B6",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL LATERAL CONSOLE PAREDES.jpg"
+    },
+    {
+      "Name": "painel lateral console paredes base ajustada",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES Base ajustada.jpg",
+      "Bytes": 511536,
+      "SHA256": "5314AE730B2839504E5158B4D35A2CBBCC3D37E16CC3039A892FDF4C4C2103DE",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL LATERAL CONSOLE PAREDES Base ajustada.jpg"
+    },
+    {
+      "Name": "painel lateral console paredes base ajustada nrml",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL LATERAL CONSOLE PAREDES Base ajustada NRML.jpg",
+      "Bytes": 612676,
+      "SHA256": "A3079C313784F0155D7509285721AFD9A0AEAD6C55F7A398930643D306FBA990",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL LATERAL CONSOLE PAREDES Base ajustada NRML.jpg"
+    },
+    {
+      "Name": "painel mapa luzes",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL MAPA LUZES.jpg",
+      "Bytes": 71759,
+      "SHA256": "C240407A1598B10770B87ACBD1C8F4F29382DFC6BB11824803F64658911FFEDE",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL MAPA LUZES.jpg"
+    },
+    {
+      "Name": "painel mapa luzes normal",
+      "Path": "Cockpit/AMX-A1M/Textures/PAINEL MAPA LUZES normal.jpg",
+      "Bytes": 228763,
+      "SHA256": "0301F78351BCBD2572CD341A9E95E67D41525F6587F7AF08456A3ADC5AB045CF",
+      "SourceIndex": 0,
+      "SourceRelative": "PAINEL MAPA LUZES normal.jpg"
+    },
+    {
+      "Name": "parafuso canopy",
+      "Path": "Cockpit/AMX-A1M/Textures/parafuso canopy.jpg",
+      "Bytes": 77125,
+      "SHA256": "745DBEED1103DA2A6BAA9E176FACB06852943431846C74FF47CC7044E284FFB8",
+      "SourceIndex": 0,
+      "SourceRelative": "parafuso canopy.jpg"
+    },
+    {
+      "Name": "parafuso canopy 2",
+      "Path": "Cockpit/AMX-A1M/Textures/parafuso canopy 2.jpg",
+      "Bytes": 59293,
+      "SHA256": "62EB9D77B460B9EBED78E470B7E8981E15A74577F4A9734861D21B55AFB2AE94",
+      "SourceIndex": 0,
+      "SourceRelative": "parafuso canopy 2.jpg"
+    },
+    {
+      "Name": "paredes interior_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/PAREDES INTERIOR_albedo.png",
+      "Bytes": 6822816,
+      "SHA256": "49005E7F25F5743515F3C79A82409E618A8BE9358B0EC2CDB217DF552BD0F24B",
+      "SourceIndex": 0,
+      "SourceRelative": "PAREDES INTERIOR_albedo.png"
+    },
+    {
+      "Name": "piso amx foot",
+      "Path": "Cockpit/AMX-A1M/Textures/PISO AMX FOOT.jpg",
+      "Bytes": 127997,
+      "SHA256": "DC13293E588693EC63FDCF4918B43DFF4736B4C4C1B6AC32D1848206A411E050",
+      "SourceIndex": 0,
+      "SourceRelative": "PISO AMX FOOT.jpg"
+    },
+    {
+      "Name": "plaqueta amx",
+      "Path": "Cockpit/AMX-A1M/Textures/PLAQUETA AMX.jpg",
+      "Bytes": 484942,
+      "SHA256": "4B2414BE1DF9E85C4363D839DCDB261A3CDCDE23CAED2F5F229EDD97F53C0971",
+      "SourceIndex": 0,
+      "SourceRelative": "PLAQUETA AMX.jpg"
+    },
+    {
+      "Name": "plaqueta amx 2",
+      "Path": "Cockpit/AMX-A1M/Textures/PLAQUETA AMX 2.jpg",
+      "Bytes": 25131,
+      "SHA256": "D04CE1AA2946BEB6E534D6C00CC28890036CB51F170ED36DACCE298750167103",
+      "SourceIndex": 0,
+      "SourceRelative": "PLAQUETA AMX 2.jpg"
+    },
+    {
+      "Name": "radio vsi bfi_albedo",
+      "Path": "Cockpit/AMX-A1M/Textures/RADIO VSI BFI_albedo.png",
+      "Bytes": 2277388,
+      "SHA256": "A59180AA28F6282F1DDE8015F71DC05317334303EE3A142B2C91383E52F777D1",
+      "SourceIndex": 0,
+      "SourceRelative": "RADIO VSI BFI_albedo.png"
+    },
+    {
+      "Name": "tecido cinto",
+      "Path": "Cockpit/AMX-A1M/Textures/tecido cinto.bmp",
+      "Bytes": 1525760,
+      "SHA256": "B653C5008EF9DFB6EF23EBC776B972B69E9BEB1E3D53AE20BB1F7D818EE12008",
+      "SourceIndex": 0,
+      "SourceRelative": "tecido cinto.bmp"
+    },
+    {
+      "Name": "tecido tras assento amx",
+      "Path": "Cockpit/AMX-A1M/Textures/TECIDO TRAS ASSENTO AMX.jpg",
+      "Bytes": 451998,
+      "SHA256": "50A4073F51F2AF8D4A56191941831B0D4793F773A0B84C36086BF4AAF2CEB6AA",
+      "SourceIndex": 0,
+      "SourceRelative": "TECIDO TRAS ASSENTO AMX.jpg"
+    },
+    {
+      "Name": "tecido tras assento amx normal",
+      "Path": "Cockpit/AMX-A1M/Textures/TECIDO TRAS ASSENTO AMX NORMAL.jpg",
+      "Bytes": 887019,
+      "SHA256": "A054D090CF39FDF884F8194791BCC44716468C9152634B15EEC1F204D0FDB995",
+      "SourceIndex": 0,
+      "SourceRelative": "TECIDO TRAS ASSENTO AMX NORMAL.jpg"
+    },
+    {
+      "Name": "tecido verde",
+      "Path": "Cockpit/AMX-A1M/Textures/tecido verde.bmp",
+      "Bytes": 1527064,
+      "SHA256": "BD47505ED8FB54FB1723D814A1C59A00E70FCB6B0F49E38F70E0F8082C64DCC7",
+      "SourceIndex": 0,
+      "SourceRelative": "tecido verde.bmp"
+    },
+    {
+      "Name": "ufcp",
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP.png",
+      "Bytes": 2358008,
+      "SHA256": "71E22552C88ED70763E84AD2F0AC83DCEAD7A02FEEC10BE130B5EAC743E111AB",
+      "SourceIndex": 0,
+      "SourceRelative": "UFCP.png"
+    },
+    {
+      "Name": "ufcp iluminacao",
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP iluminacao.png",
+      "Bytes": 93369,
+      "SHA256": "8D80E05035E79BB7B914FCDB958439CD6196D3847E6D0134297025F3E1E6FCA4",
+      "SourceIndex": 0,
+      "SourceRelative": "UFCP iluminacao.png"
+    },
+    {
+      "Name": "ufcp_nml",
+      "Path": "Cockpit/AMX-A1M/Textures/UFCP_nml.png",
+      "Bytes": 1106427,
+      "SHA256": "C29AE0E818E0290F66B293E5713F166246883D1097766F19C53CF652AB7871E6",
+      "SourceIndex": 0,
+      "SourceRelative": "UFCP_nml.png"
+    },
+    {
+      "Name": "whatsapp image 2020-11-17 at 17.46.35",
+      "Path": "Cockpit/AMX-A1M/Textures/WhatsApp Image 2020-11-17 at 17.46.35.jpeg",
+      "Bytes": 6428,
+      "SHA256": "9684BE9BBDF8C20B4B0C2CDC5FDB76A2C138D0A0B803FBD7D4CF3C80C605972E",
+      "SourceIndex": 0,
+      "SourceRelative": "WhatsApp Image 2020-11-17 at 17.46.35.jpeg"
+    }
+  ]
+}

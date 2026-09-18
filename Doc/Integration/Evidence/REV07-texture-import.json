@@ -1,0 +1,16 @@
+{
+  "Schema": "AMXDENIS_TEXTURE_IMPORT_RESULT_1",
+  "Passed": true,
+  "CopiedFiles": 102,
+  "MissingTextures": [
+    "f18c_cpt-naces1",
+    "f18c_cpt-tex12",
+    "mb339_glass"
+  ],
+  "Complete": false,
+  "ManifestSHA256": "55D6BCAAB6049B0A9945ABBE319EBF01791A3052E43D63B6E59871D9B9953657",
+  "ProtectedBaselinePreserved": true,
+  "SourceFilesPreserved": true,
+  "NativeValidated": false,
+  "CompletedUtc": "2026-09-17T19:33:40.6457228Z"
+}

@@ -1,0 +1,55 @@
+{
+  "Schema": "AMXDENIS_M1_PREFLIGHT_1",
+  "RecordedUtc": "2026-09-17T23:44:13.5149692Z",
+  "AircraftType": "AMXT_M",
+  "PilotSeat": 1,
+  "InternalModelSHA256": "7C2F1DE3C8AF4F8684C0C892A24EEFA4497C438CB85CAD0D09A177445B1D3342",
+  "SnapshotId": "M1-20260917T185749Z-fcc3bdc3",
+  "ConfigurationSHA256": "9A65DC11616CAFEF8CCF8677EEBA3040D66B312C8D917F9554E812915D9F8351",
+  "InventorySHA256": "90FCD80FF17932300B167F65B299419FB91984567ADCC7B23963BBB0A8DEF1C4",
+  "BaselineFilesChecked": 84,
+  "BaselinePreserved": true,
+  "State": "BLOQUEADO",
+  "CandidateReady": false,
+  "NativeValidated": false,
+  "ImportedFiles": 102,
+  "ImportedFileScope": "Verified local cockpit textures only",
+  "TextureManifestSHA256": "55D6BCAAB6049B0A9945ABBE319EBF01791A3052E43D63B6E59871D9B9953657",
+  "Blockers": [
+    {
+      "Code": "TEXTURE_UNRESOLVED",
+      "Resource": "f18c_cpt-naces1"
+    },
+    {
+      "Code": "TEXTURE_UNRESOLVED",
+      "Resource": "f18c_cpt-tex12"
+    },
+    {
+      "Code": "TEXTURE_UNRESOLVED",
+      "Resource": "mb339_glass"
+    },
+    {
+      "Code": "CONNECTOR_AMBIGUOUS",
+      "Resource": "PTR-HUD-CENTER",
+      "Count": 2
+    },
+    {
+      "Code": "CONNECTOR_AMBIGUOUS",
+      "Resource": "PTR-HUD-DOWN",
+      "Count": 2
+    },
+    {
+      "Code": "CONNECTOR_AMBIGUOUS",
+      "Resource": "PTR-HUD-RIGHT",
+      "Count": 2
+    },
+    {
+      "Code": "TEXTURE_SET_INCOMPLETE",
+      "Resource": "Local import preserves unresolved names; no substitutions were made"
+    },
+    {
+      "Code": "REV07_BINDINGS_UNVALIDATED",
+      "Resource": "Old cockpit bindings are not approval for REV07"
+    }
+  ]
+}

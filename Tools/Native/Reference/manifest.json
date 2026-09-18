@@ -1,0 +1,26 @@
+{
+  "Schema": "AMXDENIS_NATIVE_REFERENCE_1",
+  "SourceRevision": "c60fab3ce11e273e76995ff95494fd2be1db2109",
+  "SourceReadOnly": true,
+  "Files": [
+    {
+      "SourceRelative": "LICENSE",
+      "Path": "LICENSE",
+      "SHA256": "3ABA57A2D293A4E43AD1A02CA46A6FC693A65B6FA1712F1599394919D9895B5E",
+      "Bytes": 1069
+    },
+    {
+      "SourceRelative": "Missions/QuickStart/AMX_Free_Flight.miz",
+      "Path": "AMX_Free_Flight.miz",
+      "SHA256": "B1844D7584DBD5C9480D674933CFF33C951E51330741431DDA441E7CA7809075",
+      "Bytes": 8089
+    },
+    {
+      "SourceRelative": "Tools/Window-M1.ps1",
+      "Path": "Window-M1.ps1",
+      "SHA256": "640A1D26B470BA83F7713421C59AA2039D0A3BFF435FF16AC7D8CBE576952AA2",
+      "Bytes": 17839
+    }
+  ],
+  "NoNativeAcceptanceInherited": true
+}

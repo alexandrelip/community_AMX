@@ -1,0 +1,1152 @@
+{
+  "AuthoritativeTarget": "AMXDENIS",
+  "BinaryLibrariesImported": false,
+  "DonorEntryExecuted": false,
+  "ExternalModelsImported": false,
+  "Files": [
+    {
+      "Bytes": 1080,
+      "Path": "Avionics/A29/NOTICE",
+      "Role": "provenance_notice",
+      "SHA256": "CBE219017E2A8053E45C08E2FCDD75AE640A3B9BFE23AE5C1A96690152595179"
+    },
+    {
+      "Bytes": 19744,
+      "Path": "Avionics/A29/README.md",
+      "Role": "provenance_notice",
+      "SHA256": "56B183CC7E4896D3E253C905EF21B9C16BD96DC655835216B95B55B07B947D72"
+    },
+    {
+      "Bytes": 1336,
+      "Path": "Avionics/AMX/Cockpit/Scripts/CMFD/Indicator/CMFD_EICAS.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "DE1C96869428454AECA891AB69911ED6C9504FB6DBDFB921CB27085CBF365DB3"
+    },
+    {
+      "Bytes": 1805,
+      "Path": "Avionics/AMX/Cockpit/Scripts/EFI/Indicator/EFI.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "3E4F8854CF8E6817FE0D242BC72B8699126F9F92ADE7316CAF633F7E7E249C0D"
+    },
+    {
+      "Bytes": 14326,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Indicator/host_eicas_indication.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "014037E6B1F58B477F176AE6C2F587086B3CCE2AF299267B4E7BF6C59D4E03F6"
+    },
+    {
+      "Bytes": 1408,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Indicator/host_geometry.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "91D9972464C1FBC880B203AE5BB6F6661A1190568CFC8883BDF7F6E9A31F1DF3"
+    },
+    {
+      "Bytes": 956,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Systems/electric_system_api.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "9A1DFED20BBCAB2E270C4FB22E42E8EFCB0AF29E4F9B43CACADADA8E4C40C973"
+    },
+    {
+      "Bytes": 1200,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Systems/host_alarm_sources.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "ADCDE1CB5FE4EF2DFB7432F116904EED86C2EDA33D21D26FB0085DBF0AE0342F"
+    },
+    {
+      "Bytes": 590,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Systems/host_controls.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "9B856150EE65F786789183DDA3DB625FADE54A8BD9E807CAE4EDBF8F2B255D71"
+    },
+    {
+      "Bytes": 1911,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Systems/host_eicas.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "0F96DDAA00996F51DBE277F7AA331972D826A9E87AF68718C7DD76A2DF98F7EC"
+    },
+    {
+      "Bytes": 1685,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Systems/host_fuel.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "595928B7C3AE53764EFABC0B27F88A63F35DECCF49DA091565FD4DC06268713A"
+    },
+    {
+      "Bytes": 1050,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Systems/host_telemetry.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "F1EF770D64A4907BA317E48C49EF350B1DA03065BCAF00736980684321B299EE"
+    },
+    {
+      "Bytes": 1494,
+      "Path": "Avionics/AMX/Cockpit/Scripts/Systems/host_text.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "EFF2CADA9A69C017C27853E47FC0D978662938FA4FEB1453E98BEB9D5207DB0B"
+    },
+    {
+      "Bytes": 258,
+      "Path": "Avionics/AMX/Cockpit/Scripts/UFCP/host_icp_init.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "8748E6958F1DC6F1BA59DEDF5BF5D44D3B479EF2CBDBA766EB5DCB68F1247AD1"
+    },
+    {
+      "Bytes": 1380,
+      "Path": "Avionics/AMX/Cockpit/Scripts/UFCP/host_icp_page.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "E593E6EC9A20C16902CA4DB8A49D438138C595FE5CDE60692AE78A9E1B0A6E84"
+    },
+    {
+      "Bytes": 11,
+      "Path": "Avionics/AMX/Cockpit/Scripts/sounds_init.lua",
+      "Role": "source_adapted_avionics",
+      "SHA256": "0DFB88962362B6ED0F9A38FA454B7AC810BDD2F959096F5FC39BD135B86B9BCE"
+    },
+    {
+      "Bytes": 26066,
+      "Path": "Avionics/AMX/patches.lua",
+      "Role": "source_strict_patch_rules",
+      "SHA256": "20F98C9D3E78AF52C66277038842CD564690B9217611EE349047B709B73F89AD"
+    },
+    {
+      "Bytes": 1048620,
+      "Path": "Avionics/F5EM/Cockpit/IndicationTextures/font_RWR.tga",
+      "Role": "indicator_resource",
+      "SHA256": "C57F99322E3A775FCF0795B1324A1C98F1D450A97F8D747690AD0DD8C23C9231"
+    },
+    {
+      "Bytes": 4194348,
+      "Path": "Avionics/F5EM/Cockpit/IndicationTextures/font_sheet_F5.tga",
+      "Role": "indicator_resource",
+      "SHA256": "967AAD2EC26E5B35EDEA3B2B4C33F849A9C556B3E223F01608B264C5971CB85B"
+    },
+    {
+      "Bytes": 1048594,
+      "Path": "Avionics/F5EM/Cockpit/IndicationTextures/indication_RWR.tga",
+      "Role": "indicator_resource",
+      "SHA256": "918F5B885BF9D98881325F290F1975E1D1C35A6A79CD4D5095A21730979458B2"
+    },
+    {
+      "Bytes": 330,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_DTE_ID_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "FEBB11423CAAE07F0957B3A4080071237356FB230141BF4445573F42A00BE0E3"
+    },
+    {
+      "Bytes": 724,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_DVR_ID_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "26D43DA391A15327ADF3D259CD781E1AACD86EF58CD2602D40C3DDE09D2AF5FA"
+    },
+    {
+      "Bytes": 1394,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_Left_init.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "38079B66ED0A4C5EB80FC35E9534C2C01D637857AE55CFBA51E92D015FE737CF"
+    },
+    {
+      "Bytes": 288,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_NAV_ID_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "7AF8E5276264A1CB4135265DFE5280A25293AB45C4A6DD3F5964A0DB4C6A93F9"
+    },
+    {
+      "Bytes": 1354,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_Right_init.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "12E3BD7800F530B0282E5BAF890C23F3CA624C82CAEA20BF4773E7D31346E326"
+    },
+    {
+      "Bytes": 1490,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_SMS_ID_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "77B31AB1B2AF50FD7889A03908D698A471E976105C1F4213142540042B80EA1B"
+    },
+    {
+      "Bytes": 199,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_UFCP_ID_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "61C90F81206349A6027E0E1948EECF1B6FA09DF1F7BDFECFC5DD10D6D2AB15AC"
+    },
+    {
+      "Bytes": 14663,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "8EF00B0A962A72135918F99B9B5D792E0E726B4C5F9FAC2C0AF141DDCCA8559E"
+    },
+    {
+      "Bytes": 7240,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_init_COMMON.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "9FEA0800302D61DFEA46C1841021E82F08CBE1264259F1144F951CE4DAE783E4"
+    },
+    {
+      "Bytes": 2422,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/CMFD_pageID_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "7F62B18F7EFCE65EEC7F249601CBD282267A480B33507927C6F34A80A9393CE3"
+    },
+    {
+      "Bytes": 16000,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/adhsi.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "46F8FD1D4F02860D46FAE1C6A98A7EEAA63DEB73D5CAADDD4C8C1B05BA44CC60"
+    },
+    {
+      "Bytes": 766,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/cmfd_text.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "B6CAA81DC598ADFA432253580BB8077F81A55C1251B5078B52E47BC684F5F7E5"
+    },
+    {
+      "Bytes": 29854,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/cmfds.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "92C7D088A63FDA3AAE9F541980F9ABFFE8D86DCE1E1BA68358775C19527A7799"
+    },
+    {
+      "Bytes": 10428,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/dvr.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "11B09D2F72BEEC3E898B8D343E6F035D78131C4CD332546191DD2E92F3F7BBE9"
+    },
+    {
+      "Bytes": 31920,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/eicas.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "266AEA33B7B088A56073FEC2A90C5F01C35B166447E5E0CB047B061CA0FE673B"
+    },
+    {
+      "Bytes": 4561,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/emer.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "30F978958B9780F26A72073A0A9E10DC87CDCAFDF33D30AC41B0CBFB3F127598"
+    },
+    {
+      "Bytes": 15649,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/ew.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "3EDF1CA1825CDF60E45B73A7B5B485EDD4EA50195C76754C8AAC9D7F59917091"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/hud.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 5627,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/menu1.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "4137EC22C5820D1EDD18832B31E246E85FDA368B0D9A267371DD142156AC724A"
+    },
+    {
+      "Bytes": 2017,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/menu2.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "30098B6F788045A2199A47F8E250E9B5C99686859387E0EAE1EC609D35062F0A"
+    },
+    {
+      "Bytes": 56460,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/nav.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "6A77ACFAEBF9A6183AB15977854C0C33AC8879E4EA25148B5263B70B94DEF6BD"
+    },
+    {
+      "Bytes": 4998,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/pfl.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "7452E01C326904131B27C8B07FC806720321C847D8FEAA4D76E3F813D861FDA1"
+    },
+    {
+      "Bytes": 12737,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/rdr.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "71DB163BB999E09E2A1FEFF6DCB91210640666691A79E0F02EE79A7FF31E8F49"
+    },
+    {
+      "Bytes": 19155,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/sms.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "70E87F4FB42B8CECBCB1A521A0AF2C998F630DE4BCBF71A02E1E6EF24F31C2A9"
+    },
+    {
+      "Bytes": 24235,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/tsd.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "6D561E487344F8ADB5E869FF0F16364B6E055AF50DEB34B86C5D663CEDAFF3F5"
+    },
+    {
+      "Bytes": 6077,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Device/ufc.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "EDE80969D55540879A7061187037E5DA8312CAF31478D3FC182959D46C1627EA"
+    },
+    {
+      "Bytes": 37601,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_ADHSI.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "D09D5052C83CC4C43DE5A600F420390A1C7CD85E0B976B87FCBB01EDDADBEC7F"
+    },
+    {
+      "Bytes": 6543,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_ADHSI_small.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "B7439BAA2355C671496E88D9ABE5C66D769EB354891F6B403C63275B79DDD3D7"
+    },
+    {
+      "Bytes": 6866,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_BIT.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "8080142DFBDED920FF38CEC3E2CD32528C8C72B0E4758A9723A1AF42A523AF33"
+    },
+    {
+      "Bytes": 1850,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_DLMSG.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "910783F4DB0BFF57A7AF413318D695A01E6333797464584CFBEE3CDD04CA3058"
+    },
+    {
+      "Bytes": 3054,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_DLSET.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "D8A83EDA8D0ED0851C18A1ACA076AA603E0908C34AB81A227D8CD1F216231DFA"
+    },
+    {
+      "Bytes": 7886,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_DTU.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "89ADE13364C853525092D05A32B707D4C4811BCBC0BE6E10EA128BB7D1D19B56"
+    },
+    {
+      "Bytes": 6241,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_DVR.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "AF75A5D30CD049D119E6C643C81FE2D1FF65CEE6331E7AF75512CD259B464FE6"
+    },
+    {
+      "Bytes": 2750,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_EFB.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "78BE22CECD82ED3E0D6DAC0D706944A89771E60F36FCCB509F87B73C05CE9D7D"
+    },
+    {
+      "Bytes": 55423,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_EICAS.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "C7F57ABCA2C9DDBA12FA06C6382AC82A432C347BEBF284D827C94FC7AF552A81"
+    },
+    {
+      "Bytes": 19911,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_EMER.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "01E728E8F9D4877150907AD13CDFD936B7DDEA10DDB900BA2770A0ADD29B4CB0"
+    },
+    {
+      "Bytes": 24710,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_EW.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "19DE6BFA9E5CA012C8436AD81038DC3FAA10DC17BA85D7C1538A056ECEE5F15C"
+    },
+    {
+      "Bytes": 1143,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_HMD.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "57E3B4D189F63D08EB1CD2508455B1796A90A540F300E04673022485646918FF"
+    },
+    {
+      "Bytes": 827,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_HUD.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "6D32AF988EDE45F4B795205668FBDE31DB6F001EE5870EBE5CDF1BBF2C497DD3"
+    },
+    {
+      "Bytes": 1057,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_IFR.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "F35C7FE2CDF9E01E683AA2711E5E6A4670062B9149BB272657F59AB32F3C6AE8"
+    },
+    {
+      "Bytes": 2416,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_LDP.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "F6C24E85BF3CF9083EC207D2C48E7D8F3A91B7AAEA51ED43244368E56C4209BC"
+    },
+    {
+      "Bytes": 14016,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_LT.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "85A9DAF750D2B01BDE325FA47D0E3291C86B22B35A964D881AFAD9865D445FF0"
+    },
+    {
+      "Bytes": 6512,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_MAP.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "A5D6D20EF6615AD6DFE9A04C496BF5926DD7705AC930A57CED85D8DA8FCB0600"
+    },
+    {
+      "Bytes": 3912,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_Menu1.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "704A66C6A95C37910A008CF1A8C159247FE7590434F22A105CCECA35087262D5"
+    },
+    {
+      "Bytes": 7081,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_Menu2.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "B21C3A41FDA917EB3AE2F55498EF6AD3B55363ACC5A1241E3783A100A9B7C574"
+    },
+    {
+      "Bytes": 13388,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_NAV.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "4514D034E4E98E601540C25EA27ADD247FE6CF6134F517D21C63D8E53691F045"
+    },
+    {
+      "Bytes": 869,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_NOAUX.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "FB71ED8A5342C5AF8E225101D0BF9B7337EE9F80A58412FF62E84F017B7AC21D"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_OFF.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 3420,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_PFL.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "783C9A142BB4F49061570D163B5315261AB5C9A3624FE40F68734700B9BD875B"
+    },
+    {
+      "Bytes": 53719,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_RDR.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E0DF229FB20C0E2B30015EA3D54857C15562950571CEDBFF251F7FBA52EBC231"
+    },
+    {
+      "Bytes": 43610,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_SMS.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "ABD40996245690BFE675E36CF29205ED1151A35086A4A92B128BB4E5EBF88B1A"
+    },
+    {
+      "Bytes": 18891,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_SURV.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "0E275603DCABEAC83B133D12D68DDF401713A1518C2332B200F2C06DCB6ED8E5"
+    },
+    {
+      "Bytes": 34652,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_TSD.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "3D280B5D3118A741056DC7CCF863561563292DED15647D61B56FB11E45526BE1"
+    },
+    {
+      "Bytes": 7332,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/CMFD_UFC.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E44B7B996079567B446179B552932FEC474A875189AF92187BE8C56340592647"
+    },
+    {
+      "Bytes": 3002,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Indicator/FULL_BASE.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "AABB3E6B09969FEEB63F13151A5981662DE11E35FF5E63B21DE1465171833CD8"
+    },
+    {
+      "Bytes": 2765712,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Resources/a29b_font_CMFD.dds",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E3DCC97EFC7CEF26326F6DABF96F24C084851A11C7DE79FFDECC0788451EBB6A"
+    },
+    {
+      "Bytes": 40610,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Resources/f5em_stroke_symbols.svg",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "72E1C89B1AB4C3AFE10CC94AF6BB8E8C55B9B6839D50CD111CA1E9D164E67137"
+    },
+    {
+      "Bytes": 25163,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/Resources/stroke_symbols_MFD.svg",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "EAA358FBB9CEE48A7C9F85CB5997C95DF8B8C74E0BA0154D82C502EF717F28EB"
+    },
+    {
+      "Bytes": 13930,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/materials.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "ACE0534D91EBC28C93A7F60CF34753F7D98329E2D244A6C4D565088393A0151D"
+    },
+    {
+      "Bytes": 1545,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/CMFD/utils.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "316ED6D1688F74A300C5D724EAB88FF3A2ACC0BC94A5CE7D7129EE49E780231C"
+    },
+    {
+      "Bytes": 13844,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/EFI/EFI_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "16E107C1C53BE8E0CDEEA4D2A16CCD5FC7B620EA1E1B8459F2EAB3069DAB7469"
+    },
+    {
+      "Bytes": 5050,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/EFI/EFI_init.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "7FDF22D43A114ED32D1398D843D3ED329A3477AE36128B83A54CF9963D518DE4"
+    },
+    {
+      "Bytes": 45533,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/EFI/Indicator/EFI.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "2B272B88535A3E6A923E5742820DCC7CDC246462436F428614743EE34F81A489"
+    },
+    {
+      "Bytes": 869,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/EFI/Indicator/EFI_NOAUX.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "FB71ED8A5342C5AF8E225101D0BF9B7337EE9F80A58412FF62E84F017B7AC21D"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/EFI/Indicator/EFI_OFF.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 2098,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/EFI/Indicator/FULL_BASE.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "A798AB2BCA4675B4BF4E85009D42346BF599AD9680C5C92C927BD11500A14F3E"
+    },
+    {
+      "Bytes": 66969,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Device/hud.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "35246B019D68CD11A6DF6EB4EAFBE88FAA6C97E60907197B011398A74243907A"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/HUD_ID_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 10615,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_AA_DGFT.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "4EDFA1A06578E1E847E7A3AEE142692A0A7C2DCCC5CDB4B0C6D9CE71332B7AD3"
+    },
+    {
+      "Bytes": 7526,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_AA_INT.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "7AA0292740A3870427E82564409EBB13D2CC9A5FFAA66C5E0415E95F213040F3"
+    },
+    {
+      "Bytes": 8087,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_AG.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "1E3AF21AF57ED2F6E059E2747A089E44EB194FB15C1BE90B2A4AA642FFAA2A0D"
+    },
+    {
+      "Bytes": 65621,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_ALL.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "2E869F426CDA3BD5BCD5BBD86D339277F487E9AD344981585BE13550AA795139"
+    },
+    {
+      "Bytes": 3489,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_BASE.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "F0991AFB323351EB1CCBD2928020C38D70BC22B5B9D0193EEDD9590B0F947447"
+    },
+    {
+      "Bytes": 136,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_OFF.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "9230BF81580C75022B90FCD18C3A224CF968AB17BE3E82B9615E4BF5148C5407"
+    },
+    {
+      "Bytes": 9205,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_Page_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "0F9B875A94B80A5A5A8A48D762A374C6BD7F8F19F8455CA6EACA1D183EB32F2D"
+    },
+    {
+      "Bytes": 15187,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "64BE81D8D938D0694A148BE2236078031B4FBAA02429C15796A841ED2B533BAC"
+    },
+    {
+      "Bytes": 1655,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/HUD_page_init.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "B6B6FCEFA4F971143A5DEDD48836911A459C7790572286D3438157D642471ED5"
+    },
+    {
+      "Bytes": 1302,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Indicator/Units.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "8884EB03FCC4BE00AF59783FD225CD4676ED9F1BA93D99FC8997610D420C35BA"
+    },
+    {
+      "Bytes": 8336,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_Indication_Line_Dashed.dds",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "70AB6915D8DA67B0D20408E667DE0F73A9A63889978C077A1526BA3A49CC551B"
+    },
+    {
+      "Bytes": 2765712,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_font_HUD.dds",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "C5EF544A95F1CF1355973C864CD0683AEF32329374712B351D839F83215A5354"
+    },
+    {
+      "Bytes": 105602,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_hud.svg",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "5C44D0E33B7613AB5FFD1CB7B983A842421B9D5468ED426B10FA354E585D29D2"
+    },
+    {
+      "Bytes": 60230,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_stroke_font.svg",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "0FC134D952EA7EE59C09F13DA6D3D512DBDC5632418403C00DBD5DA09E46521C"
+    },
+    {
+      "Bytes": 60896,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/Resources/a29b_stroke_symbols_HUD.svg",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "905880B97099A8A8FEE5BE4F3138A8C785DC308D69C56B391D3F182E6D84484B"
+    },
+    {
+      "Bytes": 8103,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/materials.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "AC1E843D91B31984BCA7508BBC2035F64590626C51B182D3F01052BFA17D874B"
+    },
+    {
+      "Bytes": 23163,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/HUD/symbology_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E72E2F86FC6F529C12B2671F280AF4AF0A2788262AF9D1F68FF538B9B2644FFC"
+    },
+    {
+      "Bytes": 37490,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Indicator/Indicator_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "964AE46CDE54441756A5509EDBAB843ED239FEC97F1BD46AA92E0BF5F164265D"
+    },
+    {
+      "Bytes": 1545,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Indicator/utils.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "316ED6D1688F74A300C5D724EAB88FF3A2ACC0BC94A5CE7D7129EE49E780231C"
+    },
+    {
+      "Bytes": 17788,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/F5EM_Link_BR2_Fusion.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "9A3A4D10D96E0D4B1330DE68A579315C6CB9A4F57BEDC5B382FA54C11693822A"
+    },
+    {
+      "Bytes": 6325,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/adhsi_nav_logic.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "75925E09FC69E39EE0A848F855BDB957FE190220C7E4497F64DB9BA467B20A0D"
+    },
+    {
+      "Bytes": 9347,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/alarm.lua",
+      "Role": "donor_api",
+      "SHA256": "6028AD10AE6F3AB8F3F3F28E133C87AB8E8D3930361AF13B6B43B401A1F190EF"
+    },
+    {
+      "Bytes": 3390,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/alarm_api.lua",
+      "Role": "donor_api",
+      "SHA256": "362996C111BE0A8FF4BC2C07FDEA1E76CBB0540F59E4048A5C1C35D6F8B80E3F"
+    },
+    {
+      "Bytes": 5022,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/avionics_api.lua",
+      "Role": "donor_api",
+      "SHA256": "C7ABE36754F12851CCE8BB3F99ED4CCB9811748F28C19C356CBA562B0895AB36"
+    },
+    {
+      "Bytes": 6885,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/checklists_f5em.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "D831924B8655E5F6A4B66B247E706443A31BE0DE1AA1A772CF47452B102FE008"
+    },
+    {
+      "Bytes": 5348,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/combat_display.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "6C9FAC908DD8ADF886820A783DF396C9EF51CDC0BE8C620E5D14355670791BCA"
+    },
+    {
+      "Bytes": 14348,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/coordinate_api.lua",
+      "Role": "donor_api",
+      "SHA256": "18DDF1C02CF3247E726910473BD48C3032FAC5B8F541E74D233ED2C641AFB21C"
+    },
+    {
+      "Bytes": 769,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/efi.lua",
+      "Role": "donor_api",
+      "SHA256": "144A6A07B249326E5B94F55C167B1ABCCABF4041217A4CD2924055FF220F6CE2"
+    },
+    {
+      "Bytes": 775,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/electric_system_api.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "AE8A11C21EAE5CE6D318B7B592B57E83BE617B4FF95BC87B8C4D22D29DEE43C7"
+    },
+    {
+      "Bytes": 334,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/engine_api.lua",
+      "Role": "donor_api",
+      "SHA256": "068D78BA49AC10457EAA748EF7CDBAA0AC0DF93ECDFE9D6B7B067B271A20525E"
+    },
+    {
+      "Bytes": 4077,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/hud_nav_cues.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "E980899AD39CFC630FFEBC29067C802ED136BDD7271D17335C7D000F32099D44"
+    },
+    {
+      "Bytes": 902,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/hud_ralt.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "BE4651CFB6735DEC83E1508CC4DAA2657BFC1B8D5F77A1A38E98F4730FF8A8AB"
+    },
+    {
+      "Bytes": 9270,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/navaid_receiver.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "BB4C1C38F31135171871A52C39F8CDDCF0F4F5CA52E18AF860BC49766383CBA9"
+    },
+    {
+      "Bytes": 4134,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/pfl_check.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "99B49D434B62419A24C01FAA84AA6AA589C179E8DF698D6413671A2365B5F8C2"
+    },
+    {
+      "Bytes": 1036,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/radar_ag_logic.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "DBDE7A9C58868B24D8FD54AA83C83B764F683D6B9CDE25CD62891D7B43A6F435"
+    },
+    {
+      "Bytes": 7188,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/radar_control_logic.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "897E7241B5AEED1D0DDAC2268D96A7EF21A7823975CF0170CAB2050AAD8DA064"
+    },
+    {
+      "Bytes": 12143,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/radar_engagement_sequence.lua",
+      "Role": "donor_literal_dependency",
+      "SHA256": "C7928F5E9ED72B63C5A2C5C728B344B86D05E695574703254A95D21467F5E58C"
+    },
+    {
+      "Bytes": 4635,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/rdr_api.lua",
+      "Role": "donor_api",
+      "SHA256": "406E567610650511ABB0D36A47790881E3F2B398D9B308390A0BEBBB3C3A7D0F"
+    },
+    {
+      "Bytes": 3574,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/sounds_callouts.lua",
+      "Role": "donor_api",
+      "SHA256": "1E5770721255B63C1A2995ADAC3CD655424BBDE97F293A7EAD5A1EE8C45DB3C9"
+    },
+    {
+      "Bytes": 2432,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/ufcp_api.lua",
+      "Role": "donor_api",
+      "SHA256": "075F51A4F965A45B962D10EB8A4AE8BC2C4DB6949FAA0D8D2B712D64D00D664C"
+    },
+    {
+      "Bytes": 7059,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/Systems/weapon_system_api.lua",
+      "Role": "donor_api",
+      "SHA256": "6710756CF7D8E6703E7A2646A3D2F03A5001B02874B6844AF3BE6487E4EC2B41"
+    },
+    {
+      "Bytes": 156,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/acal.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "496228547ACE2284633C21BC36EA29101D930C04EF8DB2A01D6E6D60F0A396C7"
+    },
+    {
+      "Bytes": 7881,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/bal.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "FF533DB35FD830E59B54B363507165FD2FB9540002ECFBA5849AA5F7CBA79D2E"
+    },
+    {
+      "Bytes": 151,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/cf.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "3D84E088168D92E3E329D9BDCEB3B8D6A01C186756193FDAE35BF76AA71D310E"
+    },
+    {
+      "Bytes": 155,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/crus.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "00A13C429763126124056DDFC685C67594263294061CFCF9BF3989E03A1A2B0F"
+    },
+    {
+      "Bytes": 4535,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/dah.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "FE855CD7A05AED088FF29E73E6B122E226CAD0C80AD6FE520590BD1FF3EBFCB5"
+    },
+    {
+      "Bytes": 723,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/date_validation.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "53A703D697D2C3EB53E64DF54E88FD6D374C64B731D96CCCC9D05CE303DD0BCC"
+    },
+    {
+      "Bytes": 2437,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/dclt.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "2B435A410A1F964D903BC67910A7C0F35281E419D658EE6C80F5883EBE5190ED"
+    },
+    {
+      "Bytes": 1664,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/dl.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "0EDBB4679F8265F47AAC9069E15147A70F9C3175D44D1D92D9796DDD8F3A6C33"
+    },
+    {
+      "Bytes": 551,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/drft.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "472CBBBC4E723ABDF0B64DBD0268D78274F5CA7C3F949C15E9C3031A3A520671"
+    },
+    {
+      "Bytes": 5125,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/dtk.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "B6D391A8A67F638EC32FBDBAB2DA6204A9637481A4F074AE45572FBF3693595E"
+    },
+    {
+      "Bytes": 28938,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/egi.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "69EF6D37A97CC23461855E9AB54DB6ED12CC5E360373C92DC1FA18EE68801E7C"
+    },
+    {
+      "Bytes": 3542,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/fix.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "2494A447B79E8F83D6B9B3B734CE17D4EB8C316A9C9CD4DB717E0E1F653384C3"
+    },
+    {
+      "Bytes": 155,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/flir.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "213676C2B0E29D7BEED49E0181294AD05F5788FA160747D8DEF9963A5CC2F062"
+    },
+    {
+      "Bytes": 152,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/fti.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "8DEEC55B88F99D67228E7FC57E1940BDC9551AB958923070AF29AFB4E9F69DB8"
+    },
+    {
+      "Bytes": 5262,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/fuel.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "B13402D93EF11CD1B4063CD8B18284ABF16E8AD78C02B68F62A43A4F401DFCB4"
+    },
+    {
+      "Bytes": 10021,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/lmt.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "A266DFBB5758B8FE9FA863CBC1F02C8612B505CB78318865F0A30268A3C00CF3"
+    },
+    {
+      "Bytes": 9562,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/main.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "AB91E57FA6687CE8E13FB9780C881BD7D9D79485E6917FB3A9D8D1616F173AEE"
+    },
+    {
+      "Bytes": 3375,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/manr.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "A3977DCA6AF662F7C4251D56D03B435F8ED0E31E9F49FDE391EB4DC8C3001733"
+    },
+    {
+      "Bytes": 5060,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/mark.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "6AEA5C166C4CB856A91F9D01584575EB07E0D21D3AB83C1874E00121707870C9"
+    },
+    {
+      "Bytes": 3732,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/menu.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "9395F6FD1A1AA7EF9283FAB23A683690F84944D5096277527C2E57E2C166EF7A"
+    },
+    {
+      "Bytes": 3091,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/mode.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "A7DF10F7E3B3FED13F9AAB41F7DB408075EDC24587BDD75E5542A70214604C17"
+    },
+    {
+      "Bytes": 12993,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/nav.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "97B2469D998C245760124BB7C23E03497D533BA262C24CAF5D15641A2526DB36"
+    },
+    {
+      "Bytes": 13159,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/navaids.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "2D32734B04F84BBBA28F80C7442AC7DAE61703ECDF1FA3443E71850F61264E9B"
+    },
+    {
+      "Bytes": 9550,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/oap.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "0FFBC45E61896FC05066B80D3C420DDAA0D8BE273C3E6297B34AAD72EC126650"
+    },
+    {
+      "Bytes": 155,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/para.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "BC7C702C31946BB82EBCC1955904C6BA75DC6FF17FB4752AA9346D09B8EEB002"
+    },
+    {
+      "Bytes": 2468,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/strm.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "76FB72CC3A0ECFB479035BCA7ED76A6AB3F9A17E999D859E0000DD4FA4DDC33D"
+    },
+    {
+      "Bytes": 867,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/tac.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "41AB0C3DC2E21901247EF190EB8872E99BD2D9678DC18E8283C293518C388DF9"
+    },
+    {
+      "Bytes": 7856,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/time.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "378B8059369EC1B91551F8DE66EB76B2D7690F0AD25E6A7D2E7722DD98B1CC0D"
+    },
+    {
+      "Bytes": 6537,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/tip.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "219EC56EBAA2B7E845E08D034AA8621CE13823DDE220FB675087FF388AA1144B"
+    },
+    {
+      "Bytes": 154,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/tkl.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "75D8661BEACD7F6FFE82F13BC112058BD14E9B344248E15B5778E03236BB9BDC"
+    },
+    {
+      "Bytes": 26931,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/ufcp.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "A78E1DE068C6CEB78FD608F05D8AFA217172AD9D44D2512D6A42D525CE8522D5"
+    },
+    {
+      "Bytes": 16921,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/ufcp_com1.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "6575F7D537A8CEB8400C9C79B5626FDF49903707E245F4CEE69D38642DC2A854"
+    },
+    {
+      "Bytes": 28978,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/ufcp_com2.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "0CD4A1CC403AE80ADE11C53C205D39906F9B3AE828B0A43FD9E2C6BFB7A16633"
+    },
+    {
+      "Bytes": 1710,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/vvvah.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "0BA314D706BEA5F138B381E764403AFC027380DA62DF9001388CA269AAAC0703"
+    },
+    {
+      "Bytes": 30973,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/wpt.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "D1A38A4FF6CBCDF49DD1E2EF75A6BC623188B6755CAA304E0B9A73200BB75F5A"
+    },
+    {
+      "Bytes": 4199,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/ws.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "C8037DBE629E44843D80600808EDB189D774791359ED015CB126B14221079063"
+    },
+    {
+      "Bytes": 8305,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Device/xpdr.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "8B09535A8DAD5D5D875BF11FA3C6FFD7269E5462C5AC772CEC6BF8B585D61DBB"
+    },
+    {
+      "Bytes": 768,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Indicator/UFCP_BASE.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "179656782AD66C777E0622A14925D28DB3C5DBF67B603FC3278392AFD0AF46DC"
+    },
+    {
+      "Bytes": 2797,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Indicator/UFCP_MAIN.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "FD2466605F3308127956E2376A045D510230E8A74AD9D2382FDDABC32ACB8B95"
+    },
+    {
+      "Bytes": 0,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Indicator/UFCP_OFF.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Bytes": 2555916,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/Resources/a29b_ded_font.dds",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "405B5C56F100D8A601731A66B12A7B8DD70826ED571D4A41A1581A07802F7BAD"
+    },
+    {
+      "Bytes": 900,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/UFCP_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "693D20F97680A45513777EEAC5E794EDCBF78A96A582DABA10ADEF690D86460D"
+    },
+    {
+      "Bytes": 220,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/UFCP_pageID_defs.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "3733DA505F4770CD071771BDBA1D1F21220E201E6D04385732AAA950A45F1B55"
+    },
+    {
+      "Bytes": 1799,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/UFCP_page_init.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "90BFB20E74405347608706BDC0BDFEBFDB23FBC6A2D0DDA316398F7DE662FE97"
+    },
+    {
+      "Bytes": 6948,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/emergency_checklists.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "E5F7B7F4631D8ADE107E1485E61ABCD68F10184B96A5BF9795450031B31F5997"
+    },
+    {
+      "Bytes": 10165,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/UFCP/materials.lua",
+      "Role": "donor_script_or_indicator_resource",
+      "SHA256": "DE7E6B3C1A5E3B272FCBD896732E50465A752A20374AFA36F68677CAA115BD4F"
+    },
+    {
+      "Bytes": 29143,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/command_defs.lua",
+      "Role": "donor_common",
+      "SHA256": "F23B75A92D10454B860DDD7A2DB373966FD95F7DCADE214F1DB231C18DFC0716"
+    },
+    {
+      "Bytes": 3280,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/devices.lua",
+      "Role": "donor_common",
+      "SHA256": "926FCBE036AC0B17E1AB6ED9DDA9D5B6ED58E6480212544CDF5A867C1B18A1D7"
+    },
+    {
+      "Bytes": 1699,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/dump.lua",
+      "Role": "donor_common",
+      "SHA256": "F29DB07271B99CD54AF2D8548676A57EF0F5F5CA46B18AD263D3A4EC7E732AF5"
+    },
+    {
+      "Bytes": 12924,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/fonts.lua",
+      "Role": "donor_common",
+      "SHA256": "9BAE4E21083F8518D9142D2447E33C8C2FF7F4DE64D0091AC98C56E11745338D"
+    },
+    {
+      "Bytes": 1893,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/functions.lua",
+      "Role": "donor_common",
+      "SHA256": "8C383CC756D5AAA92E0958D5B32C3688BAE9F8847F4B4F224E60C82D445C7A52"
+    },
+    {
+      "Bytes": 21115,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/materials.lua",
+      "Role": "donor_common",
+      "SHA256": "5E43F221D92F7B9D3B93D5E0F5D2CAA5767AA29DF6E78228A28368D37D57FC6D"
+    },
+    {
+      "Bytes": 46663,
+      "Path": "Avionics/F5EM/Cockpit/Scripts/utils.lua",
+      "Role": "donor_common",
+      "SHA256": "52FB23647017BC7020DF93200EF22DA1E51FB932199AE462F173FD0D20209E7A"
+    },
+    {
+      "Bytes": 4939,
+      "Path": "Avionics/F5EM/NOTICE",
+      "Role": "provenance_notice",
+      "SHA256": "98B8C765A13C3CF4D1FFDD2E9AFC45E130C81FDC39D9387D268B06B29B84490C"
+    },
+    {
+      "Bytes": 4508,
+      "Path": "Cockpit/scripts/Systems/electric_system.lua",
+      "Role": "host_reference_not_executed",
+      "SHA256": "A4E2B15306A39CE34DFB67DE5CB14F364A49A101E6DD5A618A49FB0C1B5D4552"
+    },
+    {
+      "Bytes": 3180,
+      "Path": "Cockpit/scripts/Systems/hydraulic_system.lua",
+      "Role": "host_reference_not_executed",
+      "SHA256": "8D6DC329E150B18E92A9714D42483142FD9A46D749B48AC9EA312DD10DC7BEFE"
+    },
+    {
+      "Bytes": 2339,
+      "Path": "Cockpit/scripts/Systems/start_panel.lua",
+      "Role": "host_reference_not_executed",
+      "SHA256": "CEA7D58103BFDE2ED4971C970E4F4EEE73B254F863B272B5096DA8629B45EE59"
+    },
+    {
+      "Bytes": 14170,
+      "Path": "Cockpit/scripts/clickabledata.lua",
+      "Role": "host_reference_not_executed",
+      "SHA256": "DBE79913AF675337B64D3F9ED18404FBBDDDEC74A441D6A7590B115C1CAC5478"
+    },
+    {
+      "Bytes": 8880,
+      "Path": "Cockpit/scripts/command_defs.lua",
+      "Role": "host_reference_not_executed",
+      "SHA256": "1DD3F861F879CD0744DE2CC54271C1A5EC50036285F5C0AD77642FFB5CED839A"
+    },
+    {
+      "Bytes": 20704,
+      "Path": "Cockpit/scripts/mainpanel_init.lua",
+      "Role": "host_reference_not_executed",
+      "SHA256": "FAF3968A3959594F2160F34F0EF613022B0C576F5BEC845C55F12E4E2BB6ACDB"
+    },
+    {
+      "Bytes": 1069,
+      "Path": "LICENSE",
+      "Role": "provenance_notice",
+      "SHA256": "3ABA57A2D293A4E43AD1A02CA46A6FC693A65B6FA1712F1599394919D9895B5E"
+    }
+  ],
+  "Schema": "AMXDENIS_SOURCE_IMPORT_1",
+  "SourceRevision": "c60fab3ce11e273e76995ff95494fd2be1db2109",
+  "SourceSnapshotId": "Systems-REV07-20260917T224209Z-da29bfd4",
+  "SourceSnapshotSHA256": "96AB0278866E3639CD798B8C433A3F771F4D0F094465DD0BB758903FEB63FF0D"
+}

@@ -1,0 +1,51 @@
+AMXDENIS POWERSHELL SYNTAX: 12/12 files parsed
+AMXDENIS INTEGRATION GUARDS: 35/35 checks passed
+AMXDENIS TEXTURE GUARDS: 36/36 checks passed
+AMXDENIS VIEWER GUARDS: 27/27 checks passed
+AMXDENIS ANCHOR GUARDS: 12/12 checks passed
+test_cyclic_connector_ancestry_is_rejected (__main__.InventoryTests.test_cyclic_connector_ancestry_is_rejected) ... ok
+test_existing_report_is_not_overwritten (__main__.InventoryTests.test_existing_report_is_not_overwritten) ... ok
+test_identity_checked_before_loading_parser (__main__.InventoryTests.test_identity_checked_before_loading_parser) ... ok
+test_parser_diagnostic_is_not_silently_accepted (__main__.InventoryTests.test_parser_diagnostic_is_not_silently_accepted) ... ok
+test_parser_recovery_is_rejected (__main__.InventoryTests.test_parser_recovery_is_rejected) ... ok
+test_report_cannot_be_written_beside_model (__main__.InventoryTests.test_report_cannot_be_written_beside_model) ... ok
+test_structured_inventory_does_not_grant_native_or_permission_approval (__main__.InventoryTests.test_structured_inventory_does_not_grant_native_or_permission_approval) ... ok
+test_unconsumed_bytes_are_rejected (__main__.InventoryTests.test_unconsumed_bytes_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.036s
+
+OK
+test_changed_immutable_reference_rejected (__main__.BuilderTests.test_changed_immutable_reference_rejected) ... ok
+test_copy_keeps_source_and_hash (__main__.BuilderTests.test_copy_keeps_source_and_hash) ... ok
+test_copy_refuses_changed_input_before_writing (__main__.BuilderTests.test_copy_refuses_changed_input_before_writing) ... ok
+test_existing_copy_not_overwritten (__main__.BuilderTests.test_existing_copy_not_overwritten) ... ok
+test_existing_json_not_overwritten (__main__.BuilderTests.test_existing_json_not_overwritten) ... ok
+test_imported_selection_has_no_external_assets (__main__.BuilderTests.test_imported_selection_has_no_external_assets) ... ok
+test_installations_and_saved_games_rejected (__main__.BuilderTests.test_installations_and_saved_games_rejected) ... ok
+test_linked_ancestor_rejected_before_resolution (__main__.BuilderTests.test_linked_ancestor_rejected_before_resolution) ... ok
+test_literal_order_and_escaping (__main__.BuilderTests.test_literal_order_and_escaping) ... ok
+test_manifest_cannot_silently_change_selection (__main__.BuilderTests.test_manifest_cannot_silently_change_selection) ... ok
+test_output_must_be_new_and_inside_candidate_area (__main__.BuilderTests.test_output_must_be_new_and_inside_candidate_area) ... ok
+test_path_traversal_rejected (__main__.BuilderTests.test_path_traversal_rejected) ... ok
+test_reference_cannot_authorize_donor_entry (__main__.BuilderTests.test_reference_cannot_authorize_donor_entry) ... ok
+test_safe_relative_path (__main__.BuilderTests.test_safe_relative_path) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.317s
+
+OK
+AMXDENIS INFRASTRUCTURE: BANCADA (no cockpit, Lua runtime or native acceptance implied)
+AMXDENIS_SYNTAX_OK files=219
+AMXDENIS REGISTRATION: 171/171 checks passed
+cmfd_right: load
+CMFD2: load end
+ufcs: load
+ufcs: load end
+cmfd_right: postinit start
+environ: postinit end
+ufcs: postinit start
+ufcs: postinit end
+AMXDENIS RUNTIME: 1596/1596 checks passed
+AMXDENIS INDICATORS: 22008/22008 checks passed; pages=69; resources=6
+AMXDENIS_CANDIDATE_BENCH_OK|id=952FB0BAE7527A0FB744CCEDB6BDE3919BCB92A8DC1136F2809821DFA95B1A34|native=false|C:\Users\Alexandre\AppData\Local\AMXDENIS-Integration\Runs\Systems-REV07-20260917T224209Z-da29bfd4\Bench-H
