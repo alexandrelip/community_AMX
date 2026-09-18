@@ -76,6 +76,78 @@ class BuilderTests(unittest.TestCase):
         self.assertEqual(builder.lua_literal({"z": 2, "a": 1}), '{["a"]=1,["z"]=2}')
         self.assertEqual(builder.lua_literal('a"b\n'), '"a\\"b\\n"')
 
+    def original_fixture(self):
+        paths = ("README.md", "LICENSE", "Shapes/model.edm", "Entry/AMXT_M.lua", "Entry/Data/AMX_SFM.lua")
+        rows = []
+        for name in paths:
+            path = self.root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(b"original\r\n")
+            rows.append({"Path": name, "SHA256": builder.sha(path)})
+        original = {"Schema": "AMXDENIS_ORIGINAL_1", "Files": rows}
+        readme = self.root / "README.md"
+        readme.write_bytes(b"authorized documentation\r\n")
+        original["AuthorizedDocumentationRevisions"] = [{
+            "Path": "README.md", "OriginalSHA256": rows[0]["SHA256"],
+            "SHA256": builder.sha(readme), "Commit": "a" * 40,
+        }]
+        return original
+
+    def test_authorized_readme_keeps_historical_baseline(self):
+        original = self.original_fixture()
+        before = json.dumps(original, sort_keys=True)
+        verified = builder.verify_original(self.root, original)
+        self.assertEqual(verified["README.md"], builder.sha(self.root / "README.md"))
+        self.assertNotEqual(verified["README.md"], original["Files"][0]["SHA256"])
+        self.assertEqual(json.dumps(original, sort_keys=True), before)
+        (self.root / "README.md").write_bytes(b"original\r\n")
+        self.assertEqual(builder.verify_original(self.root, original)["README.md"], original["Files"][0]["SHA256"])
+        del original["AuthorizedDocumentationRevisions"]
+        self.assertEqual(builder.verify_original(self.root, original)["README.md"], original["Files"][0]["SHA256"])
+
+    def test_unapproved_readme_revision_rejected(self):
+        original = self.original_fixture()
+        (self.root / "README.md").write_bytes(b"another undocumented revision")
+        with self.assertRaisesRegex(ValueError, "Protected original changed: README.md"):
+            builder.verify_original(self.root, original)
+
+    def test_documentation_revision_cannot_authorize_other_paths(self):
+        original = self.original_fixture()
+        for name in ("LICENSE", "Shapes/model.edm", "Entry/AMXT_M.lua", "Entry/Data/AMX_SFM.lua",
+                     "Other.md", "readme.md", "./README.md", "../README.md"):
+            original["AuthorizedDocumentationRevisions"][0]["Path"] = name
+            with self.subTest(path=name), self.assertRaisesRegex(ValueError, "one exact README.md"):
+                builder.verify_original(self.root, original)
+
+    def test_protected_assets_still_rejected_with_documentation_revision(self):
+        original = self.original_fixture()
+        for name in ("LICENSE", "Shapes/model.edm", "Entry/AMXT_M.lua", "Entry/Data/AMX_SFM.lua"):
+            path = self.root / name
+            path.write_bytes(b"unexpected physical or licensing change")
+            with self.subTest(path=name), self.assertRaisesRegex(ValueError, "Protected original changed"):
+                builder.verify_original(self.root, original)
+            path.write_bytes(b"original\r\n")
+
+    def test_documentation_revision_identity_must_be_exact(self):
+        original = self.original_fixture()
+        revision = original["AuthorizedDocumentationRevisions"][0].copy()
+        invalid = [None, {}, [revision, revision], [{**revision, "OriginalSHA256": "0" * 64}],
+                   [{**revision, "SHA256": "not-a-hash"}], [{**revision, "Commit": "unrecorded"}],
+                   [{**revision, "Extra": "not supported"}]]
+        for revisions in invalid:
+            original["AuthorizedDocumentationRevisions"] = revisions
+            with self.subTest(revisions=revisions), self.assertRaises(ValueError):
+                builder.verify_original(self.root, original)
+
+    def test_authorized_readme_is_pinned_until_copy(self):
+        original = self.original_fixture()
+        verified = builder.verify_original(self.root, original)
+        source, target = self.root / "README.md", self.root / "candidate/README.md"
+        source.write_bytes(b"changed after verification")
+        with self.assertRaisesRegex(ValueError, "Source identity changed"):
+            builder.copy_verified(source, target, verified["README.md"])
+        self.assertFalse(target.exists())
+
     def test_imported_selection_has_no_external_assets(self):
         manifest = builder.verify_reference(ROOT / builder.REFERENCE)
         self.assertFalse(manifest["ExternalModelsImported"])

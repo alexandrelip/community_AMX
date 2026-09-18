@@ -289,6 +289,40 @@ def verify_reference(reference):
     return imported
 
 
+def verify_original(root, original):
+    if original.get("Schema") != "AMXDENIS_ORIGINAL_1":
+        raise ValueError("Unexpected original baseline schema")
+    baseline, seen = {}, set()
+    for row in original["Files"]:
+        name = row["Path"]
+        if name.replace("\\", "/").casefold() in seen:
+            raise ValueError(f"Duplicate protected original: {name}")
+        seen.add(name.replace("\\", "/").casefold())
+        baseline[name] = row["SHA256"]
+    revisions = original.get("AuthorizedDocumentationRevisions", [])
+    if not isinstance(revisions, list):
+        raise ValueError("Invalid documentation revision list")
+    authorized = {}
+    for revision in revisions:
+        if not isinstance(revision, dict) or set(revision) != {"Path", "OriginalSHA256", "SHA256", "Commit"}:
+            raise ValueError("Invalid documentation revision record")
+        name = revision["Path"]
+        if name != "README.md" or name in authorized or name not in baseline:
+            raise ValueError("Documentation revision is limited to one exact README.md entry")
+        if revision["OriginalSHA256"] != baseline[name] or not re.fullmatch(
+            r"[A-F0-9]{64}", str(revision["SHA256"])
+        ) or not re.fullmatch(r"[a-f0-9]{40}", str(revision["Commit"])):
+            raise ValueError("Documentation revision identity is invalid")
+        authorized[name] = revision["SHA256"]
+    verified = {}
+    for name, digest in baseline.items():
+        actual = sha(within(root, name))
+        if actual not in (digest, authorized.get(name)):
+            raise ValueError(f"Protected original changed: {name}")
+        verified[name] = actual
+    return verified
+
+
 def build(candidate, lua, mechanism_probe=None):
     if mechanism_probe not in (None, "without-mechanimations", "duplicate-canopy"):
         raise ValueError("Unsupported mechanism descriptor probe")
@@ -325,9 +359,9 @@ def build(candidate, lua, mechanism_probe=None):
             raise ValueError("Incomplete texture set has no matching user-approved visual baseline")
     for row in imported["Files"]:
         track(REFERENCE / row["Path"], row["SHA256"])
+    verified_original = verify_original(ROOT, original)
     for row in original["Files"]:
-        if sha(within(ROOT, row["Path"])) != row["SHA256"]:
-            raise ValueError(f"Protected original changed: {row['Path']}")
+        track(row["Path"], verified_original[row["Path"]])
         if row["Path"] == "entry.lua" or row["Path"].startswith("Entry/") or row["Path"] == "LICENSE":
             track(Path("ci/fixtures/original") / row["Path"], row["SHA256"])
     candidates = {row["Path"] for row in original["Files"]}

@@ -1,0 +1,151 @@
+{
+  "Schema": "AMXDENIS_RECOVERY_R01_1",
+  "RecordedUtc": "2026-09-18T18:10:40.8013491Z",
+  "Milestone": "R01",
+  "Passed": true,
+  "ReproducedError": "Protected original changed: README.md",
+  "FailedReproductionCreatedCandidate": false,
+  "Candidates": [
+    "AMXT_M-REV07-BC-R01-A",
+    "AMXT_M-REV07-BD-R01-B"
+  ],
+  "BuildId": "06EAF4EFC87361799E03FEA36786BC1E2E458F39FA042701DC4133749DFAF2E2",
+  "Files": 394,
+  "AllCandidateHashesCompared": true,
+  "CandidateManifestSHA256": "5D3F031355B6C18F2091E0727976ECBAAC66BDCEBFBAFCA19E970A3C2E6C5787",
+  "ManifestsByteIdentical": true,
+  "HistoricalFileRecordsUnchanged": true,
+  "HistoricalRecordCount": 84,
+  "UnchangedOriginalFiles": 83,
+  "AuthorizedDocumentationRevision": {
+    "Path": "README.md",
+    "OriginalSHA256": "4B3083B554686DFDB9F048F36C1B288160A3A96599F45612DBFB1E44FF76ADFF",
+    "SHA256": "6A1DF795F72C80E3CFA3922F9D609378B6489722439E32A354D826A98EC3B324",
+    "Commit": "08d5a8e391234bb68835f857aa8d26cd11ac186c"
+  },
+  "CurrentReadmeInInputsAndOutputs": true,
+  "Infrastructure": {
+    "PowerShell": 20,
+    "IntegrationGuards": 43,
+    "TextureGuards": 36,
+    "ViewerGuards": 27,
+    "AnchorGuards": 12,
+    "PythonInventory": 8,
+    "PythonBuilder": 21,
+    "NativeObserver": 473
+  },
+  "Bench": {
+    "Schema": "AMXDENIS_CANDIDATE_BENCH_1",
+    "BuildId": "06EAF4EFC87361799E03FEA36786BC1E2E458F39FA042701DC4133749DFAF2E2",
+    "State": "BANCADA",
+    "Passed": true,
+    "Tests": [
+      {
+        "Name": "registration",
+        "Checks": 529,
+        "Passed": true,
+        "TestSHA256": "9948F006975C11FAAC13C740BC87C30E1A5CF84C7E95FD3BE19552123D6697EA",
+        "OutputSHA256": "3A85958937052275288E11F5FF2691CE68B67EA8B24286DC5DB2E432857906E2"
+      },
+      {
+        "Name": "runtime",
+        "Checks": 1793,
+        "Passed": true,
+        "TestSHA256": "903EC0A57657AB89DADDADEB946EE1D6E6238EB434B40218793D3E1D6B8A484D",
+        "OutputSHA256": "DD0C71FA842EBA88AA3D07167BB13990624EAAD06897510BFFE31A7D45E869E1"
+      },
+      {
+        "Name": "indicators",
+        "Checks": 22743,
+        "Passed": true,
+        "TestSHA256": "1EC542757E080D6F676A3794B58824C7EBE6602B5721C1C4C90FD6984C6A3D67",
+        "OutputSHA256": "8AB068702E907EC1F68CD96C5A04B725806BBEC4E472AD928BADB7BAD2D9B864"
+      }
+    ],
+    "LuaFiles": 221,
+    "CandidateManifestSHA256": "5D3F031355B6C18F2091E0727976ECBAAC66BDCEBFBAFCA19E970A3C2E6C5787",
+    "InputSetSHA256": "D11A5973C03AB7788898AE0E74B949774501F93494CB85F27BE90650CE738044",
+    "LuaVersion": "5.1",
+    "LuaSHA256": "343E514A4B884659436C33B9B227AA8EA7407A6088F6B7BBB094176CA0666115",
+    "RunnerSHA256": "01F9B297253C248B30868BD329A0D6AC9F74B6A7EEA193A7924EB1FBE46F7247",
+    "CandidateFilesUnchanged": true,
+    "RepositoryInputsUnchanged": true,
+    "DescriptorProbe": "none",
+    "ExperimentalOnly": false,
+    "NativeValidated": false,
+    "NativeMissionStarted": false,
+    "RecordedUtc": "2026-09-18T18:10:02.1433553Z"
+  },
+  "BenchSHA256": "C89D244751E21670A4C5141716269257F11E85EB45A7585BEC9038EB23FC0745",
+  "SourceHashes": [
+    {
+      "Path": "Tools/build_amxdenis.py",
+      "SHA256": "6BCE47FBCB76E218BA62FED2FBED19C61A4866A39EAAF932C3BE491D5575CCBE"
+    },
+    {
+      "Path": "Config/AMXDENIS_ORIGINAL.json",
+      "SHA256": "84E2242A4659E2D8AF956D22876416CC5C387E9DCF134023038876068082AC9A"
+    },
+    {
+      "Path": "ci/tests/test_candidate_builder.py",
+      "SHA256": "9582DD31F238979E1B4E88A725E408C685F69F4B51F32A03865CDC4E948697C5"
+    }
+  ],
+  "DescriptorProbe": "none",
+  "ExperimentalOnly": false,
+  "NativeAcceptanceGranted": false,
+  "NativeMissionStarted": false,
+  "NormalProfileInstalled": false,
+  "FinalRevalidation": {
+    "Passed": true,
+    "Candidates": [
+      "AMXT_M-REV07-BH-RecoveryBaseline",
+      "AMXT_M-REV07-BI-RecoveryRebuild"
+    ],
+    "BuildId": "06EAF4EFC87361799E03FEA36786BC1E2E458F39FA042701DC4133749DFAF2E2",
+    "Files": 394,
+    "AllCandidateHashesCompared": true,
+    "ManifestsByteIdentical": true,
+    "CurrentInputHashesVerified": true,
+    "CandidateManifestSHA256": "E327B80DD5D5295E96B982913DF39B818CEAA3B301D76B4B12025FA1C0EF0472",
+    "InputSetSHA256": "07A31D1665233FDF06D2FC7E8FB9D3E006974DEEF117FC733D4EC1F2EF05E6FE",
+    "BenchRun": "Bench-REV07-BH-RecoveryBaseline",
+    "BenchSHA256": "BF7ECED8285BE3946076AEE5812BA2D5F48C59D44DCE41347D2FE065DE416311",
+    "IntegrationGuards": 48,
+    "PythonBuilderTests": 21,
+    "NativeObserverChecks": 473,
+    "RegistrationChecks": 529,
+    "RuntimeChecks": 1793,
+    "IndicatorChecks": 22743,
+    "DescriptorProbe": "none",
+    "ExperimentalOnly": false,
+    "OwnedDcsProcesses": 0,
+    "TemporaryCredentials": 0,
+    "SourceHashes": [
+      {
+        "Path": "Tools/build_amxdenis.py",
+        "SHA256": "4AD4E148817ADBD2AB194EE6F0DC2560CA18169C20380E604BEBBC717596B0CE"
+      },
+      {
+        "Path": "Tools/build_amxdenis.lua",
+        "SHA256": "68DFD36D069A0894BEBF3F7E3B21650F280EFF33ACE620026A36D4DD09D50222"
+      },
+      {
+        "Path": "Config/AMXDENIS_ORIGINAL.json",
+        "SHA256": "84E2242A4659E2D8AF956D22876416CC5C387E9DCF134023038876068082AC9A"
+      },
+      {
+        "Path": "ci/tests/test_candidate_builder.py",
+        "SHA256": "9582DD31F238979E1B4E88A725E408C685F69F4B51F32A03865CDC4E948697C5"
+      },
+      {
+        "Path": "Tools/Test-AMXDENISNative.ps1",
+        "SHA256": "CB20BF17F329BAABB9373A3D6142762659B0117B929F2703F3F6DCC6B552DFF7"
+      },
+      {
+        "Path": "ci/tests/test_integration.ps1",
+        "SHA256": "6B1FF0DAB65059EC68826B1EB05B05E3173AE72A003F45F7625EB42417AEECEB"
+      }
+    ]
+  }
+}

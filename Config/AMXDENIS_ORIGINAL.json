@@ -1,4 +1,12 @@
 {
+  "AuthorizedDocumentationRevisions": [
+    {
+      "Path": "README.md",
+      "OriginalSHA256": "4B3083B554686DFDB9F048F36C1B288160A3A96599F45612DBFB1E44FF76ADFF",
+      "SHA256": "6A1DF795F72C80E3CFA3922F9D609378B6489722439E32A354D826A98EC3B324",
+      "Commit": "08d5a8e391234bb68835f857aa8d26cd11ac186c"
+    }
+  ],
   "Engines": 1,
   "Files": [
     {
