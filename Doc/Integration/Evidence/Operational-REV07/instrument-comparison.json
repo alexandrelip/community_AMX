@@ -1,0 +1,212 @@
+{
+  "Schema": "AMXDENIS_OPERATIONAL_CROSS_API_1",
+  "Scope": "Descriptive differences between cockpit producers and Export in every archived AirHot STATE with VALID=1. Same simulator sources, asynchronous sampling; not independent physical calibration. Radar altitude is compared descriptively with vertical AGL, not asserted equivalent.",
+  "PhysicalCalibrationApproved": false,
+  "Runs": [
+    {
+      "Run": "W-Air",
+      "NativeLogSHA256": "E8BEB2B3F379FE5FDFC156ABC16966585F56F78221EB69E3EEC012A7D79F3A91",
+      "Metrics": {
+        "IAS_knots": {
+          "ComparedSamples": 340,
+          "MaxAbsDifference": 4.99513760132686E-07,
+          "AtModelTime": 10.655
+        },
+        "Altitude_ft": {
+          "ComparedSamples": 340,
+          "MaxAbsDifference": 112.05397928190541,
+          "AtModelTime": 32.655
+        },
+        "RadarAltitude_vs_AGL_ft": {
+          "ComparedSamples": 340,
+          "MaxAbsDifference": 1915.1710652270003,
+          "AtModelTime": 21.554
+        },
+        "VerticalSpeed_ftmin": {
+          "ComparedSamples": 340,
+          "MaxAbsDifference": 144.28637166914325,
+          "AtModelTime": 19.254
+        },
+        "Pitch_rad": {
+          "ComparedSamples": 340,
+          "MaxAbsDifference": 0.009607833753585815,
+          "AtModelTime": 19.254
+        },
+        "Roll_rad": {
+          "ComparedSamples": 340,
+          "MaxAbsDifference": 0.01387359869766236,
+          "AtModelTime": 8.326
+        },
+        "Heading_deg": {
+          "ComparedSamples": 340,
+          "MaxAbsDifference": 1.051119397743605E-05,
+          "AtModelTime": 29.941
+        }
+      }
+    },
+    {
+      "Run": "X-AirIsolated",
+      "NativeLogSHA256": "502DF97E77994C5B04FEAC6D722CDCD6F44DD9DCF6250B46418447B8B416935E",
+      "Metrics": {
+        "IAS_knots": {
+          "ComparedSamples": 607,
+          "MaxAbsDifference": 4.995190465706401E-07,
+          "AtModelTime": 56.805
+        },
+        "Altitude_ft": {
+          "ComparedSamples": 607,
+          "MaxAbsDifference": 130.3509091084161,
+          "AtModelTime": 103.993
+        },
+        "RadarAltitude_vs_AGL_ft": {
+          "ComparedSamples": 607,
+          "MaxAbsDifference": 3999.323006553146,
+          "AtModelTime": 46.191
+        },
+        "VerticalSpeed_ftmin": {
+          "ComparedSamples": 607,
+          "MaxAbsDifference": 90.46614674893135,
+          "AtModelTime": 30.134
+        },
+        "Pitch_rad": {
+          "ComparedSamples": 607,
+          "MaxAbsDifference": 0.00746472614192964,
+          "AtModelTime": 29.719
+        },
+        "Roll_rad": {
+          "ComparedSamples": 607,
+          "MaxAbsDifference": 0.01209444655609132,
+          "AtModelTime": 11.633
+        },
+        "Heading_deg": {
+          "ComparedSamples": 607,
+          "MaxAbsDifference": 1.0517127066123066E-05,
+          "AtModelTime": 17.091
+        }
+      }
+    },
+    {
+      "Run": "Y-BeforeFrame",
+      "NativeLogSHA256": "0BFFB505C2D86BBF26CAD29A3947FF86F85CC3C8B867110C37A6ADFA46930068",
+      "Metrics": {
+        "IAS_knots": {
+          "ComparedSamples": 235,
+          "MaxAbsDifference": 4.979074219590984E-07,
+          "AtModelTime": 6.445
+        },
+        "Altitude_ft": {
+          "ComparedSamples": 235,
+          "MaxAbsDifference": 114.24147282169906,
+          "AtModelTime": 12.259
+        },
+        "RadarAltitude_vs_AGL_ft": {
+          "ComparedSamples": 235,
+          "MaxAbsDifference": 3105.8972778514217,
+          "AtModelTime": 11.631
+        },
+        "VerticalSpeed_ftmin": {
+          "ComparedSamples": 235,
+          "MaxAbsDifference": 32.98286363867919,
+          "AtModelTime": 44.53
+        },
+        "Pitch_rad": {
+          "ComparedSamples": 235,
+          "MaxAbsDifference": 0.0012069081153869565,
+          "AtModelTime": 44.116
+        },
+        "Roll_rad": {
+          "ComparedSamples": 235,
+          "MaxAbsDifference": 0.0014327688369750735,
+          "AtModelTime": 9.145
+        },
+        "Heading_deg": {
+          "ComparedSamples": 235,
+          "MaxAbsDifference": 1.0515886742723524E-05,
+          "AtModelTime": 41.402
+        }
+      }
+    },
+    {
+      "Run": "AA-AirNeutral",
+      "NativeLogSHA256": "175474F7A82181E8A8A1F10560EE341F75428DF8DCD09027C78CA848FC8E3AC7",
+      "Metrics": {
+        "IAS_knots": {
+          "ComparedSamples": 229,
+          "MaxAbsDifference": 4.999608904654451E-07,
+          "AtModelTime": 17.802
+        },
+        "Altitude_ft": {
+          "ComparedSamples": 229,
+          "MaxAbsDifference": 126.69680912156946,
+          "AtModelTime": 47.759
+        },
+        "RadarAltitude_vs_AGL_ft": {
+          "ComparedSamples": 229,
+          "MaxAbsDifference": 1.5627241239126306,
+          "AtModelTime": 29.587
+        },
+        "VerticalSpeed_ftmin": {
+          "ComparedSamples": 229,
+          "MaxAbsDifference": 11.62377380817992,
+          "AtModelTime": 1.03
+        },
+        "Pitch_rad": {
+          "ComparedSamples": 229,
+          "MaxAbsDifference": 0.0011282503194808974,
+          "AtModelTime": 0.401
+        },
+        "Roll_rad": {
+          "ComparedSamples": 229,
+          "MaxAbsDifference": 0.0013104371638298015,
+          "AtModelTime": 0.83
+        },
+        "Heading_deg": {
+          "ComparedSamples": 229,
+          "MaxAbsDifference": 1.0514704172237543E-05,
+          "AtModelTime": 20.959
+        }
+      }
+    },
+    {
+      "Run": "AB-GearDefaultKey",
+      "NativeLogSHA256": "9C01848136858F78AE3AD4B96B2B95F0883D962466C56C1414A2CC7DDD7E2067",
+      "Metrics": {
+        "IAS_knots": {
+          "ComparedSamples": 125,
+          "MaxAbsDifference": 4.934943547141302E-07,
+          "AtModelTime": 2.944
+        },
+        "Altitude_ft": {
+          "ComparedSamples": 125,
+          "MaxAbsDifference": 114.2022238672871,
+          "AtModelTime": 25.945
+        },
+        "RadarAltitude_vs_AGL_ft": {
+          "ComparedSamples": 125,
+          "MaxAbsDifference": 0.860259587489054,
+          "AtModelTime": 25.116
+        },
+        "VerticalSpeed_ftmin": {
+          "ComparedSamples": 125,
+          "MaxAbsDifference": 11.971616780323814,
+          "AtModelTime": 1.03
+        },
+        "Pitch_rad": {
+          "ComparedSamples": 125,
+          "MaxAbsDifference": 0.0011269098753929202,
+          "AtModelTime": 0.401
+        },
+        "Roll_rad": {
+          "ComparedSamples": 125,
+          "MaxAbsDifference": 0.0013117955739498158,
+          "AtModelTime": 0.829
+        },
+        "Heading_deg": {
+          "ComparedSamples": 125,
+          "MaxAbsDifference": 1.0517777127461159E-05,
+          "AtModelTime": 20.073
+        }
+      }
+    }
+  ]
+}

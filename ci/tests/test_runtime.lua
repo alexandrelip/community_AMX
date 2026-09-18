@@ -20,21 +20,71 @@ local function controls_environment()
     return env
 end
 local control_data=assert(loadfile(scripts.."Controls/data.lua"))()
+local hydraulics_source=content(scripts.."Host/hydraulics.lua")
+check(hydraulics_source:find("local low_pressure_bar = 93",1,true) and
+    hydraulics_source:find("pressure <= low_pressure_bar",1,true),
+    "modelled hydraulic caution uses the documented 93 bar threshold")
 local route_by_name,route_ids={},{}
 for _, spec in ipairs(control_data.controls) do
     check(not route_by_name[spec.name],"unique command name")
     route_by_name[spec.name]=spec
     check(spec.owner~=control_data.device,"router never dispatches to itself")
     check(not spec.physical_mouse_validated,"bench never approves physical mouse")
+    check(spec.id>3000 and spec.id<4000,"pilot command stays inside native cockpit command range")
     check(not route_ids[spec.id],"unique pilot routing ID")
     route_ids[spec.id]=true
-    if spec.axis_id then check(not route_ids[spec.axis_id],"axis ID differs from key IDs");route_ids[spec.axis_id]=true end
+    if spec.axis_id then
+        check(spec.axis_id>3000 and spec.axis_id<4000,"pilot axis stays inside native cockpit command range")
+        check(not route_ids[spec.axis_id],"axis ID differs from key IDs");route_ids[spec.axis_id]=true
+    end
 end
 check(#control_data.controls>100,"complete pilot command catalog")
 local geometry=assert(loadfile(scripts.."Controls/geometry.lua"))()
 check(geometry.indicators.ICP.connector_triple[1]=="PTR-UFC-CENTER002","REV07 dedicated ICP anchors used")
 check(geometry.indicators.HUD.connector_triple[1]=="FP_LMFD_Center","ambiguous HUD names never used")
 check(not geometry.native_validated and not geometry.model_modified,"static bindings keep honest state")
+
+do
+    local model=assert(loadfile(scripts.."Host/eicas_groups.lua"))()
+    local values={ELEC_P1=1,AMX_AVIONICS_MASTER=1}
+    local function handle(name)
+        return {get=function()return values[name]or 0 end,set=function(_,value)values[name]=value end}
+    end
+    local update=model.new(handle)
+    update()
+    check(#model.groups==15,"EICAS has the fifteen agreed groups")
+    for _,group in ipairs(model.groups)do
+        check(values["AMXDENIS_EICAS_"..group.key.."ACTIVE"]==nil,"group parameters use explicit separators")
+        check(values["AMXDENIS_EICAS_"..group.key.."_COMPLETE"]==0,"partial detector coverage never claims a healthy complete system")
+        check(values["AMXDENIS_EICAS_"..group.key.."_STATUS"]=="---","unavailable conditions are not displayed as healthy zeros")
+    end
+    values.AMX_ALERT_AMX_ELEC_GEN_L_AVAILABLE_VALID=1
+    values.AMX_ALERT_AMX_ELEC_GEN_R_AVAILABLE_VALID=1
+    values.EICAS_ERROR_LEFT_GEN=1;values.EICAS_ERROR_RIGHT_GEN=1;update()
+    check(values.AMXDENIS_EICAS_ELEC_ORIGINS=="GEN 1 / GEN 2" and values.AMXDENIS_EICAS_ELEC_SEVERITY==2,
+        "group preserves both generator origins")
+    values.EICAS_ERROR_LEFT_GEN=2;values.EICAS_ERROR_RIGHT_GEN=2;update()
+    check(values.AMXDENIS_EICAS_ELEC_ACTIVE==1 and values.AMXDENIS_EICAS_ELEC_ACK==1,"acknowledgement does not clear the group")
+    values.EICAS_ERROR_LEFT_GEN=0;update()
+    check(values.AMXDENIS_EICAS_ELEC_ORIGINS=="GEN 2" and values.AMXDENIS_EICAS_ELEC_ACTIVE==1,"remaining cause keeps the group active")
+    values.AMX_ALERT_AMX_ELEC_GEN_R_AVAILABLE_VALID=0;values.EICAS_ERROR_RIGHT_GEN=0;update()
+    check(values.AMXDENIS_EICAS_ELEC_ORIGINS=="GEN 2?" and values.AMXDENIS_EICAS_ELEC_VALID==0 and
+        values.AMXDENIS_EICAS_ELEC_ACTIVE==1,"lost data cannot falsely resolve an active cause")
+    values.ELEC_P1=0;update()
+    check(values.AMXDENIS_EICAS_ELEC_ACTIVE==1 and values.AMXDENIS_EICAS_ELEC_VALID==0,"power loss retains causes but invalidates live observation")
+    values.ELEC_P1=1;values.AMX_ALERT_AMX_ELEC_GEN_R_AVAILABLE_VALID=1;update()
+    check(values.AMXDENIS_EICAS_ELEC_ACTIVE==0 and values.AMXDENIS_EICAS_ELEC_ORIGINS=="","last confirmed cause clears the group")
+    values.AMX_FUEL_BINGO_ACTIVE=1;values.AMX_FUEL_BINGO_VALID=1;update()
+    check(values.AMXDENIS_EICAS_FUEL_LO_ACTIVE==0 and values.AMXDENIS_EICAS_FUEL_LO_VALID==0,"BINGO does not impersonate a FUEL LO sensor")
+    local mixed=model.new(handle,{{key="FIXTURE",label="FIXTURE",sources={
+        {name="CAUTION",state="fixture_caution",valid="fixture_valid",severity=2},
+        {name="WARNING",state="fixture_warning",valid="fixture_valid",severity=3}}}})
+    values.fixture_valid=1;values.fixture_caution=1;values.fixture_warning=1;mixed()
+    check(values.AMXDENIS_EICAS_FIXTURE_SEVERITY==3 and values.AMXDENIS_EICAS_FIXTURE_ORIGINS=="CAUTION / WARNING",
+        "highest active severity wins without losing lesser causes")
+    values.fixture_warning=0;mixed()
+    check(values.AMXDENIS_EICAS_FIXTURE_ACTIVE==1 and values.AMXDENIS_EICAS_FIXTURE_SEVERITY==2,"resolving highest severity retains lower active cause")
+end
 
 local function simulation(birth)
     local sim={values={},envs={},devices={},sent={},now=100,birth=birth,log={},rpm=0,fuel=2550,wow=1,canopy=0,
@@ -136,6 +186,20 @@ local function simulation(birth)
     return sim
 end
 
+do
+    local sim=simulation("GROUND_COLD")
+    sim.sensors.getUnlistedEngineSensor=function()error("Enumeration must not invoke unknown getters")end
+    sim.create(67,"Host/bridge.lua").post_initialize()
+    check(sim.values.AMXDENIS_SENSOR_METHODS:find("getUnlistedEngineSensor",1,true) and
+        sim.values.AMXDENIS_SENSOR_METHODS_VALID==1 and sim.values.AMXDENIS_SENSOR_METHOD_COUNT>0,
+        "unknown getter names are discoverable without being called")
+    local missing=simulation("GROUND_COLD")
+    missing.sensors=nil
+    missing.create(67,"Host/bridge.lua").post_initialize()
+    check(missing.values.AMXDENIS_SENSOR_METHODS=="" and missing.values.AMXDENIS_SENSOR_METHODS_VALID==0 and
+        missing.values.AMXDENIS_SENSOR_METHOD_COUNT==0,"unavailable sensor API does not stop the cockpit bridge")
+end
+
 for _, birth in ipairs({"GROUND_COLD","GROUND_HOT","AIR_HOT","UNKNOWN"}) do
     local sim=simulation(birth)
     local ids=controls_environment().devices
@@ -149,8 +213,17 @@ for _, birth in ipairs({"GROUND_COLD","GROUND_HOT","AIR_HOT","UNKNOWN"}) do
     check(sim.values.ELEC_P1==(hot and 1 or 0),"birth-state battery supply")
     check(sim.values.AMX_AVIONICS_MASTER==(hot and 1 or 0),"birth-state avionics master")
     check(#sim.sent==0,"initialization does not send flight commands")
+    check(sim.values.AMXDENIS_SENSOR_METHODS:find("getEngineLeftRPM",1,true) and
+        sim.values.AMXDENIS_SENSOR_METHODS:find("getTotalFuelWeight",1,true) and
+        sim.values.AMXDENIS_SENSOR_METHODS:find("getIndicatedAirSpeed",1,true),
+        "capability inventory does not omit getters with unexpected names")
+    check(sim.values.AMXDENIS_SENSOR_METHODS_SCOPE=="DIRECT_TABLE_FUNCTIONS_ONLY",
+        "sensor enumeration does not claim hidden or inherited API coverage")
     near(sim.values.AMX_NATIVE_FUEL_KG,2550,"fuel is read from native source")
     near(sim.values.AVIONICS_HDG,90,"shared heading conversion")
+    near(sim.values.AMXDENIS_STICK_PITCH,0,"pilot pitch axis is read without an actuator")
+    check(sim.values.AMXDENIS_STICK_PITCH_VALID==1 and sim.values.AMXDENIS_STICK_ROLL_VALID==1 and
+        sim.values.AMXDENIS_RUDDER_VALID==1,"pilot-axis validity is explicit")
     near(sim.values.AMXDENIS_STORE_1,1,"native store count")
     check(sim.values.AMXDENIS_STORES_RELEASE_AVAILABLE==0,"SMS never approves release")
     sim.input("Battery",1);sim.input("Master",1);sim.tick(order)
@@ -312,6 +385,9 @@ do
     check(sim.values.EICAS_FUEL_KG==2550 and sim.values.EICAS_FUEL_KG_VALID==1,"captured EICAS callback publishes native total")
     near(sim.values.EICAS_FLOW_KG_MIN,6,"captured EICAS callback converts flow")
     check(sim.values.EICAS_NL_VALID==0 and sim.values.EICAS_NH_VALID==0 and sim.values.EICAS_TGT_VALID==0,"no fictitious Spey channels")
+    check(sim.values.AMXDENIS_EICAS_GROUPS_READY==1,"actual alarm callback publishes the common EICAS groups")
+    check(sim.values.AMXDENIS_EICAS_ENG_VALID==0 and sim.values.AMXDENIS_EICAS_OIL_VALID==0,
+        "generic RPM and temperature do not create engine or oil fault detectors")
     check(sim.values.CMFD1On==1 and sim.values.CMFD2On==1,"both MFDs powered")
     check(sim.values.HUD_ON==1 and sim.values.HUD_BRIGHT>0,"HUD is actually powered and bright")
     sim.input("HudBrightness",0);sim.tick(order)
@@ -341,6 +417,8 @@ do
     check(sim.values.AMX_FUEL_BINGO_ACTIVE==1 and sim.values.EICAS_ERROR_BINGO==1,"BINGO reaches actual alarm callback")
     sim.input("CautionAcknowledge",1);sim.input("CautionAcknowledge",0);sim.tick(order)
     check(sim.values.AMX_FUEL_BINGO_ACTIVE==1 and sim.values.EICAS_ERROR_BINGO==2,"acknowledgement preserves BINGO cause and marks it acknowledged")
+    check(sim.values.AMXDENIS_EICAS_FUEL_LO_VALID==0 and sim.values.AMXDENIS_EICAS_FUEL_LO_ACTIVE==0,
+        "native-style BINGO callback does not fill the distinct FUEL LO group")
     for digit in ("9999"):gmatch(".")do sim.input("Icp"..digit,1);sim.input("Icp"..digit,0)end
     check(sim.values.UFCP_FUEL_BINGO==670,"invalid ICP entry preserves accepted threshold")
     sim.input("Generator1",0);sim.input("Generator2",0);sim.input("Battery",0);sim.tick(order)
@@ -354,6 +432,13 @@ do
     check(sim.input("IcpBrightness",1)==true,"brightness knob can restore a dark ICP")
     sim.tick(order)
     check(sim.values.UFCP_BRIGHT>0,"ICP brightness recovery is reflected by producer")
+    check(sim.values.AMXDENIS_EICAS_ELEC_ACTIVE==1 and sim.values.AMXDENIS_EICAS_ELEC_ORIGINS=="GEN 1 / GEN 2",
+        "real alarm producer groups both selected-off generators after battery recovery")
+    sim.input("Generator1",1);sim.tick(order)
+    check(sim.values.AMXDENIS_EICAS_ELEC_ACTIVE==1 and sim.values.AMXDENIS_EICAS_ELEC_ORIGINS=="GEN 2",
+        "one restored generator does not clear the other cause")
+    sim.input("Generator2",1);sim.tick(order)
+    check(sim.values.AMXDENIS_EICAS_ELEC_ACTIVE==0,"both recovered generator causes clear through actual producers")
     check(sim.values.AMX_NATIVE_FUEL_KG==620 and sim.fuel==620,"display operations do not edit fixture native fuel")
     sim.sensors.getHeading=function()return 0/0 end;sim.tick(order)
     check(sim.values.AVIONICS_HDG_VALID==0 and sim.values.HUD_ON==0,"invalid flight data clears valid HUD presentation")

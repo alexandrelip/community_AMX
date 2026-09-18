@@ -1,0 +1,141 @@
+{
+  "Schema": "AMXDENIS_EICAS_HYDRAULIC_NATIVE_RESULTS_1",
+  "Candidate": "AMXT_M-REV07-EICAS-AM-Hydraulic93",
+  "BuildId": "DD49487E8EAE8925598934B9403087D15171CDCFD3A4432EF6341D6A70B03C6D",
+  "Run": "Native-REV07-EICAS-AM-Hydraulic93",
+  "Finalization": "finalization-20260918T134428284Z",
+  "Scope": "Manual-backed HYD 1/2 presentation only. The native producer remains a simplified 0/206 bar model; this does not calibrate physical AMX hydraulics or approve unrelated systems.",
+  "ManualBasis": {
+    "Document": "AER.1F-AMX(T)-1, 15 May 1994",
+    "PdfPages": [66, 69, 70],
+    "PrintedPages": ["1-49", "1-52", "1-53"],
+    "Figure": "1-21",
+    "ScaleBar": [0, 300],
+    "NominalBar": 207,
+    "LowPressureBar": 93,
+    "OvertemperatureC": 105
+  },
+  "Observations": [
+    {
+      "State": "NORMAL",
+      "ModelTime": 24.901,
+      "Hyd1Bar": 206,
+      "Hyd2Bar": 206,
+      "StableSamples": 3
+    },
+    {
+      "State": "LOW_PRESSURE",
+      "ModelTime": 153.941,
+      "Hyd1Bar": 0,
+      "Hyd2Bar": 0,
+      "GroupActive": 1,
+      "GroupStatus": "!",
+      "Origins": "HYD 1 / HYD 2",
+      "CentralOn": 1,
+      "RightOn": 1,
+      "StableSamples": 3
+    },
+    {
+      "State": "RECOVERED",
+      "ModelTime": 247.815,
+      "Hyd1Bar": 206,
+      "Hyd2Bar": 206,
+      "GroupActive": 0,
+      "RpmPercent": 64.708107,
+      "StableSamples": 3
+    }
+  ],
+  "PixelChecks": [
+    {
+      "Display": "RIGHT",
+      "Roi": [975, 382, 1002, 447],
+      "Pixels": 1848,
+      "ChangedPixels": 1381,
+      "MeanAbsoluteRgbError": 29.292929,
+      "CyanPixelsLow": 47,
+      "CyanPixelsRecovered": 486
+    },
+    {
+      "Display": "CENTRAL",
+      "Roi": [745, 417, 771, 466],
+      "Pixels": 1350,
+      "ChangedPixels": 1040,
+      "MeanAbsoluteRgbError": 19.328642,
+      "CyanPixelsLow": 79,
+      "CyanPixelsRecovered": 245
+    }
+  ],
+  "Events": {
+    "Start": 1,
+    "Ready": 1,
+    "State": 1502,
+    "CameraCommand": 3,
+    "DiagnosticCommand": 3,
+    "Reject": 2,
+    "Stop": 1,
+    "Error": 0,
+    "PreservedRejects": [
+      {
+        "Sequence": 1,
+        "Control": "ViewReset",
+        "Reason": "value_out_of_range"
+      },
+      {
+        "Sequence": 2,
+        "Control": "ViewReset",
+        "Reason": "not_stationary"
+      }
+    ]
+  },
+  "DcsLog": {
+    "SeverityErrorOrErrorOnce": 159,
+    "CriticalPatterns": {
+      "AccessViolation": 0,
+      "CompileMission": 0,
+      "LuaDofile": 0,
+      "LuaConfig": 0,
+      "HostEicasLayout": 0,
+      "HydraulicsLua": 0,
+      "NativeHookError": 0
+    },
+    "CleanLogClaimed": false
+  },
+  "Integrity": {
+    "Passed": true,
+    "Errors": [],
+    "NativeAcceptanceGranted": false,
+    "NormalProfileModified": false,
+    "ProfileRetained": true
+  },
+  "Files": [
+    {
+      "Path": "native-hydraulic-normal.png",
+      "Bytes": 2571244,
+      "SHA256": "D7F57F1C0197D1EC19CDBE57AEC24ED0A95799FA4B5DA3FE587C582B5A86CF07"
+    },
+    {
+      "Path": "native-hydraulic-low.png",
+      "Bytes": 2585572,
+      "SHA256": "ABEBC16C8300CBFC569443D0AA61E09BAF53EAB219F347ECA9815567961F014C"
+    },
+    {
+      "Path": "ci-hydraulic.log",
+      "Bytes": 3682,
+      "SHA256": "4238671C92EF4C40A4C181FDA54DFF4CC854F1E08B60FD7D90A8E58140A2BD2E"
+    },
+    {
+      "Path": "bench-hydraulic-result.json",
+      "Bytes": 1585,
+      "SHA256": "6B5466399010640DC5A8FB111A3EA44CBFD55DBE2EA86B0716429F65EC0A35E5"
+    }
+  ],
+  "RawRunHashes": {
+    "NativeJsonl": "19E6B476D3692125F20E2CEF87E6627D7BF6A16C73D5ED049CF2CEB044FCFB71",
+    "DcsLog": "6F1F92204D188B77AB65B5051D7735AE4375DCD12B19B71F7BDFFFED0DF6E7A2",
+    "Integrity": "4742D752902E72FC77CC72C36232CFEBF665C10EAD84FF18DC738746C152A179",
+    "NormalCondition": "CB9BFF0E499FDE4072AF83BFAA282E1B44CE1A4C7B8E19081910C576C4F571EC",
+    "LowCondition": "609E2D7CE28DD19D69AE402587CFB3E7FEC6E3537296EE084FA82C6A28CBB007",
+    "RecoveryCondition": "AB15D0479187AC48F1C2E0DDCD23F068B54FD97583EF3819F9F94917C670D97B"
+  },
+  "RecordedUtc": "2026-09-18T13:44:35.2049374Z"
+}

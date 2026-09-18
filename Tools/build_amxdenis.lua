@@ -23,7 +23,24 @@ local function literal(value)
 end
 local original = assert(loadfile(input.reference .. "/Avionics/AMX/patches.lua"))()
 local target = assert(loadfile(input.root .. "/Avionics/AMXDENIS/patches.lua"))()
-write(candidate.."/entry.lua",target.loader(read(candidate.."/entry.lua")))
+local loader = target.loader(read(candidate.."/entry.lua"))
+if input.mechanism_probe then
+    assert(input.mechanism_probe == "without-mechanimations" or input.mechanism_probe == "duplicate-canopy",
+        "Unknown descriptor probe")
+    local mutation = input.mechanism_probe == "without-mechanimations" and "aircraft.mechanimations = nil" or
+        'assert(aircraft.mechanimations.Door1 == nil, "Unexpected existing Door1"); aircraft.mechanimations.Door1 = {DuplicateOf = "Door0"}'
+    loader = target.replace(loader, "dofile(current_mod_path .. '/Entry/AMXT_M.lua')", [[do
+    local register_aircraft = add_aircraft
+    add_aircraft = function(aircraft)
+        assert(aircraft.Name == "AMXT_M", "Descriptor probe is limited to AMXT_M")
+        ]] .. mutation .. [[
+        register_aircraft(aircraft)
+    end
+    dofile(current_mod_path .. '/Entry/AMXT_M.lua')
+    add_aircraft = register_aircraft
+end]], 1, "experimental mechanism declaration")
+end
+write(candidate.."/entry.lua", loader)
 local source_specs = {}
 for _, spec in ipairs(original.specs) do source_specs[spec.path] = spec end
 for _, path in ipairs(input.files) do
@@ -41,7 +58,9 @@ local controls = assert(loadfile(input.root.."/Avionics/AMXDENIS/controls.lua"))
 local geometry = assert(loadfile(input.root.."/Avionics/AMXDENIS/bindings.lua"))()(input.records)
 write(scripts.."Controls/data.lua","return "..literal(controls).."\n")
 write(scripts.."Controls/geometry.lua","return "..literal(geometry).."\n")
-write(candidate.."/Avionics/Runtime/runtime.lua",'return {schema="AMXDENIS_RUNTIME_1",aircraft_type="AMXT_M",pilot_seat=1,native_f5e=false,voice_audio_available=false}\n')
+local runtime = 'return {schema="AMXDENIS_RUNTIME_1",aircraft_type="AMXT_M",pilot_seat=1,native_f5e=false,voice_audio_available=false'
+if input.mechanism_probe then runtime = runtime .. ',descriptor_probe=' .. literal(input.mechanism_probe) end
+write(candidate.."/Avionics/Runtime/runtime.lua",runtime .. '}\n')
 write(candidate.."/Config/AMX_AVIONICS.lua",'return {schema_version=1,enabled=true,native_flir=false,native_radio_probe=false,helmet_display=false}\n')
 local config = assert(loadfile(candidate.."/Config/AMXDENIS_COCKPIT.lua"))()
 config.enabled = true

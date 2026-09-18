@@ -89,6 +89,15 @@ get_wpn_sj_ready = function() return false end
         text = replace(text,'local valid = ok and type(value) == "number" and value == value and math.abs(value) < math.huge',
             'local valid = ok and type(value) == "number" and value == value and math.abs(value) < math.huge\n'
             ..'        if field.source then local circuit = field.source:match("P_HYD(%d)"); if circuit then valid = valid and handle("AMXDENIS_HYD_" .. circuit .. "_VALID"):get() == 1 end end',1,path)
+    elseif path == "Systems/alarm.lua" then
+        text = text .. [[
+local target_eicas_groups = dofile(LockOn_Options.script_path .. "Host/eicas_groups.lua").new(get_param_handle)
+local target_alarm_update = update
+function update()
+    target_alarm_update()
+    target_eicas_groups()
+end
+]]
     elseif path == "Systems/host_alarm_sources.lua" then
         text = replace(text,'CANOPY_STATUS = {threshold = 0.01}',
             'CANOPY_STATUS = {threshold = 0.01, validity = "AMXDENIS_CANOPY_VALID"}',1,path)

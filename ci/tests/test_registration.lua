@@ -1,6 +1,11 @@
 assert(_VERSION=="Lua 5.1","DCS Lua 5.1 required")
 local candidate=assert(arg[1]):gsub("\\","/")
 local baseline=assert(arg[2]):gsub("\\","/")
+local descriptor_probe=arg[3]or"none"
+assert(descriptor_probe=="none"or descriptor_probe=="without-mechanimations"or descriptor_probe=="duplicate-canopy",
+    "Unknown descriptor probe")
+local runtime=assert(loadfile(candidate.."/Avionics/Runtime/runtime.lua"))()
+assert((runtime.descriptor_probe or"none")==descriptor_probe,"Descriptor probe requires explicit matching bench opt-in")
 local checks=0
 local function check(value,message) checks=checks+1;assert(value,"[FAIL] "..message) end
 local function encode(value)
@@ -17,6 +22,7 @@ local function declaration(root,original)
     local env={current_mod_path=root,math=math,pairs=pairs,ipairs=ipairs,type=type,tostring=tostring,assert=assert,
         _=function(v)return v end,ViewSettings={},SnapViews={}}
     setmetatable(env,{__index=function(_,name)
+        if name=="pcall"or name=="xpcall"then return nil end
         if name:match("^[A-Z_0-9]+$") or name:match("^wsType_") or name=="WSTYPE_PLACEHOLDER" or name=="MODULATION_AM" or
             name:match("^WOLA") or name=="SEAD" or name=="AntishipStrike" or name=="CAS" or name=="GroundAttack" or
             name=="PinpointStrike" or name=="RunwayAttack" then
@@ -36,7 +42,9 @@ local function declaration(root,original)
         if original and path==root.."/Entry/Views.lua" then return end -- known absent original reference, not a cockpit test
         return setfenv(assert(loadfile(path)),env)()
     end
+    local register_aircraft=env.add_aircraft
     env.dofile(root.."/entry.lua")
+    check(env.add_aircraft==register_aircraft,"aircraft registration hook is restored after declaration")
     return planes,flyables,metadata
 end
 local original=declaration(baseline,true)
@@ -45,7 +53,20 @@ local count=0
 for _,name in ipairs({"AMX","AMXT","AMX_M","AMXT_M"}) do
     count=count+1
     check(actual[name]~=nil and original[name]~=nil,"original type retained "..name)
-    check(encode(actual[name])==encode(original[name]),"complete descriptor preserved "..name)
+    if name=="AMXT_M"and descriptor_probe=="duplicate-canopy"then
+        check(original[name].mechanimations.Door1==nil,"original two-seat descriptor has no second door")
+        original[name].mechanimations.Door1={DuplicateOf="Door0"}
+        check(encode(actual[name])==encode(original[name]),"experimental descriptor adds only the native door alias")
+        original[name].mechanimations.Door1=nil
+    elseif name=="AMXT_M"and descriptor_probe=="without-mechanimations"then
+        local mechanisms=original[name].mechanimations
+        check(type(mechanisms)=="table"and actual[name].mechanimations==nil,"experimental probe removes only the mechanism table")
+        original[name].mechanimations=nil
+        check(encode(actual[name])==encode(original[name]),"all other experimental descriptor fields remain original")
+        original[name].mechanimations=mechanisms
+    else
+        check(encode(actual[name])==encode(original[name]),"complete descriptor preserved "..name)
+    end
     check(flyable[name].fm==nil,"SFM connection remains nil "..name)
     local expected=name=="AMXT_M" and "/Avionics/Runtime/Cockpit/Scripts/" or "/Cockpit/Scripts/"
     check(flyable[name].cockpit==candidate..expected,"cockpit selected for only approved variant "..name)

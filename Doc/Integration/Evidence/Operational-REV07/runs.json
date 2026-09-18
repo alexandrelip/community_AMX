@@ -1,0 +1,1401 @@
+{
+  "Schema": "AMXDENIS_OPERATIONAL_RUN_SUMMARY_1",
+  "OverallNativeAcceptanceGranted": false,
+  "Runs": [
+    {
+      "Run": "Q",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-Q",
+      "BuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+      "Mode": "GroundHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 252.628,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 1210,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-Q\\finalization-20260918T025526626Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T02:55:36.7536251Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "D8D911CE9B42D86971D3F7F9F324A80A68CF02FF753DA87388728645798F33F8",
+      "DcsLogSHA256": "88975FD07D3F3FB0B31496A97CA4EC3A97C7281E27CD44D09351F41E5DA437BE",
+      "HookLogSHA256": "2093F80D16EFCEB4ACFAA48440681A03F873D5879CD491FA68EA62B28D276737",
+      "DcsSeverityErrorCount": 159,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 02:50:46.070 ERROR_ONCE DX11BACKEND (11056): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 02:50:47.921 ERROR_ONCE DX11BACKEND (22160): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "R",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-R",
+      "BuildId": "D01621B987BAB851291CA79853DADB361835CD92AB9CA7266586E44CF64E3BB1",
+      "Mode": "GroundHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 701.692,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 3329,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-R\\finalization-20260918T030951443Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "D01621B987BAB851291CA79853DADB361835CD92AB9CA7266586E44CF64E3BB1",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T03:10:13.1694526Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "4A67C2C22A3FB8003F5D2B3E1C57545249506BF17AAFCA6079E71D1A0342AD3B",
+      "DcsLogSHA256": "32E1EF8B005B6B43D87278EF8BE0D6F7D834B02D7DD05E79275CD87F95C0D7CE",
+      "HookLogSHA256": "6ABA7685797F05B608577C7B344A20F00C46A38E27B4BEAB35B0D324A34C560D",
+      "DcsSeverityErrorCount": 159,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 02:57:40.555 ERROR_ONCE DX11BACKEND (3232): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 02:57:42.376 ERROR_ONCE DX11BACKEND (528): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "S-Cold",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-S-Cold",
+      "BuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+      "Mode": "GroundCold",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 285.642,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 1365,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-S-Cold\\finalization-20260918T032342077Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T03:23:48.6646155Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "CD9FC21DA35DA48621E0ED7914C0FC785751A5FD699BB0DBAB58AF165F6BD8CA",
+      "DcsLogSHA256": "BC5AB06CE1E7DB8EAAD408635A8FA1F43A48128164120C8C2DFE72B3AD550B21",
+      "HookLogSHA256": "ED1A7CA3FEFBB6538D09A56955C0B8694F1C28C1B3E1F974FB904FE36D5A04A1",
+      "DcsSeverityErrorCount": 159,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 03:18:27.410 ERROR_ONCE DX11BACKEND (2824): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 03:18:29.251 ERROR_ONCE DX11BACKEND (30516): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "T-Cold",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-T-Cold",
+      "BuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+      "Mode": "GroundCold",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 352.254,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 1677,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-T-Cold\\finalization-20260918T033705908Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T03:37:13.1836561Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "187A486B20E15DF571E5B2E9FFE3375481FACCCACD03C1ACD0FF5C9866C5310D",
+      "DcsLogSHA256": "676D69B83FFD504283C832E974A7481BB64D57C599FB7CDACAA9D85DABCF5DE7",
+      "HookLogSHA256": "10972652262AEE1BE4E98E3A2B16A260A5C6708AD95D579FEB2EE27C4EFC27D6",
+      "DcsSeverityErrorCount": 159,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 03:30:45.068 ERROR_ONCE DX11BACKEND (31536): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 03:30:46.870 ERROR_ONCE DX11BACKEND (21584): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "U-Cold",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-U-Cold",
+      "BuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+      "Mode": "GroundCold",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 1238.75,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 5899,
+        "DIAGNOSTIC_COMMAND": 65,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-U-Cold\\finalization-20260918T040113838Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:01:47.9911110Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "B2A460B2EE23F2E6035B5AEDDE63D482CE6D3A36678D85E21FD001C7FEEE47FB",
+      "DcsLogSHA256": "08CE0DC13B5ACB96B1F2A0251AB63CFF243D244088D55F045F26503AB9AFF378",
+      "HookLogSHA256": "EF696424562B2C2B4D32E9E754F0F524B4A530E518FAA2A0B0196BE48B26006F",
+      "DcsSeverityErrorCount": 159,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 03:40:06.773 ERROR_ONCE DX11BACKEND (27444): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 03:40:08.875 ERROR_ONCE DX11BACKEND (28376): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "V-Runway",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-V-Runway",
+      "BuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+      "Mode": "RunwayHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 416.901,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 1985,
+        "FLIGHT_COMMAND": 11,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 18.588,
+          "sequence": 1,
+          "value": 1
+        },
+        {
+          "control": "FlightBrake",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 24.888,
+          "sequence": 2,
+          "value": 1
+        },
+        {
+          "control": "FlightBrake",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 142.52,
+          "sequence": 3,
+          "value": 0
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 148.048,
+          "sequence": 4,
+          "value": 0.55
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 195.006,
+          "sequence": 5,
+          "value": 1
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 227.245,
+          "sequence": 6,
+          "value": -0.1
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 233.997,
+          "sequence": 7,
+          "value": 1
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 276.36,
+          "sequence": 8,
+          "value": -1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 302.632,
+          "sequence": 9,
+          "value": 0.22
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 343.112,
+          "sequence": 10,
+          "value": 1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 343.954,
+          "sequence": 11,
+          "value": 0
+        }
+      ],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-V-Runway\\finalization-20260918T041918976Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "91B098E143AE7C852C0D09D519167C231DF2AA13611BFD64FD14380FDBB3572D",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:19:25.9227013Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "22F0F846D5A7D1CCAFBD91472995C0C48F5CBE2EE0E3AE356CF44421D80B7DB7",
+      "DcsLogSHA256": "14C50583F61756B9EAB36710CA083EC47D493ED03842CB933FA817BC065B962B",
+      "HookLogSHA256": "86FBD26A5B70CEDE640256699DBF9BF919080EDB1045EBF9CBCB9A11BAC41BDB",
+      "DcsSeverityErrorCount": 160,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "VISUALIZER",
+          "Count": 1
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 04:11:27.081 ERROR_ONCE DX11BACKEND (27888): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 04:11:29.040 ERROR_ONCE DX11BACKEND (31236): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "W-Air",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-W-Air",
+      "BuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+      "Mode": "AirHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 70.683,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 340,
+        "FLIGHT_COMMAND": 5,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [
+        {
+          "control": "FlightAltitudeHold",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 5.427,
+          "sequence": 1,
+          "value": 1
+        },
+        {
+          "control": "FlightCancel",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 26.37,
+          "sequence": 2,
+          "value": 1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 32.041,
+          "sequence": 3,
+          "value": 0.15
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 37.67,
+          "sequence": 4,
+          "value": 0
+        },
+        {
+          "control": "FlightAltitudeHold",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 43.084,
+          "sequence": 5,
+          "value": 1
+        }
+      ],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-W-Air\\finalization-20260918T042258723Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:23:02.9990218Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "E8BEB2B3F379FE5FDFC156ABC16966585F56F78221EB69E3EEC012A7D79F3A91",
+      "DcsLogSHA256": "FCC3B52D29DB4C9F22A90D98C287603740582EA5716B729B2E9834FC03588FF0",
+      "HookLogSHA256": "D36DF4B8BD952C02379D903123A24BE3EB606E11C9308580D4BFA0361C39F734",
+      "DcsSeverityErrorCount": 160,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "VISUALIZER",
+          "Count": 1
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 04:21:19.671 ERROR_ONCE DX11BACKEND (35584): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 04:21:21.480 ERROR_ONCE DX11BACKEND (7524): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "X-AirIsolated",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-X-AirIsolated",
+      "BuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+      "Mode": "AirHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 125.593,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 607,
+        "FLIGHT_COMMAND": 8,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 4.974,
+          "sequence": 1,
+          "value": -0.4
+        },
+        {
+          "control": "FlightCancel",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 10.591,
+          "sequence": 2,
+          "value": 1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 16.048,
+          "sequence": 3,
+          "value": 0.1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 21.72,
+          "sequence": 4,
+          "value": 0
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 53.463,
+          "sequence": 5,
+          "value": 0
+        },
+        {
+          "control": "FlightRoll",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 59.091,
+          "sequence": 6,
+          "value": 0
+        },
+        {
+          "control": "FlightRudder",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 64.52,
+          "sequence": 7,
+          "value": 0
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 70.077,
+          "sequence": 8,
+          "value": 0
+        }
+      ],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-X-AirIsolated\\finalization-20260918T042734020Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:27:39.0935057Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "502DF97E77994C5B04FEAC6D722CDCD6F44DD9DCF6250B46418447B8B416935E",
+      "DcsLogSHA256": "2CB26E943EF151CB9E56D46072D412AB18802B365B400962CA7E6E99046EA40E",
+      "HookLogSHA256": "E16C55D58AA96A6D366D04EBA2731B5AD7A7FFE1118864A91E26250CD5F16153",
+      "DcsSeverityErrorCount": 160,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "VISUALIZER",
+          "Count": 1
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 04:25:01.248 ERROR_ONCE DX11BACKEND (34332): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 04:25:03.054 ERROR_ONCE DX11BACKEND (29388): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "Y-BeforeFrame",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-Y-BeforeFrame",
+      "BuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+      "Mode": "AirHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 48.902,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 235,
+        "FLIGHT_COMMAND": 8,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [
+        {
+          "control": "FlightCancel",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 4.588,
+          "sequence": 1,
+          "value": 1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 10.403,
+          "sequence": 2,
+          "value": 0
+        },
+        {
+          "control": "FlightRoll",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 15.988,
+          "sequence": 3,
+          "value": 0
+        },
+        {
+          "control": "FlightRudder",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 21.545,
+          "sequence": 4,
+          "value": 0
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 27.102,
+          "sequence": 5,
+          "value": -0.2
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 32.617,
+          "sequence": 6,
+          "value": 0.02
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 38.116,
+          "sequence": 7,
+          "value": -0.02
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 43.602,
+          "sequence": 8,
+          "value": 0
+        }
+      ],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-Y-BeforeFrame\\finalization-20260918T043044363Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:30:48.4475930Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "0BFFB505C2D86BBF26CAD29A3947FF86F85CC3C8B867110C37A6ADFA46930068",
+      "DcsLogSHA256": "A0B424C836248CC3F14297F316235826F00A178A5286CF06A82AA67EF43B011E",
+      "HookLogSHA256": "3BA04BF3564EC4E4AD99978BE53DE35BBDE33792233DDBCFAEA86CC8F647D34B",
+      "DcsSeverityErrorCount": 160,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "VISUALIZER",
+          "Count": 1
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 04:29:29.013 ERROR_ONCE DX11BACKEND (35180): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 04:29:30.825 ERROR_ONCE DX11BACKEND (35676): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "Z-AxisMatrix",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-Z-AxisMatrix",
+      "BuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+      "Mode": "RunwayHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 82.107,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 396,
+        "FLIGHT_COMMAND": 13,
+        "DIAGNOSTIC_COMMAND": 1,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [
+        {
+          "control": "FlightThrottle",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 4.43,
+          "sequence": 1,
+          "value": 1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 15.401,
+          "sequence": 3,
+          "value": 0
+        },
+        {
+          "control": "FlightRoll",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 20.959,
+          "sequence": 4,
+          "value": 0
+        },
+        {
+          "control": "FlightRudder",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 26.444,
+          "sequence": 5,
+          "value": 0
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 31.973,
+          "sequence": 6,
+          "value": 0.02
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 37.487,
+          "sequence": 7,
+          "value": -0.02
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 43.002,
+          "sequence": 8,
+          "value": 0
+        },
+        {
+          "control": "FlightRoll",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 49.092,
+          "sequence": 9,
+          "value": 0.02
+        },
+        {
+          "control": "FlightRoll",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 54.651,
+          "sequence": 10,
+          "value": -0.02
+        },
+        {
+          "control": "FlightRoll",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 60.207,
+          "sequence": 11,
+          "value": 0
+        },
+        {
+          "control": "FlightRudder",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 65.721,
+          "sequence": 12,
+          "value": 0.02
+        },
+        {
+          "control": "FlightRudder",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 71.249,
+          "sequence": 13,
+          "value": -0.02
+        },
+        {
+          "control": "FlightRudder",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 76.749,
+          "sequence": 14,
+          "value": 0
+        }
+      ],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-Z-AxisMatrix\\finalization-20260918T043439535Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:34:43.8858151Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "A9108F1403C49DDB5813CCD4D732AD2BC4021C4B4155A9D77DA4202856F80456",
+      "DcsLogSHA256": "87137DF936293C6D598920E88217BA33273D6EB3C9C441CE63E2DD49CA1F94BA",
+      "HookLogSHA256": "12EE068C254B3DB0429687D69CF1F49CA65C558E85073137A70C315F590776E2",
+      "DcsSeverityErrorCount": 160,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "VISUALIZER",
+          "Count": 1
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 04:32:50.586 ERROR_ONCE DX11BACKEND (26192): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 04:32:52.399 ERROR_ONCE DX11BACKEND (15628): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "AA-AirNeutral",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-AA-AirNeutral",
+      "BuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+      "Mode": "AirHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 47.759,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 229,
+        "FLIGHT_COMMAND": 6,
+        "DIAGNOSTIC_COMMAND": 1,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [
+        {
+          "control": "FlightCancel",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": 1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": 0
+        },
+        {
+          "control": "FlightRoll",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": 0
+        },
+        {
+          "control": "FlightRudder",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": 0
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": -0.2
+        },
+        {
+          "control": "FlightAltitudeHold",
+          "input_source": "scripted_native_flight_controls_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 4.473,
+          "sequence": 1,
+          "value": 1
+        }
+      ],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-AA-AirNeutral\\finalization-20260918T043837959Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:38:42.0667907Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "175474F7A82181E8A8A1F10560EE341F75428DF8DCD09027C78CA848FC8E3AC7",
+      "DcsLogSHA256": "F34A6990905C8649442E1F732591F5495FEE7438EA5C81175979200FAB998C36",
+      "HookLogSHA256": "0FA4342BFBEE076E9EE70FDA78885ECF8F93D7604995986B05B49C0D9C0FFD64",
+      "DcsSeverityErrorCount": 160,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "VISUALIZER",
+          "Count": 1
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 04:37:22.625 ERROR_ONCE DX11BACKEND (18676): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 04:37:24.435 ERROR_ONCE DX11BACKEND (19208): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "AB-GearDefaultKey",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-AB-GearDefaultKey",
+      "BuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+      "Mode": "AirHot",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 25.945,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 125,
+        "FLIGHT_COMMAND": 5,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [
+        {
+          "control": "FlightCancel",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": 1
+        },
+        {
+          "control": "FlightPitch",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": 0
+        },
+        {
+          "control": "FlightRoll",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": 0
+        },
+        {
+          "control": "FlightRudder",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": 0
+        },
+        {
+          "control": "FlightThrottle",
+          "input_source": "private_flight_initialization_NOT_physical_HOTAS",
+          "kind": "FLIGHT_COMMAND",
+          "model_time": 1.001,
+          "sequence": 0,
+          "value": -0.2
+        }
+      ],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-AB-GearDefaultKey\\finalization-20260918T044124106Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:41:28.0041276Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "9C01848136858F78AE3AD4B96B2B95F0883D962466C56C1414A2CC7DDD7E2067",
+      "DcsLogSHA256": "A8C80FAB4F4F30992C20FFB5F08C8C922A9666475C4D66162C96BB19D2BEB0D5",
+      "HookLogSHA256": "76BC20CF8A1036BB3AF3F92441C1F79948BF07B1D02A7FC9F353C1C2464D4407",
+      "DcsSeverityErrorCount": 160,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "VISUALIZER",
+          "Count": 1
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 04:40:30.892 ERROR_ONCE DX11BACKEND (31580): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 04:40:32.710 ERROR_ONCE DX11BACKEND (5224): render target 'mainDepthBuffer' not found"
+      ]
+    },
+    {
+      "Run": "AC-Bingo",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-AC-Bingo",
+      "BuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+      "Mode": "GroundCold",
+      "FirstStateModelTime": 0.0,
+      "LastStateModelTime": 229.274,
+      "RecordCounts": {
+        "START": 1,
+        "READY": 1,
+        "STATE": 1096,
+        "DIAGNOSTIC_COMMAND": 37,
+        "STOP": 1
+      },
+      "FlightCommandsAndRejections": [],
+      "Finalization": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-Operational-AC-Bingo\\finalization-20260918T044753340Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T04:47:59.5332288Z"
+      },
+      "TemporaryAuthFilesPresent": [],
+      "NativeLogSHA256": "B634E1C8C59463B25B638095A763647F5271DAD5BB24A8903F02C3CB9A73ED62",
+      "DcsLogSHA256": "28F8933C8F4D92C389460FC53658F5C662C4D71D725326CDE3BDCA4AFA1C25AD",
+      "HookLogSHA256": "15A557578121C9207D619348F6CCB5860B76D1B9B3F0B42770BEEE21EF84592D",
+      "DcsSeverityErrorCount": 160,
+      "DcsSeverityErrorGroups": [
+        {
+          "Subsystem": "",
+          "Count": 1
+        },
+        {
+          "Subsystem": "APP",
+          "Count": 1
+        },
+        {
+          "Subsystem": "Dispatcher",
+          "Count": 1
+        },
+        {
+          "Subsystem": "DX11BACKEND",
+          "Count": 12
+        },
+        {
+          "Subsystem": "EDCORE",
+          "Count": 4
+        },
+        {
+          "Subsystem": "EDOBJECTS",
+          "Count": 10
+        },
+        {
+          "Subsystem": "VISUALIZER",
+          "Count": 1
+        },
+        {
+          "Subsystem": "wInfo",
+          "Count": 116
+        },
+        {
+          "Subsystem": "WORLDGENERAL",
+          "Count": 14
+        }
+      ],
+      "ErrorExamples": [
+        "2026-09-18 04:43:36.534 ERROR_ONCE DX11BACKEND (33528): texture 'KevinWakePattern812x1024.dds' not found. Asked from ''",
+        "2026-09-18 04:43:38.351 ERROR_ONCE DX11BACKEND (27120): render target 'mainDepthBuffer' not found"
+      ]
+    }
+  ]
+}

@@ -130,6 +130,79 @@ for _,case in ipairs(cases) do
         check(params["CMFD"..n.."Format"],"MFD uses its own selector")
         check(params.AMXDENIS_STORE_7 and params.AMXDENIS_STORE_7_VALID,"SMS includes original station seven")
     end
+    if case.side=="LEFT" or case.side=="RIGHT" or case.side=="AUX" then
+        local copies,group_counts,hydraulic_bars,hydraulic_low_marks,hydraulic_scale_labels=0,{},0,0,0
+        local unidentified_bars,unidentified_synoptics,bingo_copies=0,0,0
+        for _,element in ipairs(elements)do
+            if element.name:match("^AMXDENIS_EICAS_.+_BOUNDS$")then copies=copies+1 end
+            if element.name:match("^AMXDENIS_EICAS_.+_BINGO$")then
+                bingo_copies=bingo_copies+1
+                check(element.element_params[1]=="AMX_FUEL_BINGO_ACTIVE"and element.element_params[2]=="AMX_FUEL_BINGO_VALID",
+                    "BINGO retains its own actual cause and validity on every display")
+            end
+            local group=element.name:match("^AMXDENIS_EICAS_.+_GROUP_(.+)_LABEL$")
+            if group then group_counts[group]=(group_counts[group]or 0)+1 end
+            local hydraulic_bar=element.name:match("^AMXDENIS_EICAS_.+_HYD_BAR_(%d)$")
+            if hydraulic_bar then
+                hydraulic_bars=hydraulic_bars+1
+                check(element.element_params[1]=="EICAS_HYD_"..hydraulic_bar.."_BAR",
+                    "identified hydraulic bar consumes its matching validated pressure")
+                local scales_to_300=false
+                for _,controller in ipairs(element.controllers or{})do
+                    if controller[1]=="line_object_set_point_using_parameters"then
+                        scales_to_300=type(controller[6])=="number"and controller[6]>0
+                    end
+                end
+                check(scales_to_300,"hydraulic bar has a positive 0-300 bar scale")
+            end
+            if element.name:find("_HYD_LOW_93_",1,true)then hydraulic_low_marks=hydraulic_low_marks+1 end
+            if element.name:match("_HYD_SCALE_LABEL$")then
+                hydraulic_scale_labels=hydraulic_scale_labels+1
+                check(element.value=="0-300 BAR","hydraulic scale exposes its documented unit and range")
+            end
+            if element.name:find("_UNIDENTIFIED_BAR_",1,true)then
+                unidentified_bars=unidentified_bars+1
+                for _,parameter in ipairs(element.element_params or{})do
+                    check(not parameter:find("HYD",1,true) and not parameter:find("FUEL",1,true) and not parameter:find("OIL",1,true),
+                        "reference bars have no guessed physical source")
+                end
+            end
+            if element.name:find("_UNIDENTIFIED_SYNOPTIC",1,true)then
+                unidentified_synoptics=unidentified_synoptics+1
+                check(not element.element_params,"synoptic outline has no invented system state")
+            end
+            for _,controller in ipairs(element.controllers or{})do
+                if controller[1]=="rotate_using_parameter"then
+                    local parameter=(element.element_params or{})[controller[2]+1]
+                    check(parameter~="EICAS_NL"and parameter~="EICAS_NH"and parameter~="EICAS_TGT",
+                        "unconfirmed engine scales never produce calibrated needles")
+                end
+            end
+        end
+        check(copies==(case.side=="AUX"and 1 or 4),"EICAS covers FULL, TOP, both lower selections and the central")
+        check(bingo_copies==copies,"moving BINGO outside the fifteen groups does not remove it from the central")
+        local contract=assert(loadfile(scripts.."Host/eicas_groups.lua"))()
+        for _,group in ipairs(contract.groups)do
+            check(group_counts[group.key]==copies,"every EICAS copy retains message "..group.label)
+            check(params["AMXDENIS_EICAS_"..group.key.."_STATUS"] and params["AMXDENIS_EICAS_"..group.key.."_ORIGINS"],
+                "message copies consume the shared status and cause origins")
+        end
+        check(hydraulic_bars==copies*2 and unidentified_bars==0,
+            "all copies use the approved HYD 1/2 bars without unknown placeholders")
+        check(hydraulic_low_marks==copies*2 and hydraulic_scale_labels==copies,
+            "all hydraulic bars retain the documented 93 bar mark and 0-300 bar scale")
+        check(unidentified_synoptics==copies,"all copies retain the neutral unidentified synoptic")
+        if case.side=="AUX"then
+            for _,element in ipairs(elements)do
+                if element.name:match("^AMXDENIS_EICAS_element_%d+$")then
+                    check(element.init_pos[2]<=1.13 and element.init_pos[2]-2.35>=-1.26,
+                        "central content stays within the previously exercised EFI window")
+                end
+            end
+        end
+        check(params.EICAS_NL_VALID and params.EICAS_NH_VALID and params.EICAS_TGT_VALID,
+            "all three engine channels preserve explicit unavailable presentation")
+    end
     if case.side=="ICP" then
         check(params.UFCP_TEXT and params.UFCP_BRIGHT,"ICP is live and power-gated")
         local font=assert(env.fonts.ufcp_font_def)[1]

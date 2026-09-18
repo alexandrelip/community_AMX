@@ -23,6 +23,12 @@ class BuilderTests(unittest.TestCase):
             with self.subTest(path=path), self.assertRaises(ValueError):
                 builder.within(self.root, path)
 
+    def test_unknown_descriptor_probe_rejected_before_writes(self):
+        candidate = self.root / "probe"
+        with self.assertRaisesRegex(ValueError, "Unsupported mechanism"):
+            builder.build(candidate, self.root / "unused-lua.exe", "replace-flight-model")
+        self.assertFalse(candidate.exists())
+
     def test_installations_and_saved_games_rejected(self):
         for path in ("C:/", "C:/Windows/Temp/x", "D:/Program Files/DCS World/a", "C:/Users/any/Saved Games/DCS/x"):
             with self.subTest(path=path), self.assertRaises(ValueError):

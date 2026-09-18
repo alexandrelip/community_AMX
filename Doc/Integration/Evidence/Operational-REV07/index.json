@@ -1,0 +1,51 @@
+{
+  "Schema": "AMXDENIS_OPERATIONAL_EVIDENCE_1",
+  "State": "PARTIAL_NATIVE_RESULTS_WITH_BLOCKERS",
+  "OverallNativeAcceptanceGranted": false,
+  "CandidateBuildId": "E90C4E097D4F0FF44C87AD5FC39EBFC7B5D1EB25973B529092CD5E320C9FF6B2",
+  "RunCount": 13,
+  "ReportExcerptCount": 147,
+  "FollowupRunCount": 3,
+  "TotalArchivedRuns": 16,
+  "LatestValidation": "mission-contract-followup.json",
+  "IndexScope": "Initial 13-run archive retained unchanged. Follow-up records the failed trigger-only probe, successful ground-control role correction and repeated functional tests. No global native approval.",
+  "RawArchive": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs",
+  "Files": [
+    {
+      "Path": "bench-result.json",
+      "Bytes": 1585,
+      "SHA256": "286836429665C2E54D58DABBB80151390F40B2A87372FD3EC8D492D44403B2A1"
+    },
+    {
+      "Path": "ci.log",
+      "Bytes": 3672,
+      "SHA256": "8D178EC8D3E1343D2C4C974B26B3EE33A64C6A653F5A1B70AFC3689B5F42E94C"
+    },
+    {
+      "Path": "instrument-comparison.json",
+      "Bytes": 6835,
+      "SHA256": "6BE3E0C1F21884340136729DF4DECB8BE2B1A7DFCC193057B6C40D2E8FD8690F"
+    },
+    {
+      "Path": "observations.json",
+      "Bytes": 2436896,
+      "SHA256": "F8413E108D0296AA516257CF8792F7769DCB0FE183F0F453A24109121EE9E0A6"
+    },
+    {
+      "Path": "preservation.json",
+      "Bytes": 679,
+      "SHA256": "1649C319EAF6D34FAC19089DCE8CFE3779F90437F46ADF1038EF65DE9B060478"
+    },
+    {
+      "Path": "runs.json",
+      "Bytes": 46965,
+      "SHA256": "95C50435CB671025797508A50B3198F41E8AF1C8D0D3866DB686958505674C7C"
+    },
+    {
+      "Path": "mission-contract-followup.json",
+      "Bytes": 280284,
+      "SHA256": "6E3978BD8ED407342EA31D32CAEF9AB43B87FD7B4805DB26F95617C4147EFDE5"
+    }
+  ],
+  "RecordedUtc": "2026-09-18T04:55:51.8771201Z"
+}

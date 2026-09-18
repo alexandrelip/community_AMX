@@ -2,6 +2,7 @@
 -- Pressure is a simplified model; it is neither an oil sensor nor an FM force.
 local common = dofile(LockOn_Options.script_path .. "Host/common.lua")
 local sensors = get_base_data()
+local low_pressure_bar = 93
 make_default_activity(0.1)
 function update()
     local rpm = common.read(sensors, "getEngineLeftRPM", 0, 120)
@@ -11,7 +12,7 @@ function update()
         common.publish("AMXDENIS_HYD_" .. index .. "_BAR", pressure)
         get_param_handle("P_HYD" .. index):set(pressure and pressure / 10 or 0)
         get_param_handle("AMXDENIS_HYD_" .. index .. "_VALID"):set(pressure ~= nil and 1 or 0)
-        get_param_handle("L_HYD" .. index):set(pressure and pressure < 100 and 1 or 0)
+        get_param_handle("L_HYD" .. index):set(pressure and pressure <= low_pressure_bar and 1 or 0)
     end
     get_param_handle("AMXDENIS_HYDRAULICS_MODELLED"):set(1)
     get_param_handle("gear_conso"):set(0)

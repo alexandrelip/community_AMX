@@ -1,0 +1,19 @@
+{
+  "Schema": "AMXDENIS_OPERATIONAL_PRESERVATION_1",
+  "OriginalFilesChecked": 84,
+  "OriginalChanges": [],
+  "SourceWorktreeFilesChecked": 2243,
+  "SourceWorktreeChanges": [
+    {
+      "Path": "Tools/Test-DisplayM1.ps1",
+      "Expected": "7BA0240C19E4E8FAED32DB681FE7EFAF7DC07473C6C27335798BC80CAC42D002",
+      "Actual": "91E347ADFCC8516457AEFE0EDE8F70C6AADD36945B61650A159A38F1960A947B"
+    }
+  ],
+  "CurrentProtectedBaselineRun": "Native-REV07-Operational-AC-Bingo",
+  "ProtectedFilesChecked": 93,
+  "ProtectedChanges": [],
+  "OwnedOperationalProcessesStillRunning": [],
+  "NormalProfileRestored": false,
+  "RecordedUtc": "2026-09-18T04:55:51.6811648Z"
+}

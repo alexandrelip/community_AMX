@@ -10,7 +10,7 @@ return function(devices, command, keys, records)
         assert(not used[name] and type(native) == "number" and type(owner) == "number", "Invalid control: " .. name)
         used[name] = true
         local spec = {name=name, label=label, owner=owner, native=native, kind=kind,
-            minimum=minimum or 0, maximum=maximum or 1, id=4000 + #result + 1,
+            minimum=minimum or 0, maximum=maximum or 1, id=3700 + #result + 1,
             state=state, available=true, keyboard=true, physical_mouse_validated=false}
         if connector then
             local matches = connectors[connector]
@@ -30,7 +30,7 @@ return function(devices, command, keys, records)
         end
         spec.mouse = spec.mouse or false
         spec.feedback = state or ("AMXDENIS_CONTROL_" .. name)
-        if kind == "axis" then spec.axis_id = spec.id + 1000 end
+        if kind == "axis" then spec.axis_id = spec.id + 200 end
         if owner == devices.UFCP and kind ~= "axis" then spec.power = "ufcp" end
         if owner == devices.CMFD and kind ~= "set" then
             spec.power = name:match("^Mfd1") and "mfd1" or name:match("^Mfd2") and "mfd2" or "avionics"

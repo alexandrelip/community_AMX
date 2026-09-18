@@ -16,6 +16,11 @@ local function allowed(spec, value)
     return value % 1 == 0
 end
 function SetCommand(command, value)
+    local received = get_param_handle("AMXDENIS_INPUT_RECEIVED")
+    received:set(received:get() + 1)
+    get_param_handle("AMXDENIS_INPUT_LAST_COMMAND"):set(command)
+    get_param_handle("AMXDENIS_INPUT_LAST_VALUE_VALID"):set(common.finite(value) and 1 or 0)
+    if common.finite(value) then get_param_handle("AMXDENIS_INPUT_LAST_VALUE"):set(value) end
     if axes[command] then
         if not common.finite(value) or value < -1 or value > 1 then return false end
         local spec = axes[command]
@@ -61,6 +66,9 @@ function update()
 end
 function post_initialize()
     held = {}
+    get_param_handle("AMXDENIS_INPUT_RECEIVED"):set(0)
+    get_param_handle("AMXDENIS_INPUT_LAST_COMMAND"):set(0)
+    get_param_handle("AMXDENIS_INPUT_LAST_VALUE_VALID"):set(0)
     get_param_handle("AMXDENIS_INPUT_SEQUENCE"):set(0)
     get_param_handle("AMXDENIS_INPUT_ERROR"):set(0)
     for _, spec in ipairs(config.controls) do

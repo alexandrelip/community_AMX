@@ -1,6 +1,23 @@
 # AMXDENIS M1 — integração interna REV07
 
-## Checkpoint atual — leitura e inspeção dos visores em 2D
+## Checkpoint atual: diagnostico de mecanismos e sensores
+
+A [continuidade operacional](OPERATIONAL_VALIDATION.md) registra 12 novos
+ensaios privados e o [resumo com hashes](Evidence/Operational-REV07/mechanisms-followup.json).
+As experiencias de mecanimacao/descritor, gauge e OBB nao produziram uma
+correcao aprovada de trem, flaps ou canopy. Nao houve voo completo validado.
+O candidato normal BB conserva os descritores originais e o SFM; acrescenta
+somente inventario passivo de 50 getters ao runtime observado em AT.
+
+Teclado de energia/MFD/COM foi exercitado em funcoes selecionadas. Mouse
+continua parcial. Manche e manete X56 responderam a leitura Windows, sem
+aprovacao de curso completo, todos os botoes ou mapeamento nativo. O
+[cruzamento AMX/F-5EM](EICAS_PROPOSAL.md) nao revelou fontes independentes
+para NL/NH/TGT no caminho integrado. Esses campos continuam indisponiveis.
+Os 84 arquivos originais e as finalizacoes foram verificados; sem instalacao
+no perfil normal ou promocao dos candidatos experimentais.
+
+## Historico: leitura e inspeção dos visores em 2D
 
 O [relatório dos cinco indicadores](DISPLAY_ALIGNMENT.md) registra a correção
 da proporção e do espaçamento da fonte do ICP, sem trocar a textura, e a inspeção

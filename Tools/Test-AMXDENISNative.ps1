@@ -3,13 +3,16 @@ param(
     [ValidateSet('Prepare','Start','Await','Inspect','Command','Stop','Verify')][string]$Action='Inspect',
     [Parameter(Mandatory)][string]$RunRoot,
     [string]$CandidateRoot,
-    [ValidateSet('GroundHot','GroundCold')][string]$StartMode='GroundHot',
+    [ValidateSet('GroundHot','GroundCold','RunwayHot','AirHot')][string]$StartMode='GroundHot',
+    [ValidateRange(500,2550)][int]$FuelKg=2550,
     [string]$DcsRoot='D:\Program Files\DCS World',
-    [ValidateSet('bin','bin-mt')][string]$EngineDirectory='bin-mt',
+    [ValidateSet('bin','bin-mt')][string]$EngineDirectory='bin',
     [ValidateRange(800,2560)][int]$Width=1600,
     [ValidateRange(600,1440)][int]$Height=900,
     [ValidateRange(5,600)][int]$TimeoutSeconds=180,
     [ValidateRange(0,100000)][int]$Sequence=0,
+    [switch]$Operational,
+    [ValidateSet('none','without-mechanimations','duplicate-canopy')][string]$DescriptorProbe='none',
     [string]$Control,
     [double]$Value=1
 )
@@ -48,6 +51,14 @@ function SharedText([string]$Path,[int]$TailBytes=0) {
 function FreeEnvironment {
     if(@(Get-CimInstance Win32_Process -Filter "Name='DCS.exe' OR Name='DCS_updater.exe' OR Name='ModelViewer2.exe'").Count){throw 'Another simulator/viewer session exists; nothing will be closed or reused.'}
 }
+function AssertNativeStartup([string]$Log) {
+    if($Log -match 'C0000005|offline auth is not available|login was cancelled|missed aicraft descriptor for AMXT_M'){
+        throw 'Native startup blocked; inspect raw DCS log'
+    }
+    if($Log -match '(?m)^\d{4}-\d{2}-\d{2} [^\r\n]*\sERROR(?:_ONCE)?\s+Dispatcher[^\r\n]*COMPILE MISSION'){
+        throw 'Native mission compilation failed; preserve raw DCS log. Readiness rejected.'
+    }
+}
 function CheckFiles($State) {
     foreach($row in $State.RuntimeFiles){if((PlainHash (PrivatePath $State.Profile ('Mods/aircraft/AMXDENIS/'+$row.Path))) -ne $row.SHA256){throw "Staged runtime changed: $($row.Path)"}}
     foreach($row in $State.PrivateScripts){if((PlainHash (PrivatePath $State.Profile $row.Path)) -ne $row.SHA256){throw "Private observer/input changed: $($row.Path)"}}
@@ -74,6 +85,10 @@ if($Action -eq 'Prepare') {
     $manifestPath=Join-Path $candidate 'candidate-manifest.json';$manifest=Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json -DateKind String
     if($manifest.Schema -ne 'AMXDENIS_CANDIDATE_1' -or $manifest.AircraftType -ne 'AMXT_M' -or $manifest.PilotSeat -ne 1 -or
         $manifest.ExternalResourcesChanged -ne $false -or $manifest.FlightModelChanged -ne $false){throw 'Wrong candidate scope'}
+    $candidateProbe=if($manifest.PSObject.Properties['DescriptorProbe']){$manifest.DescriptorProbe}else{'none'}
+    if($candidateProbe -ne $DescriptorProbe){throw 'Descriptor experiment requires an explicit matching preparation option.'}
+    if($candidateProbe -ne 'none' -and (-not $Operational -or $manifest.DescriptorChanged -ne $true -or
+        $manifest.ExperimentalOnly -ne $true)){throw 'Descriptor experiment requires operational opt-in and experimental flags.'}
     foreach($row in $manifest.Files){if((Get-IntegrationHash (Resolve-IntegrationFile $candidate $row.Path)) -ne $row.SHA256){throw 'Candidate changed since build'}}
     $reference=Join-Path $PSScriptRoot 'Native\Reference'
     $references=Get-Content -LiteralPath (Join-Path $reference 'manifest.json') -Raw | ConvertFrom-Json -DateKind String
@@ -104,7 +119,7 @@ if($Action -eq 'Prepare') {
         Add-Type -AssemblyName System.IO.Compression.FileSystem
         $zip=[IO.Compression.ZipFile]::OpenRead((Join-Path $reference 'AMX_Free_Flight.miz'))
         try {foreach($entry in $zip.Entries){if($entry.FullName -notin @('mission','options','warehouses','l10n/DEFAULT/dictionary','l10n/DEFAULT/mapResource')){continue};$dest=Resolve-IntegrationFile $template $entry.FullName;New-Item -ItemType Directory -Path (Split-Path -Parent $dest) -Force | Out-Null;[IO.Compression.ZipFileExtensions]::ExtractToFile($entry,$dest,$false)}}finally{$zip.Dispose()}
-        $preparation=@(& $lua (Join-Path $PSScriptRoot 'Native/prepare.lua') $profile $template (Join-Path $run 'options.before.lua') $StartMode $Width $Height 2>&1)
+        $preparation=@(& $lua (Join-Path $PSScriptRoot 'Native/prepare.lua') $profile $template (Join-Path $run 'options.before.lua') $StartMode $Width $Height $DcsRoot ([int]$Operational.IsPresent) $FuelKg 2>&1)
         $code=$LASTEXITCODE;$preparation | Set-Content -LiteralPath (Join-Path $run 'prepare.log') -Encoding utf8NoBOM
         if($code -ne 0 -or ($preparation -join "`n") -notmatch 'AMXDENIS_NATIVE_PREPARE_OK'){$preparation | Write-Output;throw 'Native preparation failed'}
         $mission=Join-Path $run 'AMXT_M-cockpit.miz';[IO.Compression.ZipFile]::CreateFromDirectory($template,$mission)
@@ -116,6 +131,11 @@ if($Action -eq 'Prepare') {
             Candidate=$candidate;BuildId=$manifest.BuildId;CandidateManifestSHA256=(PlainHash $manifestPath);RuntimeFiles=$manifest.Files;
             Mission=$mission;MissionSHA256=(PlainHash $mission);PrivateScripts=$scripts;Prepared=$true;StartMode=$StartMode;
             Scope='native_front_cockpit_displays_inputs_only';SourceReadOnly=$true;NativeValidated=$false;UserAuthorizedNativeLaunch=$true}
+        $state.OperationalTest=[bool]$Operational
+        $state.DescriptorProbe=$candidateProbe
+        $state.ExperimentalOnly=$candidateProbe -ne 'none'
+        $state.RequestedFuelKg=$FuelKg
+        if($Operational){$state.Scope='native_operational_test_no_weapon_release_or_sensor_injection'}
         Write-IntegrationJson (Join-Path $run 'run.json') $state
         CheckFiles ([pscustomobject]$state)
         Write-Output "AMXDENIS_NATIVE_PREPARED|$profileName|files=$($manifest.Files.Count)|$run"
@@ -138,8 +158,10 @@ if($Action -eq 'Start') {
 if($Action -in @('Await','Inspect','Command')) {
     if(-not(OwnedProcess $state)){throw 'Owned DCS is not running'}
     if($Action -eq 'Command') {
-        if($Control -notmatch '^(Icp\w+|Mfd\w+|Master|HudBrightness|CautionAcknowledge|Battery|Generator[12]|View(Right|Up|Forward|Yaw|Pitch|Zoom|Reset))$' -or
-            [double]::IsNaN($Value) -or [double]::IsInfinity($Value) -or $Value -lt -1 -or $Value -gt 1){throw 'Diagnostic request outside allowed display/system selectors'}
+        $operationalControl=$Control -match '^(Starter|FuelShutoff|Gear|Flaps|Canopy|Mode|Flight(Throttle|Pitch|Roll|Rudder|Brake|AltitudeHold|AttitudeHold|Cancel)|Native(GearUp|GearDown|FlapsDown|FlapsUp|Canopy))$'
+        if($operationalControl -and (-not $state.PSObject.Properties['OperationalTest'] -or $state.OperationalTest -ne $true)){throw 'Operational diagnostic controls require explicit preparation opt-in.'}
+        if(($Control -notmatch '^(Icp\w+|Mfd\w+|Master|HudBrightness|CautionAcknowledge|Battery|Generator[12]|View(Right|Up|Forward|Yaw|Pitch|Zoom|Reset))$' -and -not $operationalControl) -or
+            [double]::IsNaN($Value) -or [double]::IsInfinity($Value) -or $Value -lt -1 -or $Value -gt $(if($Control -eq 'Mode'){4}else{1})){throw 'Diagnostic request outside allowed selectors'}
         $path=PrivatePath $state.Profile 'Scripts/request.txt';$sequence=1
         if(Test-Path -LiteralPath $path){$sequence=[int]((Get-Content -LiteralPath $path -Raw).Split('|')[0])+1}
         $text=$sequence.ToString()+'|'+$Control+'|'+$Value.ToString('R',[Globalization.CultureInfo]::InvariantCulture)
@@ -155,10 +177,10 @@ if($Action -in @('Await','Inspect','Command')) {
             $text=SharedText $path $(if($Sequence -gt 0){2097152}else{0});$hook=SharedText (PrivatePath $state.Profile 'Logs/AMXDENIS-hook.log')
             if($text -match '"kind":"ERROR"' -or $hook -match '\|ERROR\|'){throw 'Private observer/hook error; preserve logs'}
             if($Sequence -gt 0 -and $text -match ('"kind":"REJECT"[^\r\n]*"sequence":'+$Sequence+'[,}]')){throw 'Requested observation command was rejected; no capture approval'}
+            $native=SharedText (PrivatePath $state.Profile 'Logs/dcs.log')
+            AssertNativeStartup $native
             $observed=if($Sequence -gt 0){[regex]::Matches($text,'(?m)^\{[^\r\n]*"kind":"STATE"[^\r\n]*"sequence":'+$Sequence+'[,}]').Count -ge 3}else{$text -match '"kind":"READY"'}
             if($observed){CheckFiles $state;Write-Output "AMXDENIS_COCKPIT_OBSERVED|sequence=$Sequence|visual_and_input_verdict=PENDING";return}
-            $native=SharedText (PrivatePath $state.Profile 'Logs/dcs.log')
-            if($native -match 'C0000005|offline auth is not available|login was cancelled|missed aicraft descriptor for AMXT_M'){throw 'Native startup blocked; inspect raw DCS log'}
             [void]$watcher.WaitForChanged(([IO.WatcherChangeTypes]::Changed -bor [IO.WatcherChangeTypes]::Created),1000)
         };throw "Observation timed out for sequence $Sequence; inspect telemetry before classifying the request"}finally{$watcher.Dispose()}
     }

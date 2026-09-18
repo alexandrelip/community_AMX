@@ -4,7 +4,7 @@ param(
     [ValidateSet('Info','Activate','FitViewport','Capture','Key','ScanKey','Move','Click','Close')][string]$Action='Info',
     [string]$OutputPath,[string]$Keys,[int]$X,[int]$Y,
     [ValidateRange(1,127)][int]$ScanCode=1,
-    [switch]$Control,[switch]$Shift,[switch]$Alt,[switch]$RightControl,[switch]$RightShift,[switch]$Extended,
+    [switch]$Control,[switch]$Shift,[switch]$Alt,[switch]$RightControl,[switch]$RightShift,[switch]$RightAlt,[switch]$Extended,
     [switch]$DesktopCapture,[switch]$RightButton,
     [int]$ViewportWidth=1600,[int]$ViewportHeight=900
 )
@@ -27,9 +27,34 @@ if($OutputPath -and -not [IO.Path]::GetFullPath($OutputPath).StartsWith($state.R
 $reference=Join-Path $PSScriptRoot 'Reference/Window-M1.ps1'
 if((Get-FileHash -LiteralPath $reference -Algorithm SHA256).Hash -ne '640A1D26B470BA83F7713421C59AA2039D0A3BFF435FF16AC7D8CBE576952AA2'){throw 'Frozen input/capture implementation changed'}
 $source=[IO.File]::ReadAllText($reference).Replace('DCS\.AMXM1-','DCS\.AMXDENIS-').Replace('M1-display.log','AMXDENIS-native.jsonl')
+$activation='if (-not [AMXM1WindowV7]::Activate($window))'
+if(([regex]::Matches($source,[regex]::Escape($activation))).Count -ne 1){throw 'Unexpected window activation contract'}
+$source=$source.Replace($activation,'if ([AMXM1WindowV7]::GetForegroundWindow() -ne $window -and -not [AMXM1WindowV7]::Activate($window))')
+$motion='[AMXM1WindowV7]::mouse_event(0xC001, $motion.X, $motion.Y, 0, [UIntPtr]::Zero)'
+if(([regex]::Matches($source,[regex]::Escape($motion))).Count -ne 1){throw 'Unexpected cursor positioning contract'}
+$source=$source.Replace($motion,'if (-not [AMXM1WindowV7]::SetCursorPos($screenX, $screenY)) { throw "Native cursor positioning failed; no click sent." }')
+$keyboardWait=@'
+        $deadline = [datetime]::UtcNow.AddSeconds(3)
+        while ((Get-Item -LiteralPath $telemetry).Length -le $length -and [datetime]::UtcNow -lt $deadline) {
+            [void]$watcher.WaitForChanged([IO.WatcherChangeTypes]::Changed, 500)
+        }
+'@
+$keyboardWait=$keyboardWait.Replace("`r`n","`n")
+$source=$source.Replace("`r`n","`n")
+if(([regex]::Matches($source,[regex]::Escape($keyboardWait))).Count -ne 1){throw 'Unexpected keyboard observation contract'}
+$source=$source.Replace($keyboardWait,@'
+        $deadline = [datetime]::UtcNow.AddSeconds(3)
+        for ($sample = 0; $sample -lt 2; $sample++) {
+            $length = (Get-Item -LiteralPath $telemetry).Length
+            while ((Get-Item -LiteralPath $telemetry).Length -le $length -and [datetime]::UtcNow -lt $deadline) {
+                [void]$watcher.WaitForChanged([IO.WatcherChangeTypes]::Changed, 500)
+            }
+            if ((Get-Item -LiteralPath $telemetry).Length -le $length) { throw 'No two fresh simulator samples after keyboard press.' }
+        }
+'@)
 if($RightButton){$source=$source.Replace('::mouse_event(2, 0, 0, 0','::mouse_event(8, 0, 0, 0').Replace('::mouse_event(4, 0, 0, 0','::mouse_event(16, 0, 0, 0')}
 $arguments=@{RunFile=(Join-Path $RunRoot 'active.json');ProcessName='DCS';Action=$Action;OutputPath=$OutputPath;Keys=$Keys;X=$X;Y=$Y;
-    ScanCode=$ScanCode;Control=$Control;Shift=$Shift;Alt=$Alt;RightControl=$RightControl;RightShift=$RightShift;Extended=$Extended;
+    ScanCode=$ScanCode;Control=$Control;Shift=$Shift;Alt=$Alt;RightControl=$RightControl;RightShift=$RightShift;RightAlt=$RightAlt;Extended=$Extended;
     DesktopCapture=$DesktopCapture;ViewportWidth=$ViewportWidth;ViewportHeight=$ViewportHeight}
 $record=[ordered]@{Action=$Action;RequestedUtc=[DateTime]::UtcNow.ToString('o');RightButton=[bool]$RightButton;Succeeded=$false;Error=$null}
 try {& ([scriptblock]::Create($source)) @arguments;$record.Succeeded=$true}
