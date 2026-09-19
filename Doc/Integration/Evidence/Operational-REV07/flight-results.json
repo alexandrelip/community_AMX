@@ -1,0 +1,188 @@
+{
+  "Schema": "AMXDENIS_R06_FLIGHT_1",
+  "Scope": "Scripted takeoff, gear cycle in flight, climb and stabilised cruise on a private runway fixture, repeated twice.",
+  "Sessions": [
+    {
+      "Session": "ED",
+      "Run": "DCS.AMXDENIS-Native-REV07-ED-Flight",
+      "Planned": 10,
+      "Reached": 10,
+      "SequenceCompleted": true,
+      "IntegrityPassed": true,
+      "Stages": [
+        {
+          "Stage": "Roll",
+          "Reached": true,
+          "Ias": 31.243223190307617,
+          "Agl": 1.8547935485839844,
+          "GearArgument": 1
+        },
+        {
+          "Stage": "Rotate",
+          "Reached": true,
+          "Ias": 79.46875,
+          "Agl": 1.8757171630859375,
+          "GearArgument": 1
+        },
+        {
+          "Stage": "Airborne",
+          "Reached": true,
+          "Ias": 102.94122314453125,
+          "Agl": 40.25096893310547,
+          "GearArgument": 1
+        },
+        {
+          "Stage": "ClimbAttitude",
+          "Reached": true,
+          "Ias": 94.12936401367188,
+          "Agl": 144.77369689941406,
+          "GearArgument": 1
+        },
+        {
+          "Stage": "GearUp",
+          "Reached": true,
+          "Ias": 75.50569152832031,
+          "Agl": 820.1533813476562,
+          "GearArgument": 0.03750000149011612
+        },
+        {
+          "Stage": "Climb",
+          "Reached": true,
+          "Ias": 81.21570587158203,
+          "Agl": 1482.52783203125,
+          "GearArgument": 0
+        },
+        {
+          "Stage": "Level",
+          "Reached": true,
+          "Ias": 134.19009399414062,
+          "Agl": 1374.6871337890625,
+          "GearArgument": 0
+        },
+        {
+          "Stage": "Cruise",
+          "Reached": true,
+          "Ias": 168.08407592773438,
+          "Agl": 1457.3917236328125,
+          "GearArgument": 0
+        },
+        {
+          "Stage": "GearDown",
+          "Reached": true,
+          "Ias": 182.68276977539062,
+          "Agl": 1444.2601318359375,
+          "GearArgument": 0.9750000238418579
+        },
+        {
+          "Stage": "FlapsApproach",
+          "Reached": true,
+          "Ias": 177.8997344970703,
+          "Agl": 1496.8780517578125,
+          "GearArgument": 1
+        }
+      ]
+    },
+    {
+      "Session": "EE",
+      "Run": "DCS.AMXDENIS-Native-REV07-EE-FlightRepeat",
+      "Planned": 10,
+      "Reached": 10,
+      "SequenceCompleted": true,
+      "IntegrityPassed": true,
+      "Stages": [
+        {
+          "Stage": "Roll",
+          "Reached": true,
+          "Ias": 31.220733642578125,
+          "Agl": 1.8546791076660156,
+          "GearArgument": 1
+        },
+        {
+          "Stage": "Rotate",
+          "Reached": true,
+          "Ias": 68.56658935546875,
+          "Agl": 1.875701904296875,
+          "GearArgument": 1
+        },
+        {
+          "Stage": "Airborne",
+          "Reached": true,
+          "Ias": 96.98777770996094,
+          "Agl": 39.00273132324219,
+          "GearArgument": 1
+        },
+        {
+          "Stage": "ClimbAttitude",
+          "Reached": true,
+          "Ias": 86.48651123046875,
+          "Agl": 142.40921020507812,
+          "GearArgument": 1
+        },
+        {
+          "Stage": "GearUp",
+          "Reached": true,
+          "Ias": 78.81866455078125,
+          "Agl": 680.146728515625,
+          "GearArgument": 0.03750000149011612
+        },
+        {
+          "Stage": "Climb",
+          "Reached": true,
+          "Ias": 80.41004180908203,
+          "Agl": 1490.18798828125,
+          "GearArgument": 0
+        },
+        {
+          "Stage": "Level",
+          "Reached": true,
+          "Ias": 99.76409912109375,
+          "Agl": 1599.2393798828125,
+          "GearArgument": 0
+        },
+        {
+          "Stage": "Cruise",
+          "Reached": true,
+          "Ias": 151.90306091308594,
+          "Agl": 1599.0225830078125,
+          "GearArgument": 0
+        },
+        {
+          "Stage": "GearDown",
+          "Reached": true,
+          "Ias": 173.23292541503906,
+          "Agl": 1590.7537841796875,
+          "GearArgument": 0.96875
+        },
+        {
+          "Stage": "FlapsApproach",
+          "Reached": true,
+          "Ias": 172.7033233642578,
+          "Agl": 1642.464599609375,
+          "GearArgument": 1
+        }
+      ]
+    }
+  ],
+  "AxisLessons": [
+    "The thrust axis is inverted: 0.3 produced 74 RPM while 1.0 held idle 60 RPM, so full power is -1",
+    "A negative pitch axis pushed the nose down and the aircraft overran the runway at 124 m/s without rotating",
+    "Holding the rotation attitude bled the speed below stall and the aircraft departed, so the climb attitude is reduced right after liftoff"
+  ],
+  "Achieved": [
+    "Takeoff with rotation near the declared 65 m/s",
+    "Landing gear retracted and extended in flight, which the ground sessions could not cover",
+    "Climb above 1400 m",
+    "Altitude hold engaged and twenty five consecutive stable samples",
+    "Approach flaps extended in flight"
+  ],
+  "StillMissing": [
+    "No approach, touchdown or rollout was attempted",
+    "No crosswind, failure or weight variation was exercised",
+    "Autopilot behaviour was used, not hand flown stability"
+  ],
+  "NotProven": [
+    "Scripted axes through the private diagnostic channel, not physical HOTAS input",
+    "The simplified flight model provides the physics; no custom flight model was written"
+  ],
+  "RecordedUtc": "2026-09-19T14:58:48.4273759Z"
+}

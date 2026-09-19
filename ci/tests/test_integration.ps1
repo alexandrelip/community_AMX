@@ -439,6 +439,27 @@ try {
     Check (@($consumer.Fixed).Count -ge 3 -and @($consumer.NotProven).Count -ge 3 -and $consumer.NotProven[0] -match 'not calibrated') 'Hydraulic evidence must keep the fixes and the uncalibrated scope explicit.'
     $waitText=Get-Content -LiteralPath (Join-Path $repo 'Tools/Native/Wait-State.ps1') -Raw
     Check ($waitText -match '-Since \$lastTime' -and $waitText -match 'Short transients') 'Observation must scan every recorded sample, not only the newest.'
+    $flightPath=Join-Path $repo 'Tools/Native/Test-Flight.ps1'
+    $flightAst=[Management.Automation.Language.Parser]::ParseFile($flightPath,[ref]$tokens,[ref]$parseErrors)
+    Check ($parseErrors.Count -eq 0) 'Flight test syntax is invalid.'
+    Check ($flightAst.Extent.Text -match "StartMode -ne 'RunwayHot'") 'The flight test must demand a runway fixture.'
+    $flightStages=@(& $flightPath -Describe)
+    Check ($flightStages.Count -eq 10 -and @($flightStages.Name | Sort-Object -Unique).Count -eq 10) 'The flight plan must keep ten distinct stages.'
+    foreach($stage in $flightStages){Check ($stage.Condition -is [scriptblock] -and $stage.Timeout -le 120) 'Flight stages need bounded conditions.'}
+    $rotate=[array]::IndexOf($flightStages.Name,'Rotate');$airborne=[array]::IndexOf($flightStages.Name,'Airborne')
+    $gearUp=[array]::IndexOf($flightStages.Name,'GearUp')
+    Check ($rotate -lt $airborne -and $airborne -lt $gearUp) 'Gear retraction must follow rotation and liftoff.'
+    Check ($flightStages[0].Commands[0].Control -eq 'FlightThrottle' -and $flightStages[0].Commands[0].Value -eq -1) 'Takeoff must command the inverted thrust axis to full power.'
+    $flight=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/Evidence/Operational-REV07/flight-results.json') -Raw | ConvertFrom-Json
+    Check ($flight.Schema -eq 'AMXDENIS_R06_FLIGHT_1' -and $flight.Sessions.Count -ge 2) 'Flight evidence needs two sessions.'
+    foreach($session in $flight.Sessions){
+        Check ($session.IntegrityPassed -and $session.SequenceCompleted -and $session.Reached -eq $session.Planned) 'A flight session was archived incomplete.'
+        $up=@($session.Stages | Where-Object Stage -eq 'GearUp');$down=@($session.Stages | Where-Object Stage -eq 'GearDown')
+        Check ($up.Count -eq 1 -and $up[0].Reached -and $up[0].Agl -gt 100 -and $up[0].GearArgument -lt 0.1) 'Gear retraction must be measured in flight.'
+        Check ($down.Count -eq 1 -and $down[0].Reached -and $down[0].GearArgument -gt 0.9) 'Gear extension must be measured in flight.'
+    }
+    Check (@($flight.AxisLessons).Count -ge 3 -and @($flight.StillMissing).Count -ge 3 -and @($flight.NotProven).Count -ge 2) 'Flight evidence must keep the axis lessons, the missing items and the unproven scope.'
+    Check ($flight.StillMissing[0] -match 'touchdown') 'Flight evidence must state that no landing was attempted.'
     $campaignAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-CommandCampaign.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Command campaign syntax is invalid.'
     $campaignText=$campaignAst.Extent.Text
