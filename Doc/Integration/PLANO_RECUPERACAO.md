@@ -68,7 +68,7 @@ serao considerados resolvidos por essa exclusao; continuam limitacoes do pacote.
 | R01 | Reconstrucao/build | 3 | 7 | P0 | Nenhuma | Aprovado no escopo: 7/10 |
 | R02 | Mecanismos | 2 | 7 | P0 | R01 | Bloqueado: atuacao nativa sem causa isolada |
 | R03 | Teclado | 5 | 10 | P1 | R01; R02 para aprovar atuacao | Em execucao: 54 acoes em contextos selecionados; permanece 5/10 |
-| R04 | Mouse | 3 | 9 | P1 | R01 e rotas verificadas em R03 | Em execucao: resolver baseline antes de ampliar cobertura |
+| R04 | Mouse | 3 | 9 | P1 | R01 e rotas verificadas em R03 | Helper de clique preparado; prova nativa bloqueada pela sessao Windows |
 | R05 | X56 | 3 | 9 | P1 | R03 e operador fisico | Inventario HID e 67 exercicios preparados; teste fisico adiado |
 | R06 | Voo completo | 2 | 7 | P1 | R02 e controles essenciais aprovados em R03 | Planejado |
 | R07 | EICAS | 4 | 7 | P2 | R01 e fontes/modelos AMX validos | Bloqueado por fontes |
@@ -228,6 +228,28 @@ As 51 se distribuem em 10 acoes de energia/partida/mecanismos/navegacao/ACK,
 7 acoes ICP/EGI e 17 botoes OSS por MFD. Essa contagem nao declara que todas
 tenham funcionalidade integrada; a classificacao por contexto permanece pendente.
 
+Continuidade ICP: corrigido o indice usado ao diminuir COM2 na pagina principal
+(commit `8f121f8`), com regressao negativa no candidato anterior e positiva no
+novo. A referencia congelada foi preservada. A suite `IcpControls` acrescenta
+42 etapas para os sete controles ICP/EGI, waypoint e ACK; os estados observados
+sao do produtor, nao ecos do roteador. A selecao/presets sao publicados quando
+a pagina MAIN esta ativa; a chave EGI e separada de seu estado de alinhamento.
+
+As [tentativas CE ate CI](Evidence/Operational-REV07/input-preparation-results.json)
+nao concluiram essa suite. CE parou antes da primeira tecla por uma premissa
+fria do teste; CF esperava waypoint 1, mas a rota de um ponto salta corretamente
+para o aerodromo 90; CG recusou o alerta BINGO criado somente na primeira causa.
+Essas verificacoes foram corrigidas sem regravar os resultados antigos. Um
+parametro novo pode confirmar o resultado, mas nao basta para provar transicao:
+pelo menos um produtor previamente observado ainda precisa mudar.
+
+CH confirmou 34 etapas e foi interrompido por SendInput negado, no mesmo momento
+em que o DCS registrou desconexao dos dispositivos RDP de entrada e video.
+O usuario informou nao ter interagido. CI foi bloqueado por foco antes da
+primeira tecla. Nove acoes adicionais foram observadas em execucoes incompletas;
+nao foram somadas ao marco anterior de 54 acoes repetidas. EGI temporizado passou
+na bancada, mas sua sequencia nativa permanece pendente. R03 continua 5/10.
+
 ## R04 - Mouse
 
 1. Reproduzir COM1/COM2 no candidato normal com pose, viewport e modo clicavel
@@ -245,6 +267,23 @@ nas vistas central e proxima e em duas sessoes novas. Cobrir centro/bordas,
 negativos fora da zona, soltura e perda/retorno de energia. Registrar limites
 residuais de ergonomia; nenhuma falha funcional conhecida nas zonas previstas.
 As 71 acoes somente de teclado nao viram zonas clicaveis por esse aceite.
+
+Preparacao implementada no [Invoke-Input.ps1](../../Tools/Native/Invoke-Input.ps1):
+`-Mouse -ClickX <x> -ClickY <y>` e `-RightButton` opcional, com
+`-ExpectedParameters` obrigatorio. Verifica hash do catalogo, comando e conector,
+recusa acoes keyboard-only, separa Move/Click e mantem foco, cursor exato e
+telemetria recente. `-ResolveOnly` nao envia entrada. As coordenadas dependem
+da vista e janela efetivamente medidas; os zeros do teste de resolucao nao sao
+pontos de clique aprovados.
+
+O resultado exige efeito no produtor, recebimento e soltura quando aplicavel.
+Falhas de envio guardam fase/erro/antes/depois com aprovacao funcional falsa.
+As 34 zonas constam do catalogo; 33 podem ser encaminhadas como clique por este
+helper, mas nenhuma recebeu nova aprovacao nativa. `IcpBrightness` requer
+arraste de eixo e e recusado, nao simulado por um clique. Depois de estabilizar
+a sessao interativa, repetir COM1/COM2 no baseline antes de ampliar a cobertura.
+Nao foram alterados OBB, conectores, geometria ou guardas para forcar sucesso.
+R04 permanece 3/10; preparacao nao significa 9/10.
 
 ## R05 - X56
 

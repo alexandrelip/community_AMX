@@ -2,7 +2,7 @@
 param(
     [string]$RunRoot,
     [string]$ReportName='keyboard-core.json',
-    [ValidateSet('Core','Navigation','DisplayLayout')][string]$Suite='Core',
+    [ValidateSet('Core','Navigation','DisplayLayout','IcpControls')][string]$Suite='Core',
     [ValidateRange(1,3)][int]$Cycles=1,
     [switch]$Describe
 )
@@ -131,10 +131,56 @@ function Get-KeyboardDisplayLayoutCases {
     @{Control='Battery';Value=0;Expected=@{T_BATT=0;ELEC_P1=0}}
 }
 
+function Get-KeyboardIcpCases {
+    @{Control='Battery';Value=1;Expected=@{T_BATT=1;ELEC_P1=1}}
+    @{Control='Master';Value=1;Expected=@{AMX_AVIONICS_MASTER=1;CMFD1On=1;CMFD2On=1}}
+    @{Control='IcpBARO_RALT';Value=1;Expected=@{WPN_RALT=1}}
+    @{Control='IcpBARO_RALT';Value=1;Expected=@{WPN_RALT=0}}
+    @{Control='IcpUP';Value=1;Expected=@{CMFD_NAV_FYT=90;CMFD_NAV_FYT_VALID=1}}
+    @{Control='IcpDOWN';Value=1;Expected=@{CMFD_NAV_FYT=0;CMFD_NAV_FYT_VALID=1}}
+    @{Control='WaypointNext';Value=1;Expected=@{CMFD_NAV_FYT=90;CMFD_NAV_FYT_VALID=1}}
+    @{Control='WaypointPrevious';Value=1;Expected=@{CMFD_NAV_FYT=0;CMFD_NAV_FYT_VALID=1}}
+    @{Control='IcpJOY_DOWN';Value=1;Expected=@{AMX_ICP_MAIN_SELECTION=1}}
+    @{Control='IcpUP';Value=1;Expected=@{AMX_COM1_PRESET=1;AMX_COM2_PRESET=0}}
+    @{Control='IcpJOY_DOWN';Value=1;Expected=@{AMX_ICP_MAIN_SELECTION=2}}
+    foreach($preset in @(1,2,3)){
+        @{Control='IcpUP';Value=1;Expected=@{AMX_COM1_PRESET=1;AMX_COM2_PRESET=$preset}}
+    }
+    foreach($preset in @(2,1,0)){
+        @{Control='IcpDOWN';Value=1;Expected=@{AMX_COM1_PRESET=1;AMX_COM2_PRESET=$preset}}
+    }
+    @{Control='Icp0';Value=1;Expected=@{AMX_COM2_PRESET_MODE=0;AMX_COM1_PRESET_MODE=1}}
+    @{Control='Icp0';Value=1;Expected=@{AMX_COM2_PRESET_MODE=1;AMX_COM1_PRESET_MODE=1}}
+    @{Control='IcpJOY_UP';Value=1;Expected=@{AMX_ICP_MAIN_SELECTION=1}}
+    @{Control='IcpDOWN';Value=1;Expected=@{AMX_COM1_PRESET=0;AMX_COM2_PRESET=0}}
+    @{Control='IcpJOY_UP';Value=1;Expected=@{AMX_ICP_MAIN_SELECTION=0}}
+    @{Control='IcpWARNRST';Value=1;Expected=@{AMX_HUD_WARNING_SUPPRESSED=1}}
+    @{Control='IcpJOY_RIGHT';Value=1;Expected=@{AMX_ICP_FORMAT=13}}
+    @{Control='IcpENTR';Value=1;Expected=@{AMX_ICP_FORMAT=28}}
+    foreach($entry in @(@('1',1),@('5',2),@('9',3))){
+        @{Control=('Icp'+$entry[0]);Value=1;Expected=@{AMX_ICP_EDIT_POS=$entry[1]}}
+    }
+    @{Control='Icp5';Value=1;Expected=@{AMX_ICP_EDIT_POS=0;UFCP_FUEL_BINGO=1595;AMX_FUEL_BINGO_ACTIVE=1;EICAS_ERROR_BINGO=1}}
+    @{Control='CautionAcknowledge';Value=1;Expected=@{AMX_FUEL_BINGO_ACTIVE=1;EICAS_ERROR_BINGO=2}}
+    foreach($entry in @(@('0',1),@('1',2),@('4',3))){
+        @{Control=('Icp'+$entry[0]);Value=1;Expected=@{AMX_ICP_EDIT_POS=$entry[1]}}
+    }
+    @{Control='Icp0';Value=1;Expected=@{AMX_ICP_EDIT_POS=0;UFCP_FUEL_BINGO=140;AMX_FUEL_BINGO_ACTIVE=0;EICAS_ERROR_BINGO=0}}
+    @{Control='IcpJOY_LEFT';Value=1;Expected=@{AMX_ICP_FORMAT=0}}
+    @{Control='IcpEgi';Value=0.75;Expected=@{AMX_EGI_SWITCH=8;EGI_STATE=3;AMX_ICP_FORMAT=20}}
+    @{Control='IcpEgi';Value=0.5;Expected=@{AMX_EGI_SWITCH=2;EGI_STATE=5};TimeoutSeconds=60}
+    @{Control='IcpEgi';Value=1;Expected=@{AMX_EGI_SWITCH=9;EGI_STATE=9;AVIONICS_INS_VALID=1}}
+    @{Control='IcpEgi';Value=0.25;Expected=@{AMX_EGI_SWITCH=0;EGI_STATE=0;AVIONICS_INS_VALID=0};TimeoutSeconds=45}
+    @{Control='IcpJOY_LEFT';Value=1;Expected=@{AMX_ICP_FORMAT=0}}
+    @{Control='Master';Value=0;Expected=@{AMX_AVIONICS_MASTER=0;CMFD1On=0;CMFD2On=0}}
+    @{Control='Battery';Value=0;Expected=@{T_BATT=0;ELEC_P1=0}}
+}
+
 $cases=@(switch($Suite){
     'Core' {Get-KeyboardCoreCases}
     'Navigation' {Get-KeyboardNavigationCases}
     'DisplayLayout' {Get-KeyboardDisplayLayoutCases}
+    'IcpControls' {Get-KeyboardIcpCases}
 })
 if($Describe){return $cases}
 if(-not $PSBoundParameters.ContainsKey('ReportName')){$ReportName='keyboard-'+$Suite.ToLowerInvariant()+'.json'}
@@ -165,6 +211,11 @@ if($Suite -eq 'DisplayLayout'){
         }
     }
 }
+if($Suite -eq 'IcpControls' -and ($Cycles -ne 1 -or $state.RequestedFuelKg -ne 1500 -or
+    $initial.parameters.CMFD_NAV_FYT -ne 0 -or
+    $initial.parameters.EGI_STATE -ne 0 -or $initial.parameters.WPN_RALT -ne 0)){
+    throw 'ICP suite requires one cycle in a fresh cold 1500 kg fixture with initial selections.'
+}
 $results=[Collections.Generic.List[object]]::new()
 $failure=$null
 try {
@@ -175,9 +226,16 @@ try {
             $entry=[ordered]@{Cycle=$cycle;Step=$index+1;Control=$case.Control;Value=$case.Value;
                 ExpectedParameters=$case.Expected;Report=$stepName;Passed=$false;SHA256=$null}
             try {
-                $null=& (Join-Path $PSScriptRoot 'Invoke-Input.ps1') -RunRoot $run -Control $case.Control -Value $case.Value -ExpectedParameters $case.Expected -ReportName $stepName
+                $inputArguments=@{RunRoot=$run;Control=$case.Control;Value=$case.Value;ExpectedParameters=$case.Expected;ReportName=$stepName}
+                if($case.ContainsKey('TimeoutSeconds')){$inputArguments.TimeoutSeconds=$case.TimeoutSeconds}
+                $null=& (Join-Path $PSScriptRoot 'Invoke-Input.ps1') @inputArguments
                 $step=Get-Content -LiteralPath (Join-Path $run $stepName) -Raw | ConvertFrom-Json -Depth 40 -DateKind String
                 if(-not $step.FunctionalEffectVerified -or $step.StableSamplesConfirmed -ne 3){throw 'Input receipt is not a functional suite pass.'}
+                if($Suite -eq 'IcpControls' -and $index -eq 1){
+                    foreach($parameter in @('AMX_ICP_MAIN_SELECTION','AMX_COM1_PRESET','AMX_COM2_PRESET')){
+                        if($step.After.parameters.$parameter -ne 0){throw 'Powered ICP does not have the expected initial selection and presets.'}
+                    }
+                }
                 $entry.Passed=$true
                 Write-Host ('KEYBOARD_CORE_EFFECT_OK|cycle='+$cycle+'|step='+($index+1)+'|control='+$case.Control)
             } finally {

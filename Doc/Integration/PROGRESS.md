@@ -26,6 +26,23 @@ Nao houve calibracao, exercicio fisico nem alteracao de perfil. Captura HID
 completa e correlacao no DCS seguem pendentes; usuario deixou movimento e
 reconexao para depois. A nota continua 3/10.
 
+Controles ICP/mouse: a [evidencia de preparacao](Evidence/Operational-REV07/input-preparation-results.json)
+preserva CE/CF/CG/CH/CI, todos incompletos. CH chegou a 34 etapas aprovadas,
+incluindo cursores, presets, BARO/RALT, waypoint, BINGO e ACK, antes da recusa
+Windows sincronizada com desconexao de dispositivos RDP. CI nao enviou a
+primeira tecla por falta de foco. Nove acoes adicionais observadas nao equivalem
+a suite repetida; teclado permanece 5/10. EGI completo so passou na bancada.
+
+O helper de entrada agora prepara cliques por catalogo verificado e coordenada
+explicita, exige efeito real e preserva falhas de envio. Nao houve novos cliques
+nativos nem mudanca de zonas/OBB; mouse continua 3/10. Arraste de brilho do ICP
+e recusado como nao implementado, sem atribuir PASS por clique.
+
+CI CJ passou com runtime identico ao CE: 22 PowerShell, 369 guardas de integracao,
+990 do observador, 1860 de runtime e 22743 dos indicadores, mais as demais suites.
+Depois, somente testes offline de registro de erro elevaram as guardas a 382.
+Nenhum teste novo promoveu o modulo completo ou instalou no perfil normal.
+
 ## Historico recente: teclado por efeito funcional
 
 O [subitem de layout](Evidence/Operational-REV07/keyboard-layout-results.json)

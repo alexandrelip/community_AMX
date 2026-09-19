@@ -456,6 +456,7 @@ do
         end
     end
     for frame=1,10 do sim.tick(order) end
+    check(sim.values.AMX_EGI_SWITCH==9 and sim.values.EGI_STATE==9,"EGI selector and model state are published independently")
     check(sim.values.EICAS_FUEL_KG==2550 and sim.values.EICAS_FUEL_KG_VALID==1,"captured EICAS callback publishes native total")
     near(sim.values.EICAS_FLOW_KG_MIN,6,"captured EICAS callback converts flow")
     check(sim.values.EICAS_NL_VALID==0 and sim.values.EICAS_NH_VALID==0 and sim.values.EICAS_TGT_VALID==0,"no fictitious Spey channels")
@@ -490,9 +491,15 @@ do
     check(icp.ufcp_com2_channel==2 and icp.ufcp_com2_frequency==226,
         "COM2 decrement uses its own channel index instead of COM1")
     check(icp.ufcp_com1_channel==1,"COM2 editing does not change the COM1 channel")
+    check(sim.values.AMX_ICP_MAIN_SELECTION==2 and sim.values.AMX_COM2_PRESET==2 and
+        sim.values.AMX_COM1_PRESET==1 and sim.values.AMX_COM2_PRESET_MODE==icp.UFCP_COM_FREQUENCY_SEL_IDS.PRST,
+        "main-page observation publishes producer selection and independent presets")
     sim.input("IcpJOY_UP",1);sim.input("IcpJOY_UP",0)
     sim.input("IcpJOY_UP",1);sim.input("IcpJOY_UP",0)
     sim.input("IcpNAV",1);sim.input("IcpNAV",0);sim.tick(order)
+    check(sim.values.AMX_ICP_MAIN_SELECTION==0,"cursor return is observable without using router feedback")
+    sim.input("IcpWARNRST",1);sim.input("IcpWARNRST",0);sim.tick(order)
+    check(sim.values.AMX_HUD_WARNING_SUPPRESSED==1,"warning reset publishes suppression rather than a flashing-light sample")
     sim.envs[103].ufcp_sel_format=sim.envs[103].UFCP_FORMAT_IDS.FUEL
     sim.fuel=620
     for digit in ("0670"):gmatch(".")do sim.input("Icp"..digit,1);sim.input("Icp"..digit,0)end
@@ -532,6 +539,28 @@ do
     check(sim.values.AVIONICS_HDG_VALID==0 and sim.values.HUD_ON==0,"invalid flight data clears valid HUD presentation")
     sim.sensors.getHeading=function()return -math.pi/2 end;sim.tick(order)
     check(sim.values.AVIONICS_HDG_VALID==1 and sim.values.HUD_ON==1,"valid flight source restores HUD")
+    local function wait_egi_state(expected)
+        local updates=0
+        while sim.values.EGI_STATE~=expected and updates<5000 do sim.tick(order);updates=updates+1 end
+        check(sim.values.EGI_STATE==expected,"EGI model reaches expected timed state "..expected)
+        return updates
+    end
+    sim.input("IcpEgi",0.25);sim.tick(order)
+    check(sim.values.AMX_EGI_SWITCH==0 and sim.values.EGI_STATE==13,"EGI OFF requests termination before the model becomes off")
+    wait_egi_state(0)
+    check(sim.values.AVIONICS_INS_VALID==0,"off EGI cannot claim valid inertial data")
+    sim.input("IcpEgi",0.75);sim.tick(order)
+    check(sim.values.AMX_EGI_SWITCH==8 and sim.values.EGI_STATE==3 and sim.values.AMX_ICP_FORMAT==20,
+        "ALIGN detent enters the model alignment state and INS page")
+    sim.input("IcpEgi",0.5);sim.tick(order)
+    check(sim.values.AMX_EGI_SWITCH==2 and sim.values.EGI_STATE==3,"STHD selection is not instant alignment")
+    check(wait_egi_state(5)>1,"STHD alignment requires model updates")
+    sim.input("IcpEgi",1);sim.tick(order)
+    check(sim.values.AMX_EGI_SWITCH==9 and sim.values.EGI_STATE==9 and sim.values.AVIONICS_INS_VALID==1,
+        "NAV becomes valid only after the model alignment completed")
+    sim.input("IcpEgi",0.25);sim.tick(order)
+    wait_egi_state(0)
+    check(sim.values.AMX_EGI_SWITCH==0 and sim.values.AVIONICS_INS_VALID==0,"final OFF clears model navigation validity")
     check(#sim.sent==0,"avionics page and power tests never issue physical flight or weapon commands")
 end
 print(string.format("AMXDENIS RUNTIME: %d/%d checks passed",checks,checks))

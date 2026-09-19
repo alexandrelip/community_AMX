@@ -1,0 +1,3279 @@
+{
+  "Schema": "AMXDENIS_INPUT_PREPARATION_EVIDENCE_1",
+  "RecordedUtc": "2026-09-19T01:52:15.3303767Z",
+  "WorkItem": "R03 ICP producer observation and R04 guarded mouse testing preparation",
+  "RuntimeBuildId": "120E7B1EBBB561ED0B1D7CF02352FD3CC3D40BAC23B221D57DEF4B679AA473BB",
+  "NativeIcpSuiteComplete": false,
+  "NativeEgiSequenceValidated": false,
+  "FullKeyboardApproval": false,
+  "FullMouseApproval": false,
+  "KeyboardRating": 5,
+  "MouseRating": 3,
+  "PreviouslyRepeatedSelectedControls": 54,
+  "AdditionalControlsObservedInIncompleteRuns": [
+    "CautionAcknowledge",
+    "IcpBARO_RALT",
+    "IcpDOWN",
+    "IcpJOY_DOWN",
+    "IcpJOY_UP",
+    "IcpUP",
+    "IcpWARNRST",
+    "WaypointNext",
+    "WaypointPrevious"
+  ],
+  "AdditionalObservationsAreNotCompleteSuiteApproval": true,
+  "NativeRuns": [
+    {
+      "Run": "Native-REV07-CE-IcpControls",
+      "Classification": "Pre-input test defect: powered-only ICP handles were required while cold; no key sent. Baseline check moved after master power.",
+      "SuiteExists": false,
+      "SuiteSource": "keyboard-icpcontrols.json",
+      "SuiteSHA256": null,
+      "Passed": false,
+      "Planned": 42,
+      "Attempted": 0,
+      "Confirmed": 0,
+      "Failure": "Missing AMX_ICP_MAIN_SELECTION during cold precondition; captured in execution output, no historical suite file",
+      "Steps": [],
+      "WindowReports": [],
+      "Finalization": "finalization-20260919T004846279Z",
+      "IntegrityPassed": true,
+      "ObserverErrors": 0,
+      "ObserverRejects": 0,
+      "DcsSeverityErrorLines": 155,
+      "RemoteInputEvents": [],
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "11F4351A8AA36780F071E4F0244A6E2A95691769AC2C42AB8B427DABFBA1114E"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "0831E23B4BDCD745D442808CC61C609C30B52A9389BCEC47982A41BAA3DF5C39"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "2766BA21658D9E737422526846DD3BE451A6A37D3309CC7238E12929A847D0E1"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "47D83604CE386841FD8684B23C6ACA6D71191AFA360DDF429E5E6A7E52AA7C2D"
+        }
+      ]
+    },
+    {
+      "Run": "Native-REV07-CF-IcpControls",
+      "Classification": "Test expectation was wrong: single-route fixture skips empty points to valid airfield slot90, not1. Key was received and released; original FAIL preserved.",
+      "SuiteExists": true,
+      "SuiteSource": "keyboard-icpcontrols.json",
+      "SuiteSHA256": "B0CE579867AA03A3617E06C91383168606D31EF9E1290BB2CF4B2B95824F9C6C",
+      "Passed": false,
+      "Planned": 42,
+      "Attempted": 5,
+      "Confirmed": 4,
+      "Failure": "Native keyboard outcome not confirmed: IcpUP; report preserved at C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-CF-IcpControls\\keyboard-icpcontrols-01-005-IcpUP.json",
+      "Steps": [
+        {
+          "Step": 1,
+          "Control": "Battery",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-001-Battery.json",
+          "SHA256": "967C15E04E57943978DA7138F06DD1E568D6FDD95FAF7C123F0D4A8966830076",
+          "Expected": {
+            "ELEC_P1": 1,
+            "T_BATT": 1
+          },
+          "BeforePresent": {
+            "ELEC_P1": true,
+            "T_BATT": true
+          },
+          "Before": {
+            "ELEC_P1": 0,
+            "T_BATT": 0
+          },
+          "After": {
+            "ELEC_P1": 1,
+            "T_BATT": 1
+          },
+          "BeforeTime": 5.234,
+          "AfterTime": 8.967,
+          "Receipt": true,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 2,
+          "Control": "Master",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-002-Master.json",
+          "SHA256": "3939F4F9898A590240DDC1BCBA99038C490E8E9F704AAB00C653A5A386487559",
+          "Expected": {
+            "CMFD2On": 1,
+            "AMX_AVIONICS_MASTER": 1,
+            "CMFD1On": 1
+          },
+          "BeforePresent": {
+            "CMFD2On": true,
+            "AMX_AVIONICS_MASTER": true,
+            "CMFD1On": true
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "AMX_AVIONICS_MASTER": 0,
+            "CMFD1On": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "AMX_AVIONICS_MASTER": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 9.184,
+          "AfterTime": 12.968,
+          "Receipt": true,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 3,
+          "Control": "IcpBARO_RALT",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-003-IcpBARO_RALT.json",
+          "SHA256": "74E8E7D3905A0F1B93341CEB1C158E44FC425E479F8C24E8625252917EEFB7B4",
+          "Expected": {
+            "WPN_RALT": 1
+          },
+          "BeforePresent": {
+            "WPN_RALT": true
+          },
+          "Before": {
+            "WPN_RALT": 0
+          },
+          "After": {
+            "WPN_RALT": 1
+          },
+          "BeforeTime": 13.185,
+          "AfterTime": 16.967,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 4,
+          "Control": "IcpBARO_RALT",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-004-IcpBARO_RALT.json",
+          "SHA256": "4FE8EA225EB902E165FF8A6E5788DD6E24C489F89FFC5F9C4B4BF759EEAE2E9C",
+          "Expected": {
+            "WPN_RALT": 0
+          },
+          "BeforePresent": {
+            "WPN_RALT": true
+          },
+          "Before": {
+            "WPN_RALT": 1
+          },
+          "After": {
+            "WPN_RALT": 0
+          },
+          "BeforeTime": 17.168,
+          "AfterTime": 21.003,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 5,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": false,
+          "Source": "keyboard-icpcontrols-01-005-IcpUP.json",
+          "SHA256": "7246106A569A3B7CA244905A588B4B240A5E30045E8A68D3F648B372140DDD95",
+          "Expected": {
+            "CMFD_NAV_FYT": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 0
+          },
+          "After": {
+            "CMFD_NAV_FYT": 90
+          },
+          "BeforeTime": 21.219,
+          "AfterTime": 33.603,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 0,
+          "HistoricalFunctionalEffectVerified": false,
+          "WaitError": "Native condition was not observed in time; raw evidence retained."
+        }
+      ],
+      "WindowReports": [
+        {
+          "Path": "window-20260919T005113870Z-804a96.json",
+          "SHA256": "2A6209FF1D884D39FDC475B4D6AC8E3D84AA2F1005FFCB33B2472B8E10CD5BE0",
+          "RequestedUtc": "2026-09-19T00:51:12.3419846Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005117808Z-7428eb.json",
+          "SHA256": "1903D3968609391A19FD5012B62FEE6268EF310DB470C66157C901C0E653ACB2",
+          "RequestedUtc": "2026-09-19T00:51:16.2729272Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005121785Z-d7d3bf.json",
+          "SHA256": "917EC41041471F7256820B89C9F1DACDC5BCA8901607764E38BBC0A4C8F5F851",
+          "RequestedUtc": "2026-09-19T00:51:20.2634035Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005125816Z-b6f8f8.json",
+          "SHA256": "941712D88F9324600558ADF5B4BFF54B22C12F69BD1FBD76F4DF4656D3C69861",
+          "RequestedUtc": "2026-09-19T00:51:24.2916544Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005129795Z-15f743.json",
+          "SHA256": "740CF23C4BD9ED9DC88240ACD609822FCF0FB4AEAEA1AD2E21997A757B0E0AE0",
+          "RequestedUtc": "2026-09-19T00:51:28.2544263Z",
+          "Succeeded": true,
+          "Error": null
+        }
+      ],
+      "Finalization": "finalization-20260919T005145247Z",
+      "IntegrityPassed": true,
+      "ObserverErrors": 0,
+      "ObserverRejects": 0,
+      "DcsSeverityErrorLines": 158,
+      "RemoteInputEvents": [],
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "AEFD9376678AC493E012EF138FEFF86189F1811946AF7FCC1AD5C5CF3131D9FF"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "C7186F89B43AB33CA685721B863DF305DD02896D32FDAA073504E8E01714AE5D"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "5FCC04D1A452068AA2BC77286CA6BBF625D512A4B87D3C1FB064BF9034D62B35"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "A6690CB02B81F05A0048F9B60782E728188AF7FD54D68E3914EB042337124F4F"
+        }
+      ]
+    },
+    {
+      "Run": "Native-REV07-CG-IcpControls",
+      "Classification": "Historical effect predicate rejected first publication of EICAS_ERROR_BINGO although threshold,edit position and active cause changed correctly. Original FAIL preserved.",
+      "SuiteExists": true,
+      "SuiteSource": "keyboard-icpcontrols.json",
+      "SuiteSHA256": "E0B5DC8A64E4F5F0F7F7BAAF44E5D1BC4630465425E04477E5A6885B49F7DAF7",
+      "Passed": false,
+      "Planned": 42,
+      "Attempted": 29,
+      "Confirmed": 28,
+      "Failure": "Native keyboard outcome not confirmed: Icp5; report preserved at C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-CG-IcpControls\\keyboard-icpcontrols-01-029-Icp5.json",
+      "Steps": [
+        {
+          "Step": 1,
+          "Control": "Battery",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-001-Battery.json",
+          "SHA256": "298ABA5914D20B2774353C49DC998A47FFB3938A13B2C52BEA13C887F5321646",
+          "Expected": {
+            "ELEC_P1": 1,
+            "T_BATT": 1
+          },
+          "BeforePresent": {
+            "ELEC_P1": true,
+            "T_BATT": true
+          },
+          "Before": {
+            "ELEC_P1": 0,
+            "T_BATT": 0
+          },
+          "After": {
+            "ELEC_P1": 1,
+            "T_BATT": 1
+          },
+          "BeforeTime": 4.751,
+          "AfterTime": 8.685,
+          "Receipt": true,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 2,
+          "Control": "Master",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-002-Master.json",
+          "SHA256": "C780250FE37266269FABA145C20A9FAB137E81135516C2C5B76FD21F3D69AFEA",
+          "Expected": {
+            "CMFD2On": 1,
+            "AMX_AVIONICS_MASTER": 1,
+            "CMFD1On": 1
+          },
+          "BeforePresent": {
+            "CMFD2On": true,
+            "AMX_AVIONICS_MASTER": true,
+            "CMFD1On": true
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "AMX_AVIONICS_MASTER": 0,
+            "CMFD1On": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "AMX_AVIONICS_MASTER": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 8.685,
+          "AfterTime": 12.651,
+          "Receipt": true,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 3,
+          "Control": "IcpBARO_RALT",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-003-IcpBARO_RALT.json",
+          "SHA256": "304C3A8C5B2DD92F5B9E9DF814B568533D9849FCA597996CA815869EFBE5158E",
+          "Expected": {
+            "WPN_RALT": 1
+          },
+          "BeforePresent": {
+            "WPN_RALT": true
+          },
+          "Before": {
+            "WPN_RALT": 0
+          },
+          "After": {
+            "WPN_RALT": 1
+          },
+          "BeforeTime": 12.651,
+          "AfterTime": 16.635,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 4,
+          "Control": "IcpBARO_RALT",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-004-IcpBARO_RALT.json",
+          "SHA256": "30E4FE122C0CE532A69797D2387F72830001BD3078076531969B3987AA8DEC83",
+          "Expected": {
+            "WPN_RALT": 0
+          },
+          "BeforePresent": {
+            "WPN_RALT": true
+          },
+          "Before": {
+            "WPN_RALT": 1
+          },
+          "After": {
+            "WPN_RALT": 0
+          },
+          "BeforeTime": 16.635,
+          "AfterTime": 20.668,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 5,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-005-IcpUP.json",
+          "SHA256": "31424F590FCBF108CB3B3BE741608B5B508EE1B9D0DB225DE685A5C09ABD20C3",
+          "Expected": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true,
+            "CMFD_NAV_FYT_VALID": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "After": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforeTime": 20.668,
+          "AfterTime": 24.534,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 6,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-006-IcpDOWN.json",
+          "SHA256": "947760F3E28B115EBA71416E1DAA648847054B47A022CC002FA37017893B656C",
+          "Expected": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true,
+            "CMFD_NAV_FYT_VALID": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "After": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforeTime": 24.735,
+          "AfterTime": 28.568,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 7,
+          "Control": "WaypointNext",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-007-WaypointNext.json",
+          "SHA256": "B8640D53C8A2E9A80722D314D49F6CECD46374A7DB3D429129FEEBC796FD84F5",
+          "Expected": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true,
+            "CMFD_NAV_FYT_VALID": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "After": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforeTime": 28.769,
+          "AfterTime": 32.585,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 8,
+          "Control": "WaypointPrevious",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-008-WaypointPrevious.json",
+          "SHA256": "6CDA656C46F7F9AB1DD5195285A226A23E686F2DE72D0A86AC941BFBA25D748C",
+          "Expected": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true,
+            "CMFD_NAV_FYT_VALID": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "After": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforeTime": 32.585,
+          "AfterTime": 36.401,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 9,
+          "Control": "IcpJOY_DOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-009-IcpJOY_DOWN.json",
+          "SHA256": "6043864B7E778BDEA607C9EFB4F4945AF5336E62DF1782066DD1124A6770772C",
+          "Expected": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "BeforePresent": {
+            "AMX_ICP_MAIN_SELECTION": true
+          },
+          "Before": {
+            "AMX_ICP_MAIN_SELECTION": 0
+          },
+          "After": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "BeforeTime": 36.618,
+          "AfterTime": 40.468,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 10,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-010-IcpUP.json",
+          "SHA256": "9502748CA0F4E72D5A0D12F4132D93B042304E0EDB80CC163206417D724C5C00",
+          "Expected": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 0
+          },
+          "After": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 40.669,
+          "AfterTime": 44.519,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 11,
+          "Control": "IcpJOY_DOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-011-IcpJOY_DOWN.json",
+          "SHA256": "5D0C36022748FA4B59A6482ACA070A6E51C293DDFD6AD761CFE6C1A47C299569",
+          "Expected": {
+            "AMX_ICP_MAIN_SELECTION": 2
+          },
+          "BeforePresent": {
+            "AMX_ICP_MAIN_SELECTION": true
+          },
+          "Before": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "After": {
+            "AMX_ICP_MAIN_SELECTION": 2
+          },
+          "BeforeTime": 44.519,
+          "AfterTime": 48.502,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 12,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-012-IcpUP.json",
+          "SHA256": "9D81BA970A1CD0332C3CD27746B2C305B0C2ADE7454EEA5038DE78AF47AFC484",
+          "Expected": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 48.502,
+          "AfterTime": 52.502,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 13,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-013-IcpUP.json",
+          "SHA256": "0811EC437C5A69BA8BCCE64010566BAF3CC2CB86FA4263772C291A5CDF30CE9B",
+          "Expected": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 52.502,
+          "AfterTime": 56.502,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 14,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-014-IcpUP.json",
+          "SHA256": "3F0302B19776A448E76EB33699BB2544665019C855AAB77AA09B73513443A593",
+          "Expected": {
+            "AMX_COM2_PRESET": 3,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 3,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 56.502,
+          "AfterTime": 60.286,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 15,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-015-IcpDOWN.json",
+          "SHA256": "02384E2060CBACE0DFA022B778E040526D439CFE001F498BBCA9F0185E426F17",
+          "Expected": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 3,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 60.502,
+          "AfterTime": 64.352,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 16,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-016-IcpDOWN.json",
+          "SHA256": "B75A0BBE8782C76E963FA6F168020D7A7178C932B01BF8FBFD4A478930571E20",
+          "Expected": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 64.552,
+          "AfterTime": 68.302,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 17,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-017-IcpDOWN.json",
+          "SHA256": "31B002A13F88AFDDF906CA82EDC019195FF2DF5783C83065DD907FEAC2F72BAB",
+          "Expected": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 68.519,
+          "AfterTime": 72.435,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 18,
+          "Control": "Icp0",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-018-Icp0.json",
+          "SHA256": "05884C387123F61EC096558B26A2F3D579F770CB7F27B24D26F2A1A6258955B0",
+          "Expected": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 0
+          },
+          "BeforePresent": {
+            "AMX_COM1_PRESET_MODE": true,
+            "AMX_COM2_PRESET_MODE": true
+          },
+          "Before": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 1
+          },
+          "After": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 0
+          },
+          "BeforeTime": 72.435,
+          "AfterTime": 76.352,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 19,
+          "Control": "Icp0",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-019-Icp0.json",
+          "SHA256": "F0BAFADAA808403D2ACB218FFA4D880CE354D73F586288E2BA57D9DD119F7B50",
+          "Expected": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 1
+          },
+          "BeforePresent": {
+            "AMX_COM1_PRESET_MODE": true,
+            "AMX_COM2_PRESET_MODE": true
+          },
+          "Before": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 0
+          },
+          "After": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 1
+          },
+          "BeforeTime": 76.352,
+          "AfterTime": 80.268,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 20,
+          "Control": "IcpJOY_UP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-020-IcpJOY_UP.json",
+          "SHA256": "BEA7770824D62D05C9B810CA6F44FD8E219B786E0A69A94C07FBCC8DB2B95D10",
+          "Expected": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "BeforePresent": {
+            "AMX_ICP_MAIN_SELECTION": true
+          },
+          "Before": {
+            "AMX_ICP_MAIN_SELECTION": 2
+          },
+          "After": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "BeforeTime": 80.268,
+          "AfterTime": 84.169,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 21,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-021-IcpDOWN.json",
+          "SHA256": "E840BCABFC791FE9930AD4977FDDC1B4616700374EE255E8186053025319C8A4",
+          "Expected": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 0
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 0
+          },
+          "BeforeTime": 84.369,
+          "AfterTime": 88.102,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 22,
+          "Control": "IcpJOY_UP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-022-IcpJOY_UP.json",
+          "SHA256": "4F105C72CF0706D6A87338BF3ACD87762C922153424E2874DB9A77AEEDF63F94",
+          "Expected": {
+            "AMX_ICP_MAIN_SELECTION": 0
+          },
+          "BeforePresent": {
+            "AMX_ICP_MAIN_SELECTION": true
+          },
+          "Before": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "After": {
+            "AMX_ICP_MAIN_SELECTION": 0
+          },
+          "BeforeTime": 88.303,
+          "AfterTime": 92.236,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 23,
+          "Control": "IcpWARNRST",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-023-IcpWARNRST.json",
+          "SHA256": "6D7B74043CBD56A0B380E05DAE3E283609D0914B66AA2738AA94D207C3AA82CC",
+          "Expected": {
+            "AMX_HUD_WARNING_SUPPRESSED": 1
+          },
+          "BeforePresent": {
+            "AMX_HUD_WARNING_SUPPRESSED": true
+          },
+          "Before": {
+            "AMX_HUD_WARNING_SUPPRESSED": 0
+          },
+          "After": {
+            "AMX_HUD_WARNING_SUPPRESSED": 1
+          },
+          "BeforeTime": 92.236,
+          "AfterTime": 96.186,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 24,
+          "Control": "IcpJOY_RIGHT",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-024-IcpJOY_RIGHT.json",
+          "SHA256": "B6C5A47712625FBCA2A125E0294B2547B9F3EC63AF543274DBA1825AB272BB14",
+          "Expected": {
+            "AMX_ICP_FORMAT": 13
+          },
+          "BeforePresent": {
+            "AMX_ICP_FORMAT": true
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 13
+          },
+          "BeforeTime": 96.186,
+          "AfterTime": 100.152,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 25,
+          "Control": "IcpENTR",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-025-IcpENTR.json",
+          "SHA256": "948825A890FBC086222DF61267299482C798E4F41E6D38201F9F6E4C4DB28525",
+          "Expected": {
+            "AMX_ICP_FORMAT": 28
+          },
+          "BeforePresent": {
+            "AMX_ICP_FORMAT": true
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 13
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 28
+          },
+          "BeforeTime": 100.152,
+          "AfterTime": 104.102,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 26,
+          "Control": "Icp1",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-026-Icp1.json",
+          "SHA256": "5D2E6DBEDE286DB6C4E900B6880B1C2AEF2C8A50AF6EB500568ADB0598CB05DD",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 0
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "BeforeTime": 104.102,
+          "AfterTime": 108.069,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 27,
+          "Control": "Icp5",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-027-Icp5.json",
+          "SHA256": "DEA3FD52FA2BCE2B064E3C21727685EDBFAFA1208446E0729C948D347223DA54",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "BeforeTime": 108.069,
+          "AfterTime": 112.019,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 28,
+          "Control": "Icp9",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-028-Icp9.json",
+          "SHA256": "7F594143B2323BC0EA7B13ED529801419D63E210BDEBD966304F19B8AE9265DA",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 3
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 3
+          },
+          "BeforeTime": 112.236,
+          "AfterTime": 115.985,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 29,
+          "Control": "Icp5",
+          "Value": 1,
+          "Passed": false,
+          "Source": "keyboard-icpcontrols-01-029-Icp5.json",
+          "SHA256": "130FB15506ED086C2BBFE8B57B1B7AC713F591421189913BC368D8FCB565CCDD",
+          "Expected": {
+            "UFCP_FUEL_BINGO": 1595,
+            "EICAS_ERROR_BINGO": 1,
+            "AMX_ICP_EDIT_POS": 0,
+            "AMX_FUEL_BINGO_ACTIVE": 1
+          },
+          "BeforePresent": {
+            "UFCP_FUEL_BINGO": true,
+            "EICAS_ERROR_BINGO": false,
+            "AMX_ICP_EDIT_POS": true,
+            "AMX_FUEL_BINGO_ACTIVE": true
+          },
+          "Before": {
+            "UFCP_FUEL_BINGO": 140,
+            "EICAS_ERROR_BINGO": null,
+            "AMX_ICP_EDIT_POS": 3,
+            "AMX_FUEL_BINGO_ACTIVE": 0
+          },
+          "After": {
+            "UFCP_FUEL_BINGO": 1595,
+            "EICAS_ERROR_BINGO": 1,
+            "AMX_ICP_EDIT_POS": 0,
+            "AMX_FUEL_BINGO_ACTIVE": 1
+          },
+          "BeforeTime": 116.186,
+          "AfterTime": 128.669,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 0,
+          "HistoricalFunctionalEffectVerified": false,
+          "WaitError": "Native condition was not observed in time; raw evidence retained."
+        }
+      ],
+      "WindowReports": [
+        {
+          "Path": "window-20260919T005406146Z-1c66b4.json",
+          "SHA256": "CECF124DD882F7882B81847CE3163DCFEB0E8EF11B4390816E158D7BECAA0A3F",
+          "RequestedUtc": "2026-09-19T00:54:04.6149087Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005410059Z-3dfaa1.json",
+          "SHA256": "538ACDE2D4888E3515326C1ECEF844DB6EA55427A2447DC7A441DD0BAC7EC0EB",
+          "RequestedUtc": "2026-09-19T00:54:08.5422954Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005414038Z-884939.json",
+          "SHA256": "18E820A9618C624F4511199DF8C1AAF8334C931FB4DDCFDF3D76657D3C705B99",
+          "RequestedUtc": "2026-09-19T00:54:12.5015904Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005418050Z-c63e94.json",
+          "SHA256": "612FEEF03D36FAA2DC22614CBCA3AA08D7894D54FBDA2CCDD1C2577EDD9FE08D",
+          "RequestedUtc": "2026-09-19T00:54:16.5228371Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005422010Z-f882b8.json",
+          "SHA256": "BC7CC6331C70B4F61A60F29367C54CF6DA94E62A1EE29E305A9C979C57C4D3D6",
+          "RequestedUtc": "2026-09-19T00:54:20.4826333Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005426012Z-bc54c7.json",
+          "SHA256": "CBFBCEEA00EB0274D5AFE63BDE0019627CB5255D306D205CDBF9F2A5F53A8669",
+          "RequestedUtc": "2026-09-19T00:54:24.4968660Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005430050Z-ff6d80.json",
+          "SHA256": "3EEEA88848EA52E5CA432EAAD496AEF292ECCB6D4ABABD1D4F3DF160D169848D",
+          "RequestedUtc": "2026-09-19T00:54:28.5307200Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005434001Z-08b724.json",
+          "SHA256": "B07264BFDE14365837C380E0E0ED18658EC0D6A0FD626CE6B74D471D4DF2FB93",
+          "RequestedUtc": "2026-09-19T00:54:32.4846824Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005437960Z-505011.json",
+          "SHA256": "F1925EC255BE474089BF6ED051F7D8DF387689987CD77E3EEB43D3088B1F31FD",
+          "RequestedUtc": "2026-09-19T00:54:36.4313949Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005441959Z-126bd0.json",
+          "SHA256": "6AFFBCA68E6C07CEDF5D66B5CA6DD1AAF8634C7925646173677193F7288582B6",
+          "RequestedUtc": "2026-09-19T00:54:40.4235425Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005445948Z-0d27a2.json",
+          "SHA256": "D5831BC33493CB6E5E4FB7BA8B9535214CFBB0164DD4A1B2760DE071465C270A",
+          "RequestedUtc": "2026-09-19T00:54:44.4196969Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005449908Z-143fe8.json",
+          "SHA256": "69A640973E11697872B1F02357AAF7957C4198F795655A997A52586DB260FA33",
+          "RequestedUtc": "2026-09-19T00:54:48.3759837Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005453872Z-be0da1.json",
+          "SHA256": "A5D161317FC1E71848009A67D12105A016EF6152C51C9FB1FA31A4736DD0BB61",
+          "RequestedUtc": "2026-09-19T00:54:52.3419756Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005457867Z-2c2b83.json",
+          "SHA256": "FF489F3C0D76ACB99A2C919F71A356439B7914A5C677C414D7B5404F5139D0AB",
+          "RequestedUtc": "2026-09-19T00:54:56.3418603Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005501884Z-d4108e.json",
+          "SHA256": "3FB4C14CA1D5965B264F1DD5046B2122061D4B16A4BA774736286DE3EC9C70CD",
+          "RequestedUtc": "2026-09-19T00:55:00.3511953Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005505836Z-d8f06a.json",
+          "SHA256": "3C831206DEA3D1D604916FE7FF15D784C70859B8371B39620CDE5BCB6DAAA86F",
+          "RequestedUtc": "2026-09-19T00:55:04.3138929Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005509815Z-2846f1.json",
+          "SHA256": "A18C8E27A9B09B5C0DB580396838974217EA859DDEE0BAF3E4602C10795209D5",
+          "RequestedUtc": "2026-09-19T00:55:08.2968132Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005513778Z-8c36f6.json",
+          "SHA256": "86C98476BF4C4B4F7AF10444E2792F82184A22C5D7D93BCB87C9B92265FFD8FB",
+          "RequestedUtc": "2026-09-19T00:55:12.2550495Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005517743Z-2c1bdf.json",
+          "SHA256": "C222B9BE8B6DF59C934651DF9C765F1F53DCC6F4659C75E8A47A18D607F3AE94",
+          "RequestedUtc": "2026-09-19T00:55:16.2129674Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005521683Z-9b051b.json",
+          "SHA256": "0A0656CEE1E974DC1345D58EBF3AA5F67A2BFD62A4A0EC8B62CBC41670F59D89",
+          "RequestedUtc": "2026-09-19T00:55:20.1624543Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005525648Z-fae98b.json",
+          "SHA256": "E2A3C27E42E2F2427BEEB0EBDABAB4480C09992C8F8090590B8F16174EAB0054",
+          "RequestedUtc": "2026-09-19T00:55:24.1182533Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005529609Z-8019d4.json",
+          "SHA256": "81546668D2250C371CC9B5A91FC51C28469324F1FB7F18E401660EEFBEE47646",
+          "RequestedUtc": "2026-09-19T00:55:28.0824785Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005533590Z-c026df.json",
+          "SHA256": "AC41A3C5CB679746D9E9F769F73E33F145A518BB68D8DC3C3376F1794437B986",
+          "RequestedUtc": "2026-09-19T00:55:32.0600645Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005537554Z-769864.json",
+          "SHA256": "931E8B85D1285727302DD1FA2E70AF061CC58A3728F6CA54A6604CBEB5DCBDC4",
+          "RequestedUtc": "2026-09-19T00:55:36.0351612Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005541548Z-80895f.json",
+          "SHA256": "A4CC64C6FF0320B916CDD1CBB60A72876F4FE3A9D3240597BDA7D2A8AB207BD4",
+          "RequestedUtc": "2026-09-19T00:55:40.0170678Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005545496Z-c8179f.json",
+          "SHA256": "508598E9B5E36110135CB133ECBC0AA4B636340B0525D63E76F913865ED97C1B",
+          "RequestedUtc": "2026-09-19T00:55:43.9743988Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005549496Z-3c5a66.json",
+          "SHA256": "46CEA87DBF90FEE24DE071749E8169810212FD68EB21DBB0B2A41DBB59B91319",
+          "RequestedUtc": "2026-09-19T00:55:47.9568953Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005553474Z-b6c37c.json",
+          "SHA256": "A04A897532D2392D530000321308A09E5DCBBB13B0D87C7C2154FC73E089C908",
+          "RequestedUtc": "2026-09-19T00:55:51.9614731Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005557426Z-e56d7e.json",
+          "SHA256": "4064855E115B0A963D0FA99C8E933B5C5AEBEC72821C2EFFEB8C3C26C5F2B092",
+          "RequestedUtc": "2026-09-19T00:55:55.9015509Z",
+          "Succeeded": true,
+          "Error": null
+        }
+      ],
+      "Finalization": "finalization-20260919T005614841Z",
+      "IntegrityPassed": true,
+      "ObserverErrors": 0,
+      "ObserverRejects": 0,
+      "DcsSeverityErrorLines": 158,
+      "RemoteInputEvents": [],
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "207A8966BE651AF17BF3A555B34CA3ACC191A8999FB019C3B52BC516697910E3"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "0F602C776AC38C3C30F42934531C25E3B6DF1C0F06A14AAE7DD8DC4C5815BEDC"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "A908D8F6D6BA7F73CBE032CC0B7D222DD380E8E6879FD6700532E7D45929680C"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "C28B8C379CB86C1C426D53C1662709000B46CC186EF0745313DC4B5D5DD62DB6"
+        }
+      ]
+    },
+    {
+      "Run": "Native-REV07-CH-IcpControls",
+      "Classification": "34 steps passed, then Windows SendInput was denied during release. RDP input/display devices unplugged at the same time. User reported no interaction; no attribution to user.",
+      "SuiteExists": true,
+      "SuiteSource": "keyboard-icpcontrols.json",
+      "SuiteSHA256": "342575B1413478E8658B564259C8CD7AD81610D580C32BC2ECFDA6CA58E5A3EB",
+      "Passed": false,
+      "Planned": 42,
+      "Attempted": 35,
+      "Confirmed": 34,
+      "Failure": "Exception calling \"Scan\" with \"2\" argument(s): \"Acesso negado.\"",
+      "Steps": [
+        {
+          "Step": 1,
+          "Control": "Battery",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-001-Battery.json",
+          "SHA256": "4AC6B70E8878861F07BF461074037F9E7B77754F6E1925C53730CB0657E9AB10",
+          "Expected": {
+            "ELEC_P1": 1,
+            "T_BATT": 1
+          },
+          "BeforePresent": {
+            "ELEC_P1": true,
+            "T_BATT": true
+          },
+          "Before": {
+            "ELEC_P1": 0,
+            "T_BATT": 0
+          },
+          "After": {
+            "ELEC_P1": 1,
+            "T_BATT": 1
+          },
+          "BeforeTime": 5.017,
+          "AfterTime": 8.951,
+          "Receipt": true,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 2,
+          "Control": "Master",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-002-Master.json",
+          "SHA256": "4D83F4F264F5A825EB53FA79DAB45A0DB929286330C69720D69356F053B316E8",
+          "Expected": {
+            "CMFD2On": 1,
+            "AMX_AVIONICS_MASTER": 1,
+            "CMFD1On": 1
+          },
+          "BeforePresent": {
+            "CMFD2On": true,
+            "AMX_AVIONICS_MASTER": true,
+            "CMFD1On": true
+          },
+          "Before": {
+            "CMFD2On": 0,
+            "AMX_AVIONICS_MASTER": 0,
+            "CMFD1On": 0
+          },
+          "After": {
+            "CMFD2On": 1,
+            "AMX_AVIONICS_MASTER": 1,
+            "CMFD1On": 1
+          },
+          "BeforeTime": 8.951,
+          "AfterTime": 12.951,
+          "Receipt": true,
+          "ReceiptDelta": 1,
+          "ReleaseRequired": false,
+          "LastInputValue": 1,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 3,
+          "Control": "IcpBARO_RALT",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-003-IcpBARO_RALT.json",
+          "SHA256": "E5422966286806583254F31FC885B3FD7B0EF710D72353FE272A6AB21D6E1867",
+          "Expected": {
+            "WPN_RALT": 1
+          },
+          "BeforePresent": {
+            "WPN_RALT": true
+          },
+          "Before": {
+            "WPN_RALT": 0
+          },
+          "After": {
+            "WPN_RALT": 1
+          },
+          "BeforeTime": 12.951,
+          "AfterTime": 16.918,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 4,
+          "Control": "IcpBARO_RALT",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-004-IcpBARO_RALT.json",
+          "SHA256": "70ABBF1279A99065C95E45C8A85254DAAE73371EBB67EFF536C0A12B326C09A8",
+          "Expected": {
+            "WPN_RALT": 0
+          },
+          "BeforePresent": {
+            "WPN_RALT": true
+          },
+          "Before": {
+            "WPN_RALT": 1
+          },
+          "After": {
+            "WPN_RALT": 0
+          },
+          "BeforeTime": 16.918,
+          "AfterTime": 20.951,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 5,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-005-IcpUP.json",
+          "SHA256": "B70C75593BDE117E632756E548B88320E8EABA47D9D41E5B427A8ABE1637BBEF",
+          "Expected": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true,
+            "CMFD_NAV_FYT_VALID": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "After": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforeTime": 20.951,
+          "AfterTime": 24.751,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 6,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-006-IcpDOWN.json",
+          "SHA256": "8D0FAF65D69FD0BC791C5B0DD76E95D7BB3CBE68583DBFAFCC5CFAD4B8F6A85F",
+          "Expected": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true,
+            "CMFD_NAV_FYT_VALID": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "After": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforeTime": 24.968,
+          "AfterTime": 28.784,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 7,
+          "Control": "WaypointNext",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-007-WaypointNext.json",
+          "SHA256": "7D1C65602D3F1B325AB992BBB6F07579D803BFBFD75E4A613155E4E829D301AF",
+          "Expected": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true,
+            "CMFD_NAV_FYT_VALID": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "After": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforeTime": 28.985,
+          "AfterTime": 32.834,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 8,
+          "Control": "WaypointPrevious",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-008-WaypointPrevious.json",
+          "SHA256": "069C24C75DBC457B82AEF0EFACA571425FAC2DAA7057B5D3F9CBCFC6F832C200",
+          "Expected": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforePresent": {
+            "CMFD_NAV_FYT": true,
+            "CMFD_NAV_FYT_VALID": true
+          },
+          "Before": {
+            "CMFD_NAV_FYT": 90,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "After": {
+            "CMFD_NAV_FYT": 0,
+            "CMFD_NAV_FYT_VALID": 1
+          },
+          "BeforeTime": 33.035,
+          "AfterTime": 36.868,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 9,
+          "Control": "IcpJOY_DOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-009-IcpJOY_DOWN.json",
+          "SHA256": "1D4CDE1D3CFD297FB30D45C17BA566686A9B0BAC014E56D66F8357FB281EC07B",
+          "Expected": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "BeforePresent": {
+            "AMX_ICP_MAIN_SELECTION": true
+          },
+          "Before": {
+            "AMX_ICP_MAIN_SELECTION": 0
+          },
+          "After": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "BeforeTime": 36.868,
+          "AfterTime": 40.935,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 10,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-010-IcpUP.json",
+          "SHA256": "ECD07AD48AF35B733FE21583C8FD7347D811D09FA89D47B27F70A57E0604F089",
+          "Expected": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 0
+          },
+          "After": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 40.935,
+          "AfterTime": 44.801,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 11,
+          "Control": "IcpJOY_DOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-011-IcpJOY_DOWN.json",
+          "SHA256": "39637CEF138BF11825B1E3CB06D9079EDF707DAE5E3507B2891C28B7B646F8D6",
+          "Expected": {
+            "AMX_ICP_MAIN_SELECTION": 2
+          },
+          "BeforePresent": {
+            "AMX_ICP_MAIN_SELECTION": true
+          },
+          "Before": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "After": {
+            "AMX_ICP_MAIN_SELECTION": 2
+          },
+          "BeforeTime": 45.002,
+          "AfterTime": 48.868,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 12,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-012-IcpUP.json",
+          "SHA256": "94215CBDCD87A1745FAFAA3F318BF4F91F1E09F8438195332757A20160E04F20",
+          "Expected": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 48.868,
+          "AfterTime": 53.368,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 13,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-013-IcpUP.json",
+          "SHA256": "40026087E84F7FB8FB5C04385B2FD396E954F22F359CBA019D7564F65D29489B",
+          "Expected": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 53.368,
+          "AfterTime": 57.218,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 14,
+          "Control": "IcpUP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-014-IcpUP.json",
+          "SHA256": "CFAA420DE5219C5496A5A2D9BEFEB5C480BAB08D222BFDA8911D4D24CA2B32D2",
+          "Expected": {
+            "AMX_COM2_PRESET": 3,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 3,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 57.435,
+          "AfterTime": 61.268,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 15,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-015-IcpDOWN.json",
+          "SHA256": "A66359A42268BA6EA4C2CB8A70271B9A0B6A9DE9C2F2AC31910BD20B59F50A51",
+          "Expected": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 3,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 61.468,
+          "AfterTime": 65.268,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 16,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-016-IcpDOWN.json",
+          "SHA256": "3F5C5BDF36DC6E99CE979C3858055648141024A79B12775D8E2B5D25BCFE6006",
+          "Expected": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 2,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 65.268,
+          "AfterTime": 69.202,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 17,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-017-IcpDOWN.json",
+          "SHA256": "A802392C44ABB16610FB1D9A1811536E264C7B7273C9F8E0485318002B78AD73",
+          "Expected": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 1,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "BeforeTime": 69.402,
+          "AfterTime": 73.318,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 18,
+          "Control": "Icp0",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-018-Icp0.json",
+          "SHA256": "9D2A636E384D290C101AC31B45497764E931D450C40658932CF8E84CF13AA86D",
+          "Expected": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 0
+          },
+          "BeforePresent": {
+            "AMX_COM1_PRESET_MODE": true,
+            "AMX_COM2_PRESET_MODE": true
+          },
+          "Before": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 1
+          },
+          "After": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 0
+          },
+          "BeforeTime": 73.318,
+          "AfterTime": 77.252,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 19,
+          "Control": "Icp0",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-019-Icp0.json",
+          "SHA256": "E266C4088F6532BA60DB41231FD8B0C637A28D5572732F1C01D104EB1DE0AF55",
+          "Expected": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 1
+          },
+          "BeforePresent": {
+            "AMX_COM1_PRESET_MODE": true,
+            "AMX_COM2_PRESET_MODE": true
+          },
+          "Before": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 0
+          },
+          "After": {
+            "AMX_COM1_PRESET_MODE": 1,
+            "AMX_COM2_PRESET_MODE": 1
+          },
+          "BeforeTime": 77.252,
+          "AfterTime": 81.168,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 20,
+          "Control": "IcpJOY_UP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-020-IcpJOY_UP.json",
+          "SHA256": "ACE4ACF9D0B6B107F6556839BF651E7A358D2D0CBD2642F094CFAA72A6F58095",
+          "Expected": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "BeforePresent": {
+            "AMX_ICP_MAIN_SELECTION": true
+          },
+          "Before": {
+            "AMX_ICP_MAIN_SELECTION": 2
+          },
+          "After": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "BeforeTime": 81.168,
+          "AfterTime": 85.135,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 21,
+          "Control": "IcpDOWN",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-021-IcpDOWN.json",
+          "SHA256": "D7258952CA635C36B50F7BD66B0F6207B764DCCE8CB9374B3315DC2F9AD93890",
+          "Expected": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 0
+          },
+          "BeforePresent": {
+            "AMX_COM2_PRESET": true,
+            "AMX_COM1_PRESET": true
+          },
+          "Before": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 1
+          },
+          "After": {
+            "AMX_COM2_PRESET": 0,
+            "AMX_COM1_PRESET": 0
+          },
+          "BeforeTime": 85.135,
+          "AfterTime": 89.101,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 22,
+          "Control": "IcpJOY_UP",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-022-IcpJOY_UP.json",
+          "SHA256": "FA2C4BE31DC56C9E1DE7562BF10211D2D4E81DE068D6D289D1D903BA3921A324",
+          "Expected": {
+            "AMX_ICP_MAIN_SELECTION": 0
+          },
+          "BeforePresent": {
+            "AMX_ICP_MAIN_SELECTION": true
+          },
+          "Before": {
+            "AMX_ICP_MAIN_SELECTION": 1
+          },
+          "After": {
+            "AMX_ICP_MAIN_SELECTION": 0
+          },
+          "BeforeTime": 89.302,
+          "AfterTime": 93.068,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 23,
+          "Control": "IcpWARNRST",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-023-IcpWARNRST.json",
+          "SHA256": "CCEE49CE494E69D0233329DE3B84103D17863C9A5E176BFF20DAFA3D9883497C",
+          "Expected": {
+            "AMX_HUD_WARNING_SUPPRESSED": 1
+          },
+          "BeforePresent": {
+            "AMX_HUD_WARNING_SUPPRESSED": true
+          },
+          "Before": {
+            "AMX_HUD_WARNING_SUPPRESSED": 0
+          },
+          "After": {
+            "AMX_HUD_WARNING_SUPPRESSED": 1
+          },
+          "BeforeTime": 93.068,
+          "AfterTime": 97.018,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 24,
+          "Control": "IcpJOY_RIGHT",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-024-IcpJOY_RIGHT.json",
+          "SHA256": "A653C699FEB8CDC3414D1FA13B609778DBBF34789F804ED03A24FAACA662FA66",
+          "Expected": {
+            "AMX_ICP_FORMAT": 13
+          },
+          "BeforePresent": {
+            "AMX_ICP_FORMAT": true
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 0
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 13
+          },
+          "BeforeTime": 97.219,
+          "AfterTime": 100.918,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 25,
+          "Control": "IcpENTR",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-025-IcpENTR.json",
+          "SHA256": "532E6C92D86D3E58FAAE000DB8ECF1ECF669F195038B164026C6A326B29EA6C5",
+          "Expected": {
+            "AMX_ICP_FORMAT": 28
+          },
+          "BeforePresent": {
+            "AMX_ICP_FORMAT": true
+          },
+          "Before": {
+            "AMX_ICP_FORMAT": 13
+          },
+          "After": {
+            "AMX_ICP_FORMAT": 28
+          },
+          "BeforeTime": 101.119,
+          "AfterTime": 105.051,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 26,
+          "Control": "Icp1",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-026-Icp1.json",
+          "SHA256": "B415F7D16E67A744112B7970B3229BA90D3DA8B5584BAFE3E5EF53171FE89D9C",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 0
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "BeforeTime": 105.051,
+          "AfterTime": 109.018,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 27,
+          "Control": "Icp5",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-027-Icp5.json",
+          "SHA256": "371BCF241F933498975C5E4D5032AB55850E25772630DCB515F8B8239376EFC6",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "BeforeTime": 109.018,
+          "AfterTime": 112.885,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 28,
+          "Control": "Icp9",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-028-Icp9.json",
+          "SHA256": "B6A280553E88A6A911E41878C88D02A56738A2D1E647410EE9480E2F34488B76",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 3
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 3
+          },
+          "BeforeTime": 113.101,
+          "AfterTime": 117.052,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 29,
+          "Control": "Icp5",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-029-Icp5.json",
+          "SHA256": "6846A5834E110E0AFBE39550E47B33B073FB946564E37E00D3B5F55A09656D64",
+          "Expected": {
+            "UFCP_FUEL_BINGO": 1595,
+            "EICAS_ERROR_BINGO": 1,
+            "AMX_ICP_EDIT_POS": 0,
+            "AMX_FUEL_BINGO_ACTIVE": 1
+          },
+          "BeforePresent": {
+            "UFCP_FUEL_BINGO": true,
+            "EICAS_ERROR_BINGO": false,
+            "AMX_ICP_EDIT_POS": true,
+            "AMX_FUEL_BINGO_ACTIVE": true
+          },
+          "Before": {
+            "UFCP_FUEL_BINGO": 140,
+            "EICAS_ERROR_BINGO": null,
+            "AMX_ICP_EDIT_POS": 3,
+            "AMX_FUEL_BINGO_ACTIVE": 0
+          },
+          "After": {
+            "UFCP_FUEL_BINGO": 1595,
+            "EICAS_ERROR_BINGO": 1,
+            "AMX_ICP_EDIT_POS": 0,
+            "AMX_FUEL_BINGO_ACTIVE": 1
+          },
+          "BeforeTime": 117.052,
+          "AfterTime": 121.018,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 30,
+          "Control": "CautionAcknowledge",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-030-CautionAcknowledge.json",
+          "SHA256": "DA90527B95D2A70DB9D9EF398B02812D5C9A949BF6FCAB229A8A1FA91D0188AB",
+          "Expected": {
+            "EICAS_ERROR_BINGO": 2,
+            "AMX_FUEL_BINGO_ACTIVE": 1
+          },
+          "BeforePresent": {
+            "EICAS_ERROR_BINGO": true,
+            "AMX_FUEL_BINGO_ACTIVE": true
+          },
+          "Before": {
+            "EICAS_ERROR_BINGO": 1,
+            "AMX_FUEL_BINGO_ACTIVE": 1
+          },
+          "After": {
+            "EICAS_ERROR_BINGO": 2,
+            "AMX_FUEL_BINGO_ACTIVE": 1
+          },
+          "BeforeTime": 121.018,
+          "AfterTime": 124.918,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 31,
+          "Control": "Icp0",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-031-Icp0.json",
+          "SHA256": "45B50E05287E64A34FB9444EA061C39A7CA8921A67929D6DFD50897EE0996CB5",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 0
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "BeforeTime": 125.135,
+          "AfterTime": 128.901,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 32,
+          "Control": "Icp1",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-032-Icp1.json",
+          "SHA256": "246832692FD34D4EB201A269E19D770BEE939C2DD9EC14050145E21A56FC6631",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 1
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "BeforeTime": 129.102,
+          "AfterTime": 132.902,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 33,
+          "Control": "Icp4",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-033-Icp4.json",
+          "SHA256": "A0E4C10B5D1DB71882359B96CB801CB39C0FC94E13CC32DBB1694194CFE3BECD",
+          "Expected": {
+            "AMX_ICP_EDIT_POS": 3
+          },
+          "BeforePresent": {
+            "AMX_ICP_EDIT_POS": true
+          },
+          "Before": {
+            "AMX_ICP_EDIT_POS": 2
+          },
+          "After": {
+            "AMX_ICP_EDIT_POS": 3
+          },
+          "BeforeTime": 133.102,
+          "AfterTime": 136.868,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 34,
+          "Control": "Icp0",
+          "Value": 1,
+          "Passed": true,
+          "Source": "keyboard-icpcontrols-01-034-Icp0.json",
+          "SHA256": "A54F05EF2DA9E75AAC6668ABA8DBE6D5DF65EB0195939318A9601B84D18495BB",
+          "Expected": {
+            "UFCP_FUEL_BINGO": 140,
+            "EICAS_ERROR_BINGO": 0,
+            "AMX_ICP_EDIT_POS": 0,
+            "AMX_FUEL_BINGO_ACTIVE": 0
+          },
+          "BeforePresent": {
+            "UFCP_FUEL_BINGO": true,
+            "EICAS_ERROR_BINGO": true,
+            "AMX_ICP_EDIT_POS": true,
+            "AMX_FUEL_BINGO_ACTIVE": true
+          },
+          "Before": {
+            "UFCP_FUEL_BINGO": 1595,
+            "EICAS_ERROR_BINGO": 2,
+            "AMX_ICP_EDIT_POS": 3,
+            "AMX_FUEL_BINGO_ACTIVE": 1
+          },
+          "After": {
+            "UFCP_FUEL_BINGO": 140,
+            "EICAS_ERROR_BINGO": 0,
+            "AMX_ICP_EDIT_POS": 0,
+            "AMX_FUEL_BINGO_ACTIVE": 0
+          },
+          "BeforeTime": 137.069,
+          "AfterTime": 140.835,
+          "Receipt": true,
+          "ReceiptDelta": 2,
+          "ReleaseRequired": true,
+          "LastInputValue": 0,
+          "StableSamples": 3,
+          "HistoricalFunctionalEffectVerified": true,
+          "WaitError": null
+        },
+        {
+          "Step": 35,
+          "Control": "IcpJOY_LEFT",
+          "Passed": false,
+          "Source": "keyboard-icpcontrols-01-035-IcpJOY_LEFT.json",
+          "SHA256": null,
+          "Reason": "Input dispatch failed before historical step report was written"
+        }
+      ],
+      "WindowReports": [
+        {
+          "Path": "window-20260919T005855978Z-818e97.json",
+          "SHA256": "5D5EB5C91FA1F7AF1A9801F56D205815CAB4B159B962E2E0EDD9E97E1CB13E89",
+          "RequestedUtc": "2026-09-19T00:58:54.4466090Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005859912Z-b2d2b2.json",
+          "SHA256": "84666BF072BAAC8D04CF2FD57280860B83E3A4653F6BBE30485CE187F8138535",
+          "RequestedUtc": "2026-09-19T00:58:58.3699382Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005903899Z-95cfbc.json",
+          "SHA256": "E4081A0F4C5004C0DA01F9908CB5E7B6B2A8F72B6D80EB515C42542B2E16FE57",
+          "RequestedUtc": "2026-09-19T00:59:02.3705491Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005907919Z-3f3509.json",
+          "SHA256": "8E197729820A6A42A3BF1F57A997B01E5ECB83EFAFAB1D7146C8F70F571FA178",
+          "RequestedUtc": "2026-09-19T00:59:06.3806513Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005911902Z-fdaf4b.json",
+          "SHA256": "D19E3F32236BDB1F3E800D5029E4198413B967E462A2CE8CBBC01F02DF077573",
+          "RequestedUtc": "2026-09-19T00:59:10.3717193Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005915879Z-5df57d.json",
+          "SHA256": "5B4F5EA810F551D137CB91F885CAECCEF35C08FED404C8D8C1E9F81D310209CC",
+          "RequestedUtc": "2026-09-19T00:59:14.3386281Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005919890Z-f3d56e.json",
+          "SHA256": "5CB31413A0287149347727AA92975BF14904CE5E4677A6A7095F1A299D736E4E",
+          "RequestedUtc": "2026-09-19T00:59:18.3651573Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005923843Z-857e3d.json",
+          "SHA256": "1E16E8E577A42305D264FCCE5B8348446F6BE6653FABFE82BEEE036CE8F781AD",
+          "RequestedUtc": "2026-09-19T00:59:22.3273801Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005927882Z-7e974d.json",
+          "SHA256": "EFA8597F8739A97C06730ED00384B44F9BBF695D2642BE4D544BBC20DA41B030",
+          "RequestedUtc": "2026-09-19T00:59:26.3534991Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005931863Z-5a8068.json",
+          "SHA256": "71DC080DF266ACC95AA95BA1F315D0E88B337A53845A2604632EE36D1D637AFB",
+          "RequestedUtc": "2026-09-19T00:59:30.3384250Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005935816Z-698ae3.json",
+          "SHA256": "E346DDBC8BE2FED9B4882D4AF1AD61A9BA221E1603E08E6FA8E5B114B7718BE1",
+          "RequestedUtc": "2026-09-19T00:59:34.2991102Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005939292Z-8fead4.json",
+          "SHA256": "FAC9E9B75373A9BED8A68005EF3A9F584D48F93422968017575ED283007578F0",
+          "RequestedUtc": "2026-09-19T00:59:38.2676086Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005944365Z-dca000.json",
+          "SHA256": "B6730D60329BA4008770D775429D8FDC4CF776081D090DA9D00680233527A804",
+          "RequestedUtc": "2026-09-19T00:59:42.8337499Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005948321Z-e259c4.json",
+          "SHA256": "FFDD2B9DE789C95C2F1C5F9EC73CE3B8348779566B26F5E506F17ED1D2EE1163",
+          "RequestedUtc": "2026-09-19T00:59:46.7952157Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005952285Z-80bc29.json",
+          "SHA256": "DE3D43E69C679F1D773269140D724F1AE0B162B336FE7C9CB0D1FF2ED92CCD9B",
+          "RequestedUtc": "2026-09-19T00:59:50.7514343Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T005956232Z-285257.json",
+          "SHA256": "4D98F2B59DA7236D8D9EEC5EE2BD9128A33CC5239526D84713589F8586075F8F",
+          "RequestedUtc": "2026-09-19T00:59:54.7071576Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010000238Z-a98536.json",
+          "SHA256": "D23980C08202C288666581941279A3DC5E8EB3812F67958C04B27992A418A587",
+          "RequestedUtc": "2026-09-19T00:59:58.7135013Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010004258Z-dd6643.json",
+          "SHA256": "B45A1CF3F0AF04ECCBB9E6891385B8D8D6E162DC2AF11D18712EDE137313FC9D",
+          "RequestedUtc": "2026-09-19T01:00:02.7192344Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010008204Z-7e0fe8.json",
+          "SHA256": "1F402EE0B43B1047585470352EBB2573DD6CDDC58A43155B72A38C82482886F5",
+          "RequestedUtc": "2026-09-19T01:00:06.6902571Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010012152Z-0ffa9f.json",
+          "SHA256": "97187ACB6BE61B1537F718C91A32470DBB537B04012E7DD4317AD74F6292BB3B",
+          "RequestedUtc": "2026-09-19T01:00:10.6206594Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010016140Z-2efb78.json",
+          "SHA256": "9070C7ACAB0CEED57EC36B6C71A142A5555B44AC386B01D7CFEB95F41B508139",
+          "RequestedUtc": "2026-09-19T01:00:14.6157593Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010020093Z-856c4d.json",
+          "SHA256": "EA5386CF6517A9B49BF3CACB08DFAFF9BEF9A142A5EF2042B01C23F68CFEB204",
+          "RequestedUtc": "2026-09-19T01:00:18.5721294Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010024049Z-5b8de8.json",
+          "SHA256": "ED5572966629EAFC9A0A0DA05DFB04B2B54373BC752C7C8319D49B693EF57CFE",
+          "RequestedUtc": "2026-09-19T01:00:22.5233567Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010028039Z-bd52e0.json",
+          "SHA256": "9F94D987BC78D7C1B183BE319DC062EE3265D58D0F1B3788BFD6F0B2F58508EE",
+          "RequestedUtc": "2026-09-19T01:00:26.5204654Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010031989Z-573e8d.json",
+          "SHA256": "32481943974C505782E988A260572EBE1232374763900DE28938397AB347DAAF",
+          "RequestedUtc": "2026-09-19T01:00:30.4786784Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010036017Z-45251a.json",
+          "SHA256": "7C1A15F3F6DEE944006B7AB6D65F1B9E6F2D4BF05EB19D7F40C53020EDF39312",
+          "RequestedUtc": "2026-09-19T01:00:34.4727333Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010039989Z-5affe5.json",
+          "SHA256": "18775F998C92BE27E4C00B7199CCD9737B727D3023D2E48266758405151713CF",
+          "RequestedUtc": "2026-09-19T01:00:38.4655915Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010044003Z-cfa35e.json",
+          "SHA256": "9F43970E41F0626EC0D4652BB7346FF3EB49AC23B43BB9865E710063706293FD",
+          "RequestedUtc": "2026-09-19T01:00:42.4665619Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010048012Z-aa53f2.json",
+          "SHA256": "64B28B32FF799860F1BD7FD800306253BA68E2D99943AD276D28EF26EC2DF2B3",
+          "RequestedUtc": "2026-09-19T01:00:46.4794675Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010051977Z-b01897.json",
+          "SHA256": "03C8838D8D8EBEE3641F81733847C8A1E9E8199B11CADDCE688542CEFAD6217A",
+          "RequestedUtc": "2026-09-19T01:00:50.4446802Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010055941Z-c82af9.json",
+          "SHA256": "ADE8B549D30B6EF68C82F2CDBBC5D0683B83DA0D8B4B9D9C388E739F1C9391DB",
+          "RequestedUtc": "2026-09-19T01:00:54.4081130Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010059952Z-041264.json",
+          "SHA256": "000C44677FAA5C1C0A141982C196990E47BE40D8C4A952F68F1F9914C78E756B",
+          "RequestedUtc": "2026-09-19T01:00:58.4132509Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010103978Z-d07e80.json",
+          "SHA256": "668DA577F7251CBE7F2B50FC90DDCBB1718A7F5C450D1D9770261F86AB1CA6B5",
+          "RequestedUtc": "2026-09-19T01:01:02.4442297Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010107943Z-042787.json",
+          "SHA256": "AE075EC9185F1A471BA8F9828E51EEEAA8895A56293A83360B5A0E30B55295F8",
+          "RequestedUtc": "2026-09-19T01:01:06.3965172Z",
+          "Succeeded": true,
+          "Error": null
+        },
+        {
+          "Path": "window-20260919T010111432Z-6740ea.json",
+          "SHA256": "2E4642D10315EAA075F546D66E74F7BA14F4E72FE1EEC44573469D5186F00FC2",
+          "RequestedUtc": "2026-09-19T01:01:10.3936352Z",
+          "Succeeded": false,
+          "Error": "Exception calling \"Scan\" with \"2\" argument(s): \"Acesso negado.\""
+        }
+      ],
+      "Finalization": "finalization-20260919T010116109Z",
+      "IntegrityPassed": true,
+      "ObserverErrors": 0,
+      "ObserverRejects": 0,
+      "DcsSeverityErrorLines": 163,
+      "RemoteInputEvents": [
+        "2026-09-19 01:01:10.223 INFO    APP (Main): Device unplugged: [TERMINPUT_BUS] Remote Desktop Mouse Device",
+        "2026-09-19 01:01:10.287 INFO    APP (Main): Device unplugged: [TERMINPUT_BUS] Remote Desktop Keyboard Device",
+        "2026-09-19 01:01:10.536 INFO    APP (Main): Device unplugged: [DISPLAY] @System32\\drivers\\dxgkrnl.sys,#300;Generic Monitor",
+        "2026-09-19 01:01:10.641 INFO    APP (Main): Device unplugged: [SWD] Microsoft Remote Display Adapter"
+      ],
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "E127D188BE177FD82CA7AAA8450B889D9F886455148FB32A0739848417025F05"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "5EBAF08D6F3A662B95172DD28C95529D18352508246488103FDD2C495DABEE9A"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "4579220FE8770BB99E7BD7661DABAB3AAFC209B09492AB0064F0F2D2F4DEF7F8"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "D210C6B4AC828DDEE0A4F1EC05AE686569B8A025EDA429605187D3471B0BC986"
+        }
+      ]
+    },
+    {
+      "Run": "Native-REV07-CI-IcpControls",
+      "Classification": "Foreground activation was refused before first key. No complete native suite; no bypass or elevated input attempted.",
+      "SuiteExists": true,
+      "SuiteSource": "keyboard-icpcontrols.json",
+      "SuiteSHA256": "6CEE80BC1D5C934EEA156080825DC878E04FC46517F75400C7CFB3BFB5BE93B9",
+      "Passed": false,
+      "Planned": 42,
+      "Attempted": 1,
+      "Confirmed": 0,
+      "Failure": "Foreground unavailable; no input/capture sent.",
+      "Steps": [
+        {
+          "Step": 1,
+          "Control": "Battery",
+          "Passed": false,
+          "Source": "keyboard-icpcontrols-01-001-Battery.json",
+          "SHA256": null,
+          "Reason": "Input dispatch failed before historical step report was written"
+        }
+      ],
+      "WindowReports": [
+        {
+          "Path": "window-20260919T013711748Z-574eb7.json",
+          "SHA256": "A9151D51FCCECB3BFC6586A957F8A49A6353A44C3F1C9B0120A5A731A94A888B",
+          "RequestedUtc": "2026-09-19T01:37:11.7462305Z",
+          "Succeeded": false,
+          "Error": "Foreground unavailable; no input/capture sent."
+        }
+      ],
+      "Finalization": "finalization-20260919T013718160Z",
+      "IntegrityPassed": true,
+      "ObserverErrors": 0,
+      "ObserverRejects": 0,
+      "DcsSeverityErrorLines": 161,
+      "RemoteInputEvents": [],
+      "LogHashes": [
+        {
+          "Path": "integrity.json",
+          "SHA256": "24F8FFB26EEA2AC874F8621028A76B54827C115EAD15024A0A792236D0FE50AD"
+        },
+        {
+          "Path": "AMXDENIS-native.jsonl",
+          "SHA256": "AACB3F3EA5D6FC58BAE5140273106C0949646A605836313C2926E13863CA4791"
+        },
+        {
+          "Path": "AMXDENIS-hook.log",
+          "SHA256": "94DB31515398438DE0F96F30E9B7CBDE2FDBF8A5102EC4E7F169F5E76BD793D4"
+        },
+        {
+          "Path": "dcs.log",
+          "SHA256": "7028438E3F37EEA4F93C266C7A01DEF7C9ECCAECA335D3F090A159C4EC9040CA"
+        }
+      ]
+    }
+  ],
+  "PreviousEvidence": {
+    "Path": "Doc/Integration/Evidence/Operational-REV07/keyboard-layout-results.json",
+    "SHA256": "E03CF686CB88BA95DE216FB96F910131F5C2D8724154FFD05297C62517187B11"
+  },
+  "MousePreparation": {
+    "CatalogSHA256": "87FCE82720A1B46A5EBFA23CD0CCA730E7558F483E2E3CD978DBB322F8514DED",
+    "CatalogActions": 105,
+    "MouseMapped": 34,
+    "MappedControls": [
+      {
+        "Name": "Master",
+        "InputCommand": "3704",
+        "Owner": "67",
+        "NativeCommand": "3129",
+        "MouseMapped": "true",
+        "Connector": "PNT_1843"
+      },
+      {
+        "Name": "SmsPower",
+        "InputCommand": "3705",
+        "Owner": "67",
+        "NativeCommand": "3130",
+        "MouseMapped": "true",
+        "Connector": "PNT_1844"
+      },
+      {
+        "Name": "Gear",
+        "InputCommand": "3708",
+        "Owner": "8",
+        "NativeCommand": "3506",
+        "MouseMapped": "true",
+        "Connector": "PTR-ARM-LAND-GEAR-084"
+      },
+      {
+        "Name": "Flaps",
+        "InputCommand": "3709",
+        "Owner": "8",
+        "NativeCommand": "3507",
+        "MouseMapped": "true",
+        "Connector": "PNT_912"
+      },
+      {
+        "Name": "IcpCOM1",
+        "InputCommand": "3716",
+        "Owner": "103",
+        "NativeCommand": "3065",
+        "MouseMapped": "true",
+        "Connector": "PNT_451"
+      },
+      {
+        "Name": "IcpCOM2",
+        "InputCommand": "3717",
+        "Owner": "103",
+        "NativeCommand": "3066",
+        "MouseMapped": "true",
+        "Connector": "PNT_452"
+      },
+      {
+        "Name": "IcpNAVAIDS",
+        "InputCommand": "3718",
+        "Owner": "103",
+        "NativeCommand": "3068",
+        "MouseMapped": "true",
+        "Connector": "PNT_453"
+      },
+      {
+        "Name": "IcpA_G",
+        "InputCommand": "3719",
+        "Owner": "103",
+        "NativeCommand": "3069",
+        "MouseMapped": "true",
+        "Connector": "PNT_454"
+      },
+      {
+        "Name": "IcpNAV",
+        "InputCommand": "3720",
+        "Owner": "103",
+        "NativeCommand": "3070",
+        "MouseMapped": "true",
+        "Connector": "PNT_455"
+      },
+      {
+        "Name": "IcpA_A",
+        "InputCommand": "3721",
+        "Owner": "103",
+        "NativeCommand": "3071",
+        "MouseMapped": "true",
+        "Connector": "PNT_456"
+      },
+      {
+        "Name": "IcpBARO_RALT",
+        "InputCommand": "3722",
+        "Owner": "103",
+        "NativeCommand": "3072",
+        "MouseMapped": "true",
+        "Connector": "PNT_457"
+      },
+      {
+        "Name": "IcpCLR",
+        "InputCommand": "3723",
+        "Owner": "103",
+        "NativeCommand": "3086",
+        "MouseMapped": "true",
+        "Connector": "PNT_469"
+      },
+      {
+        "Name": "IcpENTR",
+        "InputCommand": "3724",
+        "Owner": "103",
+        "NativeCommand": "3087",
+        "MouseMapped": "true",
+        "Connector": "PNT_470"
+      },
+      {
+        "Name": "IcpWARNRST",
+        "InputCommand": "3725",
+        "Owner": "103",
+        "NativeCommand": "3090",
+        "MouseMapped": "true",
+        "Connector": "PNT_473"
+      },
+      {
+        "Name": "IcpUP",
+        "InputCommand": "3726",
+        "Owner": "103",
+        "NativeCommand": "3084",
+        "MouseMapped": "true",
+        "Connector": "PNT_474"
+      },
+      {
+        "Name": "IcpDOWN",
+        "InputCommand": "3727",
+        "Owner": "103",
+        "NativeCommand": "3085",
+        "MouseMapped": "true",
+        "Connector": "PNT_475"
+      },
+      {
+        "Name": "IcpJOY_RIGHT",
+        "InputCommand": "3728",
+        "Owner": "103",
+        "NativeCommand": "3100",
+        "MouseMapped": "true",
+        "Connector": "PNT_485"
+      },
+      {
+        "Name": "IcpJOY_LEFT",
+        "InputCommand": "3729",
+        "Owner": "103",
+        "NativeCommand": "3101",
+        "MouseMapped": "true",
+        "Connector": "PNT_486"
+      },
+      {
+        "Name": "IcpJOY_UP",
+        "InputCommand": "3730",
+        "Owner": "103",
+        "NativeCommand": "3102",
+        "MouseMapped": "true",
+        "Connector": "PNT_487"
+      },
+      {
+        "Name": "IcpJOY_DOWN",
+        "InputCommand": "3731",
+        "Owner": "103",
+        "NativeCommand": "3103",
+        "MouseMapped": "true",
+        "Connector": "PNT_488"
+      },
+      {
+        "Name": "Icp1",
+        "InputCommand": "3732",
+        "Owner": "103",
+        "NativeCommand": "3074",
+        "MouseMapped": "true",
+        "Connector": "PNT_459"
+      },
+      {
+        "Name": "Icp2",
+        "InputCommand": "3733",
+        "Owner": "103",
+        "NativeCommand": "3075",
+        "MouseMapped": "true",
+        "Connector": "PNT_460"
+      },
+      {
+        "Name": "Icp3",
+        "InputCommand": "3734",
+        "Owner": "103",
+        "NativeCommand": "3076",
+        "MouseMapped": "true",
+        "Connector": "PNT_461"
+      },
+      {
+        "Name": "Icp4",
+        "InputCommand": "3735",
+        "Owner": "103",
+        "NativeCommand": "3077",
+        "MouseMapped": "true",
+        "Connector": "PNT_462"
+      },
+      {
+        "Name": "Icp5",
+        "InputCommand": "3736",
+        "Owner": "103",
+        "NativeCommand": "3078",
+        "MouseMapped": "true",
+        "Connector": "PNT_463"
+      },
+      {
+        "Name": "Icp6",
+        "InputCommand": "3737",
+        "Owner": "103",
+        "NativeCommand": "3079",
+        "MouseMapped": "true",
+        "Connector": "PNT_464"
+      },
+      {
+        "Name": "Icp7",
+        "InputCommand": "3738",
+        "Owner": "103",
+        "NativeCommand": "3080",
+        "MouseMapped": "true",
+        "Connector": "PNT_465"
+      },
+      {
+        "Name": "Icp8",
+        "InputCommand": "3739",
+        "Owner": "103",
+        "NativeCommand": "3081",
+        "MouseMapped": "true",
+        "Connector": "PNT_466"
+      },
+      {
+        "Name": "Icp9",
+        "InputCommand": "3740",
+        "Owner": "103",
+        "NativeCommand": "3082",
+        "MouseMapped": "true",
+        "Connector": "PNT_467"
+      },
+      {
+        "Name": "Icp0",
+        "InputCommand": "3741",
+        "Owner": "103",
+        "NativeCommand": "3083",
+        "MouseMapped": "true",
+        "Connector": "PNT_468"
+      },
+      {
+        "Name": "IcpDayNight",
+        "InputCommand": "3742",
+        "Owner": "103",
+        "NativeCommand": "3091",
+        "MouseMapped": "true",
+        "Connector": "PNT_476"
+      },
+      {
+        "Name": "IcpRadarAltimeter",
+        "InputCommand": "3743",
+        "Owner": "103",
+        "NativeCommand": "3092",
+        "MouseMapped": "true",
+        "Connector": "PNT_477"
+      },
+      {
+        "Name": "IcpEgi",
+        "InputCommand": "3744",
+        "Owner": "103",
+        "NativeCommand": "3094",
+        "MouseMapped": "true",
+        "Connector": "PNT_479"
+      },
+      {
+        "Name": "IcpBrightness",
+        "InputCommand": "3745",
+        "Owner": "103",
+        "NativeCommand": "3095",
+        "MouseMapped": "true",
+        "Connector": "PNT_480"
+      }
+    ],
+    "ResolutionOnlyResults": [
+      {
+        "Binding": {
+          "Name": "IcpCOM1",
+          "Value": "1",
+          "Route": "3716",
+          "Release": "0",
+          "Key": "F7",
+          "Modifiers": "LCtrl+LShift"
+        },
+        "ScanCode": 65,
+        "InputSent": false,
+        "InputMethod": "Mouse",
+        "MouseTarget": {
+          "X": 0,
+          "Y": 0,
+          "RightButton": false,
+          "Connector": "PNT_451",
+          "CatalogSHA256": "87FCE82720A1B46A5EBFA23CD0CCA730E7558F483E2E3CD978DBB322F8514DED"
+        }
+      },
+      {
+        "Binding": {
+          "Name": "IcpCOM2",
+          "Value": "1",
+          "Route": "3717",
+          "Release": "0",
+          "Key": "F8",
+          "Modifiers": "LCtrl+LShift"
+        },
+        "ScanCode": 66,
+        "InputSent": false,
+        "InputMethod": "Mouse",
+        "MouseTarget": {
+          "X": 0,
+          "Y": 0,
+          "RightButton": false,
+          "Connector": "PNT_452",
+          "CatalogSHA256": "87FCE82720A1B46A5EBFA23CD0CCA730E7558F483E2E3CD978DBB322F8514DED"
+        }
+      }
+    ],
+    "CoordinatesAreUnvalidatedPlaceholders": true,
+    "NewLiveClicks": 0,
+    "ClickHelperSupported": 33,
+    "Unsupported": "IcpBrightness requires actual axis drag; click helper refuses it",
+    "Checks": [
+      "Exact private control catalog hash",
+      "Unique matching input route and physical connector",
+      "Explicit window coordinates and producer effects required",
+      "Separate move/click; owned process, fresh telemetry, focus and exact cursor enforced by Window",
+      "Button release and at least one previously observed producer transition required",
+      "Newly created alert may confirm output but cannot alone prove a transition",
+      "Input API errors saved with phase and zero functional approval"
+    ]
+  },
+  "CurrentHelperHashes": [
+    {
+      "Path": "Avionics/AMXDENIS/patches.lua",
+      "SHA256": "4D83E227C0E3EE207A53F9E613BFDEED597E3A3D6946C6582700011384A815B1"
+    },
+    {
+      "Path": "Tools/Native/Invoke-Input.ps1",
+      "SHA256": "892587F1DFFC4102007C0DADBF2DAEC415D2C8793A19F37BCFC2B4C4DEDD4B13"
+    },
+    {
+      "Path": "Tools/Native/Test-KeyboardCore.ps1",
+      "SHA256": "1CDAA4CA54892D910092AFD2543FA9603174DE10D3A3D0139CBDE30DC8C93A85"
+    },
+    {
+      "Path": "Tools/Native/Window.ps1",
+      "SHA256": "2FBB88E737E7AFB8915EB338D1338480D8AAADB0CCC59D91362CA8B55F92D42D"
+    },
+    {
+      "Path": "ci/tests/test_integration.ps1",
+      "SHA256": "0C1A8C061644135E007CA76B287FED7B32729C19A072DFEE95AFDC9918609DBF"
+    },
+    {
+      "Path": "ci/tests/test_runtime.lua",
+      "SHA256": "B58A757E7ACD9721F135FA95E04CB10A8DBE85C80FF670C2F53142DBF013BD52"
+    }
+  ],
+  "HelperHashScope": "Current working-tree helper/test versions, including separately pending process-ownership and voltage tests; not the historical helper version for every failed native run or a claim that every listed test change is in this commit",
+  "Bench": {
+    "Run": "Bench-REV07-CJ-InputObservation",
+    "Path": "result.json",
+    "SHA256": "67541298E1406DAD67583F8F2436AECA1BC96E6D32E890264BC93FD7911D8795",
+    "RuntimeChecks": 1860,
+    "IntegrationChecksAtFullBench": 369,
+    "LaterFocusedIntegrationChecks": 382,
+    "LaterChange": "Offline tests for dispatch error reports only",
+    "ObserverChecks": 990
+  },
+  "Limitations": [
+    "Two complete new native ICP sessions remain required; EGI timed sequence currently verified offline only",
+    "COM2 index defect fixed separately in commit8f121f8; no native radio transmission/reception approval",
+    "Remote desktop input/display disconnection blocked CH; foreground activation blocked CI before first input",
+    "No new native mouse approval; cursor coordinates,34 zones,knob dragging and repeated view coverage remain pending",
+    "Native candidates include the separately pending passive voltage readbacks; runtime identity is recorded and no NativePower diagnostic was sent in these keyboard suites",
+    "No changes to normal profiles, ED binaries, EDM geometry or SFM"
+  ]
+}

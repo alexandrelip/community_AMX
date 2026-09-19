@@ -19,6 +19,21 @@ reversivel inicial dos IDs explicitamente identificada. Nenhum commit/push novo.
 
 ## Progresso e criterios
 
+Atualizacao das quatro metas: teclado 10, hidraulica 7, mouse 9, X56 9.
+O [plano](PLANO_RECUPERACAO.md) detalha os criterios e as confirmacoes posteriores:
+modelo hidraulico de projeto aceito, exercicio fisico X56 adiado pelo usuario.
+A [dinamica hidraulica](Evidence/Operational-REV07/hydraulic-dynamics-results.json)
+passou parcialmente no DCS, mas o consumo nativo ficou bloqueado; nota 6/10.
+O [inventario HID](Evidence/Operational-REV07/x56-hid-inventory.json) prepara os
+67 exercicios sem aprovar movimentos ou mapa DCS; X56 continua 3/10.
+
+A [preparacao ICP/mouse](Evidence/Operational-REV07/input-preparation-results.json)
+preserva cinco tentativas ICP sem suite completa. CH confirmou 34 etapas antes
+de recusa Windows coincidente com desconexao RDP; CI nao enviou a primeira tecla
+por foco indisponivel. O helper de clique foi verificado offline e em resolucao
+sem envio, nao nativamente. Notas teclado 5 e mouse 3 mantidas; nao contornar
+as guardas para atingir as metas. A sequencia EGI temporizada passou offline.
+
 | Etapa | Estado | Criterio de conclusao |
 | --- | --- | --- |
 | Teclado | BU/BV e BX/BY: 282 transicoes funcionais, 54 acoes em contextos selecionados; basico BN/BO preservado | Cobrir as 51 acoes fora das suites e demais contextos; nota 5/10, sem aprovar atuacao de mecanismos por recebimento |

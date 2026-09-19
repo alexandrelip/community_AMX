@@ -74,6 +74,15 @@ end
     elseif path == "UFCP/Device/main.lua" then
         text = replace(text,'ufcp_com2_frequency = ufcp_com2_channels[ufcp_com1_channel + 1]',
             'ufcp_com2_frequency = ufcp_com2_channels[ufcp_com2_channel + 1]',1,path)
+        text = replace(text,'    UFCP_TEXT:set(text)',[[    get_param_handle("AMX_ICP_MAIN_SELECTION"):set(ufcp_main_sel)
+    get_param_handle("AMX_COM1_PRESET"):set(ufcp_com1_channel)
+    get_param_handle("AMX_COM2_PRESET"):set(ufcp_com2_channel)
+    get_param_handle("AMX_COM1_PRESET_MODE"):set(ufcp_com1_frequency_sel)
+    get_param_handle("AMX_COM2_PRESET_MODE"):set(ufcp_com2_frequency_sel)
+    UFCP_TEXT:set(text)]],1,path)
+    elseif path == "UFCP/Device/egi.lua" then
+        text = replace(text,'    UFCP_EGI.EGI_STATE:set(EGI_state)',[[    UFCP_EGI.EGI_STATE:set(EGI_state)
+    get_param_handle("AMX_EGI_SWITCH"):set(EGI_switch)]],1,path)
     elseif path == "Systems/weapon_system_api.lua" then
         text = replace(text,'dofile(LockOn_Options.script_path.."../../wpn_table.lua")',
             'WPN_WEAPONS_NAMES = {} -- no foreign loadout catalog or release authority in M1',1,path)
@@ -99,6 +108,7 @@ local target_alarm_update = update
 function update()
     target_alarm_update()
     target_eicas_groups()
+    get_param_handle("AMX_HUD_WARNING_SUPPRESSED"):set(hud_warning_supress)
 end
 ]]
     elseif path == "Systems/host_alarm_sources.lua" then

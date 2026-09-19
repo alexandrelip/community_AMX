@@ -123,6 +123,52 @@ try {
     $effect=$inputAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Test-InputEffect'},$true)
     Check ($null -ne $effect) 'Keyboard effect predicate is missing.'
     . ([scriptblock]::Create($effect.Extent.Text))
+    $mouseFunction=$inputAst.Find({param($node)$node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Get-MouseControl'},$true)
+    Check ($null -ne $mouseFunction) 'Mouse control catalog guard is missing.'
+    . ([scriptblock]::Create($mouseFunction.Extent.Text))
+    $mouseBinding=[pscustomobject]@{Name='IcpCOM1';Route=3716}
+    $mouseRow=[pscustomobject]@{Name='IcpCOM1';InputCommand=3716;MouseMapped='true';Connector='PNT_451'}
+    Check ((Get-MouseControl $mouseBinding @($mouseRow)).Connector -eq 'PNT_451') 'Verified physical mapping was rejected.'
+    Rejected {Get-MouseControl $mouseBinding @()} 'Missing mouse mapping was accepted.'
+    Rejected {Get-MouseControl $mouseBinding @($mouseRow,$mouseRow)} 'Ambiguous mouse mapping was accepted.'
+    $mouseRow.MouseMapped='false'
+    Rejected {Get-MouseControl $mouseBinding @($mouseRow)} 'Keyboard-only control was allowed as a physical mouse test.'
+    $mouseRow.MouseMapped='true';$mouseRow.InputCommand=3717
+    Rejected {Get-MouseControl $mouseBinding @($mouseRow)} 'Mismatched mouse route was accepted.'
+    $mouseRow.InputCommand=3716;$mouseRow.Connector='KEYBOARD_ONLY'
+    Rejected {Get-MouseControl $mouseBinding @($mouseRow)} 'Missing connector was silently accepted.'
+    $mouseRow.Connector='PNT_480';$mouseRow.Name='IcpBrightness';$mouseBinding.Name='IcpBrightness'
+    Rejected {Get-MouseControl $mouseBinding @($mouseRow)} 'A click was presented as an axis drag test.'
+    $dispatch=$inputAst.Find({param($node)$node -is [Management.Automation.Language.TryStatementAst] -and
+        $node.Body.Extent.Text.Contains('$phase=''Move''')},$true)
+    Check ($null -ne $dispatch) 'Input dispatch failure recorder is missing.'
+    foreach($failedPhase in @('Move','Click','ScanKey')){
+        & {
+            param($phaseToFail,$dispatchText)
+            $Mouse=$phaseToFail -ne 'ScanKey'
+            $run='fixture';$ClickX=10;$ClickY=20;$RightButton=$false;$arguments=@{}
+            $Control='IcpCOM1';$Value=1;$report='fixture.json';$schema='fixture';$inputSource='fixture';$phase='ScanKey';$mouseTarget=$null
+            $binding=[pscustomobject]@{Route=3716;Release='0'}
+            $before=[pscustomobject]@{model_time=1;sequence=0;parameters=[pscustomobject]@{AMXDENIS_INPUT_RECEIVED=0;AMXDENIS_INPUT_LAST_COMMAND=0}}
+            $ExpectedParameters=@{AMX_ICP_FORMAT=1}
+            $recorded=[Collections.Generic.List[object]]::new()
+            $windowStub={param($RunRoot,$Action,$X,$Y,$RightButton)
+                if(-not $Action -or $Action -eq $phaseToFail){throw 'Fixture input blocked'}
+            }.GetNewClosure()
+            $readStub={param($RunRoot) return $before}.GetNewClosure()
+            function Join-Path {param($Path,$ChildPath)
+                if($ChildPath -eq 'Window.ps1'){return $windowStub}
+                if($ChildPath -eq 'Read-State.ps1'){return $readStub}
+                throw 'Unexpected dispatch dependency'
+            }
+            function Write-IntegrationJson {param($Path,$Value) $recorded.Add($Value)}
+            Rejected {& ([scriptblock]::Create($dispatchText))} 'Dispatch failure was swallowed.'
+            Check ($recorded.Count -eq 1 -and $recorded[0].InputPhase -eq $phaseToFail) 'Failed input phase was not recorded.'
+            Check (-not $recorded[0].InputDispatchCompleted -and -not $recorded[0].FunctionalEffectVerified -and
+                $recorded[0].StableSamplesConfirmed -eq 0 -and -not $recorded[0].ObservedReceipt) 'Blocked input was promoted to function proof.'
+            Check ($recorded[0].InputError -eq 'Fixture input blocked' -and $recorded[0].Before.model_time -eq 1) 'Input failure lost its original error or baseline.'
+        } $failedPhase $dispatch.Extent.Text
+    }
     $before=[pscustomobject]@{model_time=1;sequence=0;parameters=[pscustomobject]@{CMFD1On=0;CMFD2On=1}}
     $after=[pscustomobject]@{model_time=2;sequence=0;parameters=[pscustomobject]@{CMFD1On=1;CMFD2On=1}}
     Check (Test-InputEffect $before $after @{CMFD1On=1;CMFD2On=1}) 'Producer transition was rejected.'
@@ -130,6 +176,13 @@ try {
     Check (-not (Test-InputEffect $before $after @{CMFD1On=0})) 'Wrong producer state approved an effect.'
     Check (-not (Test-InputEffect $before $after @{CMFD2On=1})) 'Already-set value approved a transition.'
     Check (-not (Test-InputEffect $before $after @{MissingParameter=1})) 'Missing producer was treated as valid.'
+    $created=[pscustomobject]@{model_time=2;sequence=0;parameters=[pscustomobject]@{CMFD1On=1;CMFD2On=1;NewAlert=1}}
+    Check (Test-InputEffect $before $created @{CMFD1On=1;NewAlert=1}) 'New alert cannot confirm a separately observed producer transition.'
+    Check (-not (Test-InputEffect $before $created @{NewAlert=1})) 'First publication alone was mistaken for a measured transition.'
+    Check (-not (Test-InputEffect $before $created @{CMFD2On=1;NewAlert=1})) 'Unchanged old state plus new handle was mistaken for a transition.'
+    Check (-not (Test-InputEffect $before $created @{CMFD1On=1;NewAlert=0})) 'Wrong newly published alert was accepted.'
+    $created.parameters.NewAlert=[double]::NaN
+    Check (-not (Test-InputEffect $before $created @{CMFD1On=1;NewAlert=1})) 'Nonfinite first publication was accepted.'
     $after.sequence=1
     Check (-not (Test-InputEffect $before $after @{CMFD1On=1})) 'Diagnostic command interference approved keyboard effect.'
     $after.sequence=0
@@ -163,6 +216,15 @@ try {
         $layouts[7].Expected.CMFD1FULL -eq 0 -and $layouts[7].Expected.CMFD2FULL -eq 1) 'Second swap must restore both original layouts.'
     Check ($layouts[3].Expected.CMFD1SelLeft -eq 15 -and $layouts[3].Expected.CMFD2SelLeft -eq 17) 'Native cold baseline must not use the navigation suite final layout.'
     Check ($layouts[6].Expected.CMFD1SelLeft -eq 17 -and $layouts[6].Expected.CMFD2SelLeft -eq 15) 'Swap must exchange lower-left selections as well.'
+    $icpCases=@(& (Join-Path $repo 'Tools/Native/Test-KeyboardCore.ps1') -Describe -Suite IcpControls)
+    Check ($icpCases.Count -eq 42) 'ICP suite must retain the full selection, preset, warning and alignment sequence.'
+    Check ($icpCases[4].Expected.CMFD_NAV_FYT -eq 90 -and $icpCases[6].Expected.CMFD_NAV_FYT -eq 90 -and
+        $icpCases[4].Expected.CMFD_NAV_FYT_VALID -eq 1) 'Single-route fixture must skip undefined waypoints to the first airfield slot.'
+    foreach($control in @('IcpBARO_RALT','IcpWARNRST','IcpUP','IcpDOWN','IcpJOY_UP','IcpJOY_DOWN','IcpEgi','WaypointNext','WaypointPrevious','CautionAcknowledge')){
+        Check (@($icpCases | Where-Object Control -eq $control).Count -gt 0) 'ICP suite omitted a pending control.'
+    }
+    foreach($case in $icpCases){Check (-not @($case.Expected.Keys | Where-Object {$_ -match '^AMXDENIS_(INPUT_|CONTROL_)'}).Count) 'ICP suite relies on router feedback.'}
+    Check (@($icpCases | Where-Object {$_.Control -eq 'IcpEgi' -and $_.Value -eq 0.5 -and $_.Expected.EGI_STATE -eq 5 -and $_.TimeoutSeconds -eq 60}).Count -eq 1) 'EGI STHD must wait for model alignment, not only switch motion.'
     $windowAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Window.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Window helper syntax is invalid.'
     $releaseFunction=$windowAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Complete-KeyboardChord'},$true)
