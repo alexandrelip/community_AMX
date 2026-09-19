@@ -478,6 +478,20 @@ do
     sim.input("Mfd1Power",1);sim.input("IcpCOM1",1);sim.input("IcpCOM1",0);sim.tick(order)
     check(sim.values.AMX_ICP_FORMAT==sim.envs[103].UFCP_FORMAT_IDS.COM1,"ICP keyboard route selects actual COM1 page")
     check(sim.values.AMX_COM1_NATIVE_VALID==0,"frequency editing does not imply native radio")
+    sim.input("IcpJOY_LEFT",1);sim.input("IcpJOY_LEFT",0);sim.tick(order)
+    sim.input("IcpJOY_DOWN",1);sim.input("IcpJOY_DOWN",0)
+    sim.input("IcpJOY_DOWN",1);sim.input("IcpJOY_DOWN",0)
+    local icp=sim.envs[103]
+    icp.ufcp_com1_channel=1;icp.ufcp_com2_channel=3
+    icp.ufcp_com2_frequency_sel=icp.UFCP_COM_FREQUENCY_SEL_IDS.PRST
+    icp.ufcp_com2_channels[2],icp.ufcp_com2_channels[3],icp.ufcp_com2_channels[4]=225,226,227
+    icp.ufcp_com2_frequency=227
+    sim.input("IcpDOWN",1);sim.input("IcpDOWN",0);sim.tick(order)
+    check(icp.ufcp_com2_channel==2 and icp.ufcp_com2_frequency==226,
+        "COM2 decrement uses its own channel index instead of COM1")
+    check(icp.ufcp_com1_channel==1,"COM2 editing does not change the COM1 channel")
+    sim.input("IcpJOY_UP",1);sim.input("IcpJOY_UP",0)
+    sim.input("IcpJOY_UP",1);sim.input("IcpJOY_UP",0)
     sim.input("IcpNAV",1);sim.input("IcpNAV",0);sim.tick(order)
     sim.envs[103].ufcp_sel_format=sim.envs[103].UFCP_FORMAT_IDS.FUEL
     sim.fuel=620

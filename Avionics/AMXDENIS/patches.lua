@@ -71,6 +71,9 @@ end
             'CMFD2On:set(get_elec_essential_dc_bus_ok() and get_avionics_master_on() and CMFD2SwOn:get() == 1 and 1 or 0)',1,path)
         text = replace(text,'if CMFD[cmfdnumber]["On"]:get() == 0 then return end',
             'if cmfdnumber == 0 or CMFD[cmfdnumber]["On"]:get() == 0 then return end',1,path)
+    elseif path == "UFCP/Device/main.lua" then
+        text = replace(text,'ufcp_com2_frequency = ufcp_com2_channels[ufcp_com1_channel + 1]',
+            'ufcp_com2_frequency = ufcp_com2_channels[ufcp_com2_channel + 1]',1,path)
     elseif path == "Systems/weapon_system_api.lua" then
         text = replace(text,'dofile(LockOn_Options.script_path.."../../wpn_table.lua")',
             'WPN_WEAPONS_NAMES = {} -- no foreign loadout catalog or release authority in M1',1,path)
