@@ -324,7 +324,7 @@ def verify_original(root, original):
 
 
 def build(candidate, lua, mechanism_probe=None):
-    if mechanism_probe not in (None, "without-mechanimations", "duplicate-canopy"):
+    if mechanism_probe not in (None, "without-mechanimations", "duplicate-canopy", "damage-cell-indices", "empty-damage-properties", "default-mech-animation"):
         raise ValueError("Unsupported mechanism descriptor probe")
     candidate = candidate_destination(candidate)
     inputs = {}
@@ -460,7 +460,9 @@ def main():
     command = commands.add_parser("build")
     command.add_argument("--candidate", type=Path, required=True)
     command.add_argument("--lua", type=Path, required=True)
-    command.add_argument("--mechanism-probe", choices=("without-mechanimations", "duplicate-canopy"))
+    command.add_argument("--mechanism-probe", choices=(
+        "without-mechanimations", "duplicate-canopy", "damage-cell-indices", "empty-damage-properties",
+        "default-mech-animation"))
     options = parser.parse_args()
     if options.command == "import":
         import_sources(options.snapshot, options.inventory, options.baseline)

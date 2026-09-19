@@ -1,0 +1,116 @@
+{
+  "Schema": "AMXDENIS_R02_FLIGHT_MODEL_1",
+  "Question": "Why do the AMX canopy, flaps and airbrake stay immobile while commands are accepted?",
+  "Diagnosis": "In DCS an external flight model writes the surfaces: ed_fm_set_command receives the aircraft commands and ed_fm_set_draw_args writes the draw arguments. The AMX passes nil as the flight model in make_flyable, so no component writes those arguments.",
+  "ReferenceDeclarations": [
+    {
+      "Mod": "A-29B",
+      "Tier": 1,
+      "Call": "make_flyable(\"A-29B\", Cockpit/Scripts, build_FM(\"A-29B\"), comm.lua)",
+      "Binary": "A29B_FM.dll",
+      "Bytes": 67584,
+      "Source": "ExternalFM/FM/src"
+    },
+    {
+      "Mod": "F-5EM",
+      "Tier": 1,
+      "Call": "make_flyable(\"F-5EM\", Cockpit/Scripts, F5E, comm.lua)",
+      "Binary": "reuses the stock F5E flight model",
+      "Bytes": null,
+      "Source": "ExternalFM is a documented stub"
+    },
+    {
+      "Mod": "Su-30",
+      "Tier": 2,
+      "Call": "make_flyable(NAME, Cockpit/Scripts, getAicraftCFG(...), comm.lua)",
+      "Binary": "SU30FM.dll",
+      "Bytes": 278528,
+      "Source": null
+    },
+    {
+      "Mod": "A-4E-C",
+      "Tier": 2,
+      "Call": null,
+      "Binary": "Scooter.dll",
+      "Bytes": 279040,
+      "Source": "DCS-EFM-ImGui sources present"
+    },
+    {
+      "Mod": "AMXDENIS",
+      "Tier": null,
+      "Call": "make_flyable(\"AMXT_M\", Cockpit/Scripts, nil, comm.lua)",
+      "Binary": null,
+      "Bytes": null,
+      "Source": "FM/config.lua exists but entry.lua never loads it"
+    }
+  ],
+  "RefutedThisSession": [
+    "Mechanism declaration form: adopting make_default_mech_animation(\"Default\") like the F-5EM left canopy, flaps and airbrake at their initial readings"
+  ],
+  "ProbeRun": {
+    "Run": "DCS.AMXDENIS-Native-REV07-DG-DefaultMech",
+    "BuildId": "96BD4AB00F1EAE9BCEEE125D55CDD882059A968D0ED0BDA46CDB1230D605B7B2",
+    "Stages": "Mechanisms",
+    "Effective": 1,
+    "Attempted": 6,
+    "Results": [
+      {
+        "Probe": "CameraYaw",
+        "Before": -0.5977058758312735,
+        "After": -0.7906046116369645,
+        "Moved": true
+      },
+      {
+        "Probe": "CanopyClose",
+        "Before": 0.8999999761581421,
+        "After": 0.8999999761581421,
+        "Moved": false
+      },
+      {
+        "Probe": "FlapsDown",
+        "Before": 0,
+        "After": 0,
+        "Moved": false
+      },
+      {
+        "Probe": "FlapsUp",
+        "Before": 0,
+        "After": 0,
+        "Moved": false
+      },
+      {
+        "Probe": "AirbrakeOut",
+        "Before": 0,
+        "After": 0,
+        "Moved": false
+      },
+      {
+        "Probe": "AirbrakeIn",
+        "Before": 0,
+        "After": 0,
+        "Moved": false
+      }
+    ],
+    "IntegrityPassed": true
+  },
+  "ToolchainProof": {
+    "Template": "D:/Program Files/DCS World/API/ExternalFMTemplate",
+    "Headers": "D:/Program Files/DCS World/API/include/FM/wHumanCustomPhysicsAPI.h",
+    "Compiler": "Microsoft C/C++ 19.44.35227 x64 from Visual Studio 2022 Build Tools",
+    "CMake": "4.3.3",
+    "BuiltLibraryBytes": 13824,
+    "ExportedFlightModelFunctions": 27,
+    "KeyExports": [
+      "ed_fm_set_command",
+      "ed_fm_set_draw_args",
+      "ed_fm_simulate"
+    ],
+    "Note": "The template includes its headers through a relative ../../include path, so the API folder layout must be preserved when it is copied."
+  },
+  "NotProven": [
+    "No AMXDENIS flight model was written or loaded yet, so no mechanism is fixed",
+    "A compiled template only proves the toolchain, not AMX flight behaviour",
+    "No stock reference was captured with the engine running"
+  ],
+  "RecordedUtc": "2026-09-19T13:00:09.9887040Z"
+}

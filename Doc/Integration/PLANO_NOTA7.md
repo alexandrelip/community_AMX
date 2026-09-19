@@ -56,7 +56,14 @@ Referencia de construcao de mods:
   SFM pode estar ajustado em voo e ainda assim sem modelo de dano.
 
 Biblioteca de referencia em `D:/Desenvolvimento/BACKUP`, registrada em
-[permissoes](PERMISSIONS.json):
+[permissoes](PERMISSIONS.json). Mods de referencia autorizados pelo usuario, todos
+GPL3 e de autoria dele:
+
+- Nivel 1: `D:/Desenvolvimento/F5EM-MOD-main` e `D:/Desenvolvimento/A29B_0.6.0c`.
+- Nivel 2: `D:/Desenvolvimento/Su-30_EFM_V2.8.06b BASE PACKAGE RELEASE` e
+  `BACKUP/ex mods/A-4E-Copen/Mods/aircraft/A-4E-C`.
+
+Outras referencias:
 
 - `ex mods/Denis_community_AMX-main`: o AMX original. Verificado que **nao tem
   pasta `Cockpit/`** e **nao tem `AMXT_M.lua`**. O AMXT_M e o cockpit sao
@@ -88,37 +95,51 @@ Situacao: o freio de roda ja atua de forma reproduzivel. Capota, flapes e
 aerofreios continuam imoveis. O trem nunca foi testado porque exige a aeronave
 no ar.
 
-O que ja foi eliminado como causa: identificadores errados, canal de comando
-morto, defeito do produtor do cockpit, forma da chamada, e forma da declaracao
-de mecanismo. A capota do AMX nao se move enquanto a de uma aeronave oficial se
-move com o mesmo comando, o que aponta para o descritor ou o modelo do AMX.
+Causa raiz identificada em 19/09, registrada em
+[diagnostico do modelo de voo](Evidence/Operational-REV07/flight-model-diagnosis.json):
+no DCS quem escreve as superficies e o modelo de voo externo. Ele recebe os
+comandos em `ed_fm_set_command` e escreve os argumentos de desenho em
+`ed_fm_set_draw_args`. O AMX passa `nil` como modelo de voo no `make_flyable`,
+entao nenhum componente escreve esses argumentos. O comando chega, e aceito, e
+nada se move. Camera, freio e motor funcionam porque sao tratados pelo modelo
+simplificado.
+
+Todos os mods de referencia passam um binario: A-29B com `A29B_FM.dll`, F-5EM
+reaproveitando o modelo do F-5E, Su-30 com `SU30FM.dll` e A-4E-C com
+`Scooter.dll`. Apenas o AMX passa `nil`. O repositorio ja tem um `FM/config.lua`
+completo, com centro de massa, inercia e suspensao, que o `entry.lua` nunca
+carrega.
+
+Ja eliminados como causa: identificadores errados, canal de comando morto,
+defeito do produtor do cockpit, forma da chamada e forma da declaracao de
+mecanismo, inclusive adotar a declaracao padrao usada pelo F-5EM.
 
 Passos:
 
-1. Referencia oficial com motor ligado, para julgar flapes e aerofreios. Sem
-   isso nao se pode afirmar que estao defeituosos, porque com motor desligado a
-   aeronave oficial tambem nao os move.
-2. Teste do conflito documentado entre os argumentos 38, 50 e 114, indicado na
-   pagina 52 do guia, em candidato separado.
-3. Inspecao do `Shapes/AMX.edm` com o importador EDM disponivel em
-   `BACKUP/Demais/DCS-EDM-Blender-Importer`, comparando as faixas de animacao
-   dos argumentos 38, 9, 10 e 3 com um modelo cujo mecanismo funciona.
-4. Fechar a questao do casco de colisao. O `AMX.lods` declara
-   `collision_shell = AMX.edm`, mas o parser nao encontra celulas. Os testes de
-   dano ja feitos removeram o erro de log sem restaurar movimento, entao o
-   proximo passo e verificar se a ausencia de celulas impede o registro dos
-   mecanismos, e nao apenas o dano.
-5. Se o caminho de descritor se esgotar, avaliar binario proprio de modelo de
-   voo, escrito do zero, estudando o comportamento observado nos modulos de
-   referencia. Esta alternativa entra com custo e risco declarados, nunca como
-   copia.
+1. Escrever `ExternalFM` proprio para o AMXDENIS, a partir do template oficial
+   em `API/ExternalFMTemplate` e dos cabecalhos em `API/include`, usando a
+   estrutura do A-29B em `ExternalFM/FM/src` como referencia.
+2. Implementar primeiro o minimo que destrava a nota: receber trem, flapes,
+   aerofreio e capota em `ed_fm_set_command` e escrever os argumentos
+   correspondentes em `ed_fm_set_draw_args`.
+3. Ligar o `FM/config.lua` existente e declarar o binario no `entry.lua`,
+   seguindo o padrao `build_FM` do A-29B.
+4. Manter o voo utilizavel. Um modelo proprio incompleto pode piorar o que hoje
+   funciona, entao a aceitacao exige comparar o comportamento antes e depois.
+5. Referencia oficial com motor ligado, para julgar flapes e aerofreios com o
+   modelo simplificado atual e registrar a linha de base.
+
+Cadeia de compilacao ja verificada: Visual Studio 2022 Build Tools x64 e CMake
+4.3.3 compilaram o template oficial e geraram biblioteca com 27 funcoes de
+modelo de voo exportadas, entre elas `ed_fm_set_command` e
+`ed_fm_set_draw_args`. Isso prova a ferramenta, nao o comportamento do AMX.
 
 Aceite para 7: capota abre e fecha, flapes descem e sobem e aerofreios saem e
-recolhem, com posicao medida, em duas sessoes. Trem comprovado em fixture aereo
-ou declarado explicitamente fora do escopo desta nota.
+recolhem, com posicao medida, em duas sessoes, sem perder o que ja funciona.
 
-Risco: se a causa estiver na geometria do EDM, a correcao exige autorizacao
-para mexer no modelo, que hoje nao existe.
+Risco: substituir o modelo simplificado por um modelo proprio afeta voo e
+estabilidade. Por isso P2 e P5 passam a depender tambem da qualidade desse
+binario, e nao apenas dos mecanismos.
 
 ### P2. Voo completo, de 3 para 7
 

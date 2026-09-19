@@ -25,10 +25,34 @@ local original = assert(loadfile(input.reference .. "/Avionics/AMX/patches.lua")
 local target = assert(loadfile(input.root .. "/Avionics/AMXDENIS/patches.lua"))()
 local loader = target.loader(read(candidate.."/entry.lua"))
 if input.mechanism_probe then
-    assert(input.mechanism_probe == "without-mechanimations" or input.mechanism_probe == "duplicate-canopy",
+    assert(input.mechanism_probe == "without-mechanimations" or input.mechanism_probe == "duplicate-canopy" or
+        input.mechanism_probe == "damage-cell-indices" or input.mechanism_probe == "empty-damage-properties" or
+        input.mechanism_probe == "default-mech-animation",
         "Unknown descriptor probe")
     local mutation = input.mechanism_probe == "without-mechanimations" and "aircraft.mechanimations = nil" or
         'assert(aircraft.mechanimations.Door1 == nil, "Unexpected existing Door1"); aircraft.mechanimations.Door1 = {DuplicateOf = "Door0"}'
+    if input.mechanism_probe == "damage-cell-indices" then
+        mutation = [[assert(aircraft.Damage.cell_indices == nil, "Unexpected damage aliases")
+        aircraft.Damage.cell_indices = {
+            NOSE_CENTER=0, NOSE_LEFT_SIDE=1, NOSE_RIGHT_SIDE=2, COCKPIT=3,
+            CABIN_LEFT_SIDE=4, CABIN_RIGHT_SIDE=5, GUN=7, GEAR_C=8,
+            FUSELAGE_LEFT_SIDE=9, FUSELAGE_RIGHT_SIDE=10, ENGINE=11, ENGINE_R=12,
+            MTG_L_BOTTOM=13, MTG_R_BOTTOM=14, GEAR_L=15, GEAR_R=16,
+            ENGINE_L_OUT=17, ENGINE_R_OUT=18, AIR_BRAKE_R=20,
+            WING_L_OUT=23, WING_R_OUT=24, AILERON_L=25, AILERON_R=26,
+            WING_L_CENTER=29, WING_R_CENTER=30, WING_L_IN=35, WING_R_IN=36,
+            FLAP_L_IN=37, FLAP_R_IN=38, KEEL_OUT=39, KEEL_R_OUT=40,
+            KEEL_IN=43, KEEL_R_IN=44, ELEVATOR_L_IN=51, ELEVATOR_R_IN=52,
+            RUDDER=53, RUDDER_R=54, TAIL_LEFT_SIDE=56, TAIL_RIGHT_SIDE=57,
+            NOSE_BOTTOM=59, FUEL_TANK_LEFT_SIDE=61, FUSELAGE_BOTTOM=82,
+        }]]
+    elseif input.mechanism_probe == "empty-damage-properties" then
+        mutation = "aircraft.Damage = {}"
+    elseif input.mechanism_probe == "default-mech-animation" then
+        -- Same declaration the F-5EM reference uses instead of an explicit table.
+        mutation = [[assert(type(make_default_mech_animation) == "function", "Native default mechanism helper unavailable")
+        aircraft.mechanimations = make_default_mech_animation("Default")]]
+    end
     loader = target.replace(loader, "dofile(current_mod_path .. '/Entry/AMXT_M.lua')", [[do
     local register_aircraft = add_aircraft
     add_aircraft = function(aircraft)

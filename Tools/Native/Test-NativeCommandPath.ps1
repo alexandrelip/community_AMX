@@ -62,8 +62,10 @@ if(-not $RunRoot){throw 'RunRoot is required for a native command-path test.'}
 Import-Module (Join-Path (Split-Path -Parent $PSScriptRoot) 'AMXDENISIntegration.psm1') -Force
 $run=Assert-IntegrationPath $RunRoot
 $state=Get-Content -LiteralPath (Join-Path $run 'run.json') -Raw | ConvertFrom-Json -DateKind String
-if($state.Schema -ne 'AMXDENIS_NATIVE_RUN_1' -or $state.RunRoot -ne $run -or $state.StartMode -ne 'GroundCold' -or
-    -not $state.OperationalTest){throw 'Command-path probe requires an operational cold ground fixture.'}
+# GroundHot is only useful for the surface set, where the engine is never commanded.
+$allowedModes=if($Stages -eq 'Mechanisms'){@('GroundCold','GroundHot')}else{@('GroundCold')}
+if($state.Schema -ne 'AMXDENIS_NATIVE_RUN_1' -or $state.RunRoot -ne $run -or $state.StartMode -notin $allowedModes -or
+    -not $state.OperationalTest){throw 'Command-path probe requires an operational ground fixture matching the selected stages.'}
 $reportPath=Resolve-IntegrationFile $run 'native-command-path.json'
 if(Test-Path -LiteralPath $reportPath){throw 'Command-path report already exists.'}
 
@@ -80,7 +82,10 @@ try {
     $cold=& $read
     Assert-CommandPathStationary $cold
     $rpm=Get-CommandPathValue $cold 'engine.RPM.left'
-    if($null -eq $rpm -or $rpm -is [string] -or [double]::IsNaN($rpm) -or $rpm -lt 0 -or $rpm -gt 0.1){throw 'Engine is already running or unavailable; cold fixture required.'}
+    if($null -eq $rpm -or $rpm -is [string] -or [double]::IsNaN($rpm) -or $rpm -lt 0){throw 'Engine reading is unavailable.'}
+    if($state.StartMode -eq 'GroundHot'){
+        if($rpm -lt 53){throw 'Hot fixture requires a running engine before comparing surfaces.'}
+    } elseif($rpm -gt 0.1){throw 'Engine is already running; cold fixture required.'}
     foreach($stage in $plan){
         $before=& $read
         Assert-CommandPathStationary $before
@@ -135,7 +140,7 @@ try {
     $effective=@($probes | Where-Object Succeeded)
     Write-IntegrationJson $reportPath ([ordered]@{Schema='AMXDENIS_NATIVE_COMMAND_PATH_2';Run=$state.ProfileName;BuildId=$state.BuildId;
         ControlAircraft=$(if($state.PSObject.Properties['ControlAircraft']){$state.ControlAircraft}else{'none'});
-        Stages=$Stages;Probes=$probes.ToArray();Failure=$failure;CleanupErrors=$cleanupErrors.ToArray();
+        StartMode=$state.StartMode;Stages=$Stages;Probes=$probes.ToArray();Failure=$failure;CleanupErrors=$cleanupErrors.ToArray();
         Planned=$plan.Count;Attempted=$probes.Count;Effective=$effective.Count;
         SequenceCompleted=($probes.Count -eq $plan.Count -and -not $failure);
         AllTransitionsPassed=($probes.Count -eq $plan.Count -and $effective.Count -eq $plan.Count -and -not $failure -and $cleanupErrors.Count -eq 0);

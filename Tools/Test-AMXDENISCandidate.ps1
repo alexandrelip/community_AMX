@@ -30,7 +30,7 @@ if ($manifest.Schema -ne 'AMXDENIS_CANDIDATE_1' -or $manifest.AircraftType -ne '
     $manifest.DesktopCandidateOnly -ne $true -or $manifest.Files.Count -eq 0 -or
     $manifest.BuildId -notmatch '^[A-F0-9]{64}$' -or $manifest.InputSetSHA256 -notmatch '^[A-F0-9]{64}$') { throw 'Unexpected candidate identity.' }
 $descriptorProbe=if($manifest.PSObject.Properties['DescriptorProbe']){$manifest.DescriptorProbe}else{'none'}
-if($descriptorProbe -notin @('none','without-mechanimations','duplicate-canopy')){throw 'Unknown experimental descriptor probe.'}
+if($descriptorProbe -notin @('none','without-mechanimations','duplicate-canopy','damage-cell-indices','empty-damage-properties','default-mech-animation')){throw 'Unknown experimental descriptor probe.'}
 if($manifest.PSObject.Properties['DescriptorProbe'] -and
     ($manifest.DescriptorChanged -ne ($descriptorProbe -ne 'none') -or
      $manifest.ExperimentalOnly -ne ($descriptorProbe -ne 'none'))){throw 'Descriptor experiment flags disagree.'}

@@ -356,7 +356,9 @@ try {
         Rejected {Assert-CommandPathStationary ([pscustomobject]@{velocity=[pscustomobject]@{x=$value;y=0;z=0}})} 'Unsafe command-path ground motion was ignored.'
     }
     $commandText=$commandAst.Extent.Text
-    Check ($commandText -match "StartMode -ne 'GroundCold'" -and $commandText -match '-not \$state\.OperationalTest') 'Command-path diagnostic must demand an operational cold ground fixture.'
+    Check ($commandText -match "StartMode -notin \`$allowedModes" -and $commandText -match '-not \$state\.OperationalTest') 'Command-path diagnostic must demand an operational ground fixture.'
+    Check ($commandText -match "if\(\`$Stages -eq 'Mechanisms'\)\{@\('GroundCold','GroundHot'\)\}else\{@\('GroundCold'\)\}") 'Only the engine-off surface set may run from a hot fixture.'
+    Check ($commandText -match 'Hot fixture requires a running engine') 'A hot surface comparison must confirm the engine is actually running.'
     Check ($commandText -match 'Command-path report already exists') 'Command-path diagnostic must refuse to overwrite a previous report.'
     Check ($commandText -match 'Canopy is not at the expected open extreme') 'Command-path diagnostic must reject a canopy that cannot demonstrate travel.'
     $commandEvidence=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/Evidence/Operational-REV07/command-path-results.json') -Raw | ConvertFrom-Json
@@ -397,6 +399,14 @@ try {
     $permissions=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/PERMISSIONS.json') -Raw | ConvertFrom-Json
     Check ($permissions.ReferenceLibrary.StudyAuthorized -and $permissions.ReferenceLibrary.Path -eq 'D:/Desenvolvimento/BACKUP') 'The reference library authorization is missing.'
     Check ($permissions.PublicRedistributionAuthorized -eq $false -and $permissions.NormalProfileInstallationAuthorized -eq $false) 'Existing permission boundaries were lost.'
+    $fm=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/Evidence/Operational-REV07/flight-model-diagnosis.json') -Raw | ConvertFrom-Json
+    Check ($fm.Schema -eq 'AMXDENIS_R02_FLIGHT_MODEL_1' -and $fm.ReferenceDeclarations.Count -eq 5) 'The flight model diagnosis must compare every reference declaration.'
+    $amx=@($fm.ReferenceDeclarations | Where-Object Mod -eq 'AMXDENIS')
+    Check ($amx.Count -eq 1 -and $null -eq $amx[0].Binary -and $amx[0].Call -match 'nil') 'The diagnosis must record that the AMX declares no flight model.'
+    Check (@($fm.ReferenceDeclarations | Where-Object {$_.Mod -ne 'AMXDENIS' -and -not $_.Binary}).Count -eq 0) 'Every reference mod must show the flight model it uses.'
+    Check ($fm.ToolchainProof.ExportedFlightModelFunctions -ge 20 -and ($fm.ToolchainProof.KeyExports -contains 'ed_fm_set_draw_args')) 'The toolchain proof must list the exports that drive the surfaces.'
+    Check (@($fm.NotProven).Count -ge 3 -and $fm.RefutedThisSession.Count -ge 1) 'The diagnosis must keep the refuted hypothesis and the unproven scope.'
+    Check (@($fm.ProbeRun.Results | Where-Object {$_.Moved -and $_.Before -eq $_.After}).Count -eq 0) 'An unchanged probe reading was archived as movement.'
     $campaignAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-CommandCampaign.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Command campaign syntax is invalid.'
     $campaignText=$campaignAst.Extent.Text

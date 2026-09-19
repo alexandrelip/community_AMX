@@ -2,7 +2,9 @@ assert(_VERSION=="Lua 5.1","DCS Lua 5.1 required")
 local candidate=assert(arg[1]):gsub("\\","/")
 local baseline=assert(arg[2]):gsub("\\","/")
 local descriptor_probe=arg[3]or"none"
-assert(descriptor_probe=="none"or descriptor_probe=="without-mechanimations"or descriptor_probe=="duplicate-canopy",
+assert(descriptor_probe=="none"or descriptor_probe=="without-mechanimations"or descriptor_probe=="duplicate-canopy"or
+    descriptor_probe=="damage-cell-indices"or descriptor_probe=="empty-damage-properties"or
+    descriptor_probe=="default-mech-animation",
     "Unknown descriptor probe")
 local runtime=assert(loadfile(candidate.."/Avionics/Runtime/runtime.lua"))()
 assert((runtime.descriptor_probe or"none")==descriptor_probe,"Descriptor probe requires explicit matching bench opt-in")
@@ -36,6 +38,18 @@ local function declaration(root,original)
     env.gun_mount=function(name,ammo,geometry)return {name=name,ammo=ammo,geometry=geometry}end
     env.declare_loadout=function()end
     env.declare_plugin=function(name,config) metadata={name=name,config=config}end
+    -- Mirrors the "Default" preset shipped in Scripts/Aircrafts/_Common/DefaultMechTiming.lua.
+    env.make_default_mech_animation=function(preset)
+        check(preset=="Default","only the native Default mechanism preset is requested")
+        return {
+            Door0={
+                {Transition={"Close","Open"},Sequence={{C={{"Arg",38,"to",0.9,"in",9.0}}}},Flags={"Reversible"}},
+                {Transition={"Open","Close"},Sequence={{C={{"Arg",38,"to",0.0,"in",6.0}}}},Flags={"Reversible","StepsBackwards"}},
+                {Transition={"Any","Bailout"},Sequence={{C={{"JettisonCanopy",0}}}}},
+            },
+            Door1={DuplicateOf="Door0"},
+        }
+    end
     env.make_flyable=function(name,cockpit,fm,comm)flyables[name]={cockpit=cockpit,fm=fm,comm=comm}end
     for _,name in ipairs({"mount_vfs_sound_path","mount_vfs_texture_path","mount_vfs_model_path","mount_vfs_liveries_path","make_view_settings","plugin_done"}) do env[name]=function()end end
     env.dofile=function(path)
@@ -53,7 +67,26 @@ local count=0
 for _,name in ipairs({"AMX","AMXT","AMX_M","AMXT_M"}) do
     count=count+1
     check(actual[name]~=nil and original[name]~=nil,"original type retained "..name)
-    if name=="AMXT_M"and descriptor_probe=="duplicate-canopy"then
+    if name=="AMXT_M"and descriptor_probe=="empty-damage-properties"then
+        check(type(actual[name].Damage)=="table"and next(actual[name].Damage)==nil,"diagnostic descriptor has an explicitly empty damage table")
+        local damage=actual[name].Damage
+        actual[name].Damage=original[name].Damage
+        check(encode(actual[name])==encode(original[name]),"damage isolation leaves all other descriptor and SFM fields unchanged")
+        actual[name].Damage=damage
+    elseif name=="AMXT_M"and descriptor_probe=="damage-cell-indices"then
+        local aliases=actual[name].Damage.cell_indices
+        check(type(aliases)=="table"and original[name].Damage.cell_indices==nil,"experiment adds explicit damage aliases")
+        local alias_count=0
+        for alias,index in pairs(aliases)do
+            check(type(alias)=="string"and type(original[name].Damage[index])=="table","alias resolves to an existing unchanged cell")
+            alias_count=alias_count+1
+        end
+        check(alias_count==42 and aliases.GEAR_C==8 and aliases.GEAR_L==15 and aliases.GEAR_R==16 and
+            aliases.FLAP_L_IN==37 and aliases.FLAP_R_IN==38,"expected named mechanism cells are preserved")
+        actual[name].Damage.cell_indices=nil
+        check(encode(actual[name])==encode(original[name]),"only the damage alias metadata differs from the original descriptor")
+        actual[name].Damage.cell_indices=aliases
+    elseif name=="AMXT_M"and descriptor_probe=="duplicate-canopy"then
         check(original[name].mechanimations.Door1==nil,"original two-seat descriptor has no second door")
         original[name].mechanimations.Door1={DuplicateOf="Door0"}
         check(encode(actual[name])==encode(original[name]),"experimental descriptor adds only the native door alias")
@@ -62,6 +95,13 @@ for _,name in ipairs({"AMX","AMXT","AMX_M","AMXT_M"}) do
         local mechanisms=original[name].mechanimations
         check(type(mechanisms)=="table"and actual[name].mechanimations==nil,"experimental probe removes only the mechanism table")
         original[name].mechanimations=nil
+        check(encode(actual[name])==encode(original[name]),"all other experimental descriptor fields remain original")
+        original[name].mechanimations=mechanisms
+    elseif name=="AMXT_M"and descriptor_probe=="default-mech-animation"then
+        local mechanisms=original[name].mechanimations
+        check(type(mechanisms)=="table"and type(actual[name].mechanimations)=="table","experimental probe keeps a mechanism table")
+        check(encode(actual[name].mechanimations)~=encode(mechanisms),"experimental probe actually replaces the shipped mechanism table")
+        original[name].mechanimations=actual[name].mechanimations
         check(encode(actual[name])==encode(original[name]),"all other experimental descriptor fields remain original")
         original[name].mechanimations=mechanisms
     else

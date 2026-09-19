@@ -1,0 +1,351 @@
+{
+  "Schema": "AMXDENIS_RECOVERY_R02_DAMAGE_PROBES_1",
+  "RecordedUtc": "2026-09-18T18:38:00.2862804Z",
+  "Milestone": "R02",
+  "NativeMechanismsApproved": false,
+  "ExperimentsPromoted": false,
+  "NormalProfileInstalled": false,
+  "StaticInspection": {
+    "Model": "Shapes/AMX.edm",
+    "SHA256": "3372D5598EF82B76C23E35B87D583C728E639DE2B19F154163952EB21B101B16",
+    "EdmVersion": 10,
+    "NodeCount": 152,
+    "ShellCount": 0,
+    "UnconsumedBytes": 0,
+    "RecoveryUsed": false,
+    "Scope": "Parsed static records; no evaluated poses, physical calibration or native actuation approval",
+    "ArgumentTrackCounts": {
+      "0": 5,
+      "3": 7,
+      "5": 6,
+      "9": 4,
+      "10": 12,
+      "38": 6
+    },
+    "CollisionDeclaration": "Shapes/AMX.lods: collision_shell = AMX.edm",
+    "LodSHA256": "D40FC5331DA5F7D6675D79B21E02278FD3B262B1EDD821AB23ABE0FEF10CD8CD",
+    "ParserHashes": [
+      {
+        "Name": "__init__.py",
+        "SHA256": "F74F68E7C2330271D7A913B505EC21A0BAEB7C02E7FC9EA88A3180637EB8ABDC"
+      },
+      {
+        "Name": "parser.py",
+        "SHA256": "03764E05772C4328531B7CA914084AE542BCFC45C557333E5C777605EA887819"
+      },
+      {
+        "Name": "reader.py",
+        "SHA256": "14E44F8126054A3CDCC36910EA62E8EEBD6E76EE19541C11AB3F50F9A54174FC"
+      },
+      {
+        "Name": "types.py",
+        "SHA256": "BB3994C51AFE5D8BE951B25E406EA5546984B3E23E1A95BBE2AC3A733318614A"
+      }
+    ]
+  },
+  "Runs": [
+    {
+      "Run": "Native-REV07-BE-DamageAliases",
+      "BuildId": "74D692B8B12BB76BF2F511CC3E941B5B0A72CEDFACFFDD507216EB7F33DA1181",
+      "DescriptorProbe": "damage-cell-indices",
+      "ProcessRecorded": true,
+      "ReadyRecords": 1,
+      "StateRecords": 292,
+      "ObserverErrors": 0,
+      "DcsErrors": 159,
+      "AmxtDamageErrors": [
+        "2026-09-18 18:16:51.764 ERROR   WORLDGENERAL (Main): Error: Unit [AMXT_M]: No cell for property records NOSE_CENTER NOSE_LEFT_SIDE NOSE_RIGHT_SIDE COCKPIT CABIN_LEFT_SIDE CABIN_RIGHT_SIDE GUN GEAR_C FUSELAGE_LEFT_SIDE FUSELAGE_RIGHT_SIDE ENGINE ENGINE_R MTG_L_BOTTOM MTG_R_BOTTOM GEAR_L GEAR_R ENGINE_L_OUT ENGINE_R_OUT AIR_BRAKE_R WING_L_OUT WING_R_OUT AILERON_L AILERON_R WING_L_CENTER WING_R_CENTER WING_L_IN WING_R_IN FLAP_L_IN FLAP_R_IN KEEL_OUT KEEL_R_OUT KEEL_IN KEEL_R_IN ELEVATOR_L_IN ELEVATOR_R_IN RUDDER RUDDER_R TAIL_LEFT_SIDE TAIL_RIGHT_SIDE NOSE_BOTTOM FUEL_TANK_LEFT_SIDE FUSELAGE_BOTTOM.",
+        "2026-09-18 18:16:51.764 ERROR   APP (Main): Error: Unit [AMXT_M]: Corrupt damage model."
+      ],
+      "Conditions": [
+        {
+          "File": "Canopy-closed.json",
+          "SHA256": "75644102047EABD588AA75FFF7432AF8D7B2A3D367F10AAA4E884E8E28F10398",
+          "Passed": false,
+          "Criterion": "param($sample) $sample.external_canopy -le 0.01 -and $sample.mechanisms.canopy.value -le 0.01",
+          "Time": 31.315,
+          "Canopy": {
+            "status": 0,
+            "value": 0.8999999761581421
+          },
+          "ExternalCanopy": 0.8999999761581421,
+          "Flaps": {
+            "status": 0,
+            "value": 0
+          },
+          "NativeFlapParameter": 0,
+          "ExternalArguments": {
+            "0": 1,
+            "10": 0,
+            "182": 0,
+            "3": 1,
+            "38": 0.8999999761581421,
+            "5": 1,
+            "9": 0
+          },
+          "RPM": {
+            "left": 0,
+            "right": 0
+          },
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "File": "NativeCanopy-closed.json",
+          "SHA256": "DE1B3ECF9928B89AAEFDB6D80B1ED7D6A8801B543AC5D94B5E80F1F0C4DF157B",
+          "Passed": false,
+          "Criterion": "param($sample) $sample.external_canopy -le 0.01 -and $sample.mechanisms.canopy.value -le 0.01",
+          "Time": 59.216,
+          "Canopy": {
+            "status": 1,
+            "value": 0.8999999761581421
+          },
+          "ExternalCanopy": 0.8999999761581421,
+          "Flaps": {
+            "status": 0,
+            "value": 0
+          },
+          "NativeFlapParameter": 0,
+          "ExternalArguments": {
+            "0": 1,
+            "10": 0,
+            "182": 0,
+            "3": 1,
+            "38": 0.8999999761581421,
+            "5": 1,
+            "9": 0
+          },
+          "RPM": {
+            "left": 0,
+            "right": 0
+          },
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        }
+      ],
+      "Finalization": "finalization-20260918T181803424Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "74D692B8B12BB76BF2F511CC3E941B5B0A72CEDFACFFDD507216EB7F33DA1181",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T18:18:12.6632089Z"
+      },
+      "LogHashes": [
+        {
+          "File": "integrity.json",
+          "SHA256": "3DCC3BDABA53165DBD4A6592EBB31EA2389BFCDE93C1D72C92C7829373A1C117"
+        },
+        {
+          "File": "dcs.log",
+          "SHA256": "2891A31065AC93D4389C7665BCCE5E2919C3474FEED44DCF02A11420AE719714"
+        },
+        {
+          "File": "AMXDENIS-native.jsonl",
+          "SHA256": "85D56A1ECBCF387581C534C808589A91D6CD86CE6CA55C3C3428494BBDCB5CA1"
+        },
+        {
+          "File": "AMXDENIS-hook.log",
+          "SHA256": "43568161AC9AA0F3D147852C277652379BFF9C61FFD9EA544996EED6D7CCD598"
+        }
+      ],
+      "TemporaryAuthFilesPresent": []
+    },
+    {
+      "Run": "Native-REV07-BF-DamageIsolation",
+      "BuildId": "8FE0ED378ECF3853C391E5A24DC0492BF23992D157491BA4EE3581E9FDE308C7",
+      "DescriptorProbe": "empty-damage-properties",
+      "ProcessRecorded": false,
+      "ReadyRecords": 0,
+      "StateRecords": 0,
+      "ObserverErrors": 0,
+      "DcsErrors": 0,
+      "AmxtDamageErrors": [],
+      "Conditions": [],
+      "Finalization": "finalization-20260918T182827810Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "8FE0ED378ECF3853C391E5A24DC0492BF23992D157491BA4EE3581E9FDE308C7",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T18:28:31.7550949Z"
+      },
+      "LogHashes": [
+        {
+          "File": "integrity.json",
+          "SHA256": "21377A9B5F6E58553E5B6EB1DD2FDB2C8B1A85DA6EB098C800256A85B742F327"
+        }
+      ],
+      "TemporaryAuthFilesPresent": []
+    },
+    {
+      "Run": "Native-REV07-BG-DamageIsolation",
+      "BuildId": "8FE0ED378ECF3853C391E5A24DC0492BF23992D157491BA4EE3581E9FDE308C7",
+      "DescriptorProbe": "empty-damage-properties",
+      "ProcessRecorded": true,
+      "ReadyRecords": 1,
+      "StateRecords": 703,
+      "ObserverErrors": 0,
+      "DcsErrors": 157,
+      "AmxtDamageErrors": [],
+      "Conditions": [
+        {
+          "File": "canopy-closed.json",
+          "SHA256": "21AE58DE6C2DC80C8D047AD54C8629B748144099ABEB94AAE08F06104F282351",
+          "Passed": false,
+          "Criterion": "param($sample) $sample.external_canopy -le 0.01 -and $sample.mechanisms.canopy.value -le 0.01",
+          "Time": 30.304,
+          "Canopy": {
+            "status": 0,
+            "value": 0.8999999761581421
+          },
+          "ExternalCanopy": 0.8999999761581421,
+          "Flaps": {
+            "status": 0,
+            "value": 0
+          },
+          "NativeFlapParameter": 0,
+          "ExternalArguments": {
+            "0": 1,
+            "10": 0,
+            "182": 0,
+            "3": 1,
+            "38": 0.8999999761581421,
+            "5": 1,
+            "9": 0
+          },
+          "RPM": {
+            "left": 0,
+            "right": 0
+          },
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "File": "flaps-down.json",
+          "SHA256": "A41A1C65EF2450E69BA5D364CADCC4733094FF32C85276EE628E62D34E3ADFC2",
+          "Passed": false,
+          "Criterion": "param($sample) $sample.mechanisms.flaps.value -ge 0.95 -and $sample.parameters.AMXDENIS_NATIVE_FLAPS -ge 0.95",
+          "Time": 144.448,
+          "Canopy": {
+            "status": 1,
+            "value": 0.8999999761581421
+          },
+          "ExternalCanopy": 0.8999999761581421,
+          "Flaps": {
+            "status": 2,
+            "value": 0
+          },
+          "NativeFlapParameter": 0,
+          "ExternalArguments": {
+            "0": 1,
+            "10": 0,
+            "182": 0,
+            "3": 1,
+            "38": 0.8999999761581421,
+            "5": 1,
+            "9": 0
+          },
+          "RPM": {
+            "left": 60.391937255859375,
+            "right": 0
+          },
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        },
+        {
+          "File": "stationary-idle.json",
+          "SHA256": "FBB0A1BD65DBAF6B4B4ED37988D0433124E495C803A3CE26897DF6626E54EC2F",
+          "Passed": true,
+          "Criterion": "param($sample) $sample.engine.RPM.left -ge 59 -and $sample.engine.RPM.left -le 65 -and [Math]::Abs($sample.velocity.x) -le 0.25 -and [Math]::Abs($sample.velocity.z) -le 0.25",
+          "Time": 108.706,
+          "Canopy": {
+            "status": 0,
+            "value": 0.8999999761581421
+          },
+          "ExternalCanopy": 0.8999999761581421,
+          "Flaps": {
+            "status": 0,
+            "value": 0
+          },
+          "NativeFlapParameter": 0,
+          "ExternalArguments": {
+            "0": 1,
+            "10": 0,
+            "182": 0,
+            "3": 1,
+            "38": 0.8999999761581421,
+            "5": 1,
+            "9": 0
+          },
+          "RPM": {
+            "left": 59.947967529296875,
+            "right": 0
+          },
+          "Velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          }
+        }
+      ],
+      "Finalization": "finalization-20260918T183238910Z",
+      "Integrity": {
+        "Schema": "AMXDENIS_NATIVE_FINALIZATION_1",
+        "IntegrityPassed": true,
+        "Errors": [],
+        "RuntimeBuildId": "8FE0ED378ECF3853C391E5A24DC0492BF23992D157491BA4EE3581E9FDE308C7",
+        "NativeAcceptanceGranted": false,
+        "NormalProfileRestored": false,
+        "ProfileRetained": true,
+        "RecordedUtc": "2026-09-18T18:32:48.9402176Z"
+      },
+      "LogHashes": [
+        {
+          "File": "integrity.json",
+          "SHA256": "3C361500DDB4BBAE4D5E80805A04B32B588FCAE3AC46304423515AFB5196D0E5"
+        },
+        {
+          "File": "dcs.log",
+          "SHA256": "F9EFE421E3E5A5AB684E2C726DC652A0E1D2D0B8D296D6B483FC83480ACA3F87"
+        },
+        {
+          "File": "AMXDENIS-native.jsonl",
+          "SHA256": "08F2F4A10B48A2367B3F644A9DAA329258371A0DE56E57AA6B6191563CECB4EE"
+        },
+        {
+          "File": "AMXDENIS-hook.log",
+          "SHA256": "6897AEDCA772447D53660CFEAFBF0B6E40180255B79AD62E29A711E10A72F669"
+        }
+      ],
+      "TemporaryAuthFilesPresent": []
+    }
+  ],
+  "Findings": [
+    "BE cell_indices metadata did not remove missing-cell or corrupt-damage errors and canopy did not close",
+    "BF was prepared but not launched; original launch exception was masked by cleanup requiring active.json",
+    "Prepared-only cleanup was repaired with process ownership guards and offline tests; BF finalized without credentials",
+    "BG omitted damage properties for diagnosis only: damage errors absent but canopy and flaps still did not actuate",
+    "Removing damage errors is not a mechanism fix and empty damage properties must not be promoted",
+    "Collision shell has no parsed collision cells; geometry correction is outside the unchanged-model constraint",
+    "Native mechanism controller remains unresolved; no gear, full-flight, X56 or global native approval"
+  ]
+}

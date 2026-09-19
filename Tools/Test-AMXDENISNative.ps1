@@ -15,7 +15,7 @@ param(
     [switch]$IsolateHardwareDevices,
     [ValidateSet('none','OriginalAMXT_M','Su-25T')][string]$ControlAircraft='none',
     [switch]$NativeValuePayload,
-    [ValidateSet('none','without-mechanimations','duplicate-canopy','damage-cell-indices','empty-damage-properties')][string]$DescriptorProbe='none',
+    [ValidateSet('none','without-mechanimations','duplicate-canopy','damage-cell-indices','empty-damage-properties','default-mech-animation')][string]$DescriptorProbe='none',
     [string]$Control,
     [double]$Value=1
 )
