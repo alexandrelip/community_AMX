@@ -407,6 +407,16 @@ try {
     Check ($fm.ToolchainProof.ExportedFlightModelFunctions -ge 20 -and ($fm.ToolchainProof.KeyExports -contains 'ed_fm_set_draw_args')) 'The toolchain proof must list the exports that drive the surfaces.'
     Check (@($fm.NotProven).Count -ge 3 -and $fm.RefutedThisSession.Count -ge 1) 'The diagnosis must keep the refuted hypothesis and the unproven scope.'
     Check (@($fm.ProbeRun.Results | Where-Object {$_.Moved -and $_.Before -eq $_.After}).Count -eq 0) 'An unchanged probe reading was archived as movement.'
+    $surfaces=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/Evidence/Operational-REV07/surface-actuator-results.json') -Raw | ConvertFrom-Json
+    Check ($surfaces.Schema -eq 'AMXDENIS_R02_SURFACE_ACTUATOR_1' -and $surfaces.Sessions.Count -ge 3) 'Surface actuator evidence must keep every session, including the failed route.'
+    foreach($session in $surfaces.Sessions){
+        Check ($session.IntegrityPassed -and $session.Effective -le $session.Attempted) 'A surface session was archived without integrity or with impossible counts.'
+        foreach($result in $session.Results){Check (-not $result.Moved -or $result.Before -ne $result.After) 'An unchanged surface reading was archived as movement.'}
+    }
+    $moved=@($surfaces.Sessions | Where-Object Session -eq 'Surfaces')
+    Check ($moved.Count -eq 1 -and @($moved[0].Results | Where-Object {$_.Probe -eq 'CanopyClose' -and $_.Moved}).Count -eq 1 -and
+        @($moved[0].Results | Where-Object {$_.Probe -like 'Flaps*' -and $_.Moved}).Count -eq 2) 'The surface evidence must show the measured canopy and flap travel.'
+    Check (@($surfaces.StillMissing).Count -ge 3 -and @($surfaces.NotProven).Count -ge 3 -and $surfaces.RouteLesson -match 'cockpit route') 'Surface evidence must keep the missing items, the unproven scope and the route lesson.'
     $campaignAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-CommandCampaign.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Command campaign syntax is invalid.'
     $campaignText=$campaignAst.Extent.Text

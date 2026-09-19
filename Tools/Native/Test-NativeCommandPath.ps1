@@ -27,9 +27,9 @@ function Get-CommandPathStages {
     # without the brake interlock that a running engine would require.
     $surfaces=@(
         @{Name='CameraYaw';Control='ViewYaw';Value=0.05;Path='camera.x.x';Direction=0;Minimum=-1;Maximum=1;Change=0.0005;Timeout=15;Required=$false}
-        @{Name='CanopyClose';Control='NativeCanopy';Value=1;Path='mechanisms.canopy.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
-        @{Name='FlapsDown';Control='NativeFlapsDown';Value=1;Path='mechanisms.flaps.value';Direction=1;Minimum=0;Maximum=1;Change=0.1;Timeout=35;Required=$false}
-        @{Name='FlapsUp';Control='NativeFlapsUp';Value=1;Path='mechanisms.flaps.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=35;Required=$false}
+        @{Name='CanopyClose';Control='Canopy';Value=1;Path='mechanisms.canopy.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
+        @{Name='FlapsDown';Control='Flaps';Value=1;Path='external_arguments.9';Direction=1;Minimum=0;Maximum=1;Change=0.1;Timeout=35;Required=$false}
+        @{Name='FlapsUp';Control='Flaps';Value=0;Path='external_arguments.9';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=35;Required=$false}
         @{Name='AirbrakeOut';Control='NativeAirbrakeOn';Value=1;Path='mechanisms.speedbrakes.value';Direction=1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
         @{Name='AirbrakeIn';Control='NativeAirbrakeOff';Value=1;Path='mechanisms.speedbrakes.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
     )

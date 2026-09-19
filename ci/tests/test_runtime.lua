@@ -88,7 +88,7 @@ end
 
 local function simulation(birth)
     local sim={values={},envs={},devices={},sent={},now=100,birth=birth,log={},rpm=0,fuel=2550,wow=1,canopy=0,
-        stores={[0]={count=1,CLSID="fixture",weapon={level3=1}}},calls={},globals={}}
+        stores={[0]={count=1,CLSID="fixture",weapon={level3=1}}},calls={},globals={},exterior={}}
     sim.handle=function(name)
         return {get=function() return sim.values[name] or 0 end,set=function(_,value) sim.values[name]=value end}
     end
@@ -136,7 +136,13 @@ local function simulation(birth)
             get_absolute_model_time=function() return sim.now end,get_model_time=function() return sim.now end,
             get_aircraft_type=function() return "AMXT_M" end,
             make_default_activity=function(period) check(period>0,"valid update period") end,
-            set_aircraft_draw_argument_value=forbidden,
+            set_aircraft_draw_argument_value=function(argument,value)
+                check(path=="Host/mechanisms.lua","only the mechanism producer writes exterior arguments")
+                check(argument==38 or argument==40 or argument==20 or argument==9 or argument==10,"exterior writes stay on the declared mechanism arguments")
+                check(type(value)=="number" and value==value and value>=0 and value<=1,"exterior argument value is bounded")
+                sim.exterior[#sim.exterior+1]={argument=argument,value=value}
+                sim.canopy=argument==38 and value or sim.canopy
+            end,
             get_aircraft_draw_argument_value=function(number) assert(number==38);return sim.canopy end,
             get_cockpit_draw_argument_value=function() error("Foreign cockpit draw argument read") end,
             dispatch_action=function(_,command,value) sim.sent[#sim.sent+1]={command=command,value=value} end,
@@ -200,6 +206,28 @@ do
     missing.create(67,"Host/bridge.lua").post_initialize()
     check(missing.values.AMXDENIS_SENSOR_METHODS=="" and missing.values.AMXDENIS_SENSOR_METHODS_VALID==0 and
         missing.values.AMXDENIS_SENSOR_METHOD_COUNT==0,"unavailable sensor API does not stop the cockpit bridge")
+end
+
+do
+    local sim=simulation("GROUND_COLD")
+    local power=sim.create(3,"Host/power.lua")
+    local device=sim.devices[3]
+    device.get_AC_Bus_1_voltage=function(self)check(self==device,"voltage getter retains native device receiver");return 115 end
+    device.get_AC_Bus_2_voltage=function()return 0 end
+    device.get_DC_Bus_1_voltage=function()return 28 end
+    device.get_DC_Bus_2_voltage=function()error("native read unavailable")end
+    power.post_initialize()
+    check(sim.values.AMXDENIS_NATIVE_AC_BUS_1_V==115 and sim.values.AMXDENIS_NATIVE_AC_BUS_1_V_VALID==1,
+        "native voltage is read independently from modelled availability")
+    check(sim.values.AMXDENIS_NATIVE_AC_BUS_2_V==0 and sim.values.AMXDENIS_NATIVE_AC_BUS_2_V_VALID==1,
+        "zero voltage remains a valid off reading")
+    check(sim.values.AMXDENIS_NATIVE_DC_BUS_2_V_VALID==0 and sim.values.ELEC_P1==0,
+        "failed native voltage read is unavailable and does not change power logic")
+    device.get_AC_Bus_1_voltage=function()return 0/0 end
+    device.get_DC_Bus_1_voltage=nil
+    power.update()
+    check(sim.values.AMXDENIS_NATIVE_AC_BUS_1_V_VALID==0 and sim.values.AMXDENIS_NATIVE_DC_BUS_1_V_VALID==0,
+        "nonfinite and absent native getters cannot publish valid voltage")
 end
 
 do
@@ -375,6 +403,63 @@ do
     check(partial.values.AMXDENIS_MECHANISM_CMD_GEARUP==430 and partial.values.AMXDENIS_MECHANISM_CMD_FLAPSON==145,
         "rejected names fall back to the previously shipped literal")
 end
+
+-- The simplified flight model writes no exterior argument, so the cockpit owns the
+-- canopy travel. It must be commanded, time integrated, bounded and ground gated.
+do
+    local sim=simulation("GROUND_COLD")
+    local order={8}
+    sim.create(8,"Host/mechanisms.lua").post_initialize()
+    near(sim.values.AMXDENIS_CANOPY_COMMANDED,0.9,"cold canopy rests at the declared open extreme")
+    local posed=false
+    for _,write in ipairs(sim.exterior) do if write.argument==38 and write.value==0.9 then posed=true end end
+    check(posed,"initial exterior pose is published once")
+    local opened=#sim.exterior
+    sim.tick(order);sim.tick(order)
+    check(#sim.exterior==opened,"an already open canopy is not rewritten every frame")
+    sim.envs[8].SetCommand(3508,1)
+    sim.tick(order)
+    near(sim.values.AMXDENIS_CANOPY_COMMANDED,0,"the canopy command selects the closed extreme")
+    check(sim.values.AMXDENIS_CANOPY_DRIVEN==1,"closing is actually driven by the cockpit")
+    local first=sim.exterior[#sim.exterior].value
+    check(first<0.9 and first>0,"canopy travel is progressive, never an instant jump")
+    for _=1,400 do sim.tick(order) end
+    near(sim.values.CANOPY_STATUS,0,"canopy reaches the closed extreme and stops there")
+    check(sim.values.AMXDENIS_SURFACE_WRITER=="COCKPIT_LUA_FOR_SIMPLIFIED_FLIGHT_MODEL","exterior provenance stays explicit")
+    sim.envs[8].SetCommand(3508,1)
+    for _=1,400 do sim.tick(order) end
+    near(sim.values.CANOPY_STATUS,0.9,"a second command reopens the canopy")
+    local airborne=simulation("GROUND_COLD")
+    airborne.create(8,"Host/mechanisms.lua").post_initialize()
+    airborne.wow=0
+    local grounded=#airborne.exterior
+    airborne.envs[8].SetCommand(3508,1)
+    for _=1,50 do airborne.tick({8}) end
+    check(#airborne.exterior==grounded and airborne.values.AMXDENIS_CANOPY_DRIVEN==0,"airborne canopy is never moved by the cockpit")
+end
+
+-- Flaps must travel progressively and keep working away from the ground.
+do
+    local sim=simulation("GROUND_COLD")
+    local order={8}
+    sim.create(8,"Host/mechanisms.lua").post_initialize()
+    near(sim.values.AMXDENIS_FLAPS_POSITION,0,"flaps start retracted")
+    sim.envs[8].SetCommand(3507,1)
+    sim.tick(order)
+    check(sim.values.AMXDENIS_FLAPS_MOVING==1,"flap extension is driven by the cockpit")
+    local first=sim.values.AMXDENIS_FLAPS_POSITION
+    check(first>0 and first<1,"flap travel is progressive, never an instant jump")
+    for _=1,400 do sim.tick(order) end
+    near(sim.values.AMXDENIS_FLAPS_POSITION,1,"flaps reach the extended extreme and stop there")
+    check(sim.values.AMXDENIS_FLAPS_MOVING==0,"a settled flap is not reported as moving")
+    sim.wow=0
+    sim.envs[8].SetCommand(3507,0)
+    sim.tick(order)
+    check(sim.values.AMXDENIS_FLAPS_MOVING==1,"flaps still retract away from the ground")
+    for _=1,400 do sim.tick(order) end
+    near(sim.values.AMXDENIS_FLAPS_POSITION,0,"flaps return to the retracted extreme")
+end
+
 -- A failed device lookup/dispatch is NOT an accepted held button. Retrying the
 -- same press after the producer returns must work without a fabricated release.
 do

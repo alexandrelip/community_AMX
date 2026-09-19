@@ -1,0 +1,175 @@
+{
+  "Schema": "AMXDENIS_R02_SURFACE_ACTUATOR_1",
+  "Decision": "Keep the DCS simplified flight model and let the cockpit own the exterior draw arguments, as the original AMX-A1M canopy, airbrake and flap systems already did.",
+  "Implemented": [
+    "Canopy travel on arguments 38 and 40, ground gated, using the Door0 timing declared in Entry/AMXT_M.lua",
+    "Flap travel on arguments 20, 9 and 10, available on the ground and in the air, with a declared project travel time"
+  ],
+  "RouteLesson": "A cockpit actuator is only reached through its cockpit route. The first native attempt used LoSetCommand and left the canopy at 0.9; the same candidate moved once the request went through the Canopy cockpit control.",
+  "Sessions": [
+    {
+      "Session": "Canopy",
+      "Run": "DCS.AMXDENIS-Native-REV07-DO-CanopyCockpit",
+      "Effective": 2,
+      "Attempted": 6,
+      "IntegrityPassed": true,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Control": "ViewYaw",
+          "Before": -0.5977130699689427,
+          "After": -0.790604621252567,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Control": "Canopy",
+          "Before": 0.8999999761581421,
+          "After": 0.05062500014901161,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsDown",
+          "Control": "NativeFlapsDown",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "FlapsUp",
+          "Control": "NativeFlapsUp",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Control": "NativeAirbrakeOn",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Control": "NativeAirbrakeOff",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        }
+      ]
+    },
+    {
+      "Session": "BeforeFix",
+      "Run": "DCS.AMXDENIS-Native-REV07-DN-CanopyActuator",
+      "Effective": 1,
+      "Attempted": 6,
+      "IntegrityPassed": true,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Control": "ViewYaw",
+          "Before": -0.5977070792735105,
+          "After": -0.7906046116369645,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Control": "NativeCanopy",
+          "Before": 0.8999999761581421,
+          "After": 0.8999999761581421,
+          "Moved": false
+        },
+        {
+          "Probe": "FlapsDown",
+          "Control": "NativeFlapsDown",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "FlapsUp",
+          "Control": "NativeFlapsUp",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Control": "NativeAirbrakeOn",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Control": "NativeAirbrakeOff",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        }
+      ]
+    },
+    {
+      "Session": "Surfaces",
+      "Run": "DCS.AMXDENIS-Native-REV07-DQ-Surfaces",
+      "Effective": 4,
+      "Attempted": 6,
+      "IntegrityPassed": true,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Control": "ViewYaw",
+          "Before": -0.597708914455036,
+          "After": -0.7906046116369645,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Control": "Canopy",
+          "Before": 0.8999999761581421,
+          "After": 2.4251434194155763E-15,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsDown",
+          "Control": "Flaps",
+          "Before": 0,
+          "After": 1,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsUp",
+          "Control": "Flaps",
+          "Before": 1,
+          "After": 0,
+          "Moved": true
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Control": "NativeAirbrakeOn",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Control": "NativeAirbrakeOff",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        }
+      ]
+    }
+  ],
+  "StillMissing": [
+    "Airbrake has no cockpit route in the control catalogue yet, so it stays immobile",
+    "Landing gear actuator not implemented",
+    "No hydraulic load is wired to the new positions yet"
+  ],
+  "NotProven": [
+    "This is cockpit driven animation for the simplified flight model, not simulated actuator physics",
+    "Flap travel time is a declared project value, not a manual calibration",
+    "No flight, takeoff or landing was attempted"
+  ],
+  "RecordedUtc": "2026-09-19T13:50:34.8197177Z"
+}
