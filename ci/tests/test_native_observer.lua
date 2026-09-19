@@ -2,13 +2,14 @@ assert(_VERSION=="Lua 5.1")
 local repo=assert(arg[1]):gsub("\\","/")
 local checks=0
 local function check(ok,message)checks=checks+1;assert(ok,message)end
-local function fixture(profile,void,operational,isolate,mode)
+local function fixture(profile,void,operational,isolate,mode,control_aircraft,native_value_payload)
     local output,commands={},{}
     local stream={write=function(_,text)output[#output+1]=text;if not void then return true end end,
         flush=function()if not void then return true end end,close=function()end}
     local env={lfs={writedir=function()return "C:/Saved Games/"..profile.."/"end},
-        dofile=function()return {schema="AMXDENIS_NATIVE_1",profile=profile,aircraft="AMXT_M",mode=mode or"GroundHot",interval=0.2,operational_test=operational,
+        dofile=function()return {schema="AMXDENIS_NATIVE_1",profile=profile,aircraft=control_aircraft=="Su-25T"and"Su-25T"or"AMXT_M",control_aircraft=control_aircraft,mode=mode or"GroundHot",interval=0.2,operational_test=operational,
             isolate_hardware_axes=isolate,
+            native_value_payload=native_value_payload,
             controls={device=60,controls={{name="Master",id=3704,minimum=0,maximum=1,mouse=true,argument=1843},
                 {name="Starter",id=3706,minimum=-1,maximum=1},
                 {name="WeaponRelease",id=3900,minimum=0,maximum=1}}}}end,
@@ -45,6 +46,25 @@ env.LoGetSelfData=function()return {Name="AMX"}end
 env.LuaExportStart();env.LuaExportAfterNextFrame()
 check(table.concat(output):find('"kind":"ERROR"',1,true),"wrong aircraft explicitly rejected")
 check(not table.concat(output):find('"kind":"READY"',1,true),"wrong aircraft cannot approve readiness")
+for _,control_aircraft in ipairs({"OriginalAMXT_M","Su-25T"})do
+    check(not pcall(fixture,"DCS.AMXDENIS-control",true,false,false,"GroundCold",control_aircraft),"control aircraft requires operational opt-in")
+    check(not pcall(fixture,"DCS.AMXDENIS-control",true,true,false,"AirHot",control_aircraft),"control aircraft cannot bypass ground-only scope")
+    local probe,records,calls=fixture("DCS.AMXDENIS-control",true,true,false,"GroundCold",control_aircraft)
+    probe.LoGetSelfData=function()return {Name=control_aircraft=="Su-25T"and"Su-25T"or"AMXT_M"}end
+    probe.list_cockpit_params=function()return ""end
+    probe.LoGetEngineInfo=function()return {RPM={left=0}}end
+    probe.LoGetAltitudeAboveGroundLevel=function()return 2 end
+    probe.LuaExportStart();probe.LuaExportAfterNextFrame()
+    check(table.concat(records):find("control_aircraft_observed_NOT_REV07_acceptance",1,true),"stock readiness is explicitly not cockpit acceptance")
+    local open=probe.io.open
+    probe.io.open=function(path,mode)
+        if path:match("request.txt$")then return {read=function()return "1|Master|1"end,close=function()end}end
+        return open(path,mode)
+    end
+    probe.LuaExportBeforeNextFrame()
+    check(#calls==0 and table.concat(records):find("control_aircraft_has_no_REV07_devices",1,true),"stock comparison cannot command REV07 devices")
+end
+check(not pcall(fixture,"DCS.AMXDENIS-control",true,true,false,"GroundCold","unknown"),"unlisted control aircraft refused")
 for _,moving in ipairs({true,false})do
     local camera_env,camera_output=fixture("DCS.AMXDENIS-camera",true)
     local stream_open=camera_env.io.open
@@ -99,7 +119,7 @@ for _,operational in ipairs({true,false})do
     check(table.concat(output):find(operational and '"kind":"FLIGHT_COMMAND"'or'"kind":"REJECT"',1,true),"automated flight source remains explicit")
 end
 for _,operational in ipairs({true,false})do
-    for _,name in ipairs({"NativeGearUp","NativeGearDown","NativeFlapsDown","NativeFlapsUp","NativeCanopy","NativeAirbrakeOn","NativeAirbrakeOff"})do
+    for _,name in ipairs({"NativeGearUp","NativeGearDown","NativeFlapsDown","NativeFlapsUp","NativeCanopy","NativePower","NativeAirbrakeOn","NativeAirbrakeOff","NativeEnginesStart","NativeEnginesStop"})do
         for _,case in ipairs({{0,0},{0,1},{1000,0},{1000,1},{1000,0.5}})do
             local height,value=case[1],case[2]
             local probe,records=fixture("DCS.AMXDENIS-mechanism-probe",true,operational)
@@ -112,14 +132,31 @@ for _,operational in ipairs({true,false})do
                 return open(path,mode)
             end
             probe.LoGetAltitudeAboveGroundLevel=function()return height end
-            probe.LoSetCommand=function(command,value)calls[#calls+1]={command,value}end
+            probe.LoSetCommand=function(...)calls[#calls+1]={count=select('#',...),command=(...)}end
             probe.LuaExportStart();probe.LuaExportAfterNextFrame();probe.LuaExportBeforeNextFrame()
             local accepted=operational and(value==0 or value==1)and(name~="NativeGearUp"or height>6)
             check(#calls==(accepted and 1 or 0),"native mechanism probe retains operational and ground interlocks")
-            if accepted then check(calls[1][2]==value,"native discrete comparison preserves requested payload")end
-            check(table.concat(records):find(accepted and'"kind":"MECHANISM_COMMAND"'or'"kind":"REJECT"',1,true),
+            if accepted then check(calls[1].count==1 and calls[1].command==145,"discrete mechanisms are delivered as a press on the resolved identifier")end
+            local expected_kind=accepted and(name=="NativePower"and"ELECTRICAL_COMMAND"or name:match("^NativeEngines")and"ENGINE_COMMAND"or"MECHANISM_COMMAND")or"REJECT"
+            check(table.concat(records):find('"kind":"'..expected_kind..'"',1,true),
                 "native mechanism comparison has separate diagnostic provenance")
         end
+    end
+end
+for _,legacy in ipairs({false,true})do
+    for _,name in ipairs({"NativeCanopy","FlightBrake","NativeEnginesStart","FlightThrottle"})do
+        local probe,records=fixture("DCS.AMXDENIS-discrete-press",true,true,false,"GroundCold",nil,legacy)
+        local open,calls=probe.io.open,{}
+        probe.io.open=function(path,mode)
+            if path:match("request.txt$")then return {read=function()return "1|"..name.."|1"end,close=function()end}end
+            if path:match("native%-camera%-ids.txt$")then return {read=function()return (name=="FlightBrake"and"FlightBrakeOn"or name).."|74\n"end,close=function()end}end
+            return open(path,mode)
+        end
+        probe.LoSetCommand=function(...)calls[#calls+1]={count=select('#',...),command=(...),value=select(2,...)}end
+        probe.LuaExportStart();probe.LuaExportAfterNextFrame();probe.LuaExportBeforeNextFrame()
+        local expected=(legacy or name=="FlightThrottle")and 2 or 1
+        check(#calls==1 and calls[1].count==expected,"discrete commands omit the payload by default and axes always keep it")
+        check(table.concat(records):find(legacy and"explicit_value"or"omitted_for_discrete_commands",1,true),"native command delivery form is recorded explicitly")
     end
 end
 for _,operational in ipairs({true,false})do
@@ -169,7 +206,7 @@ for _,mode in ipairs({"AirHot","RunwayHot","GroundCold"})do
         check(table.concat(output):find("private_flight_initialization_NOT_physical_HOTAS",1,true),"initial commands have explicit diagnostic provenance")
     end
 end
-local function preparation_fixture(mode,operational,fuel,profile_name,isolate_hardware,additional_buttons)
+local function preparation_fixture(mode,operational,fuel,profile_name,isolate_hardware,additional_buttons,control_aircraft)
     local profile="C:/fixture/"..(profile_name or"DCS.AMXDENIS-preparation")
     local template="C:/fixture/template"
     local output={}
@@ -190,7 +227,7 @@ local function preparation_fixture(mode,operational,fuel,profile_name,isolate_ha
             vehicle={group={{name="removed fixture target"}}}}}}}}]],
         ["C:/fixture/options.lua"]='options={graphics={Upscaling="DLSS"},VR={enable=true},miscellaneous={launcher=true}}',
     }
-    local environment={arg={profile,template,"C:/fixture/options.lua",mode,1600,900,"C:/DCS",operational and"1"or"0",fuel or 1500,isolate_hardware and"1"or"0"},
+    local environment={arg={profile,template,"C:/fixture/options.lua",mode,1600,900,"C:/DCS",operational and"1"or"0",fuel or 1500,isolate_hardware and"1"or"0",control_aircraft},
         print=function()end}
     environment.loadfile=function(path)
         if path:match("/Controls/data.lua$")then return function()return commands end end
@@ -269,8 +306,57 @@ for _,mode in ipairs({"GroundCold","GroundHot"})do
     check(config.isolate_hardware_devices and not config.isolate_hardware_axes,
         "ground device isolation does not enable automated flight initialization")
 end
-for _,case in ipairs({{"RunwayHot",false,1500},{"AirHot",false,1500},{"GroundHot",true,2551},{"GroundCold",true,499},{"GroundHot",true,1500,"DCS"},{"GroundCold",false,1500,nil,true}})do
-    local ok,_,files=preparation_fixture(case[1],case[2],case[3],case[4],case[5])
+for _,control_aircraft in ipairs({"OriginalAMXT_M","Su-25T"})do
+    local ok,message,files,profile,template=preparation_fixture("GroundCold",true,1500,nil,true,nil,control_aircraft)
+    check(ok,"control preparation: "..tostring(message))
+    local config=assert(loadstring(files[profile.."/Scripts/native-config.lua"]))()
+    local expected=control_aircraft=="Su-25T"and"Su-25T"or"AMXT_M"
+    check(config.aircraft==expected and config.control_aircraft==control_aircraft,"control fixture keeps explicit ownship provenance")
+    check(#config.controls.controls==0,"control aircraft cannot inherit REV07 command routes")
+    local bindings=assert(loadstring(files[profile.."/Scripts/private-bindings.lua"]))()
+    check(#bindings==0,"stock comparison cannot install test bindings for REV07")
+    local env={};setfenv(assert(loadstring(files[template.."/mission"])),env)()
+    check(env.mission.coalition.blue.country[1].plane.group[1].units[1].type==expected,"control ownship matches observer")
+end
+for _,case in ipairs({{"RunwayHot",false,1500},{"AirHot",false,1500},{"GroundHot",true,2551},{"GroundCold",true,499},{"GroundHot",true,1500,"DCS"},{"GroundCold",false,1500,nil,true},
+    {"GroundCold",false,1500,nil,false,"OriginalAMXT_M"},{"AirHot",true,1500,nil,false,"Su-25T"},{"GroundCold",true,1500,nil,false,"unknown"}})do
+    local ok,_,files=preparation_fixture(case[1],case[2],case[3],case[4],case[5],nil,case[6])
     check(not ok and next(files)==nil,"invalid profile/fuel/flight opt-in rejected before writes")
+end
+do
+    local source_file=assert(io.open(repo.."/Tools/Native/hook.lua","rb"))
+    local source=source_file:read("*a");source_file:close()
+    local audit=assert(source:match('local result=net%.dostring_in%("gui",%[%[(.-)%]%]%)'),"GUI input audit missing")
+    local identifiers={iCommandViewHorTransAbs=2049,iCommandViewVertTransAbs=2051,iCommandViewLongitudeTransAbs=2053,
+        iCommandViewHorizontalAbs=2010,iCommandViewVerticalAbs=2011,iCommandViewZoomAbs=2012,
+        iCommandPlaneThrustCommon=2004,iCommandPlanePitch=2001,iCommandPlaneRoll=2002,iCommandPlaneRudder=2003,
+        iCommandPlaneWheelBrakeOn=74,iCommandPlaneWheelBrakeOff=75,iCommandPlaneStabHbarBank=387,
+        iCommandPlaneStabTangBank=386,iCommandPlaneStabCancel=408,iCommandPlaneGearUp=430,iCommandPlaneGearDown=431,
+        iCommandPlaneFlapsOn=145,iCommandPlaneFlapsOff=146,iCommandPlaneAirBrakeOn=147,iCommandPlaneAirBrakeOff=148,
+        iCommandPlaneFonar=71,iCommandPowerOnOff=315,iCommandEnginesStart=309,iCommandEnginesStop=310}
+    for _,missing in ipairs({false,true})do
+        identifiers.iCommandEnginesStart=not missing and 309 or nil
+        local written={}
+        local environment={DCS={getInputProfiles=function()return {}end},
+            dofile=function()return {operational_test=true,control_aircraft="OriginalAMXT_M"}end,
+            io={open=function()return {write=function(_,text)written[#written+1]=text end,close=function()end}end}}
+        environment.require=function(name)
+            if name=="lfs"then return {writedir=function()return "C:/fixture/"end}end
+            if name=="Input.Data"then return {getProfileNameByUnitName=function()return nil end,initialize=function()end,createProfile=function()end}end
+            if name=="Input.ProfileDatabase"then return {createDefaultProfilesSet=function()return {}end}end
+            if name=="Input"then return {getEnvTable=function()return identifiers end,
+                getLayerStack=function()return {}end,getLoadedLayers=function()return {}end}end
+            error("Unexpected GUI audit dependency: "..tostring(name))
+        end
+        setmetatable(environment,{__index=_G})
+        local result=setfenv(assert(loadstring(audit)),environment)()
+        check(result:find("camera_commands_available="..tostring(not missing),1,true),"GUI audit must resolve the installed engine command names")
+        if missing then
+            check(#written==0 and result:find("missing_command=iCommandEnginesStart",1,true),"missing command names must be diagnosed without publishing an incomplete command map")
+        else
+            local text=table.concat(written)
+            check(text:find("NativeEnginesStart|309\n",1,true)and text:find("NativeEnginesStop|310\n",1,true),"engine command identifiers survive GUI publication")
+        end
+    end
 end
 print(string.format("AMXDENIS NATIVE OBSERVER: %d/%d checks passed",checks,checks))

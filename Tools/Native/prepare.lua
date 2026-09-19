@@ -8,6 +8,13 @@ local dcs_root=assert(arg[7],"DCS root required for native binding reservations"
 local operational=arg[8]=="1"
 local fuel_kg=tonumber(arg[9])or 2550
 local isolate_hardware=arg[10]=="1"
+local control_aircraft=arg[11]or"none"
+local native_value_payload=arg[12]=="1"
+assert(not native_value_payload or operational,"Legacy payload comparison requires operational opt-in")
+assert(control_aircraft=="none"or control_aircraft=="OriginalAMXT_M"or control_aircraft=="Su-25T","Unsupported control aircraft")
+local control_test=control_aircraft~="none"
+assert(not control_test or(operational and(mode=="GroundCold"or mode=="GroundHot")),"Control comparison requires an operational ground fixture")
+local aircraft=control_aircraft=="Su-25T"and"Su-25T"or"AMXT_M"
 assert(not isolate_hardware or operational,"Hardware isolation requires operational opt-in")
 assert(profile:match("/DCS%.AMXDENIS%-[%w_-]+$"),"Only private AMXDENIS profiles")
 assert(mode=="GroundHot" or mode=="GroundCold" or mode=="RunwayHot" or mode=="AirHot")
@@ -42,7 +49,7 @@ for _,side in pairs(mission.coalition)do
                 for _,unit in ipairs(group.units or {})do
                     if not selected and unit.type=="AMX" and unit.skill=="Client"then
                         selected,owner=group,country
-                        group.units={unit};unit.type="AMXT_M";unit.skill="Player";unit.name="AMXDENIS Native Pilot"
+                        group.units={unit};unit.type=aircraft;unit.skill="Player";unit.name="AMXDENIS Native Pilot"
                         unit.payload={pylons={},fuel=fuel_kg,gun=0,chaff=0,flare=0}
                         unit.livery_id=nil;unit.speed=0
                         group.name="AMXDENIS isolated cockpit";group.uncontrolled=false;group.lateActivation=false;group.start_time=0
@@ -86,10 +93,10 @@ options.graphics.Upscaling="OFF"
 options.VR=options.VR or {};options.VR.enable=false
 options.miscellaneous=options.miscellaneous or {};options.miscellaneous.launcher=true
 write(profile.."/Config/options.lua","options = ",options)
-local controls=read(profile.."/Mods/aircraft/AMXDENIS/Avionics/Runtime/Cockpit/Scripts/Controls/data.lua")
+local controls=control_test and{schema="AMXDENIS_CONTROLS_1",device=60,controls={}}or read(profile.."/Mods/aircraft/AMXDENIS/Avionics/Runtime/Cockpit/Scripts/Controls/data.lua")
 local specs={};for _,v in ipairs(controls.controls)do specs[v.name]=v end
 -- Temporary shortcuts only in this private profile; no personal input files edited.
-local bindings={{"Master",1},{"Master",0},{"Mfd1Power",1},{"Mfd1Power",0},
+local bindings=control_test and{}or{{"Master",1},{"Master",0},{"Mfd1Power",1},{"Mfd1Power",0},
     {"Mfd2Power",1},{"Mfd2Power",0},{"IcpCOM1",1},{"IcpCOM2",1},{"IcpNAV",1},
     {"HudBrightness",0},{"HudBrightness",1},{"CautionAcknowledge",1}}
 local by_id,seen={},{}
@@ -158,14 +165,15 @@ write(profile.."/Scripts/private-bindings.lua","return ",mapped)
 local binding_file=assert(io.open(profile.."/Scripts/private-bindings.csv","wb"))
 binding_file:write(table.concat(rows,"\n").."\n");binding_file:close()
 write(profile.."/Scripts/native-config.lua","return ",{schema="AMXDENIS_NATIVE_1",profile=profile:match("([^/]+)$"),
-    aircraft="AMXT_M",mode=mode,controls=controls,interval=0.2,operational_test=operational,fuel_kg=fuel_kg,
+    aircraft=aircraft,control_aircraft=control_aircraft,mode=mode,controls=controls,interval=0.2,operational_test=operational,fuel_kg=fuel_kg,
     isolate_hardware_devices=isolate_hardware,
+    native_value_payload=native_value_payload,
     isolate_hardware_axes=operational and(mode=="RunwayHot"or mode=="AirHot")})
 local check=read(template.."/mission","mission");local n=0
 for _,side in pairs(check.coalition)do if type(side)=="table"then
     for _,country in ipairs(side.country or {})do for _,group in ipairs(country.plane and country.plane.group or {})do
-        for _,unit in ipairs(group.units or {})do assert(unit.type=="AMXT_M"and unit.skill=="Player");n=n+1 end
+        for _,unit in ipairs(group.units or {})do assert(unit.type==aircraft and unit.skill=="Player");n=n+1 end
     end end
 end end
 assert(n==1 and read(profile.."/Config/options.lua","options").VR.enable==false)
-print("AMXDENIS_NATIVE_PREPARE_OK aircraft=AMXT_M players=1 mode="..mode.." private_keys="..#mapped)
+print("AMXDENIS_NATIVE_PREPARE_OK aircraft="..aircraft.." players=1 mode="..mode.." private_keys="..#mapped)

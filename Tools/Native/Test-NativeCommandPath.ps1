@@ -1,7 +1,64 @@
 [CmdletBinding()]
-param([Parameter(Mandatory)][string]$RunRoot)
+param([string]$RunRoot,[ValidateSet('Full','Mechanisms')][string]$Stages='Full',[switch]$Describe)
 Set-StrictMode -Version Latest
 $ErrorActionPreference='Stop'
+function Test-CommandPathTravel {
+    param($Before,$After,[ValidateSet(-1,1)][int]$Direction=1,
+        [double]$Minimum=0,[double]$Maximum=1,[double]$MinimumChange=0.05)
+    foreach($value in @($Before,$After,$Minimum,$Maximum,$MinimumChange)){
+        if(($value -isnot [double] -and $value -isnot [int] -and $value -isnot [long] -and $value -isnot [decimal]) -or
+            [double]::IsNaN($value) -or [double]::IsInfinity($value)){return $false}
+    }
+    if($Minimum -ge $Maximum -or $MinimumChange -le 0 -or
+        $Before -lt $Minimum -or $Before -gt $Maximum -or $After -lt $Minimum -or $After -gt $Maximum){return $false}
+    return [bool](($After-$Before)*$Direction -ge $MinimumChange)
+}
+function Get-CommandPathValue($Sample,[string]$Path) {
+    $value=$Sample
+    foreach($part in $Path.Split('.')){
+        if($null -eq $value -or -not $value.PSObject.Properties[$part]){return $null}
+        $value=$value.$part
+    }
+    return $value
+}
+function Get-CommandPathStages {
+    param([ValidateSet('Full','Mechanisms')][string]$Stages='Full')
+    # Mechanisms keeps the engine off, so surfaces can be compared on any aircraft
+    # without the brake interlock that a running engine would require.
+    $surfaces=@(
+        @{Name='CameraYaw';Control='ViewYaw';Value=0.05;Path='camera.x.x';Direction=0;Minimum=-1;Maximum=1;Change=0.0005;Timeout=15;Required=$false}
+        @{Name='CanopyClose';Control='NativeCanopy';Value=1;Path='mechanisms.canopy.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
+        @{Name='FlapsDown';Control='NativeFlapsDown';Value=1;Path='mechanisms.flaps.value';Direction=1;Minimum=0;Maximum=1;Change=0.1;Timeout=35;Required=$false}
+        @{Name='FlapsUp';Control='NativeFlapsUp';Value=1;Path='mechanisms.flaps.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=35;Required=$false}
+        @{Name='AirbrakeOut';Control='NativeAirbrakeOn';Value=1;Path='mechanisms.speedbrakes.value';Direction=1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
+        @{Name='AirbrakeIn';Control='NativeAirbrakeOff';Value=1;Path='mechanisms.speedbrakes.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
+    )
+    if($Stages -eq 'Mechanisms'){return $surfaces | ForEach-Object {[pscustomobject]$_}}
+    @(
+        $surfaces[0]
+        $surfaces[1]
+        @{Name='BrakeOn';Control='FlightBrake';Value=1;Path='mechanisms.wheelbrakes.value';Direction=1;Minimum=0;Maximum=1;Change=0.5;Timeout=10;Required=$true}
+        @{Name='EngineStart';Control='NativeEnginesStart';Value=1;Path='engine.RPM.left';Direction=1;Minimum=0;Maximum=120;Change=53;Timeout=120;Required=$true}
+        $surfaces[2]
+        $surfaces[3]
+        $surfaces[4]
+        $surfaces[5]
+        @{Name='ThrottleReducedAxis';Control='FlightThrottle';Value=0.3;Path='engine.RPM.left';Direction=1;Minimum=0;Maximum=120;Change=5;Timeout=35;Required=$false}
+        @{Name='ThrottlePositive';Control='FlightThrottle';Value=1;Path='engine.RPM.left';Direction=-1;Minimum=0;Maximum=120;Change=5;Timeout=45;Required=$false}
+        @{Name='EngineStop';Control='NativeEnginesStop';Value=1;Path='engine.RPM.left';Direction=-1;Minimum=0;Maximum=120;Change=40;Timeout=100;Required=$true}
+    ) | ForEach-Object {[pscustomobject]$_}
+}
+function Assert-CommandPathStationary($Sample) {
+    foreach($axis in @('x','y','z')){
+        $value=Get-CommandPathValue $Sample ('velocity.'+$axis)
+        if($null -eq $value -or $value -is [string] -or $value -is [bool] -or
+            [double]::IsNaN($value) -or [double]::IsInfinity($value) -or [Math]::Abs($value) -gt 0.25){
+            throw 'Command-path aircraft is moving or its velocity is unavailable.'
+        }
+    }
+}
+if($Describe){Get-CommandPathStages -Stages $Stages;return}
+if(-not $RunRoot){throw 'RunRoot is required for a native command-path test.'}
 Import-Module (Join-Path (Split-Path -Parent $PSScriptRoot) 'AMXDENISIntegration.psm1') -Force
 $run=Assert-IntegrationPath $RunRoot
 $state=Get-Content -LiteralPath (Join-Path $run 'run.json') -Raw | ConvertFrom-Json -DateKind String
@@ -11,115 +68,80 @@ $reportPath=Resolve-IntegrationFile $run 'native-command-path.json'
 if(Test-Path -LiteralPath $reportPath){throw 'Command-path report already exists.'}
 
 $read={& (Join-Path $PSScriptRoot 'Read-State.ps1') -RunRoot $run}
-$send={param($Control,$Value,$Name,$Release)
-    $arguments=@{RunRoot=$run;Control=$Control;Value=$Value;ReportName=('command-path-'+$Name+'.json')}
-    if($Release){$arguments.Release=$true}
-    $null=& (Join-Path $PSScriptRoot 'Invoke-Diagnostic.ps1') @arguments
-}
-$await={param($Predicate,$Seconds,$Name,$Before)
-    try {
-        $null=& (Join-Path $PSScriptRoot 'Wait-State.ps1') -RunRoot $run -Condition $Predicate -AfterModelTime $Before.model_time -TimeoutSeconds $Seconds -ReportName ('command-path-wait-'+$Name+'.json')
-        return $true
-    } catch {
-        if($_.Exception.Message -ne 'Native condition was not observed in time; raw evidence retained.'){throw}
-        return $false
-    }
+$send={param($Control,$Value,$Name)
+    $null=& (Join-Path $PSScriptRoot 'Invoke-Diagnostic.ps1') -RunRoot $run -Control $Control -Value $Value -ReportName ('command-path-'+$Name+'.json')
 }
 $probes=[Collections.Generic.List[object]]::new()
+$cleanupErrors=[Collections.Generic.List[string]]::new()
 $failure=$null
-$resolution=$null
+$engineRequested=$false
+$plan=@(Get-CommandPathStages -Stages $Stages)
 try {
     $cold=& $read
-    if($cold.engine.RPM.left -gt 0.1){throw 'Engine is already running; cold fixture required.'}
-    $resolution=[ordered]@{Source=$cold.parameters.AMXDENIS_MECHANISM_COMMAND_SOURCE;
-        NamedCount=$cold.parameters.AMXDENIS_MECHANISM_COMMANDS_NAMED;
-        GearUp=$cold.parameters.AMXDENIS_MECHANISM_CMD_GEARUP;GearDown=$cold.parameters.AMXDENIS_MECHANISM_CMD_GEARDOWN;
-        FlapsOn=$cold.parameters.AMXDENIS_MECHANISM_CMD_FLAPSON;FlapsOff=$cold.parameters.AMXDENIS_MECHANISM_CMD_FLAPSOFF;
-        Canopy=$cold.parameters.AMXDENIS_MECHANISM_CMD_CANOPY}
-
-    # Camera runs first, while the cold aircraft is certainly stationary: it is the
-    # positive control proving LoSetCommand itself reaches this DCS session.
-    $beforeCamera=$cold
-    $cameraRejected=$null
-    try {& $send 'ViewYaw' 0.05 'camera' $false}
-    catch {$cameraRejected=$_.Exception.Message}
-    $cameraMoved=$false
-    if(-not $cameraRejected){
-        $cameraMoved=& $await {param($sample)
-            $delta=0.0
-            foreach($axis in @('x','y','z')){
-                $delta=$delta+[Math]::Abs([double]$sample.camera.x.$axis-[double]$beforeCamera.camera.x.$axis)
+    Assert-CommandPathStationary $cold
+    $rpm=Get-CommandPathValue $cold 'engine.RPM.left'
+    if($null -eq $rpm -or $rpm -is [string] -or [double]::IsNaN($rpm) -or $rpm -lt 0 -or $rpm -gt 0.1){throw 'Engine is already running or unavailable; cold fixture required.'}
+    foreach($stage in $plan){
+        $before=& $read
+        Assert-CommandPathStationary $before
+        $beforeValue=Get-CommandPathValue $before $stage.Path
+        $probe=[ordered]@{Probe=$stage.Name;Control=$stage.Control;CommandValue=$stage.Value;Path=$stage.Path;
+            Before=$beforeValue;BeforeModelTime=$before.model_time;After=$null;AfterModelTime=$null;
+            DispatchAccepted=$false;Succeeded=$false;StableSamples=0;Error=$null}
+        try {
+            if($stage.Name -eq 'CanopyClose' -and ($null -eq $beforeValue -or $beforeValue -lt 0.85)){
+                throw 'Canopy is not at the expected open extreme.'
             }
-            return [bool]($delta -gt 0.0005)
-        } 20 'camera' $beforeCamera
+            if($stage.Name -eq 'EngineStart'){
+                if((Get-CommandPathValue $before 'mechanisms.wheelbrakes.value') -lt 0.5){throw 'Confirmed wheel brakes are required before starting.'}
+                & $send 'FlightThrottle' 1 'initial-positive-throttle'
+                $engineRequested=$true
+            }
+            & $send $stage.Control $stage.Value $stage.Name
+            $probe.DispatchAccepted=$true
+            $condition={param($sample)
+                Assert-CommandPathStationary $sample
+                $actual=Get-CommandPathValue $sample $stage.Path
+                $direction=$stage.Direction
+                if($direction -eq 0){
+                    if($null -eq $actual -or $null -eq $beforeValue){return $false}
+                    $direction=if($actual -ge $beforeValue){1}else{-1}
+                }
+                Test-CommandPathTravel $beforeValue $actual -Direction $direction -Minimum $stage.Minimum -Maximum $stage.Maximum -MinimumChange $stage.Change
+            }
+            $after=& (Join-Path $PSScriptRoot 'Wait-State.ps1') -RunRoot $run -Condition $condition -AfterModelTime $before.model_time -TimeoutSeconds $stage.Timeout -ReportName ('command-path-wait-'+$stage.Name+'.json')
+            $probe.After=Get-CommandPathValue $after $stage.Path
+            $probe.AfterModelTime=$after.model_time
+            $probe.StableSamples=3;$probe.Succeeded=$true
+        } catch {
+            $probe.Error=$_.Exception.Message
+            try {$after=& $read;$probe.After=Get-CommandPathValue $after $stage.Path;$probe.AfterModelTime=$after.model_time}catch {$cleanupErrors.Add('Outcome read: '+$_.Exception.Message)}
+            if($probe.Error -ne 'Native condition was not observed in time; raw evidence retained.' -or $stage.Required){throw}
+        } finally {$probes.Add($probe)}
+        if($stage.Name -eq 'EngineStart'){
+            $null=& (Join-Path $PSScriptRoot 'Wait-State.ps1') -RunRoot $run -AfterModelTime $after.model_time -TimeoutSeconds 120 -StableSamples 15 -ReportName 'command-path-idle-settled.json' -Condition {
+                param($sample)
+                Assert-CommandPathStationary $sample
+                $rpm=Get-CommandPathValue $sample 'engine.RPM.left'
+                return [bool]($null -ne $rpm -and $rpm -ge 53 -and $rpm -le 65)
+            }
+        }
     }
-    $afterCamera=& $read
-    $probes.Add([ordered]@{Probe='CameraByNativeCommand';CommandPath='LoSetCommand view axis';Succeeded=$cameraMoved;
-        Rejected=$cameraRejected;Before=$beforeCamera.camera;After=$afterCamera.camera})
-
-    # Canopy and flaps are exercised cold through the cockpit producer, which is the
-    # only path already proven to act on this aircraft (engine start uses it).
-    # The cold canopy already rests at the open extreme (arg 38 = 0.9), so only a
-    # measurable travel towards closed can count as movement.
-    $beforeCanopy=& $read
-    if([double]$beforeCanopy.external_arguments.'38' -lt 0.85){throw 'Canopy is not at the expected open extreme.'}
-    $null=& (Join-Path $PSScriptRoot 'Invoke-Diagnostic.ps1') -RunRoot $run -Control 'Canopy' -Value 1 -ReportName 'command-path-canopy.json'
-    $canopyMoved=& $await {param($sample) [bool]([double]$sample.external_arguments.'38' -lt 0.85)} 30 'canopy' $beforeCanopy
-    $afterCanopy=& $read
-    $probes.Add([ordered]@{Probe='CanopyByCockpitDevice';CommandPath='dispatch_action resolved canopy';Succeeded=$canopyMoved;
-        Rejected=$null;Before=$beforeCanopy.external_arguments.'38';After=$afterCanopy.external_arguments.'38';
-        DispatchAccepted=([int]$afterCanopy.parameters.AMXDENIS_MECHANISM_REQUESTS -gt [int]$beforeCanopy.parameters.AMXDENIS_MECHANISM_REQUESTS);
-        DispatchError=$afterCanopy.parameters.AMXDENIS_MECHANISM_REQUEST_ERROR;
-        LastCommand=$afterCanopy.parameters.AMXDENIS_LAST_NATIVE_COMMAND})
-
-    $beforeFlaps=& $read
-    $null=& (Join-Path $PSScriptRoot 'Invoke-Diagnostic.ps1') -RunRoot $run -Control 'Flaps' -Value 1 -ReportName 'command-path-flaps.json'
-    $flapsMoved=& $await {param($sample) [bool]([double]$sample.mechanisms.flaps.value -gt 0.05)} 40 'flaps' $beforeFlaps
-    $afterFlaps=& $read
-    $probes.Add([ordered]@{Probe='FlapsByCockpitDevice';CommandPath='dispatch_action resolved flaps';Succeeded=$flapsMoved;
-        Rejected=$null;Before=$beforeFlaps.mechanisms.flaps;After=$afterFlaps.mechanisms.flaps;
-        DispatchAccepted=([int]$afterFlaps.parameters.AMXDENIS_MECHANISM_REQUESTS -gt [int]$beforeFlaps.parameters.AMXDENIS_MECHANISM_REQUESTS);
-        DispatchError=$afterFlaps.parameters.AMXDENIS_MECHANISM_REQUEST_ERROR;
-        LastCommand=$afterFlaps.parameters.AMXDENIS_LAST_NATIVE_COMMAND})
-
-    # Same action, same identifier, different delivery path: this isolates whether the
-    # aircraft ignores the command or the cockpit dispatch never reaches the simulation.
-    $beforeNativeFlaps=& $read
-    & $send 'NativeFlapsDown' 1 'flaps-native' $false
-    $nativeFlapsMoved=& $await {param($sample) [bool]([double]$sample.mechanisms.flaps.value -gt 0.05)} 40 'flaps-native' $beforeNativeFlaps
-    $afterNativeFlaps=& $read
-    $probes.Add([ordered]@{Probe='FlapsByNativeCommand';CommandPath='LoSetCommand iCommandPlaneFlapsOn';Succeeded=$nativeFlapsMoved;
-        Rejected=$null;Before=$beforeNativeFlaps.mechanisms.flaps;After=$afterNativeFlaps.mechanisms.flaps})
-
-    foreach($step in @(@('Battery',1,'battery'),@('Master',1,'master'),@('Generator1',1,'gen1'),
-        @('Generator2',1,'gen2'),@('FuelShutoff',1,'fuel'))){& $send $step[0] $step[1] $step[2] $false}
-    & $send 'FlightBrake' 1 'brake' $false
-    $beforeStart=& $read
-    & $send 'Starter' 1 'starter' $true
-    $running=& $await {param($sample) [bool]($sample.engine.RPM.left -gt 53)} 120 'idle' $beforeStart
-    $idle=& $read
-    $probes.Add([ordered]@{Probe='EngineIdleByCockpitDevice';CommandPath='dispatch_action engine start';Succeeded=$running;
-        Rejected=$null;Before=$beforeStart.engine.RPM.left;After=$idle.engine.RPM.left})
-    if($running){
-        $beforeThrottle=& $read
-        & $send 'FlightThrottle' 1 'throttle-max' $false
-        $throttleMoved=& $await {param($sample) [bool]([double]$sample.engine.RPM.left -gt [double]$beforeThrottle.engine.RPM.left+5)} 40 'throttle-max' $beforeThrottle
-        $afterThrottle=& $read
-        $probes.Add([ordered]@{Probe='ThrottleByNativeCommand';CommandPath='LoSetCommand iCommandPlaneThrustCommon';Succeeded=$throttleMoved;
-            Rejected=$null;Before=$beforeThrottle.engine.RPM.left;After=$afterThrottle.engine.RPM.left})
-        & $send 'FlightThrottle' 0 'throttle-idle' $false
+} catch {$failure=$_.Exception.Message} finally {
+    if($engineRequested){
+        try {& $send 'FlightThrottle' 1 'cleanup-positive-throttle'}catch {$cleanupErrors.Add($_.Exception.Message)}
+        try {& $send 'NativeEnginesStop' 1 'cleanup-stop'}catch {$cleanupErrors.Add($_.Exception.Message)}
     }
-} catch {$failure=$_.Exception.Message;throw} finally {
-    try {& $send 'FuelShutoff' 0 'shutdown' $false} catch {}
-    $native=@($probes | Where-Object {$_.CommandPath -like 'LoSetCommand*'})
-    $cockpit=@($probes | Where-Object {$_.CommandPath -like 'dispatch_action*'})
-    $control=@($probes | Where-Object Probe -eq 'CameraByNativeCommand')
-    Write-IntegrationJson $reportPath ([ordered]@{Schema='AMXDENIS_NATIVE_COMMAND_PATH_1';Run=$state.ProfileName;BuildId=$state.BuildId;
-        CommandResolution=$resolution;Probes=$probes.ToArray();Failure=$failure;
-        NativeCommandsAttempted=$native.Count;NativeCommandsEffective=@($native | Where-Object Succeeded).Count;
-        CockpitCommandsAttempted=$cockpit.Count;CockpitCommandsEffective=@($cockpit | Where-Object Succeeded).Count;
-        PositiveControlEffective=[bool](@($control | Where-Object Succeeded).Count);
-        Hypothesis='Mechanisms stayed immobile because the shipped command literals were never the identifiers DCS assigns; resolving the official names should let the already working cockpit dispatch path move them';
-        Scope='Diagnostic command provenance only; not keyboard, mouse or physical HOTAS input';
+    $effective=@($probes | Where-Object Succeeded)
+    Write-IntegrationJson $reportPath ([ordered]@{Schema='AMXDENIS_NATIVE_COMMAND_PATH_2';Run=$state.ProfileName;BuildId=$state.BuildId;
+        ControlAircraft=$(if($state.PSObject.Properties['ControlAircraft']){$state.ControlAircraft}else{'none'});
+        Stages=$Stages;Probes=$probes.ToArray();Failure=$failure;CleanupErrors=$cleanupErrors.ToArray();
+        Planned=$plan.Count;Attempted=$probes.Count;Effective=$effective.Count;
+        SequenceCompleted=($probes.Count -eq $plan.Count -and -not $failure);
+        AllTransitionsPassed=($probes.Count -eq $plan.Count -and $effective.Count -eq $plan.Count -and -not $failure -and $cleanupErrors.Count -eq 0);
+        NativeAcceptanceGranted=$false;Scope='Measured native command transitions only; no keyboard, mouse, physical HOTAS or full-flight approval';
         RecordedUtc=[DateTime]::UtcNow.ToString('o')})
 }
+if($failure){throw $failure}
+if($cleanupErrors.Count){throw ('Command-path cleanup failed: '+($cleanupErrors -join '; '))}
+Write-Output "AMXDENIS_COMMAND_PATH|effective=$($effective.Count)/$($plan.Count)|$reportPath"

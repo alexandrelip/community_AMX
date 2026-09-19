@@ -118,6 +118,59 @@ try {
     $guardCall=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.CommandAst] -and $node.GetCommandName() -eq 'AssertNativeStartup'},$true)
     $readyReturn=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.IfStatementAst] -and $node.Extent.Text.StartsWith('if($observed)')},$true)
     Check ($null -ne $guardCall -and $null -ne $readyReturn -and $guardCall.Extent.StartOffset -lt $readyReturn.Extent.StartOffset) 'READY can bypass native startup failures.'
+    $runtimeFunction=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'NativeRuntimeFiles'},$true)
+    Check ($null -ne $runtimeFunction) 'Private original registration inventory is missing.'
+    . ([scriptblock]::Create($runtimeFunction.Extent.Text))
+    $runtimeFixture=@([pscustomobject]@{Path='entry.lua';SHA256='candidate';Bytes=100},[pscustomobject]@{Path='Entry/Data/AMX_SFM.lua';SHA256='physical';Bytes=200})
+    $controlFiles=@(NativeRuntimeFiles $runtimeFixture 'original' 80)
+    Check ($controlFiles.Count -eq 2 -and $controlFiles[0].SHA256 -eq 'original' -and $controlFiles[0].Bytes -eq 80) 'Private control did not track the exact original registration.'
+    Check ($controlFiles[1].SHA256 -eq 'physical' -and $runtimeFixture[0].SHA256 -eq 'candidate' -and $runtimeFixture[0].Bytes -eq 100) 'Control registration changed physics or mutated the candidate manifest.'
+    $regularFiles=@(NativeRuntimeFiles $runtimeFixture '' 0)
+    Check ($regularFiles[0].SHA256 -eq 'candidate') 'Normal preparation unexpectedly replaced the registration.'
+    Rejected {NativeRuntimeFiles @() 'original' 80} 'A missing original registration was allowed.'
+    Rejected {NativeRuntimeFiles @($runtimeFixture[0],$runtimeFixture[0]) 'original' 80} 'Duplicate original registrations were allowed.'
+    $readerAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Read-State.ps1'),[ref]$tokens,[ref]$parseErrors)
+    $identityFunction=$readerAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Assert-NativeSampleIdentity'},$true)
+    Check ($parseErrors.Count -eq 0 -and $null -ne $identityFunction) 'Native sample identity guard is missing.'
+    . ([scriptblock]::Create($identityFunction.Extent.Text))
+    foreach($control in @('none','OriginalAMXT_M','Su-25T')){
+        $identityState=[pscustomobject]@{ControlAircraft=$control;OperationalTest=$true}
+        $expected=if($control -eq 'Su-25T'){'Su-25T'}else{'AMXT_M'}
+        Assert-NativeSampleIdentity $identityState ([pscustomobject]@{aircraft=$expected;model_time=1.0})
+        Check $true 'Matching declared native aircraft was rejected.'
+        Rejected {Assert-NativeSampleIdentity $identityState ([pscustomobject]@{aircraft='AMX';model_time=1.0})} 'Another aircraft was accepted as the declared control.'
+    }
+    Rejected {Assert-NativeSampleIdentity ([pscustomobject]@{ControlAircraft='Su-25T';OperationalTest=$false}) ([pscustomobject]@{aircraft='Su-25T';model_time=1.0})} 'Stock telemetry bypassed operational opt-in.'
+    Assert-NativeSampleIdentity ([pscustomobject]@{}) ([pscustomobject]@{aircraft='AMXT_M';model_time=1.0})
+    Check $true 'Historical AMXT_M reports lost compatibility.'
+    $publish=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'PublishRequest'},$true)
+    Check ($null -ne $publish) 'Diagnostic request publication guard is missing.'
+    . ([scriptblock]::Create($publish.Extent.Text))
+    $requestPath=Join-Path $fixture 'request.txt'
+    Check ((PublishRequest $requestPath '1|Master|1') -eq 1 -and (Get-Content -LiteralPath $requestPath -Raw) -eq '1|Master|1') 'A free request file was not published.'
+    $held=[IO.File]::Open($requestPath,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::None)
+    try {Rejected {PublishRequest $requestPath '2|Master|0' 2} 'A request that never reached the observer was reported as sent.'}
+    finally {$held.Dispose()}
+    Check ((Get-Content -LiteralPath $requestPath -Raw) -eq '1|Master|1') 'A failed publication corrupted the previous request.'
+    Check ((PublishRequest $requestPath '2|Master|0') -ge 1 -and (Get-Content -LiteralPath $requestPath -Raw) -eq '2|Master|0') 'Publication did not recover once the observer released the file.'
+    Rejected {PublishRequest $requestPath '3|Master|1' 0} 'Publication accepted an impossible attempt budget.'
+    $owner=$nativeAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'OwnedProcess'},$true)
+    Check ($null -ne $owner) 'Native process ownership guard is missing.'
+    & {
+        $run=Join-Path $fixture 'unstarted-run'
+        $state=[pscustomobject]@{ProfileName='DCS.AMXDENIS-guard'}
+        $processes=@()
+        function Get-CimInstance { param($ClassName,$Filter) return $processes }
+        function Get-Process { throw 'An unrecorded PID must not be accessed' }
+        . ([scriptblock]::Create($owner.Extent.Text))
+        Check ($null -eq (OwnedProcess $state)) 'Prepared-only run cannot be finalized without active.json.'
+        $processes=@([pscustomobject]@{CommandLine='DCS.exe -w DCS.Unrelated'})
+        Check ($null -eq (OwnedProcess $state)) 'Unrelated session was treated as an owned process.'
+        $processes=@([pscustomobject]@{CommandLine='DCS.exe -w "DCS.AMXDENIS-guard" --mission fixture'})
+        Rejected {OwnedProcess $state} 'Matching unrecorded process was treated as safe to clean.'
+        $processes=@([pscustomobject]@{CommandLine=$null})
+        Rejected {OwnedProcess $state} 'Inaccessible process identity was treated as safe to clean.'
+    }
     $inputAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Invoke-Input.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Native keyboard helper syntax is invalid.'
     $effect=$inputAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Test-InputEffect'},$true)
@@ -268,6 +321,40 @@ try {
     $commandPath=Join-Path $repo 'Tools/Native/Test-NativeCommandPath.ps1'
     $commandAst=[Management.Automation.Language.Parser]::ParseFile($commandPath,[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Command-path diagnostic syntax is invalid.'
+    $travelFunction=$commandAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'Test-CommandPathTravel'},$true)
+    Check ($null -ne $travelFunction) 'Command-path transition predicate is missing.'
+    . ([scriptblock]::Create($travelFunction.Extent.Text))
+    Check (-not (Test-CommandPathTravel 0.9375 0.9375)) 'Already extended flaps were mistaken for a successful command.'
+    Check (-not (Test-CommandPathTravel 0.9 0.9 -Direction -1)) 'An unchanged open canopy was approved.'
+    Check (Test-CommandPathTravel 0 0.1) 'Measured extension was rejected.'
+    Check (Test-CommandPathTravel 0.9 0.7 -Direction -1) 'Measured retraction was rejected.'
+    Check (-not (Test-CommandPathTravel 0.5 0.7 -Direction -1)) 'Travel in the wrong direction was approved.'
+    Check (-not (Test-CommandPathTravel 0 0.01)) 'Subthreshold noise was approved as travel.'
+    foreach($value in @($null,'0', $true,[double]::NaN,[double]::PositiveInfinity,-0.1,1.1)){
+        Check (-not (Test-CommandPathTravel $value 0.5)) 'An unavailable or out-of-range baseline was approved.'
+        Check (-not (Test-CommandPathTravel 0 $value)) 'An unavailable or out-of-range outcome was approved.'
+    }
+    $commandStages=@(& $commandPath -Describe)
+    Check ($commandStages.Count -eq 11 -and @($commandStages.Name | Sort-Object -Unique).Count -eq 11) 'Command comparison must retain distinct, bounded stages.'
+    $surfaceStages=@(& $commandPath -Describe -Stages Mechanisms)
+    Check ($surfaceStages.Count -eq 6 -and @($surfaceStages | Where-Object Required).Count -eq 0) 'Surface comparison must stay optional and bounded.'
+    Check (@($surfaceStages | Where-Object {$_.Path -like 'engine.*' -or $_.Control -like '*Engines*' -or $_.Control -eq 'FlightThrottle'}).Count -eq 0) 'Engine-off surface comparison can start or drive the engine.'
+    foreach($stage in $surfaceStages){Check (@($commandStages | Where-Object Name -eq $stage.Name).Count -eq 1) 'Surface comparison diverged from the full sequence.'}
+    $brakeIndex=[array]::IndexOf($commandStages.Name,'BrakeOn')
+    $engineIndex=[array]::IndexOf($commandStages.Name,'EngineStart')
+    Check ($brakeIndex -ge 0 -and $brakeIndex -lt $engineIndex -and $commandStages[$brakeIndex].Required) 'Engine start can bypass measured brake confirmation.'
+    Check ($commandStages[-1].Name -eq 'EngineStop' -and $commandStages[-1].Required) 'Automated comparison omitted measured shutdown.'
+    foreach($stage in $commandStages){Check ($stage.Change -gt 0 -and $stage.Timeout -le 120 -and $stage.Minimum -lt $stage.Maximum) 'A command stage can pass without bounded travel.'}
+    foreach($name in @('Get-CommandPathValue','Assert-CommandPathStationary')){
+        $helper=$commandAst.Find({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq $name},$true)
+        Check ($null -ne $helper) 'Command comparison helper is missing.'
+        . ([scriptblock]::Create($helper.Extent.Text))
+    }
+    Check ($null -eq (Get-CommandPathValue ([pscustomobject]@{}) 'engine.RPM.left')) 'Missing RPM was converted to a real zero.'
+    Assert-CommandPathStationary ([pscustomobject]@{velocity=[pscustomobject]@{x=0;y=0;z=0}})
+    foreach($value in @($null,'0',$true,[double]::NaN,0.3,-0.3)){
+        Rejected {Assert-CommandPathStationary ([pscustomobject]@{velocity=[pscustomobject]@{x=$value;y=0;z=0}})} 'Unsafe command-path ground motion was ignored.'
+    }
     $commandText=$commandAst.Extent.Text
     Check ($commandText -match "StartMode -ne 'GroundCold'" -and $commandText -match '-not \$state\.OperationalTest') 'Command-path diagnostic must demand an operational cold ground fixture.'
     Check ($commandText -match 'Command-path report already exists') 'Command-path diagnostic must refuse to overwrite a previous report.'
@@ -282,6 +369,27 @@ try {
         Check ($entry.Count -eq 1 -and $entry[0].DispatchAccepted -and $entry[0].DispatchError -eq 0 -and -not $entry[0].Succeeded) 'An accepted dispatch without movement must never be recorded as a working mechanism.'
     }
     Check ($commandEvidence.RefutedHypotheses.Count -eq 3 -and $commandEvidence.NotProven -match 'does not prove') 'Command-path evidence must keep refuted hypotheses and the unproven scope explicit.'
+    $delivery=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/Evidence/Operational-REV07/command-delivery-results.json') -Raw | ConvertFrom-Json
+    Check ($delivery.Schema -eq 'AMXDENIS_R02_COMMAND_DELIVERY_1' -and $delivery.Comparison.Count -eq 5) 'Command delivery evidence is missing its measured comparison.'
+    $legacyRow=@($delivery.Comparison | Where-Object Session -match 'legacy')
+    $repeats=@($delivery.Comparison | Where-Object Session -match 'DA-Repeat')
+    Check ($legacyRow.Count -eq 1 -and $repeats.Count -eq 2) 'Command delivery evidence must keep the legacy form and repeated sessions.'
+    Check ($repeats[0].Effective -eq $repeats[1].Effective -and $repeats[0].Effective -gt $legacyRow[0].Effective) 'Command delivery evidence must show a repeated, measured improvement.'
+    foreach($row in $delivery.Comparison){
+        Check ($row.Effective -le $row.Attempted -and $row.Attempted -le $row.Planned -and $row.Results.Count -eq $row.Attempted) 'A delivery session reported more effects than measured stages.'
+        Check ($row.Aborted -eq ($row.Attempted -lt $row.Planned)) 'An interrupted delivery session was archived as complete.'
+        foreach($result in $row.Results){
+            Check (-not $result.Moved -or $result.Before -ne $result.After) 'An unchanged reading was archived as movement.'
+        }
+    }
+    Check (@($delivery.StillImmobile).Count -eq 3 -and @($delivery.NotProven).Count -ge 4 -and $delivery.StockControl -match 'do not') 'Command delivery evidence must keep the immobile items and unproven scope explicit.'
+    $campaignAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-CommandCampaign.ps1'),[ref]$tokens,[ref]$parseErrors)
+    Check ($parseErrors.Count -eq 0) 'Command campaign syntax is invalid.'
+    $campaignText=$campaignAst.Extent.Text
+    foreach($value in @("Aircraft='AMXT_M'","Cockpit='REV07'","Aircraft='none'",'-Action Stop','NativeAcceptanceGranted=$false','FinalizationError')){
+        Check ($campaignText.Contains($value)) 'Command campaign omitted a control, mandatory finalization or acceptance boundary.'
+    }
+    Check (-not $campaignText.Contains('Su-25T') -and -not $campaignText.Contains('OriginalAMXT_M')) 'Automated campaign can launch an aircraft other than the requested AMXT_M REV07.'
     $hotasAbi=& (Join-Path $repo 'Tools/Native/Read-Hotas.ps1') -IncludeHid -ValidateOnly
     Check ($hotasAbi.Schema -eq 'AMXDENIS_HOTAS_ABI_1' -and -not $hotasAbi.DevicesRead) 'HOTAS ABI check must not require physical devices.'
     Check (($hotasAbi.WinMmSizes -join ',') -eq '728,52') 'WinMM structure layout changed.'

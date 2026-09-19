@@ -4,7 +4,12 @@ local directory=lfs.writedir():gsub("\\","/"):gsub("/+$","")
 local profile=assert(directory:match("([^/]+)$"))
 assert(profile:match("^DCS%.AMXDENIS%-[%w_-]+$"),"Observer refuses normal profiles")
 local config=dofile(directory.."/Scripts/native-config.lua")
-assert(config.schema=="AMXDENIS_NATIVE_1"and config.profile==profile and config.aircraft=="AMXT_M")
+local control_aircraft=config.control_aircraft or"none"
+local control_test=control_aircraft~="none"
+assert(control_aircraft=="none"or control_aircraft=="OriginalAMXT_M"or control_aircraft=="Su-25T","Unsupported control aircraft")
+assert(not control_test or(config.operational_test==true and(config.mode=="GroundCold"or config.mode=="GroundHot")),"Control aircraft requires an operational ground fixture")
+assert(config.schema=="AMXDENIS_NATIVE_1"and config.profile==profile and
+    config.aircraft==(control_aircraft=="Su-25T"and"Su-25T"or"AMXT_M"))
 local output,last_sample,sequence,failed,ready=nil,-1,0,false,false
 local last_indication,last_indication_sequence=-1,-1
 local flight_initialized=false
@@ -47,11 +52,14 @@ local flight_controls={FlightThrottle=true,FlightPitch=true,FlightRoll=true,Flig
     FlightBrake=true,FlightAltitudeHold=true,FlightAttitudeHold=true,FlightCancel=true}
 local mechanism_controls={NativeGearUp=true,NativeGearDown=true,NativeFlapsDown=true,
     NativeFlapsUp=true,NativeCanopy=true,NativeAirbrakeOn=true,NativeAirbrakeOff=true}
+local engine_controls={NativeEnginesStart=true,NativeEnginesStop=true}
 local model_fault_controls={ModelHydraulicFault1=3591,ModelHydraulicFault2=3592}
 local function flight_request(name,value)
     if config.operational_test~=true then return false,"operational_opt_in_required"end
     if not finite(value)or math.abs(value)>1 then return false,"invalid_flight_axis_value"end
-    if mechanism_controls[name]then
+    local discrete=mechanism_controls[name]or engine_controls[name]or name=="NativePower"or name=="FlightBrake"or
+        name=="FlightAltitudeHold"or name=="FlightAttitudeHold"or name=="FlightCancel"
+    if mechanism_controls[name]or engine_controls[name]or name=="NativePower"then
         if value~=0 and value~=1 then return false,"mechanism_requires_discrete_value"end
         if name=="NativeGearUp"then
             local height=call(LoGetAltitudeAboveGroundLevel)
@@ -73,7 +81,8 @@ local function flight_request(name,value)
     if not identifier or identifier<=0 or identifier>=10000 or type(LoSetCommand)~="function"then
         return false,"native_flight_command_unavailable"
     end
-    LoSetCommand(identifier,value)
+    if config.native_value_payload==true or not discrete then LoSetCommand(identifier,value)
+    else LoSetCommand(identifier)end
     return true
 end
 local function initialize_flight()
@@ -127,6 +136,10 @@ local function request()
     n,value=tonumber(n),tonumber(value)
     if not n or n<=sequence then return end
     sequence=n
+    if control_test and not(flight_controls[name]or mechanism_controls[name]or engine_controls[name]or
+        name=="NativePower"or camera_limits[name]or name=="ViewReset")then
+        write({kind="REJECT",control=name,value=value,reason="control_aircraft_has_no_REV07_devices"});return
+    end
     if model_fault_controls[name]then
         local values=params()
         local velocity=call(LoGetVectorVelocity)
@@ -147,10 +160,11 @@ local function request()
         if not ok then error(result)end
         return
     end
-    if flight_controls[name]or mechanism_controls[name]then
+    if flight_controls[name]or mechanism_controls[name]or engine_controls[name]or name=="NativePower"then
         local accepted,reason=flight_request(name,value)
-        write({kind=accepted and(mechanism_controls[name]and"MECHANISM_COMMAND"or"FLIGHT_COMMAND")or"REJECT",
+        write({kind=accepted and(name=="NativePower"and"ELECTRICAL_COMMAND"or engine_controls[name]and"ENGINE_COMMAND"or mechanism_controls[name]and"MECHANISM_COMMAND"or"FLIGHT_COMMAND")or"REJECT",
             control=name,value=value,reason=reason,
+            discrete_payload=config.native_value_payload==true and"explicit_value"or"omitted_for_discrete_commands",
             input_source="scripted_native_commands_NOT_keyboard_mouse_or_physical_HOTAS"})
         return
     end
@@ -180,7 +194,7 @@ local function sample()
     local now=LoGetModelTime();if not finite(now)or now-last_sample<config.interval then return end
     last_sample=now
     local own=call(LoGetSelfData);if type(own)~="table"then return end
-    assert(own.Name=="AMXT_M","Unexpected ownship: "..tostring(own.Name))
+    assert(own.Name==config.aircraft,"Unexpected ownship: "..tostring(own.Name))
     local values=params()
     local row={kind="STATE",aircraft=own.Name,parameters=values,arguments={},indicators={}}
     local panel=call(GetDevice,0)
@@ -219,7 +233,10 @@ local function sample()
         row.indication_sampled=true
     else row.indication_sampled=false end
     local loaded=finite(values.AMX_SUITE_TIME_S)and values.AMX_SUITE_TIME_S>0
-    if loaded and not ready then ready=true;write({kind="READY",aircraft=own.Name,scope="cockpit_started_not_visual_or_input_approval"})end
+    if control_test then loaded=type(row.engine)=="table"and type(row.engine.RPM)=="table"and
+        finite(row.engine.RPM.left)and type(row.mechanisms)=="table"and finite(row.agl)end
+    if loaded and not ready then ready=true;write({kind="READY",aircraft=own.Name,
+        scope=control_test and"control_aircraft_observed_NOT_REV07_acceptance"or"cockpit_started_not_visual_or_input_approval"})end
     write(row)
 end
 function LuaExportStart()

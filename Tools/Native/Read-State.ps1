@@ -6,6 +6,18 @@ param(
 )
 Set-StrictMode -Version Latest
 $ErrorActionPreference='Stop'
+function Assert-NativeSampleIdentity($State,$Record) {
+    $control=if($State.PSObject.Properties['ControlAircraft']){$State.ControlAircraft}else{'none'}
+    if($control -notin @('none','OriginalAMXT_M','Su-25T')){throw 'Unsupported native control identity.'}
+    if($control -ne 'none' -and (-not $State.PSObject.Properties['OperationalTest'] -or -not $State.OperationalTest)){
+        throw 'Control sample requires operational opt-in.'
+    }
+    $expected=if($control -eq 'Su-25T'){'Su-25T'}else{'AMXT_M'}
+    if($Record.aircraft -cne $expected -or $null -eq $Record.model_time -or $Record.model_time -is [string] -or
+        [double]::IsNaN($Record.model_time) -or [double]::IsInfinity($Record.model_time)){
+        throw 'Unexpected native sample identity.'
+    }
+}
 Import-Module (Join-Path (Split-Path -Parent $PSScriptRoot) 'AMXDENISIntegration.psm1') -Force
 $run=Assert-IntegrationPath $RunRoot
 $runs=Assert-IntegrationPath (Join-Path $env:LOCALAPPDATA 'AMXDENIS-Integration/Runs')
@@ -32,7 +44,7 @@ for($index=0;$index -lt $lines.Count-1;$index++){
     $record=ConvertFrom-Json -InputObject $lines[$index] -Depth 40 -DateKind String
     if($record.kind -eq 'ERROR'){throw ('Native observer error: '+$record.message)}
     if($record.kind -eq 'STATE'){
-        if($record.aircraft -ne 'AMXT_M' -or $null -eq $record.model_time){throw 'Unexpected native sample identity.'}
+        Assert-NativeSampleIdentity $state $record
         $latest=$record
     }
 }

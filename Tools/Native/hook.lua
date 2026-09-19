@@ -48,6 +48,9 @@ if operational_config.operational_test==true then
     wanted.NativeAirbrakeOn='iCommandPlaneAirBrakeOn'
     wanted.NativeAirbrakeOff='iCommandPlaneAirBrakeOff'
     wanted.NativeCanopy='iCommandPlaneFonar'
+    wanted.NativePower='iCommandPowerOnOff'
+    wanted.NativeEnginesStart='iCommandEnginesStart'
+    wanted.NativeEnginesStop='iCommandEnginesStop'
 end
 local camera_ids={}
 local function find_commands(container,depth)
@@ -64,6 +67,7 @@ end
 find_commands(input.getEnvTable(),0)
 local complete=true;for action in pairs(wanted)do if not camera_ids[action]then complete=false end end
 lines[#lines+1]='camera_commands_available='..tostring(complete)
+for action,name in pairs(wanted)do if not camera_ids[action]then lines[#lines+1]='missing_command='..name end end
 for action,id in pairs(camera_ids)do lines[#lines+1]='resolved_command='..action..'|'..tostring(id)end
 for _,layer in ipairs(input.getLayerStack())do lines[#lines+1]='active_layer='..tostring(layer)end
 for _,layer in ipairs(input.getLoadedLayers())do lines[#lines+1]='loaded_layer='..tostring(layer)end
@@ -77,14 +81,15 @@ for name,info in pairs(raw)do
         lines[#lines+1]='registered='..tostring(name)..':'..tostring(info.path)..':unit='..tostring(info.is_unit)
     end
 end
-if not data.getProfileNameByUnitName('AMX')then
+local profile_unit=operational_config.control_aircraft=='Su-25T'and'Su-25T'or'AMX'
+if not data.getProfileNameByUnitName(profile_unit)then
     data.initialize(require('lfs').writedir()..'Config/Input/','./Config/Input/')
     for _,info in ipairs(require('Input.ProfileDatabase').createDefaultProfilesSet('./Config/Input/',raw))do
         data.createProfile(info)
     end
     lines[#lines+1]='gui_database_initialized_for_readback_no_save_or_loader_reload'
 end
-local profile=data.getProfileNameByUnitName('AMX')
+local profile=data.getProfileNameByUnitName(profile_unit)
 lines[#lines+1]='profile='..tostring(profile)
 local isolate_devices=operational_config.operational_test==true and
     (operational_config.isolate_hardware_axes==true or operational_config.isolate_hardware_devices==true)

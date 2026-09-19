@@ -1,0 +1,333 @@
+{
+  "Schema": "AMXDENIS_R02_COMMAND_DELIVERY_1",
+  "Question": "Does the native command delivery form change what actually moves on the AMXT_M REV07?",
+  "Fix": "Discrete native commands are now issued as a press on the resolved identifier; only axes still carry a value.",
+  "Comparison": [
+    {
+      "Session": "CS-REV07 legacy value payload",
+      "Aircraft": "AMXT_M-REV07",
+      "Stages": null,
+      "Planned": 11,
+      "Attempted": 3,
+      "Effective": 1,
+      "Aborted": true,
+      "Failure": "Native condition was not observed in time; raw evidence retained.",
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Before": -0.5977093422153281,
+          "After": -0.790604621252567,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Before": 0.8999999761581421,
+          "After": 0.8999999761581421,
+          "Moved": false
+        },
+        {
+          "Probe": "BrakeOn",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        }
+      ]
+    },
+    {
+      "Session": "CY-DefaultPress run 1",
+      "Aircraft": "AMXT_M-REV07",
+      "Stages": "Full",
+      "Planned": 11,
+      "Attempted": 11,
+      "Effective": 6,
+      "Aborted": false,
+      "Failure": null,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Before": -0.5977087713748556,
+          "After": -0.7906046116369645,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Before": 0.8999999761581421,
+          "After": 0.8999999761581421,
+          "Moved": false
+        },
+        {
+          "Probe": "BrakeOn",
+          "Before": 0,
+          "After": 1,
+          "Moved": true
+        },
+        {
+          "Probe": "EngineStart",
+          "Before": 0,
+          "After": 59.02619552612305,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsDown",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "FlapsUp",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "ThrottleReducedAxis",
+          "Before": 59.999908447265625,
+          "After": 73.98314666748047,
+          "Moved": true
+        },
+        {
+          "Probe": "ThrottlePositive",
+          "Before": 73.9862289428711,
+          "After": 60.02104568481445,
+          "Moved": true
+        },
+        {
+          "Probe": "EngineStop",
+          "Before": 60.02104568481445,
+          "After": 14.745530128479004,
+          "Moved": true
+        }
+      ]
+    },
+    {
+      "Session": "DA-Repeat run 1",
+      "Aircraft": "AMXT_M-REV07",
+      "Stages": "Full",
+      "Planned": 11,
+      "Attempted": 11,
+      "Effective": 6,
+      "Aborted": false,
+      "Failure": null,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Before": -0.5977106351118069,
+          "After": -0.790604621252567,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Before": 0.8999999761581421,
+          "After": 0.8999999761581421,
+          "Moved": false
+        },
+        {
+          "Probe": "BrakeOn",
+          "Before": 0,
+          "After": 1,
+          "Moved": true
+        },
+        {
+          "Probe": "EngineStart",
+          "Before": 0,
+          "After": 58.78385543823242,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsDown",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "FlapsUp",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "ThrottleReducedAxis",
+          "Before": 59.999908447265625,
+          "After": 73.97671508789062,
+          "Moved": true
+        },
+        {
+          "Probe": "ThrottlePositive",
+          "Before": 73.98135375976562,
+          "After": 60.02627944946289,
+          "Moved": true
+        },
+        {
+          "Probe": "EngineStop",
+          "Before": 60.02103805541992,
+          "After": 14.775080680847168,
+          "Moved": true
+        }
+      ]
+    },
+    {
+      "Session": "DA-Repeat run 2",
+      "Aircraft": "AMXT_M-REV07",
+      "Stages": "Full",
+      "Planned": 11,
+      "Attempted": 11,
+      "Effective": 6,
+      "Aborted": false,
+      "Failure": null,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Before": -0.5977072785787269,
+          "After": -0.7906046116369645,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Before": 0.8999999761581421,
+          "After": 0.8999999761581421,
+          "Moved": false
+        },
+        {
+          "Probe": "BrakeOn",
+          "Before": 0,
+          "After": 1,
+          "Moved": true
+        },
+        {
+          "Probe": "EngineStart",
+          "Before": 0,
+          "After": 58.65458679199219,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsDown",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "FlapsUp",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "ThrottleReducedAxis",
+          "Before": 59.999908447265625,
+          "After": 73.97808837890625,
+          "Moved": true
+        },
+        {
+          "Probe": "ThrottlePositive",
+          "Before": 73.97808837890625,
+          "After": 60.020206451416016,
+          "Moved": true
+        },
+        {
+          "Probe": "EngineStop",
+          "Before": 60.01650619506836,
+          "After": 14.716038703918457,
+          "Moved": true
+        }
+      ]
+    },
+    {
+      "Session": "CX stock surfaces, engine off",
+      "Aircraft": "Su-25T",
+      "Stages": "Mechanisms",
+      "Planned": 6,
+      "Attempted": 6,
+      "Effective": 2,
+      "Aborted": false,
+      "Failure": null,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Before": -0.5919238139910699,
+          "After": -0.8151243489977837,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Before": 0.8999999761581421,
+          "After": 0,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsDown",
+          "Before": 0.7494893670082092,
+          "After": 0.7494893670082092,
+          "Moved": false
+        },
+        {
+          "Probe": "FlapsUp",
+          "Before": 0.7494893670082092,
+          "After": 0.7494893670082092,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Before": 0,
+          "After": 0,
+          "Moved": false
+        }
+      ]
+    }
+  ],
+  "Gained": "Wheel brakes, engine start, throttle response and engine shutdown now produce measured transitions; previously only the camera did.",
+  "StillImmobile": [
+    "Canopy (mechanisms.canopy.value stays 0.9 even with the engine running)",
+    "Flaps (mechanisms.flaps.value stays 0)",
+    "Airbrake (mechanisms.speedbrakes.value stays 0)"
+  ],
+  "StockControl": "On a stock Su-25T with the engine off the same command closed the canopy (0.9 to 0) while flaps and airbrake also stayed put, so the canopy result discriminates the AMX but the flap/airbrake results with the engine off do not.",
+  "NotProven": [
+    "No stock reference was captured with the engine running, so AMX flaps and airbrake are not yet proven defective",
+    "No keyboard, mouse or physical X56 input was exercised",
+    "No flight, takeoff or landing was attempted",
+    "This is not a cockpit, visual or native acceptance"
+  ],
+  "RecordedUtc": "2026-09-19T12:01:57.2938255Z"
+}
