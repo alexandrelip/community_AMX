@@ -1,6 +1,13 @@
 {
   "Schema": "AMXDENIS_R06_FLIGHT_1",
-  "Scope": "Scripted takeoff, gear cycle in flight, climb and stabilised cruise on a private runway fixture, repeated twice.",
+  "Scope": "Scripted takeoff, gear cycle in flight, climb, cruise, circuit back to the departure runway, glide slope approach, touchdown and rollout to a full stop on a private fixture, repeated twice.",
+  "Achieved": [
+    "Takeoff with rotation near the declared 65 m/s",
+    "Landing gear retracted and extended in flight, which the ground sessions could not cover",
+    "Climb above 1400 m",
+    "Altitude hold engaged and twenty five consecutive stable samples",
+    "Approach flaps extended in flight"
+  ],
   "Sessions": [
     {
       "Session": "ED",
@@ -161,28 +168,416 @@
           "GearArgument": 1
         }
       ]
+    },
+    {
+      "Session": "EZ",
+      "Run": "DCS.AMXDENIS-Native-REV07-EZ-Circuit",
+      "Planned": 15,
+      "Reached": 15,
+      "SequenceCompleted": true,
+      "IntegrityPassed": true,
+      "Stages": [
+        {
+          "Stage": "Roll",
+          "Reached": true,
+          "Ias": 30.49530601501465,
+          "Agl": 1.8432769775390625,
+          "GearArgument": 1,
+          "FlapArgument": 0,
+          "Along": 112.5258298967336,
+          "Cross": -3.10314261895428E-05,
+          "Height": 0.004703521728515625
+        },
+        {
+          "Stage": "Rotate",
+          "Reached": true,
+          "Ias": 67.45956420898438,
+          "Agl": 1.8573150634765625,
+          "GearArgument": 1,
+          "FlapArgument": 0,
+          "Along": 508.6270009467674,
+          "Cross": -0.00013927761031595765,
+          "Height": 0.018741607666015625
+        },
+        {
+          "Stage": "Airborne",
+          "Reached": true,
+          "Ias": 88.61302947998047,
+          "Agl": 36.28203582763672,
+          "GearArgument": 1,
+          "FlapArgument": 0,
+          "Along": 1379.700464811046,
+          "Cross": -0.011983544451936723,
+          "Height": 34.70163942602986
+        },
+        {
+          "Stage": "ClimbAttitude",
+          "Reached": true,
+          "Ias": 83.03324890136719,
+          "Agl": 135.92630004882812,
+          "GearArgument": 1,
+          "FlapArgument": 0,
+          "Along": 1714.3350763989833,
+          "Cross": -0.038764454322631536,
+          "Height": 134.14353598327153
+        },
+        {
+          "Stage": "GearUp",
+          "Reached": true,
+          "Ias": 87.51783752441406,
+          "Agl": 506.1385803222656,
+          "GearArgument": 0.04374999925494194,
+          "FlapArgument": 0,
+          "Along": 2744.0078263745427,
+          "Cross": -0.14162967082256728,
+          "Height": 464.48353397008293
+        },
+        {
+          "Stage": "Climb",
+          "Reached": true,
+          "Ias": 87.9447021484375,
+          "Agl": 540.8013916015625,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 2851.71679074503,
+          "Cross": -0.15243424677987605,
+          "Height": 498.95278041106576
+        },
+        {
+          "Stage": "Level",
+          "Reached": true,
+          "Ias": 102.2931137084961,
+          "Agl": 687.2149658203125,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 3520.0108922859267,
+          "Cross": -0.23827369872492454,
+          "Height": 645.3903928530168
+        },
+        {
+          "Stage": "Cruise",
+          "Reached": true,
+          "Ias": 140.54824829101562,
+          "Agl": 699.861328125,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 4880.925668461175,
+          "Cross": -0.47910545630429624,
+          "Height": 658.0106361160748
+        },
+        {
+          "Stage": "RollProbe",
+          "Reached": true,
+          "Ias": 165.6399383544922,
+          "Agl": 704.591064453125,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 6168.738622253082,
+          "Cross": -0.5322507719297391,
+          "Height": 662.7417637084113
+        },
+        {
+          "Stage": "RollSense",
+          "Reached": true,
+          "Ias": 137.52569580078125,
+          "Agl": 625.0648803710938,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 8436.502469596559,
+          "Cross": 164.65013500827354,
+          "Height": 583.1214471326338
+        },
+        {
+          "Stage": "Circuit",
+          "Reached": true,
+          "Ias": 96.28878784179688,
+          "Agl": 842.0834350585938,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 22799.77664218442,
+          "Cross": -150.55119753717554,
+          "Height": 800.2323814269523
+        },
+        {
+          "Stage": "GearDown",
+          "Reached": true,
+          "Ias": 93.95661926269531,
+          "Agl": 856.4625854492188,
+          "GearArgument": 0.96875,
+          "FlapArgument": 0,
+          "Along": 21923.606662568935,
+          "Cross": -384.545570695258,
+          "Height": 814.444663244861
+        },
+        {
+          "Stage": "FlapsApproach",
+          "Reached": true,
+          "Ias": 82.97055053710938,
+          "Agl": 819.1842041015625,
+          "GearArgument": 1,
+          "FlapArgument": 1,
+          "Along": 21308.14683191092,
+          "Cross": -399.1968339224659,
+          "Height": 777.3355775529424
+        },
+        {
+          "Stage": "Autoland",
+          "Reached": true,
+          "Ias": 78.39168548583984,
+          "Agl": 0.7824516296386719,
+          "GearArgument": 1,
+          "FlapArgument": 1,
+          "Along": 142.0457656103439,
+          "Cross": 43.98580293263613,
+          "Height": -1.0766059343366408
+        },
+        {
+          "Stage": "Rollout",
+          "Reached": true,
+          "Ias": 0,
+          "Agl": 1.1319999694824219,
+          "GearArgument": 1,
+          "FlapArgument": 1,
+          "Along": -137.05482865778123,
+          "Cross": 62.021353959980864,
+          "Height": -0.706573486328125
+        }
+      ],
+      "RunwayFrame": {
+        "Origin": {
+          "x": -40309.124622239295,
+          "y": 41.84861373901367,
+          "z": 279804.1781889135
+        },
+        "HeadingRad": 3.865917921066284,
+        "RollSign": 1,
+        "BankSign": 1
+      },
+      "MeasuredAxisSense": "roll_sign=1;bank_sign=1;turn_rad=0.223",
+      "Landing": {
+        "DebriefEvent": "land",
+        "TouchdownAlongMetres": 142.0457656103439,
+        "TouchdownCrossMetres": 43.98580293263613,
+        "TouchdownIasMetresPerSecond": 78.39168548583984,
+        "TouchdownAglMetres": 0.7824516296386719,
+        "StopAlongMetres": -137.05482865778123,
+        "StopIasMetresPerSecond": 0
+      }
+    },
+    {
+      "Session": "FA",
+      "Run": "DCS.AMXDENIS-Native-REV07-FA-Circuit",
+      "Planned": 15,
+      "Reached": 15,
+      "SequenceCompleted": true,
+      "IntegrityPassed": true,
+      "Stages": [
+        {
+          "Stage": "Roll",
+          "Reached": true,
+          "Ias": 30.72451400756836,
+          "Agl": 1.8428192138671875,
+          "GearArgument": 1,
+          "FlapArgument": 0,
+          "Along": 113.86154490082814,
+          "Cross": -1.0979003221223138E-05,
+          "Height": 0.004177093505859375
+        },
+        {
+          "Stage": "Rotate",
+          "Reached": true,
+          "Ias": 67.84318542480469,
+          "Agl": 1.8573074340820312,
+          "GearArgument": 1,
+          "FlapArgument": 0,
+          "Along": 513.8872722375132,
+          "Cross": -4.8779642156659975E-05,
+          "Height": 0.018665313720703125
+        },
+        {
+          "Stage": "Airborne",
+          "Reached": true,
+          "Ias": 88.30543518066406,
+          "Agl": 37.41803741455078,
+          "GearArgument": 1,
+          "FlapArgument": 0,
+          "Along": 1387.611112530023,
+          "Cross": -0.010875115068301966,
+          "Height": 35.68874566699904
+        },
+        {
+          "Stage": "ClimbAttitude",
+          "Reached": true,
+          "Ias": 83.00935363769531,
+          "Agl": 133.39837646484375,
+          "GearArgument": 1,
+          "FlapArgument": 0,
+          "Along": 1708.3108188624888,
+          "Cross": -0.03659665743180085,
+          "Height": 131.67254307069226
+        },
+        {
+          "Stage": "GearUp",
+          "Reached": true,
+          "Ias": 86.68379974365234,
+          "Agl": 470.6075744628906,
+          "GearArgument": 0.03125,
+          "FlapArgument": 0,
+          "Along": 2620.5253197102256,
+          "Cross": -0.12828942354212813,
+          "Height": 429.14349960829657
+        },
+        {
+          "Stage": "Climb",
+          "Reached": true,
+          "Ias": 86.91332244873047,
+          "Agl": 487.7117004394531,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 2673.749529854982,
+          "Cross": -0.1336531430379182,
+          "Height": 446.16776109725873
+        },
+        {
+          "Stage": "Level",
+          "Reached": true,
+          "Ias": 101.6540756225586,
+          "Agl": 622.450927734375,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 3314.2708521183285,
+          "Cross": -0.21705576292197293,
+          "Height": 580.6074067576345
+        },
+        {
+          "Stage": "Cruise",
+          "Reached": true,
+          "Ias": 139.8188934326172,
+          "Agl": 633.4113159179688,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 4645.819744171378,
+          "Cross": -0.45256404753808965,
+          "Height": 591.5536801406344
+        },
+        {
+          "Stage": "RollProbe",
+          "Reached": true,
+          "Ias": 164.20956420898438,
+          "Agl": 638.3201293945312,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 5864.702547001629,
+          "Cross": -0.5254647812189432,
+          "Height": 596.4723191257236
+        },
+        {
+          "Stage": "RollSense",
+          "Reached": true,
+          "Ias": 128.62124633789062,
+          "Agl": 647.7501220703125,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 8083.602511371618,
+          "Cross": 69.30707266938498,
+          "Height": 606.028723992971
+        },
+        {
+          "Stage": "Circuit",
+          "Reached": true,
+          "Ias": 98.12317657470703,
+          "Agl": 847.001953125,
+          "GearArgument": 0,
+          "FlapArgument": 0,
+          "Along": 22577.186644286,
+          "Cross": -130.72125601397238,
+          "Height": 805.1530885318028
+        },
+        {
+          "Stage": "GearDown",
+          "Reached": true,
+          "Ias": 93.99031829833984,
+          "Agl": 832.1375122070312,
+          "GearArgument": 0.9624999761581421,
+          "FlapArgument": 0,
+          "Along": 21765.854867638976,
+          "Cross": -235.17813621976893,
+          "Height": 790.2820199357743
+        },
+        {
+          "Stage": "FlapsApproach",
+          "Reached": true,
+          "Ias": 82.874267578125,
+          "Agl": 848.6849975585938,
+          "GearArgument": 1,
+          "FlapArgument": 1,
+          "Along": 21146.574139672557,
+          "Cross": -183.41385163215455,
+          "Height": 807.1178528288634
+        },
+        {
+          "Stage": "Autoland",
+          "Reached": true,
+          "Ias": 77.50399017333984,
+          "Agl": 2.3060073852539062,
+          "GearArgument": 1,
+          "FlapArgument": 1,
+          "Along": 106.86627821985249,
+          "Cross": 39.121358444846734,
+          "Height": 0.4658682381954051
+        },
+        {
+          "Stage": "Rollout",
+          "Reached": true,
+          "Ias": 0,
+          "Agl": 1.8292160034179688,
+          "GearArgument": 1,
+          "FlapArgument": 1,
+          "Along": -740.8983943920598,
+          "Cross": 86.00163965949315,
+          "Height": -27.383358881238102
+        }
+      ],
+      "RunwayFrame": {
+        "Origin": {
+          "x": -40307.85837316272,
+          "y": 41.84868240356445,
+          "z": 279805.29851339076
+        },
+        "HeadingRad": 3.8659167289733887,
+        "RollSign": 1,
+        "BankSign": 1
+      },
+      "MeasuredAxisSense": "roll_sign=1;bank_sign=1;turn_rad=0.1658",
+      "Landing": {
+        "DebriefEvent": "land",
+        "TouchdownAlongMetres": 106.86627821985249,
+        "TouchdownCrossMetres": 39.121358444846734,
+        "TouchdownIasMetresPerSecond": 77.50399017333984,
+        "TouchdownAglMetres": 2.3060073852539062,
+        "StopAlongMetres": -740.8983943920598,
+        "StopIasMetresPerSecond": 0
+      }
     }
   ],
   "AxisLessons": [
     "The thrust axis is inverted: 0.3 produced 74 RPM while 1.0 held idle 60 RPM, so full power is -1",
     "A negative pitch axis pushed the nose down and the aircraft overran the runway at 124 m/s without rotating",
-    "Holding the rotation attitude bled the speed below stall and the aircraft departed, so the climb attitude is reduced right after liftoff"
-  ],
-  "Achieved": [
-    "Takeoff with rotation near the declared 65 m/s",
-    "Landing gear retracted and extended in flight, which the ground sessions could not cover",
-    "Climb above 1400 m",
-    "Altitude hold engaged and twenty five consecutive stable samples",
-    "Approach flaps extended in flight"
+    "Holding the rotation attitude bled the speed below stall and the aircraft departed, so the climb attitude is reduced right after liftoff",
+    "The roll axis is a rate command and its sense is inverted like the others, so it is measured in flight instead of assumed",
+    "Holding a fixed roll deflection between loop iterations rolled the aircraft over and drove it into the ground twice",
+    "A guided stage that leaves the roll rate command deflected keeps rolling the aircraft through the gap before the next stage"
   ],
   "StillMissing": [
-    "No approach, touchdown or rollout was attempted",
+    "The touchdown is long: it happens about two thousand metres past the landing threshold and the rollout leaves the paved surface",
     "No crosswind, failure or weight variation was exercised",
-    "Autopilot behaviour was used, not hand flown stability"
+    "Autopilot and closed loop guidance provide the stability; hand flown stability was not measured",
+    "Only one airfield and one runway direction were exercised"
   ],
   "NotProven": [
     "Scripted axes through the private diagnostic channel, not physical HOTAS input",
-    "The simplified flight model provides the physics; no custom flight model was written"
+    "The simplified flight model provides the physics; no custom flight model was written",
+    "The guidance is a test harness controller, not an aircraft autopilot delivered to the pilot"
   ],
-  "RecordedUtc": "2026-09-19T14:58:48.4273759Z"
+  "RecordedUtc": "2026-09-19T19:41:50.1403693Z"
 }

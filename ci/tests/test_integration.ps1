@@ -444,8 +444,49 @@ try {
     Check ($parseErrors.Count -eq 0) 'Flight test syntax is invalid.'
     Check ($flightAst.Extent.Text -match "StartMode -ne 'RunwayHot'") 'The flight test must demand a runway fixture.'
     $flightStages=@(& $flightPath -Describe)
-    Check ($flightStages.Count -eq 10 -and @($flightStages.Name | Sort-Object -Unique).Count -eq 10) 'The flight plan must keep ten distinct stages.'
-    foreach($stage in $flightStages){Check ($stage.Condition -is [scriptblock] -and $stage.Timeout -le 120) 'Flight stages need bounded conditions.'}
+    Check ($flightStages.Count -eq 15 -and @($flightStages.Name | Sort-Object -Unique).Count -eq 15) 'The flight plan must keep fifteen distinct stages.'
+    foreach($stage in $flightStages){Check ($stage.Condition -is [scriptblock] -and $stage.Timeout -le 600) 'Flight stages need bounded conditions.'}
+    $autoland=@($flightStages | Where-Object Name -eq 'Autoland')
+    Check ($autoland.Count -eq 1 -and $autoland[0].Guidance -is [scriptblock] -and $autoland[0].Seed -is [hashtable]) 'The landing stage must be closed loop with a declared seed.'
+    Check ($autoland[0].Condition.ToString() -match 'BASE_SENSOR_WOW_LEFT_GEAR') 'The landing stage must end on measured weight on wheels.'
+    $circuit=@($flightStages | Where-Object Name -eq 'Circuit')
+    Check ($circuit.Count -eq 1 -and $circuit[0].Guidance -is [scriptblock] -and $circuit[0].Seed.ContainsKey('FlightRoll')) 'The circuit must steer the roll axis in closed loop.'
+    $probe=[array]::IndexOf($flightStages.Name,'RollProbe')
+    $sense=[array]::IndexOf($flightStages.Name,'RollSense')
+    Check ($probe -ge 0 -and $probe -lt $sense -and $sense -lt [array]::IndexOf($flightStages.Name,'Circuit')) 'The roll axis sense must be measured before it is used to navigate.'
+    Check ($flightStages[$sense].Guidance.ToString() -match '\$global:FlightProbeBank' -and
+        $flightStages[$sense].Guidance.ToString() -match '\[Math\]::Max\(-0\.3') 'The measured sense must hold a bounded bank instead of a fixed deflection.'
+    Check ($flightStages[$sense].StableSamples -ge 60) 'The measured turn must be long enough to be more than sampling noise.'
+    Check ($flightStages[$sense].Condition.ToString() -match 'kept resetting the dwell') 'The measurement window must not reset on transient attitude.'
+    Check ($flightStages[$probe].Guidance.ToString() -match 'if\(\$bank -lt 0\.12\)') 'The roll probe must stop itself at the first measurable bank.'
+    Check ($flightStages[$probe].Guidance.ToString() -match 'Get-FlightPitchDemand') 'The roll probe must keep the vertical loop closed.'
+    $flightText=$flightAst.Extent.Text
+    foreach($value in @('$global:FlightOrigin','$global:FlightRunwayHeading','$global:FlightRollSign','$global:FlightBankSign',
+        'The runway frame needs the observed position and heading.','The roll axis did not change the measured heading.','RunwayFrame')){
+        Check ($flightText.Contains($value)) 'The flight test dropped the runway frame or the measured axis sense.'
+    }
+    Check (-not ($flightText -match '\$script:Flight')) 'The runway frame must not use script scope, which does not reach the guided stage runner.'
+    Check ($flightText -match 'touched down at sea level') 'The flight test must keep the recorded reason for navigating back to the runway.'
+    Check (-not ($flightText -match '\[Math\]::(Min|Max)\(\s*-?\d+\s*,')) 'Numeric limits must be doubles, because an integer literal truncated the clamp to zero.'
+    Check ($flightText -match 'turned outbound again') 'The circuit must keep the latch that stopped it from circling for ever.'
+    Check ($flightText -match 'wrapped past half a circle') 'The measured turn must keep both the noise and the wrap bounds.'
+    Check ($flightText -match 'round out\s*\r?\n?\s*#? ?is commanded by height' -or $flightText -match 'is commanded by height') 'The round out must be commanded by measured height, not by distance alone.'
+    Check ($autoland[0].Guidance.ToString() -match '\$agl -lt 12' -and $autoland[0].Guidance.ToString() -match '\$agl -lt 40') 'The landing must keep the two height gates for the round out.'
+    Check ($autoland[0].Guidance.ToString() -match 'reach the ground before the') 'The landing must keep the recorded reason for the aiming point.'
+    Check (@($flightStages | Where-Object {$_.PSObject.Properties['Guidance']}).Count -eq 6) 'Every stage after the cruise must stay in closed loop.'
+    Check ($flightText -match 'rolled it\s*\r?\n?\s*#? ?over and drove it into the ground') 'The configuration stages must keep the recorded reason for staying closed loop.'
+    Check ($flightText -match '\$global:FlightCircuitArmed=\$false' -and $flightText -match '\$global:FlightCircuitArmed=\$true') 'The outbound leg must be latched once and never re armed.'
+    $guidedPath=Join-Path $repo 'Tools/Native/Invoke-Guided.ps1'
+    $guidedAst=[Management.Automation.Language.Parser]::ParseFile($guidedPath,[ref]$tokens,[ref]$parseErrors)
+    Check ($parseErrors.Count -eq 0) 'Guided stage syntax is invalid.'
+    $guidedText=$guidedAst.Extent.Text
+    foreach($value in @('AMXDENIS_NATIVE_GUIDANCE_1','Owned process exited or identity changed while guiding.','OperationalTest',
+        'Guidance condition must return one Boolean.','is not a finite number','PhysicalInputApproved=$false')){
+        Check ($guidedText.Contains($value)) 'The guided stage dropped an identity, finiteness or acceptance boundary.'
+    }
+    Check ($guidedText -match '-Since \$lastTime') 'Guided observation must scan every recorded sample.'
+    Check ($guidedText -match '\$primed=\$false' -and $guidedText -match 'if\(\$primed -and \$commanded') 'The first iteration of a guided stage must command every axis, whatever the seed claimed.'
+    Check ($guidedText -match "Roll is a rate command" -and $guidedText -match "-Control 'FlightRoll' -Value 0") 'A guided stage must never leave the roll rate command deflected.'
     $rotate=[array]::IndexOf($flightStages.Name,'Rotate');$airborne=[array]::IndexOf($flightStages.Name,'Airborne')
     $gearUp=[array]::IndexOf($flightStages.Name,'GearUp')
     Check ($rotate -lt $airborne -and $airborne -lt $gearUp) 'Gear retraction must follow rotation and liftoff.'
@@ -459,7 +500,16 @@ try {
         Check ($down.Count -eq 1 -and $down[0].Reached -and $down[0].GearArgument -gt 0.9) 'Gear extension must be measured in flight.'
     }
     Check (@($flight.AxisLessons).Count -ge 3 -and @($flight.StillMissing).Count -ge 3 -and @($flight.NotProven).Count -ge 2) 'Flight evidence must keep the axis lessons, the missing items and the unproven scope.'
-    Check ($flight.StillMissing[0] -match 'touchdown') 'Flight evidence must state that no landing was attempted.'
+    Check ($flight.StillMissing[0] -match 'touchdown') 'Flight evidence must state how far the touchdown really is.'
+    $landings=@($flight.Sessions | Where-Object {$_.PSObject.Properties['Landing']})
+    Check ($landings.Count -ge 2) 'A complete cycle must be archived from at least two sessions.'
+    foreach($session in $landings){
+        Check ($session.Landing.DebriefEvent -eq 'land') 'A landing session was archived without the simulator recording a landing.'
+        Check ($session.Landing.StopIasMetresPerSecond -lt 5 -and
+            [double]$session.Landing.TouchdownAglMetres -ge 0 -and [double]$session.Landing.TouchdownAglMetres -le 6) 'The archived landing must end stopped after a measured touchdown.'
+        Check ([Math]::Abs([double]$session.Landing.TouchdownCrossMetres) -lt 200) 'The archived touchdown must be on the runway centre line.'
+        Check ($session.MeasuredAxisSense -match 'roll_sign=' -and $session.MeasuredAxisSense -match 'turn_rad=') 'The archived session must keep the measured roll axis sense.'
+    }
     $campaignAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-CommandCampaign.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Command campaign syntax is invalid.'
     $campaignText=$campaignAst.Extent.Text
@@ -490,3 +540,4 @@ try {
     if (Test-Path -LiteralPath (Join-Path $fixture 'Target\linked')) { Remove-Item -LiteralPath (Join-Path $fixture 'Target\linked') }
     if (Test-Path -LiteralPath $fixture) { Remove-Item -LiteralPath $fixture -Recurse -Force }
 }
+
