@@ -19,6 +19,13 @@ Hidraulica reavaliada de 4 para 6/10, nao 7. CA foi 9/10 etapas executadas;
 CB 12/14, ambos com resultado geral falso e finalizacao integra. Teclado 5,
 mouse 3 e X56 3 permanecem; nenhuma nota-alvo foi atribuida por planejamento.
 
+Preparacao X56: o [inventario HID](Evidence/Operational-REV07/x56-hid-inventory.json)
+mostrou 8 eixos/36 botoes no manete e 5 eixos/17 botoes/1 POV no manche.
+O leitor agora gera 67 exercicios pendentes sem truncar no limite do WinMM.
+Nao houve calibracao, exercicio fisico nem alteracao de perfil. Captura HID
+completa e correlacao no DCS seguem pendentes; usuario deixou movimento e
+reconexao para depois. A nota continua 3/10.
+
 ## Historico recente: teclado por efeito funcional
 
 O [subitem de layout](Evidence/Operational-REV07/keyboard-layout-results.json)

@@ -203,6 +203,24 @@ try {
     foreach($value in @(0.26,-0.26,[double]::NaN,[double]::PositiveInfinity,$null,'0')){
         Rejected {Assert-HydraulicStationary ([pscustomobject]@{velocity=[pscustomobject]@{x=$value;y=0;z=0}})} 'Unsafe or unavailable velocity was allowed before hydraulic commands.'
     }
+    $hotasAbi=& (Join-Path $repo 'Tools/Native/Read-Hotas.ps1') -IncludeHid -ValidateOnly
+    Check ($hotasAbi.Schema -eq 'AMXDENIS_HOTAS_ABI_1' -and -not $hotasAbi.DevicesRead) 'HOTAS ABI check must not require physical devices.'
+    Check (($hotasAbi.WinMmSizes -join ',') -eq '728,52') 'WinMM structure layout changed.'
+    Check (($hotasAbi.HidSizes -join ',') -eq $(if([IntPtr]::Size -eq 8){'16,32,64,72,72'}else{'8,32,64,72,72'})) 'Windows HID descriptor structures do not match the native ABI.'
+    $hotasAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Read-Hotas.ps1'),[ref]$tokens,[ref]$parseErrors)
+    $planFunction=$hotasAst.Find({param($node)$node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq 'New-HotasPhysicalPlan'},$true)
+    Check ($null -ne $planFunction) 'Physical X56 plan generator is missing.'
+    . ([scriptblock]::Create($planFunction.Extent.Text))
+    $hidFixture=[pscustomobject]@{Error=$null;DevicePath='fixture';Vendor=0x0738;Product=0xA221;
+        Capabilities=[pscustomobject]@{UsagePage=1;Usage=4;InputBytes=14};Values=@();
+        Buttons=@([pscustomobject]@{IsAlias=0;IsRange=1;UsageMinimum=1;UsageMaximum=36;ReportId=0;LinkCollection=1;UsagePage=9})}
+    $hidPlan=New-HotasPhysicalPlan @($hidFixture)
+    Check ($hidPlan.Devices[0].ButtonCount -eq 36 -and $hidPlan.Devices[0].Controls[-1].Usage -eq 36) 'HID plan truncated throttle buttons at the WinMM limit.'
+    Check (-not $hidPlan.InventoryComplete -and $hidPlan.Blockers.Count -eq 1) 'Missing X56 stick was silently approved.'
+    Check (-not $hidPlan.AllPhysicalChecksPassed -and -not $hidPlan.FullHidStateCaptureAvailable -and
+        @($hidPlan.Devices[0].Controls | Where-Object Status -ne 'PENDING').Count -eq 0) 'Descriptor inventory invented physical test evidence.'
+    $hidFixture.Error='unavailable'
+    Check (-not (New-HotasPhysicalPlan @($hidFixture)).InventoryComplete) 'Failed descriptor read was treated as complete inventory.'
     Write-Output "AMXDENIS INTEGRATION GUARDS: $checks/$checks checks passed"
 } finally {
     if (Test-Path -LiteralPath (Join-Path $fixture 'Target\linked')) { Remove-Item -LiteralPath (Join-Path $fixture 'Target\linked') }

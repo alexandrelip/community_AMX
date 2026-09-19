@@ -69,7 +69,7 @@ serao considerados resolvidos por essa exclusao; continuam limitacoes do pacote.
 | R02 | Mecanismos | 2 | 7 | P0 | R01 | Bloqueado: atuacao nativa sem causa isolada |
 | R03 | Teclado | 5 | 10 | P1 | R01; R02 para aprovar atuacao | Em execucao: 54 acoes em contextos selecionados; permanece 5/10 |
 | R04 | Mouse | 3 | 9 | P1 | R01 e rotas verificadas em R03 | Em execucao: resolver baseline antes de ampliar cobertura |
-| R05 | X56 | 3 | 9 | P1 | R03 e operador fisico | Preparacao automatizavel; aceite depende de teste fisico |
+| R05 | X56 | 3 | 9 | P1 | R03 e operador fisico | Inventario HID e 67 exercicios preparados; teste fisico adiado |
 | R06 | Voo completo | 2 | 7 | P1 | R02 e controles essenciais aprovados em R03 | Planejado |
 | R07 | EICAS | 4 | 7 | P2 | R01 e fontes/modelos AMX validos | Bloqueado por fontes |
 | R08 | Hidraulica | 4 | 7 | P2 | Modelo de projeto autorizado; R02 para consumo integrado | 6/10: dinamica repetida, consumo nativo bloqueado |
@@ -264,6 +264,21 @@ ao efeito no DCS, sem eixos conflitantes, sinal invertido ou acao presa. Verific
 centro, extremos, retorno e repeticao em duas sessoes, uma apos reconexao.
 Campo nao exposto pela API nao conta como botao testado. Sem operador ou efeito
 nativo integrado, permanece bloqueado; simulacao de entrada nao eleva a nota.
+
+Preparacao executada: [inventario HID X56](Evidence/Operational-REV07/x56-hid-inventory.json)
+obtido pelo parser HID do Windows, sem abrir dispositivos para escrita ou
+alterar configuracoes. O manche declara 5 eixos, 17 botoes e um POV de oito
+direcoes com neutro; o manete declara 8 eixos e 36 botoes, sem POV separado.
+Os limites de 6 eixos/32 botoes do WinMM ocultavam dois eixos e quatro botoes
+do manete. Interfaces HID de fabricante nao foram contadas como controles.
+
+[Read-Hotas.ps1](../../Tools/Native/Read-Hotas.ps1) com `-IncludeHid` agora
+produz a lista de 67 exercicios: 53 botoes, 13 eixos e um POV, todos PENDING.
+A funcao fisica de cada usage ainda precisa ser identificada pelo operador;
+um eixo declarado nao e automaticamente pitch, roll ou manete. Exige duas
+sessoes, reconexao e efeito DCS, sem usar somente a leitura de um botao para
+aprovar o conjunto. O leitor consulta descritores; captura completa de reports
+HID ainda falta. X56 permanece 3/10; o usuario adiou a parte fisica.
 
 ## R06 - Voo completo
 
