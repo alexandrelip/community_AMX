@@ -1,0 +1,36 @@
+{
+  "Schema": "AMXDENIS_R08_CONSUMER_1",
+  "Scope": "Sixteen stage hydraulic sequence completed twice on a cold ground fixture, now including a real consumer load.",
+  "Sessions": [
+    {
+      "Session": "DX",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-DX-Hydraulics",
+      "IntegrityPassed": true,
+      "StageReports": 36
+    },
+    {
+      "Session": "DY",
+      "RunRoot": "C:\\Users\\Alexandre\\AppData\\Local\\AMXDENIS-Integration\\Runs\\Native-REV07-DY-HydraulicsRepeat",
+      "IntegrityPassed": true,
+      "StageReports": 36
+    }
+  ],
+  "MeasuredLoad": {
+    "Consumer": "Airbrake on circuit 2",
+    "DemandBarPerSecond": 2.67,
+    "PressureDuringTravelBar": 204.89,
+    "PressureAfterTravelBar": 206.98,
+    "NominalBar": 207
+  },
+  "Fixed": [
+    "The airbrake now reaches the cockpit through its own route instead of a keyboard chord",
+    "Load and travel are measured as separate stages, because the pressure dip only exists while the surface moves",
+    "Observation scans every recorded sample instead of only the newest one, so a three second transient is no longer missed"
+  ],
+  "NotProven": [
+    "Project hydraulic model, explicitly not calibrated to the real AMX",
+    "Gear and flap loads were not exercised in these ground sessions",
+    "No flight, takeoff or landing was attempted"
+  ],
+  "RecordedUtc": "2026-09-19T14:31:21.3147504Z"
+}

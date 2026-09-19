@@ -300,12 +300,14 @@ try {
     Complete-KeyboardChord $pressed $sendRelease {throw 'Empty chord cannot observe release'}
     Check ($released.Count -eq 0) 'Empty chord invented a key release.'
     $hydraulicStages=@(& (Join-Path $repo 'Tools/Native/Test-Hydraulics.ps1') -Describe)
-    Check ($hydraulicStages.Count -eq 14 -and @($hydraulicStages.Name | Sort-Object -Unique).Count -eq 14) 'Hydraulic native sequence must retain fourteen distinct stages.'
+    Check ($hydraulicStages.Count -eq 16 -and @($hydraulicStages.Name | Sort-Object -Unique).Count -eq 16) 'Hydraulic native sequence must retain sixteen distinct stages.'
     foreach($stage in $hydraulicStages){Check ($stage.Condition -is [scriptblock] -and $stage.Timeout -le 100) 'Hydraulic stages require bounded functional conditions.'}
-    foreach($name in @('SpinUp','Fault1','Fault2','TotalLoss','Recover1','Recover2','AirbrakeOut','AirbrakeIn','Shutdown','ReserveLow')){
+    foreach($name in @('SpinUp','Fault1','Fault2','TotalLoss','Recover1','Recover2','AirbrakeOut','AirbrakeOutSettled','AirbrakeIn','AirbrakeInSettled','Shutdown','ReserveLow')){
         Check (@($hydraulicStages | Where-Object Name -eq $name).Count -eq 1) 'Hydraulic native sequence omitted a required condition.'
     }
-    Check ($hydraulicStages[9].Commands[0].Shift -eq $true -and $hydraulicStages[10].Commands[0].Control -eq $true) 'Hydraulic consumer test must use explicit native airbrake on/off commands.'
+    Check ($hydraulicStages[9].Commands[0].Control -eq 'Airbrake' -and $hydraulicStages[9].Commands[0].Value -eq 1 -and
+        $hydraulicStages[11].Commands[0].Control -eq 'Airbrake' -and $hydraulicStages[11].Commands[0].Value -eq 0) 'Hydraulic consumer test must drive the airbrake through its cockpit route.'
+    Check ($hydraulicStages[10].Commands.Count -eq 0 -and $hydraulicStages[12].Commands.Count -eq 0) 'Settling stages must observe without issuing new commands.'
     $nativeHydraulicStages=@(& (Join-Path $repo 'Tools/Native/Test-Hydraulics.ps1') -Describe -AirbrakeSource Native)
     Check ($nativeHydraulicStages[9].Commands[0].Control -eq 'NativeAirbrakeOn' -and $nativeHydraulicStages[10].Commands[0].Control -eq 'NativeAirbrakeOff') 'Native airbrake comparison must preserve separate directional commands.'
     $hydraulicAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-Hydraulics.ps1'),[ref]$tokens,[ref]$parseErrors)
@@ -428,6 +430,15 @@ try {
         Check ($moves.Count -ge 2) 'Every approved surface must move in both sessions.'
     }
     Check (@($repeat.StillMissing).Count -ge 3 -and @($repeat.NotProven).Count -ge 2) 'Surface repetition must keep the missing items and the unproven scope.'
+    $consumer=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/Evidence/Operational-REV07/hydraulic-consumer-results.json') -Raw | ConvertFrom-Json
+    Check ($consumer.Schema -eq 'AMXDENIS_R08_CONSUMER_1' -and $consumer.Sessions.Count -ge 2) 'Hydraulic consumer evidence needs two sessions.'
+    foreach($session in $consumer.Sessions){Check ($session.IntegrityPassed -and $session.StageReports -gt 0) 'A hydraulic session was archived without integrity or reports.'}
+    Check ($consumer.MeasuredLoad.PressureDuringTravelBar -lt $consumer.MeasuredLoad.PressureAfterTravelBar -and
+        $consumer.MeasuredLoad.PressureAfterTravelBar -le $consumer.MeasuredLoad.NominalBar -and
+        $consumer.MeasuredLoad.DemandBarPerSecond -gt 0) 'The hydraulic evidence must show a real load during travel and recovery after it.'
+    Check (@($consumer.Fixed).Count -ge 3 -and @($consumer.NotProven).Count -ge 3 -and $consumer.NotProven[0] -match 'not calibrated') 'Hydraulic evidence must keep the fixes and the uncalibrated scope explicit.'
+    $waitText=Get-Content -LiteralPath (Join-Path $repo 'Tools/Native/Wait-State.ps1') -Raw
+    Check ($waitText -match '-Since \$lastTime' -and $waitText -match 'Short transients') 'Observation must scan every recorded sample, not only the newest.'
     $campaignAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-CommandCampaign.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Command campaign syntax is invalid.'
     $campaignText=$campaignAst.Extent.Text

@@ -33,10 +33,14 @@ function Get-HydraulicStages {
         $sample.parameters.AMXDENIS_HYD_2_BAR -gt 200 -and $sample.parameters.AMXDENIS_HYD_1_BAR -lt 93}}
     @{Name='RestoreAll';Commands=@(@{Control='ModelHydraulicFault1';Value=0});Timeout=30;Condition={param($sample)
         $sample.parameters.AMXDENIS_HYD_1_BAR -gt 206 -and $sample.parameters.AMXDENIS_HYD_2_BAR -gt 206}}
-    @{Name='AirbrakeOut';Commands=@(@{ScanCode=48;Shift=$true});Timeout=15;Condition={param($sample)
-        $sample.mechanisms.speedbrakes.value -gt 0.95 -and $sample.parameters.AMXDENIS_HYD_2_BAR -lt 206 -and $sample.parameters.AMXDENIS_HYD_1_BAR -gt 206}}
-    @{Name='AirbrakeIn';Commands=@(@{ScanCode=48;Control=$true});Timeout=15;Condition={param($sample)
-        $sample.mechanisms.speedbrakes.value -lt 0.05 -and $sample.parameters.AMXDENIS_HYD_2_BAR -lt 206 -and $sample.parameters.AMXDENIS_HYD_1_BAR -gt 206}}
+    @{Name='AirbrakeOut';Commands=@(@{Control='Airbrake';Value=1});Timeout=15;Condition={param($sample)
+        $sample.parameters.AMXDENIS_AIRBRAKE_MOVING -eq 1 -and $sample.parameters.AMXDENIS_HYD_2_BAR -lt 206 -and $sample.parameters.AMXDENIS_HYD_1_BAR -gt 206}}
+    @{Name='AirbrakeOutSettled';Commands=@();Timeout=15;Condition={param($sample)
+        $sample.parameters.AMXDENIS_AIRBRAKE_POSITION -gt 0.95 -and $sample.parameters.AMXDENIS_AIRBRAKE_MOVING -eq 0 -and $sample.parameters.AMXDENIS_HYD_2_BAR -gt 206}}
+    @{Name='AirbrakeIn';Commands=@(@{Control='Airbrake';Value=0});Timeout=15;Condition={param($sample)
+        $sample.parameters.AMXDENIS_AIRBRAKE_MOVING -eq 1 -and $sample.parameters.AMXDENIS_HYD_2_BAR -lt 206 -and $sample.parameters.AMXDENIS_HYD_1_BAR -gt 206}}
+    @{Name='AirbrakeInSettled';Commands=@();Timeout=15;Condition={param($sample)
+        $sample.parameters.AMXDENIS_AIRBRAKE_POSITION -lt 0.05 -and $sample.parameters.AMXDENIS_AIRBRAKE_MOVING -eq 0 -and $sample.parameters.AMXDENIS_HYD_2_BAR -gt 206}}
     @{Name='Shutdown';Commands=@(@{Control='FuelShutoff';Value=0});Timeout=100;Condition={param($sample)
         $sample.engine.RPM.left -lt 0.1 -and $sample.parameters.AMXDENIS_HYD_1_BAR -gt 0 -and $sample.parameters.AMXDENIS_HYD_1_BAR -lt 200 -and $sample.parameters.AMXDENIS_HYD_2_BAR -gt 0}}
     @{Name='ReserveLow';Commands=@();Timeout=90;Condition={param($sample)

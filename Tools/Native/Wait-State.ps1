@@ -31,13 +31,17 @@ try {
         if(-not $process -or $process.ProcessName -ne 'DCS' -or
             $process.StartTime.ToUniversalTime().Ticks -ne ([DateTime]::Parse($active.Started).ToUniversalTime().Ticks)){throw 'Owned process exited or identity changed while observing.'}
         $sample=& (Join-Path $PSScriptRoot 'Read-State.ps1') -RunRoot $run
-        if($sample.model_time -gt $lastTime){
-            $lastTime=$sample.model_time
-            $conditionResult=& $Condition $sample
+        # Short transients are missed by sampling only the newest record, so every
+        # sample recorded since the last one is evaluated in order.
+        foreach($recorded in @(& (Join-Path $PSScriptRoot 'Read-State.ps1') -RunRoot $run -Since $lastTime)){
+            $lastTime=$recorded.model_time
+            $sample=$recorded
+            $conditionResult=& $Condition $recorded
             if($conditionResult -isnot [bool]){throw 'Observation condition must return one Boolean.'}
             if($conditionResult){$consecutive++}else{$consecutive=0}
             if($consecutive -ge $StableSamples){$passed=$true;break}
         }
+        if($passed){break}
         if(([DateTime]::UtcNow-$progress).TotalSeconds -ge 10){
             Write-Host "AMXDENIS_WAIT|model_time=$lastTime|matching_samples=$consecutive/$StableSamples"
             $progress=[DateTime]::UtcNow

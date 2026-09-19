@@ -2,6 +2,7 @@
 param(
     [Parameter(Mandatory)][string]$RunRoot,
     [string]$ReportPath,
+    [double]$Since=[double]::NaN,
     [ValidateRange(65536,8388608)][int]$TailBytes=2097152
 )
 Set-StrictMode -Version Latest
@@ -39,6 +40,7 @@ $reader=[IO.StreamReader]::new($stream)
 try {if($offset -gt 0){[void]$reader.ReadLine()};$text=$reader.ReadToEnd()} finally {$reader.Dispose()}
 $lines=$text.Split("`n")
 $latest=$null
+$batch=[Collections.Generic.List[object]]::new()
 for($index=0;$index -lt $lines.Count-1;$index++){
     if(-not $lines[$index].Trim()){continue}
     $record=ConvertFrom-Json -InputObject $lines[$index] -Depth 40 -DateKind String
@@ -46,8 +48,10 @@ for($index=0;$index -lt $lines.Count-1;$index++){
     if($record.kind -eq 'STATE'){
         Assert-NativeSampleIdentity $state $record
         $latest=$record
+        if(-not [double]::IsNaN($Since) -and $record.model_time -gt $Since){$batch.Add($record)}
     }
 }
+if(-not [double]::IsNaN($Since)){return $batch.ToArray()}
 if($null -eq $latest){throw 'No complete native STATE record in the selected tail.'}
 if($ReportPath){
     $report=Assert-IntegrationPath $ReportPath
