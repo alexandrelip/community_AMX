@@ -64,6 +64,7 @@ end
 find_commands(input.getEnvTable(),0)
 local complete=true;for action in pairs(wanted)do if not camera_ids[action]then complete=false end end
 lines[#lines+1]='camera_commands_available='..tostring(complete)
+for action,id in pairs(camera_ids)do lines[#lines+1]='resolved_command='..action..'|'..tostring(id)end
 for _,layer in ipairs(input.getLayerStack())do lines[#lines+1]='active_layer='..tostring(layer)end
 for _,layer in ipairs(input.getLoadedLayers())do lines[#lines+1]='loaded_layer='..tostring(layer)end
 for name,value in pairs(input.getEnvTable())do

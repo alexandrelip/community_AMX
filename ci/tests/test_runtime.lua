@@ -88,7 +88,7 @@ end
 
 local function simulation(birth)
     local sim={values={},envs={},devices={},sent={},now=100,birth=birth,log={},rpm=0,fuel=2550,wow=1,canopy=0,
-        stores={[0]={count=1,CLSID="fixture",weapon={level3=1}}},calls={}}
+        stores={[0]={count=1,CLSID="fixture",weapon={level3=1}}},calls={},globals={}}
     sim.handle=function(name)
         return {get=function() return sim.values[name] or 0 end,set=function(_,value) sim.values[name]=value end}
     end
@@ -159,6 +159,7 @@ local function simulation(birth)
             print_message_to_user=function() end,
         },{__index=_G})
         env._G=env
+        for name,value in pairs(sim.globals) do env[name]=value end
         env.dofile=function(filename)
             if filename:sub(1,11)=="__COMMON__/" then
                 if filename:find("wsTypes.lua",1,true) then return end
@@ -325,6 +326,9 @@ for _, birth in ipairs({"GROUND_COLD","GROUND_HOT","AIR_HOT","UNKNOWN"}) do
     check(sim.sent[#sim.sent].command==430,"unimplemented middle flap position not fabricated")
     sim.input("Flaps",1)
     check(sim.sent[#sim.sent].command==145,"full flap request uses native command")
+    check(sim.values.AMXDENIS_MECHANISM_COMMANDS_NAMED==0 and
+        sim.values.AMXDENIS_MECHANISM_COMMAND_SOURCE=="UNCONFIRMED_STATIC_LITERALS",
+        "unresolved command names are reported as unconfirmed instead of trusted")
     sim.input("FuelShutoff",0)
     check(sim.sent[#sim.sent].command==313,"fuel cutoff requests native stop")
     sim.sensors.getTotalFuelWeight=function() return 0/0 end;sim.tick(order)
@@ -334,6 +338,43 @@ for _, birth in ipairs({"GROUND_COLD","GROUND_HOT","AIR_HOT","UNKNOWN"}) do
     check(sim.values.AMXDENIS_HYD_1_VALID==0,"missing engine source invalidates modelled hydraulic indication")
 end
 
+-- Native command numbers are engine defined. When DCS publishes the official
+-- names the producer must use them instead of the previously shipped literals.
+do
+    local sim=simulation("GROUND_HOT")
+    sim.globals.iCommandPlaneGearUp=68
+    sim.globals.iCommandPlaneGearDown=69
+    sim.globals.iCommandPlaneFlapsOn=143
+    sim.globals.iCommandPlaneFlapsOff=144
+    sim.globals.iCommandPlaneFonar=77
+    sim.create(8,"Host/mechanisms.lua").post_initialize()
+    check(sim.values.AMXDENIS_MECHANISM_COMMANDS_NAMED==5 and
+        sim.values.AMXDENIS_MECHANISM_COMMAND_SOURCE=="OFFICIAL_COMMAND_NAMES",
+        "resolved command names replace the unconfirmed literals")
+    check(sim.values.AMXDENIS_MECHANISM_CMD_GEARUP==68 and sim.values.AMXDENIS_MECHANISM_CMD_GEARDOWN==69 and
+        sim.values.AMXDENIS_MECHANISM_CMD_FLAPSON==143 and sim.values.AMXDENIS_MECHANISM_CMD_FLAPSOFF==144 and
+        sim.values.AMXDENIS_MECHANISM_CMD_CANOPY==77,"each resolved identifier is published for verification")
+    sim.wow=0;sim.envs[8].SetCommand(3506,0)
+    check(sim.sent[#sim.sent].command==68,"gear retraction uses the resolved identifier")
+    sim.envs[8].SetCommand(3506,1)
+    check(sim.sent[#sim.sent].command==69,"gear extension uses the resolved identifier")
+    sim.envs[8].SetCommand(3507,1)
+    check(sim.sent[#sim.sent].command==143,"flap extension uses the resolved identifier")
+    sim.envs[8].SetCommand(3507,0)
+    check(sim.sent[#sim.sent].command==144,"flap retraction uses the resolved identifier")
+    sim.envs[8].SetCommand(3508,1)
+    check(sim.sent[#sim.sent].command==77,"canopy uses the resolved identifier")
+    local partial=simulation("GROUND_HOT")
+    partial.globals.iCommandPlaneFonar=77
+    partial.globals.iCommandPlaneGearUp=0
+    partial.globals.iCommandPlaneFlapsOn="143"
+    partial.create(8,"Host/mechanisms.lua").post_initialize()
+    check(partial.values.AMXDENIS_MECHANISM_COMMANDS_NAMED==1 and
+        partial.values.AMXDENIS_MECHANISM_COMMAND_SOURCE=="MIXED_NAMES_AND_UNCONFIRMED_LITERALS",
+        "invalid or non numeric command names never masquerade as resolved")
+    check(partial.values.AMXDENIS_MECHANISM_CMD_GEARUP==430 and partial.values.AMXDENIS_MECHANISM_CMD_FLAPSON==145,
+        "rejected names fall back to the previously shipped literal")
+end
 -- A failed device lookup/dispatch is NOT an accepted held button. Retrying the
 -- same press after the producer returns must work without a fabricated release.
 do

@@ -1,0 +1,165 @@
+{
+  "Schema": "AMXDENIS_R02_COMMAND_PATH_1",
+  "Question": "Are the AMX mechanisms immobile because of wrong command identifiers, a dead command channel, or the aircraft itself?",
+  "Run": "DCS.AMXDENIS-Native-REV07-CO-CommandPath",
+  "BuildId": "445CADAD2E5B7DD8BCA26EFB0B58AC5692A12E21B9524D107835C7B391D9B571",
+  "RecordedUtc": "2026-09-19T03:05:53.4098643Z",
+  "RuntimeResolvedIdentifiers": {
+    "FlightCancel": 408,
+    "NativeAirbrakeOn": 147,
+    "ViewRight": 2049,
+    "NativeFlapsUp": 146,
+    "ViewZoom": 2012,
+    "ViewUp": 2051,
+    "ViewForward": 2053,
+    "FlightRoll": 2002,
+    "FlightBrakeOff": 75,
+    "NativeGearUp": 430,
+    "FlightRudder": 2003,
+    "NativeFlapsDown": 145,
+    "ViewPitch": 2011,
+    "FlightPitch": 2001,
+    "FlightAttitudeHold": 386,
+    "NativeCanopy": 71,
+    "NativeGearDown": 431,
+    "FlightAltitudeHold": 387,
+    "ViewYaw": 2010,
+    "FlightThrottle": 2004,
+    "NativePower": 315,
+    "FlightBrakeOn": 74,
+    "NativeAirbrakeOff": 148
+  },
+  "ShippedIdentifiers": {
+    "Source": "\"UNCONFIRMED_STATIC_LITERALS\"",
+    "NamedCount": 0,
+    "GearUp": 430,
+    "GearDown": 431,
+    "FlapsOn": 145,
+    "FlapsOff": 146,
+    "Canopy": 71
+  },
+  "IdentifiersMatchRuntime": true,
+  "Probes": [
+    {
+      "Probe": "CameraByNativeCommand",
+      "CommandPath": "LoSetCommand view axis",
+      "Succeeded": true,
+      "Rejected": null,
+      "Before": {
+        "p": {
+          "x": -41419.52347773238,
+          "y": 43.123301319792795,
+          "z": 278573.99579903536
+        },
+        "x": {
+          "x": -0.597709145229497,
+          "y": -0.18301444300957478,
+          "z": 0.7805443668950861
+        },
+        "y": {
+          "x": -0.11126870853090591,
+          "y": 0.9831102444911637,
+          "z": 0.14530506049011402
+        },
+        "z": {
+          "x": -0.793954074382782,
+          "y": 0,
+          "z": -0.6079777479171753
+        }
+      },
+      "After": {
+        "p": {
+          "x": -41419.52347773238,
+          "y": 43.123301319792795,
+          "z": 278573.99579903536
+        },
+        "x": {
+          "x": -0.790604621252567,
+          "y": -0.18198257560999376,
+          "z": 0.5846594689904533
+        },
+        "y": {
+          "x": -0.14182035030135237,
+          "y": 0.9832736762304484,
+          "z": 0.11427994081179108
+        },
+        "z": {
+          "x": -0.5956772121817474,
+          "y": 0.007433638422252557,
+          "z": -0.8031895241510447
+        }
+      }
+    },
+    {
+      "Probe": "CanopyByCockpitDevice",
+      "CommandPath": "dispatch_action resolved canopy",
+      "Succeeded": false,
+      "Rejected": null,
+      "Before": 0.8999999761581421,
+      "After": 0.8999999761581421,
+      "DispatchAccepted": true,
+      "DispatchError": 0,
+      "LastCommand": 71
+    },
+    {
+      "Probe": "FlapsByCockpitDevice",
+      "CommandPath": "dispatch_action resolved flaps",
+      "Succeeded": false,
+      "Rejected": null,
+      "Before": {
+        "status": 0,
+        "value": 0
+      },
+      "After": {
+        "status": 0,
+        "value": 0
+      },
+      "DispatchAccepted": true,
+      "DispatchError": 0,
+      "LastCommand": 145
+    },
+    {
+      "Probe": "FlapsByNativeCommand",
+      "CommandPath": "LoSetCommand iCommandPlaneFlapsOn",
+      "Succeeded": false,
+      "Rejected": null,
+      "Before": {
+        "status": 0,
+        "value": 0
+      },
+      "After": {
+        "status": 0,
+        "value": 0
+      }
+    },
+    {
+      "Probe": "EngineIdleByCockpitDevice",
+      "CommandPath": "dispatch_action engine start",
+      "Succeeded": true,
+      "Rejected": null,
+      "Before": 0,
+      "After": 72.31787872314453
+    },
+    {
+      "Probe": "ThrottleByNativeCommand",
+      "CommandPath": "LoSetCommand iCommandPlaneThrustCommon",
+      "Succeeded": false,
+      "Rejected": null,
+      "Before": 72.31787872314453,
+      "After": 60.000091552734375
+    }
+  ],
+  "PositiveControlEffective": true,
+  "NativeCommandsEffective": 1,
+  "NativeCommandsAttempted": 3,
+  "CockpitCommandsEffective": 1,
+  "CockpitCommandsAttempted": 3,
+  "RefutedHypotheses": [
+    "Wrong command identifiers: the runtime resolution matches the shipped literals exactly",
+    "Dead command channel: the camera moved through LoSetCommand and the engine started through dispatch_action in the same session",
+    "Cockpit producer defect: the canopy and flap dispatches were accepted with AMXDENIS_MECHANISM_REQUEST_ERROR zero"
+  ],
+  "RemainingScope": "Both delivery paths are alive, yet every airframe mechanism and flight axis command is ignored while engine commands act; the remaining suspect is the AMX aircraft definition or its flight model, not the REV07 cockpit integration.",
+  "NotProven": "This does not prove a defect in the original mod: no stock AMX control run was executed, and no fix was applied.",
+  "IntegrityPassed": true
+}

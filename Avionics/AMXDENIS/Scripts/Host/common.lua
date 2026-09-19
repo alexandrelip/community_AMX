@@ -24,4 +24,13 @@ function M.send(command, value)
     local ok, result = pcall(dispatch_action, nil, command, value)
     return ok and result ~= false
 end
+-- Native command numbers are engine defined and must never be guessed: prefer the
+-- official global name and fall back only to the previously shipped literal.
+function M.command(name, fallback)
+    local ok, value = pcall(function() return _G[name] end)
+    if ok and type(value) == "number" and value > 0 and value < 10000 and value % 1 == 0 then
+        return value, true
+    end
+    return fallback, false
+end
 return M

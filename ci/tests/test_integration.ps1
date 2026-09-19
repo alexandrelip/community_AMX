@@ -265,6 +265,23 @@ try {
     foreach($value in @(0.26,-0.26,[double]::NaN,[double]::PositiveInfinity,$null,'0')){
         Rejected {Assert-HydraulicStationary ([pscustomobject]@{velocity=[pscustomobject]@{x=$value;y=0;z=0}})} 'Unsafe or unavailable velocity was allowed before hydraulic commands.'
     }
+    $commandPath=Join-Path $repo 'Tools/Native/Test-NativeCommandPath.ps1'
+    $commandAst=[Management.Automation.Language.Parser]::ParseFile($commandPath,[ref]$tokens,[ref]$parseErrors)
+    Check ($parseErrors.Count -eq 0) 'Command-path diagnostic syntax is invalid.'
+    $commandText=$commandAst.Extent.Text
+    Check ($commandText -match "StartMode -ne 'GroundCold'" -and $commandText -match '-not \$state\.OperationalTest') 'Command-path diagnostic must demand an operational cold ground fixture.'
+    Check ($commandText -match 'Command-path report already exists') 'Command-path diagnostic must refuse to overwrite a previous report.'
+    Check ($commandText -match 'Canopy is not at the expected open extreme') 'Command-path diagnostic must reject a canopy that cannot demonstrate travel.'
+    $commandEvidence=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/Evidence/Operational-REV07/command-path-results.json') -Raw | ConvertFrom-Json
+    Check ($commandEvidence.Schema -eq 'AMXDENIS_R02_COMMAND_PATH_1' -and $commandEvidence.IntegrityPassed) 'Archived command-path evidence is missing or not finalized.'
+    Check ($commandEvidence.IdentifiersMatchRuntime -and $commandEvidence.RuntimeResolvedIdentifiers.NativeFlapsDown -eq $commandEvidence.ShippedIdentifiers.FlapsOn) 'Command-path evidence must record the runtime identifier comparison.'
+    Check ($commandEvidence.PositiveControlEffective -and $commandEvidence.NativeCommandsEffective -lt $commandEvidence.NativeCommandsAttempted -and
+        $commandEvidence.CockpitCommandsEffective -lt $commandEvidence.CockpitCommandsAttempted) 'Command-path evidence must keep the positive control separate from the failed aircraft commands.'
+    foreach($probe in @('CanopyByCockpitDevice','FlapsByCockpitDevice')){
+        $entry=@($commandEvidence.Probes | Where-Object Probe -eq $probe)
+        Check ($entry.Count -eq 1 -and $entry[0].DispatchAccepted -and $entry[0].DispatchError -eq 0 -and -not $entry[0].Succeeded) 'An accepted dispatch without movement must never be recorded as a working mechanism.'
+    }
+    Check ($commandEvidence.RefutedHypotheses.Count -eq 3 -and $commandEvidence.NotProven -match 'does not prove') 'Command-path evidence must keep refuted hypotheses and the unproven scope explicit.'
     $hotasAbi=& (Join-Path $repo 'Tools/Native/Read-Hotas.ps1') -IncludeHid -ValidateOnly
     Check ($hotasAbi.Schema -eq 'AMXDENIS_HOTAS_ABI_1' -and -not $hotasAbi.DevicesRead) 'HOTAS ABI check must not require physical devices.'
     Check (($hotasAbi.WinMmSizes -join ',') -eq '728,52') 'WinMM structure layout changed.'
