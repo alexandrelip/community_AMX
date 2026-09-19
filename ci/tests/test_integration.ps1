@@ -383,6 +383,20 @@ try {
         }
     }
     Check (@($delivery.StillImmobile).Count -eq 3 -and @($delivery.NotProven).Count -ge 4 -and $delivery.StockControl -match 'do not') 'Command delivery evidence must keep the immobile items and unproven scope explicit.'
+    $planPath=Join-Path $repo 'Doc/Integration/PLANO_NOTA7.md'
+    $planText=Get-Content -LiteralPath $planPath -Raw
+    foreach($package in 1..10){Check ($planText -match ("(?m)^### P$package\.")) 'The plan is missing a work package.'}
+    Check (([regex]::Matches($planText,'(?m)^Aceite para 7:')).Count -eq 10) 'Every plan package needs an explicit acceptance criterion.'
+    Check ($planText -match 'plano, nao um resultado' -and $planText -match 'Nenhuma nota abaixo sobe por') 'The plan must not read as achieved grades.'
+    Check ($planText -match '(?m)^## 6\. O que depende de voce' -and $planText -match '(?m)^## 7\. Onde 7 pode nao ser alcancado') 'The plan must keep the user dependencies and the unreachable cases.'
+    foreach($link in [regex]::Matches($planText,'\]\(([^)]+)\)')){
+        $target=$link.Groups[1].Value
+        if($target -match '^[a-z]+:'){continue}
+        Check (Test-Path -LiteralPath (Join-Path (Split-Path -Parent $planPath) $target)) 'The plan links to a file that does not exist.'
+    }
+    $permissions=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/PERMISSIONS.json') -Raw | ConvertFrom-Json
+    Check ($permissions.ReferenceLibrary.StudyAuthorized -and $permissions.ReferenceLibrary.Path -eq 'D:/Desenvolvimento/BACKUP') 'The reference library authorization is missing.'
+    Check ($permissions.PublicRedistributionAuthorized -eq $false -and $permissions.NormalProfileInstallationAuthorized -eq $false) 'Existing permission boundaries were lost.'
     $campaignAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-CommandCampaign.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Command campaign syntax is invalid.'
     $campaignText=$campaignAst.Extent.Text

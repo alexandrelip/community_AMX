@@ -20,5 +20,19 @@
   "LicenseCheckBypassAuthorized": false,
   "OriginalNoticesMustBePreserved": true,
   "IndependentLegalVerification": false,
-  "NativeCompatibilityValidated": false
+  "NativeCompatibilityValidated": false,
+  "ReferenceLibrary": {
+    "RecordedDate": "2026-09-19",
+    "Path": "D:/Desenvolvimento/BACKUP",
+    "Statement": "tem aqui mod e dll pode copiar; dlls proprietaria sao para estudar como fazer, para copiar precisa refazer a dll",
+    "StudyAuthorized": true,
+    "OwnImplementationExpected": "Functionality observed in a proprietary module is reproduced by writing our own binary, not by shipping the studied one.",
+    "References": [
+      "BACKUP/ex mods/Denis_community_AMX-main: upstream AMX mod, comparison baseline",
+      "BACKUP/ex mods: community aircraft declarations",
+      "BACKUP/AVioesdll: module binaries available for study",
+      "BACKUP/Manual and BACKUP/Demais/Manuais: documentation",
+      "BACKUP/controles HTML: historical DCS control dumps"
+    ]
+  }
 }
