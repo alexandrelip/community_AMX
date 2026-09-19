@@ -1,0 +1,127 @@
+{
+  "Schema": "AMXDENIS_R02_SURFACE_REPEAT_1",
+  "Scope": "Canopy, flaps and airbrake driven by the cockpit on a cold ground fixture, repeated in two independent sessions.",
+  "Sessions": [
+    {
+      "Session": "DT",
+      "Run": "DCS.AMXDENIS-Native-REV07-DT-AllSurfaces",
+      "Effective": 6,
+      "Attempted": 6,
+      "Planned": 6,
+      "IntegrityPassed": true,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Control": "ViewYaw",
+          "Before": -0.5977118289384412,
+          "After": -0.790604621252567,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Control": "Canopy",
+          "Before": 0.8999999761581421,
+          "After": 0.04500000178813934,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsDown",
+          "Control": "Flaps",
+          "Before": 0,
+          "After": 1,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsUp",
+          "Control": "Flaps",
+          "Before": 1,
+          "After": 0,
+          "Moved": true
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Control": "Airbrake",
+          "Before": 0,
+          "After": 1,
+          "Moved": true
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Control": "Airbrake",
+          "Before": 1,
+          "After": 0,
+          "Moved": true
+        }
+      ]
+    },
+    {
+      "Session": "DU",
+      "Run": "DCS.AMXDENIS-Native-REV07-DU-AllSurfacesRepeat",
+      "Effective": 6,
+      "Attempted": 6,
+      "Planned": 6,
+      "IntegrityPassed": true,
+      "Results": [
+        {
+          "Probe": "CameraYaw",
+          "Control": "ViewYaw",
+          "Before": -0.597709467800925,
+          "After": -0.790604621252567,
+          "Moved": true
+        },
+        {
+          "Probe": "CanopyClose",
+          "Control": "Canopy",
+          "Before": 0.8999999761581421,
+          "After": 0.011250000447034836,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsDown",
+          "Control": "Flaps",
+          "Before": 0,
+          "After": 1,
+          "Moved": true
+        },
+        {
+          "Probe": "FlapsUp",
+          "Control": "Flaps",
+          "Before": 1,
+          "After": 0,
+          "Moved": true
+        },
+        {
+          "Probe": "AirbrakeOut",
+          "Control": "Airbrake",
+          "Before": 0,
+          "After": 1,
+          "Moved": true
+        },
+        {
+          "Probe": "AirbrakeIn",
+          "Control": "Airbrake",
+          "Before": 1,
+          "After": 0,
+          "Moved": true
+        }
+      ]
+    }
+  ],
+  "Implemented": [
+    "Canopy on arguments 38 and 40, ground gated",
+    "Flaps on arguments 20, 9 and 10",
+    "Airbrake on argument 21 through a new cockpit route",
+    "Landing gear actuator on arguments 0, 3 and 5",
+    "Hydraulic consumers now read the cockpit positions instead of the inert sensors"
+  ],
+  "StillMissing": [
+    "Gear retraction needs an airborne fixture, so it is not covered by these ground sessions",
+    "No hydraulic consumption was measured natively yet",
+    "No flight, takeoff or landing was attempted"
+  ],
+  "NotProven": [
+    "Cockpit driven animation for the simplified flight model, not simulated actuator physics",
+    "Flap, airbrake and gear travel times are declared project values, not manual calibrations"
+  ],
+  "RecordedUtc": "2026-09-19T14:03:57.2494835Z"
+}

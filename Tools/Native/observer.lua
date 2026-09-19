@@ -175,7 +175,7 @@ local function request()
         return
     end
     local spec=specs[name]
-    local operational={Starter=true,FuelShutoff=true,Gear=true,Flaps=true,Canopy=true,Mode=true}
+    local operational={Starter=true,FuelShutoff=true,Gear=true,Flaps=true,Canopy=true,Airbrake=true,Mode=true}
     local allowed=spec and (name:match("^Icp")or name:match("^Mfd")or
         name=="Master"or name=="HudBrightness"or name=="CautionAcknowledge"or
         name=="Battery"or name=="Generator1"or name=="Generator2"or
@@ -209,7 +209,7 @@ local function sample()
     row.own_heading=own.Heading
     row.external_canopy=call(LoGetAircraftDrawArgumentValue,38)
     row.external_arguments={}
-    for _,argument in ipairs({0,3,5,9,10,38,182})do
+    for _,argument in ipairs({0,3,5,9,10,20,21,38,40,182})do
         row.external_arguments[tostring(argument)]=call(LoGetAircraftDrawArgumentValue,argument)
     end
     row.velocity=call(LoGetVectorVelocity);row.engine=call(LoGetEngineInfo);row.mechanisms=call(LoGetMechInfo)

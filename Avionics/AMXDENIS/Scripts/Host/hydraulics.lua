@@ -8,10 +8,20 @@ local charge_time_s, reserve_time_s, failure_time_s = 2.5, 40, 1.5
 local pressure_state = {0, 0}
 local previous_time, initialized = nil, false
 local consumers = {
-    {name="GEAR_ENDPOINT", method="getLeftMainLandingGearDown", circuit=1, cost_bar=18},
-    {name="FLAPS", method="getFlapsPos", circuit=1, cost_bar=12},
-    {name="AIRBRAKE", method="getSpeedBrakePos", circuit=2, cost_bar=8},
+    {name="GEAR_ENDPOINT", method="getLeftMainLandingGearDown", parameter="AMXDENIS_GEAR_POSITION", circuit=1, cost_bar=18},
+    {name="FLAPS", method="getFlapsPos", parameter="AMXDENIS_FLAPS_POSITION", circuit=1, cost_bar=12},
+    {name="AIRBRAKE", method="getSpeedBrakePos", parameter="AMXDENIS_AIRBRAKE_POSITION", circuit=2, cost_bar=8},
 }
+-- The cockpit owns these surfaces, so its published position is the load source;
+-- the native sensor stays as a fallback.
+local function consumer_position(consumer)
+    if consumer.parameter and get_param_handle(consumer.parameter .. "_VALID"):get() == 1 then
+        local value = get_param_handle(consumer.parameter):get()
+        if common.finite(value) and value >= 0 and value <= 1 then return value end
+        return nil
+    end
+    return common.read(sensors, consumer.method, 0, 1)
+end
 for command in pairs(model_fault_commands) do device:listen_command(command) end
 function SetCommand(command, value)
     local suffix = model_fault_commands[command]
@@ -32,7 +42,7 @@ function update()
     end
     local demand, valid_load = {0, 0}, {true, true}
     for _, consumer in ipairs(consumers) do
-        local position = common.read(sensors, consumer.method, 0, 1)
+        local position = consumer_position(consumer)
         if not position or not valid_time or not rpm then
             consumer.previous = nil
             valid_load[consumer.circuit] = false

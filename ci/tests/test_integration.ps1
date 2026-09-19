@@ -417,6 +417,17 @@ try {
     Check ($moved.Count -eq 1 -and @($moved[0].Results | Where-Object {$_.Probe -eq 'CanopyClose' -and $_.Moved}).Count -eq 1 -and
         @($moved[0].Results | Where-Object {$_.Probe -like 'Flaps*' -and $_.Moved}).Count -eq 2) 'The surface evidence must show the measured canopy and flap travel.'
     Check (@($surfaces.StillMissing).Count -ge 3 -and @($surfaces.NotProven).Count -ge 3 -and $surfaces.RouteLesson -match 'cockpit route') 'Surface evidence must keep the missing items, the unproven scope and the route lesson.'
+    $repeat=Get-Content -LiteralPath (Join-Path $repo 'Doc/Integration/Evidence/Operational-REV07/surface-repeat-results.json') -Raw | ConvertFrom-Json
+    Check ($repeat.Schema -eq 'AMXDENIS_R02_SURFACE_REPEAT_1' -and $repeat.Sessions.Count -ge 2) 'Surface repetition needs at least two independent sessions.'
+    foreach($session in $repeat.Sessions){
+        Check ($session.IntegrityPassed -and $session.Effective -eq $session.Attempted -and $session.Attempted -eq $session.Planned) 'A repetition session was archived incomplete or without integrity.'
+        foreach($result in $session.Results){Check (-not $result.Moved -or $result.Before -ne $result.After) 'An unchanged reading was archived as movement.'}
+    }
+    foreach($probe in @('CanopyClose','FlapsDown','FlapsUp','AirbrakeOut','AirbrakeIn')){
+        $moves=@($repeat.Sessions | ForEach-Object {$_.Results} | Where-Object {$_.Probe -eq $probe -and $_.Moved})
+        Check ($moves.Count -ge 2) 'Every approved surface must move in both sessions.'
+    }
+    Check (@($repeat.StillMissing).Count -ge 3 -and @($repeat.NotProven).Count -ge 2) 'Surface repetition must keep the missing items and the unproven scope.'
     $campaignAst=[Management.Automation.Language.Parser]::ParseFile((Join-Path $repo 'Tools/Native/Test-CommandCampaign.ps1'),[ref]$tokens,[ref]$parseErrors)
     Check ($parseErrors.Count -eq 0) 'Command campaign syntax is invalid.'
     $campaignText=$campaignAst.Extent.Text

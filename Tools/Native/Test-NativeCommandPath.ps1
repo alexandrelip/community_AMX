@@ -30,8 +30,8 @@ function Get-CommandPathStages {
         @{Name='CanopyClose';Control='Canopy';Value=1;Path='mechanisms.canopy.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
         @{Name='FlapsDown';Control='Flaps';Value=1;Path='external_arguments.9';Direction=1;Minimum=0;Maximum=1;Change=0.1;Timeout=35;Required=$false}
         @{Name='FlapsUp';Control='Flaps';Value=0;Path='external_arguments.9';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=35;Required=$false}
-        @{Name='AirbrakeOut';Control='NativeAirbrakeOn';Value=1;Path='mechanisms.speedbrakes.value';Direction=1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
-        @{Name='AirbrakeIn';Control='NativeAirbrakeOff';Value=1;Path='mechanisms.speedbrakes.value';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
+        @{Name='AirbrakeOut';Control='Airbrake';Value=1;Path='external_arguments.21';Direction=1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
+        @{Name='AirbrakeIn';Control='Airbrake';Value=0;Path='external_arguments.21';Direction=-1;Minimum=0;Maximum=1;Change=0.1;Timeout=20;Required=$false}
     )
     if($Stages -eq 'Mechanisms'){return $surfaces | ForEach-Object {[pscustomobject]$_}}
     @(

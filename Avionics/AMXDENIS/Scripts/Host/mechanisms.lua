@@ -2,7 +2,7 @@
 -- so the cockpit owns them, exactly as the original AMX-A1M canopy system does.
 local common = dofile(LockOn_Options.script_path .. "Host/common.lua")
 local device, sensors = GetSelf(), get_base_data()
-for _, id in ipairs({3506, 3507, 3508}) do device:listen_command(id) end
+for _, id in ipairs({3506, 3507, 3508, 3509}) do device:listen_command(id) end
 make_default_activity(0.05)
 -- The shipped literals were never confirmed by DCS: resolve each action from the
 -- official command name and record which source was actually used.
@@ -32,8 +32,12 @@ end
 local CANOPY_OPEN, CANOPY_OPEN_SECONDS, CANOPY_CLOSE_SECONDS = 0.9, 8.0, 8.0
 -- Flap travel time is a declared project value, not a manual calibration.
 local FLAPS_TRAVEL_SECONDS = 6.0
+-- Airbrake and gear travel times are declared project values as well.
+local AIRBRAKE_TRAVEL_SECONDS, GEAR_TRAVEL_SECONDS = 3.0, 8.0
 local canopy_position, canopy_target, canopy_time = nil, nil, nil
 local flaps_position, flaps_target = nil, nil
+local airbrake_position, airbrake_target = nil, nil
+local gear_position, gear_target = nil, nil
 local function canopy_arguments(position)
     if type(set_aircraft_draw_argument_value) ~= "function" then return false end
     for _, argument in ipairs({38, 40}) do
@@ -44,6 +48,17 @@ end
 local function flaps_arguments(position)
     if type(set_aircraft_draw_argument_value) ~= "function" then return false end
     for _, argument in ipairs({20, 9, 10}) do
+        if not pcall(set_aircraft_draw_argument_value, argument, position) then return false end
+    end
+    return true
+end
+local function airbrake_arguments(position)
+    if type(set_aircraft_draw_argument_value) ~= "function" then return false end
+    return (pcall(set_aircraft_draw_argument_value, 21, position))
+end
+local function gear_arguments(position)
+    if type(set_aircraft_draw_argument_value) ~= "function" then return false end
+    for _, argument in ipairs({0, 3, 5}) do
         if not pcall(set_aircraft_draw_argument_value, argument, position) then return false end
     end
     return true
@@ -61,7 +76,10 @@ function SetCommand(command, value)
             get_param_handle("AMXDENIS_GEAR_REQUEST_BLOCKED"):set(1)
             return
         end
-        if send(value == 1 and native.GearDown or native.GearUp) then get_param_handle("AMXDENIS_GEAR_SELECTED"):set(value) end
+        if send(value == 1 and native.GearDown or native.GearUp) then
+            get_param_handle("AMXDENIS_GEAR_SELECTED"):set(value)
+            gear_target = value
+        end
         get_param_handle("AMXDENIS_GEAR_REQUEST_BLOCKED"):set(0)
     elseif command == 3507 and (value == 0 or value == 1) then
         -- Intermediate/maneuver detent is not guessed: only verified native UP/DOWN requests.
@@ -72,6 +90,9 @@ function SetCommand(command, value)
     elseif command == 3508 and value == 1 then
         send(native.Canopy)
         if canopy_target then canopy_target = canopy_target > 0 and 0 or CANOPY_OPEN end
+    elseif command == 3509 and (value == 0 or value == 1) then
+        airbrake_target = value
+        get_param_handle("AMXDENIS_AIRBRAKE_SELECTED"):set(value)
     end
 end
 function update()
@@ -99,6 +120,22 @@ function update()
     end
     common.publish("AMXDENIS_FLAPS_POSITION", flaps_position)
     get_param_handle("AMXDENIS_FLAPS_MOVING"):set(flaps_driven and 1 or 0)
+    local airbrake_driven = false
+    if elapsed and airbrake_position and airbrake_target then
+        local previous = airbrake_position
+        airbrake_position = travel(airbrake_position, airbrake_target, AIRBRAKE_TRAVEL_SECONDS, elapsed)
+        if airbrake_position ~= previous then airbrake_driven = airbrake_arguments(airbrake_position) end
+    end
+    common.publish("AMXDENIS_AIRBRAKE_POSITION", airbrake_position)
+    get_param_handle("AMXDENIS_AIRBRAKE_MOVING"):set(airbrake_driven and 1 or 0)
+    local gear_driven = false
+    if elapsed and gear_position and gear_target then
+        local previous = gear_position
+        gear_position = travel(gear_position, gear_target, GEAR_TRAVEL_SECONDS, elapsed)
+        if gear_position ~= previous then gear_driven = gear_arguments(gear_position) end
+    end
+    common.publish("AMXDENIS_GEAR_POSITION", gear_position)
+    get_param_handle("AMXDENIS_GEAR_MOVING"):set(gear_driven and 1 or 0)
     local ok, canopy = false, nil
     if type(get_aircraft_draw_argument_value) == "function" then ok, canopy = pcall(get_aircraft_draw_argument_value, 38) end
     local valid = ok and common.finite(canopy) and canopy >= 0 and canopy <= 1
@@ -125,6 +162,13 @@ function post_initialize()
     flaps_position = 0
     flaps_target = 0
     flaps_arguments(flaps_position)
+    airbrake_position = 0
+    airbrake_target = 0
+    get_param_handle("AMXDENIS_AIRBRAKE_SELECTED"):set(0)
+    airbrake_arguments(airbrake_position)
+    gear_position = get_param_handle("AMXDENIS_GEAR_SELECTED"):get()
+    gear_target = gear_position
+    gear_arguments(gear_position)
     update()
 end
 need_to_be_closed = false

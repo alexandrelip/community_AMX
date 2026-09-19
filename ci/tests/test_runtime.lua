@@ -138,7 +138,8 @@ local function simulation(birth)
             make_default_activity=function(period) check(period>0,"valid update period") end,
             set_aircraft_draw_argument_value=function(argument,value)
                 check(path=="Host/mechanisms.lua","only the mechanism producer writes exterior arguments")
-                check(argument==38 or argument==40 or argument==20 or argument==9 or argument==10,"exterior writes stay on the declared mechanism arguments")
+                check(argument==38 or argument==40 or argument==20 or argument==9 or argument==10 or
+                    argument==21 or argument==0 or argument==3 or argument==5,"exterior writes stay on the declared mechanism arguments")
                 check(type(value)=="number" and value==value and value>=0 and value<=1,"exterior argument value is bounded")
                 sim.exterior[#sim.exterior+1]={argument=argument,value=value}
                 sim.canopy=argument==38 and value or sim.canopy
@@ -458,6 +459,32 @@ do
     check(sim.values.AMXDENIS_FLAPS_MOVING==1,"flaps still retract away from the ground")
     for _=1,400 do sim.tick(order) end
     near(sim.values.AMXDENIS_FLAPS_POSITION,0,"flaps return to the retracted extreme")
+end
+
+-- Airbrake and gear travel, and the hydraulic model must see that movement.
+do
+    local sim=simulation("GROUND_COLD")
+    local order={8,9}
+    sim.create(9,"Host/hydraulics.lua")
+    sim.create(8,"Host/mechanisms.lua").post_initialize()
+    sim.tick(order)
+    near(sim.values.AMXDENIS_AIRBRAKE_POSITION,0,"airbrake starts retracted")
+    sim.envs[8].SetCommand(3509,1)
+    sim.tick(order);sim.tick(order)
+    check(sim.values.AMXDENIS_AIRBRAKE_MOVING==1,"airbrake extension is driven by the cockpit")
+    local partial=sim.values.AMXDENIS_AIRBRAKE_POSITION
+    check(partial>0 and partial<1,"airbrake travel is progressive")
+    check(sim.values.AMXDENIS_HYD_2_DEMAND_BAR_S>0,"a moving airbrake loads its own circuit")
+    for _=1,200 do sim.tick(order) end
+    near(sim.values.AMXDENIS_AIRBRAKE_POSITION,1,"airbrake reaches the extended extreme")
+    near(sim.values.AMXDENIS_HYD_2_DEMAND_BAR_S,0,"a settled airbrake stops loading the circuit")
+    sim.wow=0
+    sim.envs[8].SetCommand(3506,0)
+    sim.tick(order);sim.tick(order)
+    check(sim.values.AMXDENIS_GEAR_MOVING==1,"gear retraction is driven by the cockpit")
+    check(sim.values.AMXDENIS_HYD_1_DEMAND_BAR_S>0,"a moving gear loads its own circuit")
+    for _=1,400 do sim.tick(order) end
+    near(sim.values.AMXDENIS_GEAR_POSITION,0,"gear reaches the retracted extreme")
 end
 
 -- A failed device lookup/dispatch is NOT an accepted held button. Retrying the

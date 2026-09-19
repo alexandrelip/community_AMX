@@ -216,7 +216,7 @@ if($Action -eq 'Start') {
 if($Action -in @('Await','Inspect','Command')) {
     if(-not(OwnedProcess $state)){throw 'Owned DCS is not running'}
     if($Action -eq 'Command') {
-        $operationalControl=$Control -match '^(Starter|FuelShutoff|Gear|Flaps|Canopy|Mode|ModelHydraulicFault[12]|Flight(Throttle|Pitch|Roll|Rudder|Brake|AltitudeHold|AttitudeHold|Cancel)|Native(GearUp|GearDown|FlapsDown|FlapsUp|AirbrakeOn|AirbrakeOff|Canopy|Power|EnginesStart|EnginesStop))$'
+        $operationalControl=$Control -match '^(Starter|FuelShutoff|Gear|Flaps|Canopy|Airbrake|Mode|ModelHydraulicFault[12]|Flight(Throttle|Pitch|Roll|Rudder|Brake|AltitudeHold|AttitudeHold|Cancel)|Native(GearUp|GearDown|FlapsDown|FlapsUp|AirbrakeOn|AirbrakeOff|Canopy|Power|EnginesStart|EnginesStop))$'
         if($operationalControl -and (-not $state.PSObject.Properties['OperationalTest'] -or $state.OperationalTest -ne $true)){throw 'Operational diagnostic controls require explicit preparation opt-in.'}
         if($state.PSObject.Properties['ControlAircraft'] -and $state.ControlAircraft -ne 'none' -and $Control -notmatch '^(Native|Flight|View)'){
             throw 'Control aircraft cannot receive REV07 device commands.'
